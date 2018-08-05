@@ -1,0 +1,8 @@
+[build]
+  base    = "./"
+  command = "yarn build"
+  publish = "./dist/"
+
+  [build.environment]
+    NODE_ENV     = "production"
+    NODE_VERSION = "8.11.3"
