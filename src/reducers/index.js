@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+import chat from './chat';
 
-const noop = (state = {}) => state;
-
-export default combineReducers({ noop });
+export default combineReducers({
+  chat,
+  form: formReducer,
+});

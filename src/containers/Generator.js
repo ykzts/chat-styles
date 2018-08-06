@@ -1,12 +1,7 @@
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
 import Generator from '../components/Generator';
 
 const styles = ({ breakpoints, spacing }) => ({
-  colorPalette: {
-    minHeight: '24px',
-    width: '100%',
-  },
   form: {
     paddingTop: spacing.unit * 3,
     [breakpoints.up('md')]: {
@@ -18,12 +13,13 @@ const styles = ({ breakpoints, spacing }) => ({
     position: 'sticky',
     top: 0,
   },
-  headline: {
-    fontSize: '1.5rem',
+  result: {
+    padding: spacing.unit * 2,
+    width: '100%',
   },
   root: {
     paddingTop: spacing.unit * 2,
   },
 });
 
-export default connect()(withStyles(styles)(Generator));
+export default withStyles(styles)(Generator);
