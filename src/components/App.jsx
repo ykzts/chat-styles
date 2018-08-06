@@ -27,7 +27,7 @@ const App = ({ classes, title }) => (
       <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`} />
       <CssBaseline />
       <AppBar position="static">
-        <Toolbar variant="dense">
+        <Toolbar>
           <Typography color="inherit" className={classes.title} component={Link} noWrap to="/" variant="title">
             {title}
           </Typography>

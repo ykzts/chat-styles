@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { formValueSelector, reduxForm } from 'redux-form';
 import Form from '../components/Form';
 
-const styles = {
+const styles = ({ spacing }) => ({
+  box: {
+    marginBottom: spacing.unit * 8,
+  },
   textField: {
     maxWidth: '100%',
   },
-};
+});
 
 const selector = formValueSelector('chat');
 

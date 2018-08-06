@@ -79,11 +79,16 @@ export default class Form extends Component {
   }
 
   render() {
-    const { showAvatar, showOutline, showTimestamp } = this.props;
+    const {
+      classes,
+      showAvatar,
+      showOutline,
+      showTimestamp,
+    } = this.props;
 
     return (
       <Grid container justify="flex-start" spacing={0}>
-        <Grid item sm={6} xs={12}>
+        <Grid className={classes.box} item sm={6} xs={12}>
           <FormControl component="fieldset">
             <FormLabel component="legend">
               アウトライン
@@ -127,7 +132,7 @@ export default class Form extends Component {
             </Grid>
           </FormControl>
         </Grid>
-        <Grid item sm={6} xs={12}>
+        <Grid className={classes.box} item sm={6} xs={12}>
           <FormControl component="fieldset">
             <FormLabel component="legend">
               アイコン
@@ -159,7 +164,7 @@ export default class Form extends Component {
             />
           </FormControl>
         </Grid>
-        <Grid item sm={6} xs={12}>
+        <Grid className={classes.box} item sm={6} xs={12}>
           <FormControl component="fieldset">
             <FormLabel component="legend">
               タイムスタンプ
