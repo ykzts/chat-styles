@@ -14,6 +14,13 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.html$/,
+        loader: 'file-loader',
+        options: {
+          name: env === 'production' ? '[name].[ext]?[hash]' : '[name].[hash][ext]',
+        },
+      },
     ],
   },
   output: {

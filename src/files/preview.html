@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+      html {
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 10px;
+      }
+
+      body {
+        margin: 0;
+        overflow-y: scroll;
+        padding: 0;
+      }
+
+      yt-img-shadow {
+        flex: none;
+        display: inline-block;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      yt-img-shadow[loaded] {
+        opacity: 1;
+      }
+
+      yt-img-shadow.no-transition {
+        opacity: 1;
+        transition: none;
+      }
+
+      yt-img-shadow img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      yt-icon {
+        fill: currentColor;
+        width: var(--iron-icon-height, 24px);
+        height: var(--iron-icon-width, 24px);
+        stroke: none;
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        vertical-align: middle;
+        justify-content: center;
+      }
+
+      yt-live-chat-renderer {
+        flex: 1;
+        color: var(--yt-live-chat-primary-text-color, hsl(0, 0%, 6.7%));
+        z-index: 0;
+        overflow: hidden;
+        position: relative;
+        font-size: 13px;
+        flex-basis: 0.000000001px;
+        flex-direction: column;
+        background-color: var(--yt-live-chat-background-color, hsl(0, 0%, 100%));
+      }
+
+      yt-live-chat-item-list-renderer {
+        flex: 1;
+        display: block;
+        z-index: 0;
+        overflow: hidden;
+        flex-basis: 0.000000001px;
+      }
+
+      yt-live-chat-text-message-renderer:not(:first-child),
+      yt-live-chat-legacy-paid-message-renderer:not(:first-child),
+      yt-live-chat-paid-message-renderer:not(:first-child) {
+        border-top: var(--yt-live-chat-item-list-item-border, none);
+      }
+
+      yt-live-chat-text-message-renderer {
+        display: flex;
+        padding: 4px 24px;
+        overflow: hidden;
+        position: relative;
+        font-size: 13px;
+        align-items: flex-start;
+        flex-direction: row;
+        --yt-endpoint-color: var(--yt-live-chat-primary-text-color, hsl(0, 0%, 6.7%));
+        --yt-endpoint-hover-color: var(--yt-live-chat-primary-text-color, hsl(0, 0%, 6.7%));
+      }
+
+      yt-live-chat-text-message-renderer[is-highlighted] {
+        background-color: var(--yt-live-chat-message-highlight-background-color, #f8f8f8);
+      }
+
+      yt-live-chat-text-message-renderer yt-img-shadow {
+        flex: none;
+        display: block;
+        overflow: hidden;
+        margin-right: 16px;
+        border-radius: 50%;
+      }
+
+      yt-live-chat-text-message-renderer #content {
+        min-width: 0;
+        align-self: center;
+      }
+
+      yt-live-chat-text-message-renderer #timestamp {
+        color: var(--yt-live-chat-tertiary-text-color, hsla(0, 0%, 6.7%, .4));
+        margin: var(--yt-live-chat-item-timestamp-margin, 0 8px 0 0);
+        display: var(--yt-live-chat-item-timestamp-display, inline);
+        font-size: 11px;
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-chip {
+        display: inline-flex;
+        align-items: baseline;
+        margin-right: 8px;
+      }
+
+      yt-live-chat-text-message-renderer #chat-badges:empty {
+        display: none;
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-chip[highlights-enabled] #chat-badges {
+        order: 1;
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-badge-renderer {
+        margin: 0 4px 0 0;
+        display: inline-block;
+        vertical-align: sub;
+      }
+      yt-live-chat-text-message-renderer yt-live-chat-author-chip[highlights-enabled] yt-live-chat-author-badge-renderer {
+        margin: 0 0 0 2px;
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-badge-renderer[type="moderator"] {
+        color: var(--yt-live-chat-moderator-color, hsl(225, 84%, 66%));
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-badge-renderer[type="member"] {
+        color: var(--yt-live-chat-sponsor-color, #107516);
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-badge-renderer img,
+      yt-live-chat-text-message-renderer yt-live-chat-author-badge-renderer yt-icon {
+        width: 16px;
+        height: 16px;
+        display: block;
+        font-size: 16px;
+      }
+
+      yt-live-chat-text-message-renderer yt-live-chat-author-badge-renderer yt-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        pointer-events: none;
+      }
+
+      yt-live-chat-text-message-renderer #author-name {
+        color: var(--yt-live-chat-secondary-text-color, hsla(0, 0%, 6.7%, .6));
+        box-sizing: border-box;
+        font-weight: 500;
+        border-radius: 2px;
+      }
+
+      yt-live-chat-text-message-renderer[is-highlighted] #author-name {
+        padding: 0 4px;
+        background-color: #ffd600;
+      }
+
+      yt-live-chat-text-message-renderer[is-highlighted] #author-name[type="owner"] {
+        color: var(--yt-live-chat-message-highlight-text-color, rgba(0, 0, 0, 8.7));
+      }
+
+      yt-live-chat-text-message-renderer #author-name[type="owner"] {
+        color: var(--yt-live-chat-owner-color, hsl(40, 76%, 55%));
+      }
+
+      yt-live-chat-text-message-renderer #author-name[type="moderator"] {
+        color: var(--yt-live-chat-moderator-color, hsl(225, 84%, 66%));
+      }
+
+      yt-live-chat-text-message-renderer #author-name[type="member"] {
+        color: var(--yt-live-chat-sponsor-color, #107516);
+      }
+
+      yt-live-chat-text-message-renderer #message {
+        color: var(--yt-live-chat-primary-text-color, hsl(0, 0%, 6.7%));
+        overflow: hidden;
+        word-wrap: break-word;
+        word-break: break-word;
+        line-height: 16px;
+        overflow-wrap: break-word;
+      }
+
+      yt-live-chat-text-message-renderer[is-deleted] #message {
+        color: var(--yt-live-chat-deleted-message-color, rgba(0, 0, 0, 0.5));
+        font-style: italic;
+      }
+
+      yt-live-chat-text-message-renderer[is-deleted]:not([show-original]) #message {
+        display: none;
+      }
+
+      yt-live-chat-legacy-paid-message-renderer {
+        display: block;
+        padding: 4px 24px;
+        position: relative;
+        --yt-live-chat-sponsor-color: #0f9d58;
+      }
+
+      yt-live-chat-legacy-paid-message-renderer #card {
+        color: #fff;
+        display: flex;
+        padding: 8px 16px;
+        position: relative;
+        font-size: 14px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        min-height: 40px;
+        align-items: center;
+        border-radius: 4px;
+        flex-direction: row;
+        background-color: var(--yt-live-chat-sponsor-color);
+      }
+
+      yt-live-chat-legacy-paid-message-renderer #author-photo {
+        flex: none;
+        display: block;
+        overflow: hidden;
+        align-self: flex-start;
+        margin-right: 16px;
+        border-radius: 50%;
+      }
+
+      yt-live-chat-legacy-paid-message-renderer #content {
+        flex: 1;
+        flex-basis: 0.000000001px;
+      }
+
+      yt-live-chat-legacy-paid-message-renderer #author-name {
+        display: none;
+      }
+
+      yt-live-chat-legacy-paid-message-renderer #event-text {
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+      }
+
+      yt-live-chat-legacy-paid-message-renderer #detail-text {
+        font-size: 15px;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+
+      yt-live-chat-paid-message-renderer {
+        display: block;
+        padding: 4px 24px;
+        position: relative;
+        font-size: 15px;
+      }
+
+      yt-live-chat-paid-message-renderer #card {
+        display: flex;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        flex-direction: column;
+      }
+
+      yt-live-chat-paid-message-renderer #card yt-img-shadow {
+        flex: none;
+        width: 40px;
+        height: 40px;
+        display: block;
+        overflow: hidden;
+        margin-right: 16px;
+        border-radius: 50%;
+      }
+
+      yt-live-chat-paid-message-renderer #header {
+        color: var(--yt-live-chat-paid-message-header-color, #fff);
+        display: flex;
+        padding: 8px 16px;
+        position: relative;
+        min-height: 20px;
+        font-weight: 500;
+        align-items: center;
+        flex-direction: row;
+        background-color: var(--yt-live-chat-paid-message-header-background-color, #125aac);
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      yt-live-chat-paid-message-renderer[show-only-header] #header {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      yt-live-chat-paid-message-renderer #header-content {
+        flex: 1;
+        display: flex;
+        flex-basis: 0.000000001px;
+        align-items: baseline;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      yt-live-chat-paid-message-renderer #header-content-primary-column {
+        flex: 1;
+        display: flex;
+        flex-basis: 0.000000001px;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      yt-live-chat-paid-message-renderer #author-name {
+        color: var(--yt-live-chat-paid-message-author-name-color, rgba(255, 255, 255, 0.7));
+        font-size: 14px;
+      }
+
+      yt-live-chat-paid-message-renderer #timestamp {
+        color: var(--yt-live-chat-teriary-text-color, hsla(0, 0%, 6.7%, .4));
+        margin: var(--yt-live-chat-item-timestamp-margin, 0 8px 0 0);
+        display: none;
+        font-size: 11px;
+      }
+
+      yt-live-chat-paid-message-renderer #content {
+        color: var(--yt-live-chat-paid-message-color, #fff);
+        padding: 8px 16px;
+        word-wrap: break-word;
+        word-break: break-word;
+        background-color: var(--yt-live-chat-paid-message-background-color, #1565c0);
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      yt-live-chat-paid-message-renderer[allow-animations] #header,
+      yt-live-chat-paid-message-renderer[allow-animations] #content {
+        transition-duration: 0.2s;
+        transition-property: background-color;
+      }
+
+      yt-formatted-string#deleted-state {
+        color: var(--yt-live-chat-deleted-message-color, rgba(0, 0, 0, 0.5));
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <yt-live-chat-app>
+      <yt-live-chat-renderer>
+        <yt-live-chat-ticker-renderer></yt-live-chat-ticker-renderer>
+        <yt-live-chat-item-list-renderer allow-scroll>
+          <yt-live-chat-text-message-renderer author-type="owner" is-highlighted>
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges"></span>
+                <span id="author-name" type="owner">芥川 龍之介<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">堀川の大殿様のやうな方は</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-text-message-renderer author-type="moderator">
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges">
+                  <yt-live-chat-author-badge-renderer type="moderator">
+                    <div id="image">
+                      <yt-icon>
+                        <svg viewBox="0 0 24 24">
+                          <path fill="none" d="M0 0h24v24H0z" clip-rule="evenodd" />
+                          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+                        </svg>
+                      </yt-icon>
+                    </div>
+                  </yt-live-chat-author-badge-renderer>
+                </span>
+                <span id="author-name" type="moderator">森 鴎外<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">石炭をば早や積み果てつ</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-text-message-renderer author-type="member">
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges">
+                  <yt-live-chat-author-badge-renderer type="member">
+                    <div id="image">
+                      <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACFElEQVRIS61WwW7TQBCdGZdUlWqbxg43xE9woEKIr+BLsDn3HudL+IuqAiQ+gRtH5FjUKSAaeV+1a8f12uuYoNgHK9qZebNvZt6Eaey5onmwmX9jkgti5tpMf9B+CAAIRfl9/Zw+0h9XqMbRPvLT6LOAXxEz6XffYyD0C3WzWRVv+rYDbz+NtgI5aZPeG/7xUAMpVtvNcj3rulgAT5O4Ihb5x5gDs+Y2qsxyb3fYAujMPfJOhsFBhIZ765CJGE1dbC+Faltm9U0MgJ9GXwXyckALdEH31MCct2FalIauL5vl+pJJd8tdvBbuMTMV3Ep6eBNA0e15fspBGuUMiazsDwreIPV86npUBQdJrISlw4Ob18nCO+iCAjhMFrCzd9ZtMr4x6OWmAOIwXcAepv+8gQNBk3RcAEcdOEyewe7EI96gpigGU7dFjwhAykHR8eKTKbK7TYfTOd1GOjPbT6u5BiiE5cIezAmJcKE5hhOqKpje0VnwYvFb+ppzyDS7gmupyPI6qv9+8UmYLt1it48urbR6MG1B1DJRAdd3q/xtexIk0b2w92RUro00dx4t4aNyrbZllj/K9c4tSOOKwXLoNtv5G4FjqHLpWDg7I/9D9FeUzA4FabbZfZnlp92LOrfJeRLfeESvub8jRnpVa38FMpz3TcbX1RXNwl/zHwwv1KJVr66Gd/MTxGD9z+Xn7Sq327yD8gAAwftWKrM+vwAAAABJRU5ErkJggg==">
+                    </div>
+                  </yt-live-chat-author-badge-renderer>
+                </span>
+                <span id="author-name" type="member">夏目 漱石<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">吾輩は猫である。名前はまだ無い</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-text-message-renderer>
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges"></span>
+                <span id="author-name">太宰 治<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">​朝、食堂でスウプを一さじ、すっと吸ってお母さまが</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-legacy-paid-message-renderer>
+            <div id="card">
+              <yt-img-shadow class="no-transition" id="author-photo" loaded>
+                <img alt="" height="40" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="40">
+              </yt-img-shadow>
+              <div id="content">
+                <div id="author-name">太宰 治</div>
+                <div id="event-text">新規メンバー</div>
+                <div id="detail-text">ようこそ、太宰 治 さん！</div>
+              </div>
+            </div>
+          </yt-live-chat-legacy-paid-message-renderer>
+          <yt-live-chat-text-message-renderer>
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges"></span>
+                <span id="author-name">中島 敦<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">隴西の李徴は博学才穎、天宝の末年、若くして名を虎榜に連ね、ついで江南尉に補せられたが、性、狷介、自ら恃ところ頗厚く、賤吏に甘んずるを潔しとしなかった。いくばくもなく官を退いた後は、故山、かく略に帰臥し、人と交を絶って、ひたすら詩作に耽った</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-paid-message-renderer allow-animations show-only-header>
+            <div id="card">
+              <div id="header">
+                <yt-img-shadow class="no-transition" id="author-photo" loaded>
+                  <img alt="" height="40" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="40">
+                </yt-img-shadow>
+                <div id="header-content">
+                  <div id="header-content-primary-column">
+                    <div id="author-name">宮沢 賢治</div>
+                    <div id="purchase-amount">￥ 1,000</div>
+                  </div>
+                  <span id="timestamp">2:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </yt-live-chat-paid-message-renderer>
+          <yt-live-chat-text-message-renderer author-type="moderator">
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges">
+                  <yt-live-chat-author-badge-renderer type="moderator">
+                    <div id="image">
+                      <yt-icon>
+                        <svg viewBox="0 0 24 24">
+                          <path fill="none" d="M0 0h24v24H0z" clip-rule="evenodd" />
+                          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+                        </svg>
+                      </yt-icon>
+                    </div>
+                  </yt-live-chat-author-badge-renderer>
+                </span>
+                <span id="author-name" type="moderator">太宰 治<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">「あ」と幽かな叫び声をお挙げになった</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-paid-message-renderer allow-animations>
+            <div id="card">
+              <div id="header">
+                <yt-img-shadow class="no-transition" id="author-photo" loaded>
+                  <img alt="" height="40" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="40">
+                </yt-img-shadow>
+                <div id="header-content">
+                  <div id="header-content-primary-column">
+                    <div id="author-name">福沢 諭吉</div>
+                    <div id="purchase-amount">￥ 1,000</div>
+                  </div>
+                  <span id="timestamp">2:00 PM</span>
+                </div>
+              </div>
+              <div id="content">
+                <div id="message">「天は人の上に人を造らず人の下に人を造らず」と言えり</div>
+              </div>
+            </div>
+          </yt-live-chat-paid-message-renderer>
+          <yt-live-chat-text-message-renderer author-type="moderator">
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges">
+                  <yt-live-chat-author-badge-renderer type="moderator">
+                    <div id="image">
+                      <yt-icon>
+                        <svg viewBox="0 0 24 24">
+                          <path fill="none" d="M0 0h24v24H0z" clip-rule="evenodd" />
+                          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+                        </svg>
+                      </yt-icon>
+                    </div>
+                  </yt-live-chat-author-badge-renderer>
+                </span>
+                <span id="author-name" type="moderator">太宰 治<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">「髪の毛？」</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-text-message-renderer>
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges"></span>
+                <span id="author-name">樋口 一葉<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">廻れば大門の見返り柳いと長けれど</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-text-message-renderer author-type is-deleted>
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges"></span>
+                <span id="author-name">宮沢 賢治<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">​小さな谷川の底を写した二枚の青い幻燈です</span><!--
+              --><yt-formatted-string id="deleted-state">[メッセージが撤回されました]</yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+          <yt-live-chat-text-message-renderer author-type="moderator">
+            <yt-img-shadow class="no-transition" id="author-photo" loaded>
+              <img alt="" height="24" id="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2M4wcDwHwAEJAHIKWRiOAAAAABJRU5ErkJggg==" width="24">
+            </yt-img-shadow>
+            <div id="content">
+              <span id="timestamp">2:00 PM</span><!--
+              --><yt-live-chat-author-chip highlights-enabled>
+                <span id="chat-badges">
+                  <yt-live-chat-author-badge-renderer type="moderator">
+                    <div id="image">
+                      <yt-icon>
+                        <svg viewBox="0 0 24 24">
+                          <path fill="none" d="M0 0h24v24H0z" clip-rule="evenodd" />
+                          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+                        </svg>
+                      </yt-icon>
+                    </div>
+                  </yt-live-chat-author-badge-renderer>
+                </span>
+                <span id="author-name" type="moderator">太宰 治<span id="chip-badges"></span></span>
+              </yt-live-chat-author-chip><!--
+              -->&#8203;<!--
+              --><span id="message">スウプに何か、イヤなものでも入っていたのかしら、と思った</span><!--
+              --><yt-formatted-string id="deleted-state"></yt-formatted-string>
+            </div>
+          </yt-live-chat-text-message-renderer>
+        </yt-live-chat-item-list-renderer>
+      </yt-live-chat-renderer>
+    </yt-live-chat-app>
+  </body>
+</html>
