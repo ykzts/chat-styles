@@ -18,7 +18,7 @@ module.exports = {
         test: /\.html$/,
         loader: 'file-loader',
         options: {
-          name: env === 'production' ? '[name].[ext]?[hash]' : '[name].[hash][ext]',
+          name: env !== 'production' ? '[name].[ext]?[hash]' : '[name].[hash].[ext]',
         },
       },
     ],
