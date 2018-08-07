@@ -1,20 +1,22 @@
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 import Paper from '@material-ui/core/Paper';
+import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import preview from '../files/preview.html';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Preview extends Component {
+  frameRef = React.createRef();
+
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
+    invert: PropTypes.bool.isRequired,
+    onChangeInvert: PropTypes.func.isRequired,
   };
-
-  constructor(...args) {
-    super(...args);
-
-    this.frameRef = React.createRef();
-  }
 
   state = {
     frameHeight: 0,
@@ -30,6 +32,11 @@ export default class Preview extends Component {
     frame.ownerDocument.removeEventListener('load', this.handleLoad);
   }
 
+  handleChangeInvert = (event, checked) => {
+    const { onChangeInvert } = this.props;
+    onChangeInvert(checked);
+  }
+
   handleLoad = () => {
     const { document: doc } = this.frameRef.current.contentWindow;
     this.setState({
@@ -38,7 +45,7 @@ export default class Preview extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, invert } = this.props;
     const { frameHeight } = this.state;
 
     return (
@@ -46,7 +53,16 @@ export default class Preview extends Component {
         <Typography className={classes.title} variant="subheading">
           プレビュー
         </Typography>
-        <Paper className={classes.paper}>
+        <FormGroup>
+          <FormControlLabel
+            control={(
+              <Switch checked={invert} onChange={this.handleChangeInvert} color="primary" />
+            )}
+            label="背景を暗くする"
+            labelPlacement="start"
+          />
+        </FormGroup>
+        <Paper className={classNames(classes.paper, { [classes.paperInvert]: invert })}>
           <iframe
             allowTransparency
             className={classes.frame}
