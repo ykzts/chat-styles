@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { changePreviewInvert } from '../actions/preview';
+import { changePreviewInvert, fetchPreviewInvert } from '../actions/preview';
 import Preview from '../components/Preview';
 
 const styles = ({ breakpoints, spacing }) => ({
@@ -39,9 +39,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChangeInvert(invert) {
-    dispatch(changePreviewInvert(invert));
-  },
+  changePreviewInvert: invert => dispatch(changePreviewInvert(invert)),
+  fetchPreviewInvert: () => dispatch(fetchPreviewInvert()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Preview));

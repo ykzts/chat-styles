@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import preview from '../files/preview.html';
 
-// eslint-disable-next-line react/prefer-stateless-function
 export default class Preview extends Component {
   frameRef = React.createRef();
 
   static propTypes = {
+    changePreviewInvert: PropTypes.func.isRequired,
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
+    fetchPreviewInvert: PropTypes.func.isRequired,
     invert: PropTypes.bool.isRequired,
-    onChangeInvert: PropTypes.func.isRequired,
   };
 
   state = {
@@ -23,8 +23,18 @@ export default class Preview extends Component {
   };
 
   componentDidMount() {
+    const { fetchPreviewInvert } = this.props;
     const { current: frame } = this.frameRef;
+
+    fetchPreviewInvert();
     frame.addEventListener('load', this.handleLoad);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { invert } = this.props;
+    const { frameHeight } = this.state;
+
+    return invert !== nextProps.invert || frameHeight !== nextState.frameHeight;
   }
 
   componentWillUnmount() {
@@ -33,8 +43,8 @@ export default class Preview extends Component {
   }
 
   handleChangeInvert = (event, checked) => {
-    const { onChangeInvert } = this.props;
-    onChangeInvert(checked);
+    const { changePreviewInvert } = this.props;
+    changePreviewInvert(checked);
   }
 
   handleLoad = () => {
