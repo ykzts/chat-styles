@@ -16,6 +16,7 @@ const selector = formValueSelector('chat');
 
 const mapStateToProps = state => ({
   initialValues: state.chat,
+  showAuthorName: selector(state, 'showAuthorName'),
   showAvatar: selector(state, 'showAvatar'),
   showOutline: selector(state, 'showOutline'),
   showTimestamp: selector(state, 'showTimestamp'),

@@ -1,5 +1,30 @@
 const initialState = {
+  authorNameSize: 20,
+  authorNameColor: {
+    rgb: {
+      a: 1,
+      b: 255,
+      g: 255,
+      r: 255,
+    },
+  },
   avatarSize: 24,
+  memberAuthorNameColor: {
+    rgb: {
+      a: 1,
+      b: 22,
+      g: 117,
+      r: 16,
+    },
+  },
+  moderatorAuthorNameColor: {
+    rgb: {
+      a: 1,
+      b: 241,
+      g: 132,
+      r: 94,
+    },
+  },
   outlineColor: {
     rgb: {
       a: 1,
@@ -9,6 +34,15 @@ const initialState = {
     },
   },
   outlineSize: 2,
+  ownerAuthorNameColor: {
+    rgb: {
+      a: 1,
+      b: 0,
+      g: 214,
+      r: 255,
+    },
+  },
+  showAuthorName: true,
   showAvatar: true,
   showOutline: true,
   showTimestamp: false,
