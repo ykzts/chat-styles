@@ -1,4 +1,7 @@
-import { PREVIEW_INVERT_CHANGE_SUCCESS, PREVIEW_INVERT_FETCH_SUCCESS } from '../actions/preview';
+import {
+  PREVIEW_INVERT_CHANGE_SUCCESS,
+  PREVIEW_INVERT_FETCH_SUCCESS,
+} from '../actions/preview';
 
 const initialState = {
   invert: false,

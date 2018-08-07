@@ -88,7 +88,7 @@ export default class Form extends Component {
 
     return (
       <Grid container justify="flex-start" spacing={0}>
-        <Grid className={classes.box} item sm={6} xs={12}>
+        <Grid className={classes.box} item sm={4} xs={6}>
           <FormControl component="fieldset">
             <FormLabel component="legend">
               アウトライン
@@ -115,6 +115,7 @@ export default class Form extends Component {
                       ),
                     },
                     inputProps: {
+                      max: 5,
                       min: 1,
                     },
                   }}
@@ -132,7 +133,7 @@ export default class Form extends Component {
             </Grid>
           </FormControl>
         </Grid>
-        <Grid className={classes.box} item sm={6} xs={12}>
+        <Grid className={classes.box} item sm={4} xs={6}>
           <FormControl component="fieldset">
             <FormLabel component="legend">
               アイコン
@@ -157,6 +158,7 @@ export default class Form extends Component {
                   ),
                 },
                 inputProps: {
+                  max: 256,
                   min: 1,
                 },
               }}
@@ -164,7 +166,7 @@ export default class Form extends Component {
             />
           </FormControl>
         </Grid>
-        <Grid className={classes.box} item sm={6} xs={12}>
+        <Grid className={classes.box} item sm={4} xs={6}>
           <FormControl component="fieldset">
             <FormLabel component="legend">
               タイムスタンプ
@@ -191,6 +193,7 @@ export default class Form extends Component {
                       ),
                     },
                     inputProps: {
+                      max: 50,
                       min: 1,
                     },
                   }}

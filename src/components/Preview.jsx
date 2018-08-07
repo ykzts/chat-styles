@@ -16,6 +16,7 @@ export default class Preview extends Component {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     fetchPreviewInvert: PropTypes.func.isRequired,
     invert: PropTypes.bool.isRequired,
+    styleSheet: PropTypes.string.isRequired,
   };
 
   state = {
@@ -31,24 +32,58 @@ export default class Preview extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { invert } = this.props;
+    const { invert, styleSheet } = this.props;
     const { frameHeight } = this.state;
 
-    return invert !== nextProps.invert || frameHeight !== nextState.frameHeight;
+    return invert !== nextProps.invert
+      || styleSheet !== nextProps.styleSheet
+      || frameHeight !== nextState.frameHeight;
+  }
+
+  componentDidUpdate(prevProps) {
+    const { styleSheet } = this.props;
+
+    if (prevProps.styleSheet !== styleSheet) {
+      this.loadStyleSheet(styleSheet);
+    }
   }
 
   componentWillUnmount() {
     const { current: frame } = this.frameRef;
-    frame.ownerDocument.removeEventListener('load', this.handleLoad);
+
+    frame.removeEventListener('load', this.handleLoad);
   }
 
   handleChangeInvert = (event, checked) => {
     const { changePreviewInvert } = this.props;
+
     changePreviewInvert(checked);
   }
 
   handleLoad = () => {
-    const { document: doc } = this.frameRef.current.contentWindow;
+    const { styleSheet } = this.props;
+    const { current: frame } = this.frameRef;
+    const { document: doc } = frame.contentWindow;
+
+    this.setState({
+      frameHeight: doc.documentElement.scrollHeight,
+    }, () => {
+      this.loadStyleSheet(styleSheet);
+    });
+  }
+
+  loadStyleSheet(styleSheet) {
+    const { current: frame } = this.frameRef;
+    const { document: doc } = frame.contentWindow;
+    const link = doc.getElementById('generated-style-sheet') || doc.createElement('link');
+
+    if (!link.id) {
+      link.id = 'generated-style-sheet';
+      link.rel = 'stylesheet';
+      doc.head.appendChild(link);
+    }
+    link.href = `data:text/css;charset=UTF-8;base64,${btoa(styleSheet)}`;
+
     this.setState({
       frameHeight: doc.documentElement.scrollHeight,
     });
@@ -74,7 +109,6 @@ export default class Preview extends Component {
         </FormGroup>
         <Paper className={classNames(classes.paper, { [classes.paperInvert]: invert })}>
           <iframe
-            allowTransparency
             className={classes.frame}
             ref={this.frameRef}
             src={preview}

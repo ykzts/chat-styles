@@ -1,4 +1,6 @@
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { createStyleSheet } from '../actions/styleSheet';
 import Generator from '../components/Generator';
 
 const styles = ({ breakpoints, spacing }) => ({
@@ -14,12 +16,22 @@ const styles = ({ breakpoints, spacing }) => ({
     top: 0,
   },
   result: {
-    padding: spacing.unit * 2,
-    width: '100%',
+    backgroundColor: '#eee',
+    '& textarea': {
+      padding: spacing.unit,
+    },
   },
   root: {
     paddingTop: spacing.unit * 2,
   },
 });
 
-export default withStyles(styles)(Generator);
+const mapStateToProps = state => ({
+  styleSheet: state.styleSheet.rawText,
+});
+
+const mapDispatchToProps = dispatch => ({
+  createStyleSheet: () => dispatch(createStyleSheet()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Generator));
