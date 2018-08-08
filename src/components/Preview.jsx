@@ -96,10 +96,13 @@ export default class Preview extends Component {
     if (styleSheet && styleSheet.length > 0) {
       const { current: frame } = this.frameRef;
       const { document: doc } = frame.contentWindow;
-      const link = this.createLinkElement(styleSheet);
 
-      this.removeLinkElements();
-      doc.head.appendChild(link);
+      if (doc.head) {
+        const link = this.createLinkElement(styleSheet);
+
+        this.removeLinkElements();
+        doc.head.appendChild(link);
+      }
     }
   }
 
