@@ -20,6 +20,7 @@ const mapStateToProps = state => ({
     state,
     'showAuthorName',
     'showAvatar',
+    'showBadge',
     'showOutline',
     'showTimestamp',
   ),

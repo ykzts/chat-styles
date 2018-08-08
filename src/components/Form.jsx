@@ -3,7 +3,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
@@ -17,6 +16,7 @@ export default class Form extends Component {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     showAuthorName: PropTypes.bool,
     showAvatar: PropTypes.bool,
+    showBadge: PropTypes.bool,
     showOutline: PropTypes.bool,
     showTimestamp: PropTypes.bool,
   };
@@ -24,6 +24,7 @@ export default class Form extends Component {
   static defaultProps = {
     showAuthorName: true,
     showAvatar: true,
+    showBadge: true,
     showOutline: true,
     showTimestamp: false,
   };
@@ -32,11 +33,13 @@ export default class Form extends Component {
     const {
       showAuthorName,
       showAvatar,
+      showBadge,
       showOutline,
       showTimestamp,
     } = this.props;
 
     return showAuthorName !== nextProps.showAuthorName
+      || showBadge !== nextProps.showBadge
       || showAvatar !== nextProps.showAvatar
       || showOutline !== nextProps.showOutline
       || showTimestamp !== nextProps.showTimestamp;
@@ -54,12 +57,13 @@ export default class Form extends Component {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  renderSwitch({ input, label }) {
+  renderSwitch({ disabled, input, label }) {
     return (
       <FormControlLabel
         control={(
           <Switch checked={!!input.value} color="primary" onChange={input.onChange} />
         )}
+        disabled={disabled}
         label={label}
       />
     );
@@ -89,6 +93,7 @@ export default class Form extends Component {
       classes,
       showAuthorName,
       showAvatar,
+      showBadge,
       showOutline,
       showTimestamp,
     } = this.props;
@@ -96,7 +101,7 @@ export default class Form extends Component {
     return (
       <Grid container direction="column">
         <Grid container item>
-          <Grid className={classes.box} item sm={6} xs={12}>
+          <Grid className={classes.box} item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 名前
@@ -106,7 +111,7 @@ export default class Form extends Component {
                 label="表示する"
                 name="showAuthorName"
               />
-              <Grid alignItems="flex-end" container className={classes.box} justify="space-between" spacing={8}>
+              <Grid alignItems="flex-end" container justify="space-between" spacing={8}>
                 <Grid item xs={8}>
                   <Field
                     component={this.renderTextField}
@@ -138,44 +143,36 @@ export default class Form extends Component {
                   />
                 </Grid>
               </Grid>
-              <Grid container className={classes.box}>
-                <Grid item xs={4}>
-                  <FormControlLabel
-                    control={(
-                      <Field
-                        component={this.renderColorPicker}
-                        disabled={!showAuthorName}
-                        name="ownerAuthorNameColor"
-                      />
-                    )}
-                    label="オーナー"
+              <FormControlLabel
+                control={(
+                  <Field
+                    component={this.renderColorPicker}
+                    disabled={!showAuthorName}
+                    name="ownerAuthorNameColor"
                   />
-                </Grid>
-                <Grid item xs={4}>
-                  <FormControlLabel
-                    control={(
-                      <Field
-                        component={this.renderColorPicker}
-                        disabled={!showAuthorName}
-                        name="moderatorAuthorNameColor"
-                      />
-                    )}
-                    label="モデレーター"
+                )}
+                label="オーナー"
+              />
+              <FormControlLabel
+                control={(
+                  <Field
+                    component={this.renderColorPicker}
+                    disabled={!showAuthorName}
+                    name="moderatorAuthorNameColor"
                   />
-                </Grid>
-                <Grid item xs={4}>
-                  <FormControlLabel
-                    control={(
-                      <Field
-                        component={this.renderColorPicker}
-                        disabled={!showAuthorName}
-                        name="memberAuthorNameColor"
-                      />
-                    )}
-                    label="メンバー"
+                )}
+                label="モデレーター"
+              />
+              <FormControlLabel
+                control={(
+                  <Field
+                    component={this.renderColorPicker}
+                    disabled={!showAuthorName}
+                    name="memberAuthorNameColor"
                   />
-                </Grid>
-              </Grid>
+                )}
+                label="メンバー"
+              />
             </FormControl>
           </Grid>
         </Grid>
@@ -255,6 +252,31 @@ export default class Form extends Component {
                   },
                 }}
                 type="number"
+              />
+            </FormControl>
+          </Grid>
+          <Grid className={classes.box} item sm={4} xs={6}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">
+                バッジ
+              </FormLabel>
+              <Field
+                component={this.renderSwitch}
+                disabled={!showAuthorName}
+                label="表示する"
+                name="showBadge"
+              />
+              <Field
+                component={this.renderSwitch}
+                disabled={!(showAuthorName && showBadge)}
+                label="モデレーター"
+                name="showModeratorBadge"
+              />
+              <Field
+                component={this.renderSwitch}
+                disabled={!(showAuthorName && showBadge)}
+                label="メンバー"
+                name="showMemberBadge"
               />
             </FormControl>
           </Grid>

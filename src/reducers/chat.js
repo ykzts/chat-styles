@@ -44,6 +44,9 @@ const initialState = {
   },
   showAuthorName: true,
   showAvatar: true,
+  showBadge: true,
+  showMemberBadge: true,
+  showModeratorBadge: true,
   showOutline: true,
   showTimestamp: false,
   timestampColor: {
