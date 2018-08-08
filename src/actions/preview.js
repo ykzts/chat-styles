@@ -7,42 +7,49 @@ export const PREVIEW_INVERT_FETCH_FAIL = 'PREVIEW_INVERT_FETCH_FAIL';
 export const PREVIEW_INVERT_FETCH_REQUEST = 'PREVIEW_INVERT_FETCH_REQUEST';
 export const PREVIEW_INVERT_FETCH_SUCCESS = 'PREVIEW_INVERT_FETCH_SUCCESS';
 
+export const changePreviewInvertFail = error => ({
+  error,
+  type: PREVIEW_INVERT_CHANGE_FAIL,
+});
+
+export const changePreviewInvertRequest = () => ({
+  type: PREVIEW_INVERT_CHANGE_REQUEST,
+});
+
+export const changePreviewInvertSuccess = invert => ({
+  invert,
+  type: PREVIEW_INVERT_CHANGE_SUCCESS,
+});
+
 export const changePreviewInvert = () => (dispatch, getState) => {
   const { preview } = getState();
   const newInvert = !preview.invert;
-  dispatch({
-    type: PREVIEW_INVERT_CHANGE_REQUEST,
-  });
+
+  dispatch(changePreviewInvertRequest());
+
   localForage.setItem('preview.invert', newInvert)
-    .then(() => {
-      dispatch({
-        invert: newInvert,
-        type: PREVIEW_INVERT_CHANGE_SUCCESS,
-      });
-    })
-    .catch((error) => {
-      dispatch({
-        error,
-        type: PREVIEW_INVERT_CHANGE_FAIL,
-      });
-    });
+    .then(() => dispatch(changePreviewInvertSuccess(newInvert)))
+    .catch((error) => dispatch(changePreviewInvertFail(error)));
 };
 
+export const fetchPreviewInvertFail = error => ({
+  error,
+  type: PREVIEW_INVERT_FETCH_FAIL,
+});
+
+export const fetchPreviewInvertRequest = () => ({
+  type: PREVIEW_INVERT_FETCH_REQUEST,
+});
+
+export const fetchPreviewInvertSuccess = invert => ({
+  invert,
+  type: PREVIEW_INVERT_FETCH_SUCCESS
+});
+
 export const fetchPreviewInvert = () => (dispatch) => {
-  dispatch({
-    type: PREVIEW_INVERT_FETCH_REQUEST,
-  });
+  dispatch(fetchPreviewInvertRequest());
+
   localForage.getItem('preview.invert')
-    .then((invert) => {
-      dispatch({
-        invert,
-        type: PREVIEW_INVERT_FETCH_SUCCESS,
-      });
-    })
-    .catch((error) => {
-      dispatch({
-        error,
-        type: PREVIEW_INVERT_FETCH_FAIL,
-      });
-    });
+    .then(invert => dispatch(fetchPreviewInvertSuccess(invert)))
+    .catch(error => dispatch(fetchPreviewInvertFail()));
 };
