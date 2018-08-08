@@ -31,6 +31,8 @@ export const createStyleSheet = () => (dispatch, getState) => {
       'authorNameSize',
       'avatarSize',
       'memberAuthorNameColor',
+      'messageColor',
+      'messageSize',
       'moderatorAuthorNameColor',
       'outlineColor',
       'outlineSize',

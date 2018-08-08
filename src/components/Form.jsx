@@ -175,6 +175,45 @@ export default class Form extends Component {
               />
             </FormControl>
           </Grid>
+          <Grid className={classes.box} item sm={4} xs={6}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">
+                メッセージ
+              </FormLabel>
+              <Grid alignItems="flex-end" container justify="space-between" spacing={8}>
+                <Grid item xs={8}>
+                  <Field
+                    component={this.renderTextField}
+                    disabled={!showAuthorName}
+                    label="大きさ"
+                    margin="normal"
+                    name="messageSize"
+                    props={{
+                      InputProps: {
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            px
+                          </InputAdornment>
+                        ),
+                      },
+                      inputProps: {
+                        max: 50,
+                        min: 8,
+                      },
+                    }}
+                    type="number"
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <Field
+                    component={this.renderColorPicker}
+                    disabled={!showAuthorName}
+                    name="messageColor"
+                  />
+                </Grid>
+              </Grid>
+            </FormControl>
+          </Grid>
         </Grid>
         <Grid container item justify="flex-start" spacing={0}>
           <Grid className={classes.box} item sm={4} xs={6}>
