@@ -46,6 +46,11 @@ const App = ({ classes, title }) => (
           </a>
           .
         </p>
+        <p>
+          <a href="https://github.com/ykzts/chat-style" rel="noopener noreferrer" target="_blank">
+            Source code
+          </a>
+        </p>
       </footer>
     </MuiThemeProvider>
   </Provider>
