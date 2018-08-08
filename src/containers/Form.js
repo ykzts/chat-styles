@@ -16,10 +16,13 @@ const selector = formValueSelector('chat');
 
 const mapStateToProps = state => ({
   initialValues: state.chat,
-  showAuthorName: selector(state, 'showAuthorName'),
-  showAvatar: selector(state, 'showAvatar'),
-  showOutline: selector(state, 'showOutline'),
-  showTimestamp: selector(state, 'showTimestamp'),
+  ...selector(
+    state,
+    'showAuthorName',
+    'showAvatar',
+    'showOutline',
+    'showTimestamp',
+  ),
 });
 
 export default connect(mapStateToProps)(reduxForm({ form: 'chat' })(withStyles(styles)(Form)));

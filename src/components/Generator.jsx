@@ -62,6 +62,11 @@ export default class Generator extends Component {
           inputRef={this.textFieldRef}
           multiline
           onFocus={this.handleFocus}
+          props={{
+            InputProps: {
+              readOnly: true,
+            },
+          }}
           rows={20}
           value={styleSheet}
         />

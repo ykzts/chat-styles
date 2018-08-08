@@ -72,21 +72,43 @@ export default class Preview extends Component {
     });
   }
 
-  loadStyleSheet(styleSheet) {
+  handleLoadStyleSheet = () => {
     const { current: frame } = this.frameRef;
     const { document: doc } = frame.contentWindow;
-    const link = doc.getElementById('generated-style-sheet') || doc.createElement('link');
-
-    if (!link.id) {
-      link.id = 'generated-style-sheet';
-      link.rel = 'stylesheet';
-      doc.head.appendChild(link);
-    }
-    link.href = `data:text/css;charset=UTF-8;base64,${btoa(styleSheet)}`;
 
     this.setState({
       frameHeight: doc.documentElement.scrollHeight,
     });
+  }
+
+  createLinkElement(styleSheet) {
+    const { current: frame } = this.frameRef;
+    const { document: doc } = frame.contentWindow;
+
+    const link = doc.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `data:text/css;charset=UTF-8;base64,${btoa(styleSheet)}`;
+    link.addEventListener('load', this.handleLoadStyleSheet);
+    return link;
+  }
+
+  loadStyleSheet(styleSheet) {
+    if (styleSheet && styleSheet.length > 0) {
+      const { current: frame } = this.frameRef;
+      const { document: doc } = frame.contentWindow;
+      const link = this.createLinkElement(styleSheet);
+
+      this.removeLinkElements();
+      doc.head.appendChild(link);
+    }
+  }
+
+  removeLinkElements() {
+    const { current: frame } = this.frameRef;
+    const { document: doc } = frame.contentWindow;
+    const links = doc.querySelectorAll('link[rel="stylesheet"][href^="data:text/css"]');
+
+    [].forEach.call(links, link => link.parentNode.removeChild(link));
   }
 
   render() {

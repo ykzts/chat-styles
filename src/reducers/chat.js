@@ -1,5 +1,5 @@
 const initialState = {
-  authorNameSize: 20,
+  authorNameSize: 18,
   authorNameColor: {
     rgb: {
       a: 1,
@@ -8,7 +8,7 @@ const initialState = {
       r: 255,
     },
   },
-  avatarSize: 24,
+  avatarSize: 20,
   memberAuthorNameColor: {
     rgb: {
       a: 1,
