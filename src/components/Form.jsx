@@ -325,6 +325,23 @@ export default class Form extends Component {
               </Grid>
             </FormControl>
           </Grid>
+          <Grid className={classes.box} item sm={4} xs={6}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">
+                その他
+              </FormLabel>
+              <Field
+                component={this.renderSwitch}
+                label="スーパーチャットの背景を表示する"
+                name="showSuperChatBackground"
+              />
+              <Field
+                component={this.renderSwitch}
+                label="スポンサー登録アナウンスの背景を表示する"
+                name="showNewMemberBackground"
+              />
+            </FormControl>
+          </Grid>
         </Grid>
       </Grid>
     );

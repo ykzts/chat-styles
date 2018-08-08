@@ -47,7 +47,9 @@ const initialState = {
   showBadge: true,
   showMemberBadge: true,
   showModeratorBadge: true,
+  showNewMemberBackground: true,
   showOutline: true,
+  showSuperChatBackground: true,
   showTimestamp: false,
   timestampColor: {
     rgb: {
