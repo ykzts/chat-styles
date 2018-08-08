@@ -29,7 +29,7 @@ export const changePreviewInvert = () => (dispatch, getState) => {
 
   localForage.setItem('preview.invert', newInvert)
     .then(() => dispatch(changePreviewInvertSuccess(newInvert)))
-    .catch((error) => dispatch(changePreviewInvertFail(error)));
+    .catch(error => dispatch(changePreviewInvertFail(error)));
 };
 
 export const fetchPreviewInvertFail = error => ({
@@ -43,7 +43,7 @@ export const fetchPreviewInvertRequest = () => ({
 
 export const fetchPreviewInvertSuccess = invert => ({
   invert,
-  type: PREVIEW_INVERT_FETCH_SUCCESS
+  type: PREVIEW_INVERT_FETCH_SUCCESS,
 });
 
 export const fetchPreviewInvert = () => (dispatch) => {
@@ -51,5 +51,5 @@ export const fetchPreviewInvert = () => (dispatch) => {
 
   localForage.getItem('preview.invert')
     .then(invert => dispatch(fetchPreviewInvertSuccess(invert)))
-    .catch(error => dispatch(fetchPreviewInvertFail()));
+    .catch(error => dispatch(fetchPreviewInvertFail(error)));
 };

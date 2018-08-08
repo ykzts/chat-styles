@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import chat from './chat';
+import chatStyles from './chatStyles';
 import preview from './preview';
 import styleSheet from './styleSheet';
 
 export default combineReducers({
-  chat,
+  chatStyles,
   preview,
   styleSheet,
   form: formReducer,

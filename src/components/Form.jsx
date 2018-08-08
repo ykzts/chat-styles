@@ -14,6 +14,7 @@ export default class Form extends Component {
   static propTypes = {
     change: PropTypes.func.isRequired,
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
+    saveChatStyles: PropTypes.func.isRequired,
     showAuthorName: PropTypes.bool,
     showAvatar: PropTypes.bool,
     showBadge: PropTypes.bool,
@@ -29,6 +30,14 @@ export default class Form extends Component {
     showTimestamp: false,
   };
 
+  componentDidMount() {
+    const { saveChatStyles } = this.props;
+
+    this.interval = setInterval(() => {
+      saveChatStyles();
+    }, 1000);
+  }
+
   shouldComponentUpdate(nextProps) {
     const {
       showAuthorName,
@@ -43,6 +52,12 @@ export default class Form extends Component {
       || showAvatar !== nextProps.showAvatar
       || showOutline !== nextProps.showOutline
       || showTimestamp !== nextProps.showTimestamp;
+  }
+
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   renderColorPicker = ({ disabled, input }) => {

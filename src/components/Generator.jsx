@@ -13,22 +13,33 @@ export default class Generator extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     createStyleSheet: PropTypes.func.isRequired,
+    fetchChatStyles: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     styleSheet: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
-    const { createStyleSheet } = this.props;
+    const { fetchChatStyles } = this.props;
 
-    createStyleSheet();
-    this.interval = setInterval(() => {
-      createStyleSheet();
-    }, 500);
+    fetchChatStyles();
   }
 
   shouldComponentUpdate(nextProps) {
-    const { styleSheet } = this.props;
+    const { isLoading, styleSheet } = this.props;
 
-    return styleSheet !== nextProps.styleSheet;
+    return styleSheet !== nextProps.styleSheet
+      || isLoading !== nextProps.isLoading;
+  }
+
+  componentDidUpdate(prevProps) {
+    const { createStyleSheet, isLoading } = this.props;
+
+    if (prevProps.isLoading && !isLoading) {
+      createStyleSheet();
+      this.interval = setInterval(() => {
+        createStyleSheet();
+      }, 500);
+    }
   }
 
   componentWillUnmount() {
@@ -44,13 +55,15 @@ export default class Generator extends Component {
   }
 
   render() {
-    const { classes, styleSheet } = this.props;
+    const { classes, isLoading, styleSheet } = this.props;
 
     return (
       <Fragment>
         <Grid className={classes.root} component="main" container>
           <Grid className={classes.form} item sm={6} xs={12}>
-            <Form />
+            {!isLoading && (
+              <Form />
+            )}
           </Grid>
           <Grid className={classes.preview} item sm={6} xs={12}>
             <Preview styleSheet={styleSheet} />

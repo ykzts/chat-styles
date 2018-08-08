@@ -1,7 +1,9 @@
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { formValueSelector, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
+import { saveChatStyles } from '../actions/chatStyles';
 import Form from '../components/Form';
+import chatStylesSelector from '../selectors/chatStylesSelector';
 
 const styles = ({ spacing }) => ({
   box: {
@@ -12,11 +14,9 @@ const styles = ({ spacing }) => ({
   },
 });
 
-const selector = formValueSelector('chat');
-
 const mapStateToProps = state => ({
-  initialValues: state.chat,
-  ...selector(
+  initialValues: state.chatStyles,
+  ...chatStylesSelector(
     state,
     'showAuthorName',
     'showAvatar',
@@ -26,4 +26,8 @@ const mapStateToProps = state => ({
   ),
 });
 
-export default connect(mapStateToProps)(reduxForm({ form: 'chat' })(withStyles(styles)(Form)));
+const mapDispatchToProps = dispatch => ({
+  saveChatStyles: () => dispatch(saveChatStyles()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'chatStylesForm' })(withStyles(styles)(Form)));
