@@ -3,7 +3,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const convert = require('koa-connect');
 const path = require('path');
 
-const env = process.env.NODE_ENV || 'production';
+const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
   mode: env !== 'production' ? 'development' : 'production',
