@@ -37,6 +37,16 @@ const App = ({ classes, title }) => (
         <Route component={Generator} exact path="/" />
         <Route component={NoMatch} />
       </Switch>
+      <footer className={classes.footer}>
+        <p>
+          inspired by
+          &#8203;
+          <a href="https://chatv2.septapus.com/" rel="noopener noreferrer" target="_blank">
+            Chat v2.0 Style Generator
+          </a>
+          .
+        </p>
+      </footer>
     </MuiThemeProvider>
   </Provider>
 );

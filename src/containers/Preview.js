@@ -18,6 +18,7 @@ const styles = ({ breakpoints, spacing }) => ({
     backgroundSize: '20px 20px',
     backgroundPosition: '0 0, 10px 10px',
     margin: spacing.unit * 2,
+    minHeight: '500px',
     padding: spacing.unit * 1,
     [breakpoints.up('md')]: {
       padding: spacing.unit * 3,
