@@ -1,18 +1,15 @@
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Form from '../containers/Form';
 import Preview from '../containers/Preview';
 
 export default class Generator extends Component {
-  interval = null;
-
   textFieldRef = React.createRef();
 
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    createStyleSheet: PropTypes.func.isRequired,
     fetchChatStyles: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     styleSheet: PropTypes.string.isRequired,
@@ -31,23 +28,6 @@ export default class Generator extends Component {
       || isLoading !== nextProps.isLoading;
   }
 
-  componentDidUpdate(prevProps) {
-    const { createStyleSheet, isLoading } = this.props;
-
-    if (prevProps.isLoading && !isLoading) {
-      createStyleSheet();
-      this.interval = setInterval(() => {
-        createStyleSheet();
-      }, 500);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
-  }
-
   handleFocus = () => {
     const { current: textField } = this.textFieldRef;
 
@@ -58,17 +38,17 @@ export default class Generator extends Component {
     const { classes, isLoading, styleSheet } = this.props;
 
     return (
-      <Fragment>
-        <Grid className={classes.root} component="main" container>
-          <Grid className={classes.form} item sm={6} xs={12}>
-            {!isLoading && (
+      <main>
+        {!isLoading && (
+          <Grid className={classes.root} container>
+            <Grid className={classes.form} item sm={6} xs={12}>
               <Form />
-            )}
+            </Grid>
+            <Grid className={classes.preview} item sm={6} xs={12}>
+              <Preview />
+            </Grid>
           </Grid>
-          <Grid className={classes.preview} item sm={6} xs={12}>
-            <Preview styleSheet={styleSheet} />
-          </Grid>
-        </Grid>
+        )}
         <TextField
           className={classes.result}
           fullWidth
@@ -81,7 +61,7 @@ export default class Generator extends Component {
           rows={20}
           value={styleSheet}
         />
-      </Fragment>
+      </main>
     );
   }
 }

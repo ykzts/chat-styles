@@ -7,8 +7,10 @@ const styles = ({ breakpoints, spacing }) => ({
   frame: {
     border: '0',
     height: '0',
-    outline: 'dotted 1px #666',
     width: '100%',
+  },
+  frameActive: {
+    outline: 'dotted 1px #666',
   },
   paper: {
     backgroundImage: [
@@ -37,6 +39,7 @@ const styles = ({ breakpoints, spacing }) => ({
 
 const mapStateToProps = state => ({
   invert: state.preview.invert,
+  styleSheet: state.styleSheet.rawText,
 });
 
 const mapDispatchToProps = dispatch => ({

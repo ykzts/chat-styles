@@ -1,7 +1,6 @@
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { fetchChatStyles } from '../actions/chatStyles';
-import { createStyleSheet } from '../actions/styleSheet';
 import Generator from '../components/Generator';
 
 const styles = ({ breakpoints, spacing }) => ({
@@ -33,7 +32,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createStyleSheet: () => dispatch(createStyleSheet()),
   fetchChatStyles: () => dispatch(fetchChatStyles()),
 });
 

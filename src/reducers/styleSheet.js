@@ -1,4 +1,5 @@
-import { STYLE_SHEET_CREATE_SUCCESS } from '../actions/styleSheet';
+import { CHAT_STYLES_FETCH_SUCCESS, CHAT_STYLES_SAVE_SUCCESS } from '../actions/chatStyles';
+import generateStyleSheet from '../utils/generateStyleSheet';
 
 const initialState = {
   rawText: '',
@@ -6,10 +7,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case STYLE_SHEET_CREATE_SUCCESS:
+    case CHAT_STYLES_FETCH_SUCCESS:
       return {
         ...state,
-        rawText: action.rawText,
+        rawText: generateStyleSheet(action.chatStyles),
+      };
+    case CHAT_STYLES_SAVE_SUCCESS:
+      return {
+        ...state,
+        rawText: generateStyleSheet(action.chatStyles),
       };
     default:
       return state;

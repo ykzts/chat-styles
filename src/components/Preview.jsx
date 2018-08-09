@@ -62,14 +62,8 @@ export default class Preview extends Component {
 
   handleLoad = () => {
     const { styleSheet } = this.props;
-    const { current: frame } = this.frameRef;
-    const { document: doc } = frame.contentWindow;
 
-    this.setState({
-      frameHeight: doc.documentElement.scrollHeight,
-    }, () => {
-      this.loadStyleSheet(styleSheet);
-    });
+    this.loadStyleSheet(styleSheet);
   }
 
   handleLoadStyleSheet = () => {
@@ -134,7 +128,7 @@ export default class Preview extends Component {
         </FormGroup>
         <Paper className={classNames(classes.paper, { [classes.paperInvert]: invert })}>
           <iframe
-            className={classes.frame}
+            className={classNames(classes.frame, { [classes.frameActive]: frameHeight > 0 })}
             ref={this.frameRef}
             src={preview}
             style={{ height: `${frameHeight}px` }}

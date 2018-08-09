@@ -219,6 +219,13 @@ export default ({
   '  padding: 4px 2px !important;',
   '}',
   '',
+  ...(!showSuperChatBackground ? [
+    'yt-live-chat-paid-message-renderer #header,',
+    'yt-live-chat-paid-message-renderer #content {',
+    '  transition: none !important;',
+    '}',
+  ] : []),
+  '',
   'yt-live-chat-paid-message-renderer #header {',
   '  align-items: flex-start;',
   '  padding: 4px 2px !important;',
