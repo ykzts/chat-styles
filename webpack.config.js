@@ -37,8 +37,6 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   serve: {
-    add(app) {
-      app.use(convert(history()));
-    },
+    add: app => app.use(convert(history())),
   },
 };
