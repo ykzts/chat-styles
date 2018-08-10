@@ -38,7 +38,8 @@
     "koa-connect": "^2.0.1",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
-    "webpack-serve": "^2.0.2"
+    "webpack-serve": "^2.0.2",
+    "webpack-subresource-integrity": "^1.1.0-rc.4"
   },
   "homepage": "https://chat-style.desire.sh/",
   "license": "MIT",

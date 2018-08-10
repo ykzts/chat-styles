@@ -2,6 +2,7 @@ const history = require('connect-history-api-fallback');
 const HtmlPlugin = require('html-webpack-plugin');
 const convert = require('koa-connect');
 const path = require('path');
+const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -28,6 +29,10 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    new SubresourceIntegrityPlugin({
+      enabled: env === 'production',
+      hashFuncNames: ['sha512'],
+    }),
     new HtmlPlugin({
       inject: false,
       template: path.resolve(__dirname, 'src', 'templates'),

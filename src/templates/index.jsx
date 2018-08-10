@@ -13,8 +13,13 @@ const Html = ({ files, title }) => (
     </head>
     <body>
       <div id="root" />
-      {files.js && files.js.map(path => (
-        <script key={`script-${path}`} src={path} />
+      {Array.isArray(files.js) && files.js.map((path, i) => (
+        <script
+          crossOrigin="anonymous"
+          integrity={Array.isArray(files.jsIntegrity) && files.jsIntegrity[i]}
+          key={`script-${path}`}
+          src={path}
+        />
       ))}
     </body>
   </html>
@@ -23,6 +28,7 @@ const Html = ({ files, title }) => (
 Html.propTypes = {
   files: PropTypes.shape({
     js: PropTypes.arrayOf(PropTypes.string),
+    jsIntegrity: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   title: PropTypes.string.isRequired,
 };
