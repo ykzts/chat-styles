@@ -3,27 +3,19 @@ import Popover from '@material-ui/core/Popover';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { SketchPicker } from 'react-color';
-
-const colorShape = PropTypes.shape({
-  rgb: PropTypes.shape({
-    a: PropTypes.number.isRequired,
-    b: PropTypes.number.isRequired,
-    g: PropTypes.number.isRequired,
-    r: PropTypes.number.isRequired,
-  }).isRequired,
-});
+import colorShape from '../types/colorShape';
+import { css as bg } from '../utils/colors';
 
 export default class ColorPicker extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     color: colorShape.isRequired,
     disabled: PropTypes.bool,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     disabled: false,
-    onChange: null,
   };
 
   state = {
@@ -32,10 +24,8 @@ export default class ColorPicker extends Component {
 
   handleChange = (color) => {
     const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      const { rgb } = color;
-      onChange({ rgb });
-    }
+
+    onChange(color);
   }
 
   handleClick = ({ currentTarget }) => {
@@ -47,31 +37,21 @@ export default class ColorPicker extends Component {
   }
 
   shouldComponent(nextProps, nextState) {
-    const { anchorEl } = this.state;
-    if (anchorEl !== nextState.anchorEl) {
-      return true;
-    }
     const { color } = this.props;
-    return color.rgb.r !== nextProps.color.rgb.r
-      || color.rgb.g !== nextProps.color.rgb.g
-      || color.rgb.b !== nextProps.color.rgb.b
-      || color.rgb.a !== nextProps.color.rgb.a;
+    const { anchorEl } = this.state;
+
+    return anchorEl !== nextState.anchorEl
+      || color !== nextProps.color;
   }
 
   render() {
-    const {
-      classes,
-      color,
-      disabled,
-    } = this.props;
+    const { classes, color, disabled } = this.props;
     const { anchorEl } = this.state;
-
-    const backgroundColor = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
 
     return (
       <Fragment>
         <Button className={classes.button} disabled={disabled} onClick={this.handleClick} size="small" variant="contained">
-          <div className={classes.colorPalette} style={{ backgroundColor }} />
+          <div className={classes.colorPalette} style={{ backgroundColor: bg(color) }} />
         </Button>
         <Popover
           anchorEl={anchorEl}

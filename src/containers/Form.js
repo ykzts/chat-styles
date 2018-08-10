@@ -7,7 +7,7 @@ import chatStylesSelector from '../selectors/chatStylesSelector';
 
 const styles = ({ spacing }) => ({
   box: {
-    marginBottom: spacing.unit * 8,
+    marginBottom: spacing.unit * 4,
   },
   textField: {
     maxWidth: '100%',
@@ -15,7 +15,7 @@ const styles = ({ spacing }) => ({
 });
 
 const mapStateToProps = state => ({
-  initialValues: state.chatStyles,
+  initialValues: state.chatStyles.get('values').toJS(),
   ...chatStylesSelector(
     state,
     'showAuthorName',

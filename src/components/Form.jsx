@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import ColorPicker from '../containers/ColorPicker';
+import { hex2rgb } from '../utils/colors';
 
 export default class Form extends Component {
   static propTypes = {
@@ -62,9 +63,10 @@ export default class Form extends Component {
 
   renderColorPicker = ({ disabled, input }) => {
     const { change } = this.props;
+
     return (
       <ColorPicker
-        color={input.value}
+        color={input.value || hex2rgb('#ffffff')}
         disabled={disabled}
         onChange={color => change(input.name, color)}
       />

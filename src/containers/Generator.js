@@ -27,8 +27,8 @@ const styles = ({ breakpoints, spacing }) => ({
 });
 
 const mapStateToProps = state => ({
-  isLoading: state.chatStyles.isLoading,
-  styleSheet: state.styleSheet.rawText,
+  hasChatStyles: !state.chatStyles.get('values').isEmpty(),
+  styleSheet: state.styleSheet.get('rawText'),
 });
 
 const mapDispatchToProps = dispatch => ({

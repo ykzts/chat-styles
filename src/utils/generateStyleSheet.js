@@ -1,8 +1,8 @@
+import { css as color } from './colors';
+
 const KNOWN_FONTS = [
   'https://fonts.googleapis.com/earlyaccess/notosansjapanese.css',
 ];
-
-const color = ({ rgb }) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`;
 
 const generateTextShadow = ({ outlineColor, outlineSize }) => {
   const values = [];

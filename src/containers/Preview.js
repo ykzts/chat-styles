@@ -38,8 +38,8 @@ const styles = ({ breakpoints, spacing }) => ({
 });
 
 const mapStateToProps = state => ({
-  invert: state.preview.invert,
-  styleSheet: state.styleSheet.rawText,
+  invert: state.preview.get('invert'),
+  styleSheet: state.styleSheet.get('rawText'),
 });
 
 const mapDispatchToProps = dispatch => ({

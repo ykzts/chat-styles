@@ -11,7 +11,7 @@ export default class Generator extends Component {
   static propTypes = {
     classes: PropTypes.objectOf(PropTypes.any).isRequired,
     fetchChatStyles: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
+    hasChatStyles: PropTypes.bool.isRequired,
     styleSheet: PropTypes.string.isRequired,
   };
 
@@ -22,10 +22,10 @@ export default class Generator extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const { isLoading, styleSheet } = this.props;
+    const { hasChatStyles, styleSheet } = this.props;
 
     return styleSheet !== nextProps.styleSheet
-      || isLoading !== nextProps.isLoading;
+      || hasChatStyles !== nextProps.hasChatStyles;
   }
 
   handleFocus = () => {
@@ -35,11 +35,11 @@ export default class Generator extends Component {
   }
 
   render() {
-    const { classes, isLoading, styleSheet } = this.props;
+    const { classes, hasChatStyles, styleSheet } = this.props;
 
     return (
       <main>
-        {!isLoading && (
+        {hasChatStyles && (
           <Grid className={classes.root} container>
             <Grid className={classes.form} item sm={6} xs={12}>
               <Form />
