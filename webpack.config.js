@@ -42,7 +42,10 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin([
-      path.resolve(__dirname, 'src', 'files', '_headers'),
+      {
+        from: path.resolve(__dirname, 'src', 'files', '_headers'),
+        to: path.resolve(__dirname, 'dist', '_headers'),
+      },
     ]),
     new SubresourceIntegrityPlugin({
       enabled: env === 'production',
