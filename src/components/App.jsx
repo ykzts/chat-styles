@@ -53,7 +53,7 @@ const App = ({ classes, title }) => (
           </a>
         </p>
         <p>
-          <a href="https://github.com/ykzts/chat-style" rel="noopener noreferrer" target="_blank">
+          <a href="https://github.com/ykzts/chat-styles" rel="noopener noreferrer" target="_blank">
             Source code
           </a>
         </p>

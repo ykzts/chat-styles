@@ -27,7 +27,7 @@ Html.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export const title = 'Chat Style';
+export const title = 'Chat Styles';
 
 export default ({ htmlWebpackPlugin: { files } }) => {
   const html = (
