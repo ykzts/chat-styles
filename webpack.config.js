@@ -37,7 +37,7 @@ module.exports = {
     },
   },
   output: {
-    filename: env !== 'production' ? '[name].js?[contenthash]' : '[name].[contenthash].js',
+    filename: env !== 'production' ? '[name].js?[chunkhash]' : '[name].[chunkhash].js',
     publicPath: '/',
   },
   plugins: [
