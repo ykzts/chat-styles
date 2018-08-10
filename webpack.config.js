@@ -1,4 +1,5 @@
 const history = require('connect-history-api-fallback');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const convert = require('koa-connect');
 const path = require('path');
@@ -40,6 +41,9 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    new CopyPlugin([
+      path.resolve(__dirname, 'src', 'files', '_headers'),
+    ]),
     new SubresourceIntegrityPlugin({
       enabled: env === 'production',
       hashFuncNames: ['sha512'],
