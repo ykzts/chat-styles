@@ -44,9 +44,15 @@ export const fetchPreviewInvertSuccess = invert => ({
 });
 
 export const fetchPreviewInvert = () => (dispatch) => {
-  dispatch(fetchPreviewInvertRequest());
+  localForage.keys().then((keys) => {
+    if (!keys.includes('preview.invert')) {
+      return;
+    }
 
-  localForage.getItem('preview.invert')
-    .then(invert => dispatch(fetchPreviewInvertSuccess(invert)))
-    .catch(error => dispatch(fetchPreviewInvertFail(error)));
+    dispatch(fetchPreviewInvertRequest());
+
+    localForage.getItem('preview.invert')
+      .then(invert => dispatch(fetchPreviewInvertSuccess(invert)))
+      .catch(error => dispatch(fetchPreviewInvertFail(error)));
+  });
 };
