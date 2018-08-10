@@ -44,7 +44,13 @@ const App = ({ classes, title }) => (
           <a href="https://chatv2.septapus.com/" rel="noopener noreferrer" target="_blank">
             Chat v2.0 Style Generator
           </a>
-          .
+        </p>
+        <p>
+          created by
+          &#8203;
+          <a href="https://ykzts.com/" rel="noopener noreferrer" target="_blank">
+            Yamagishi Kazutoshi
+          </a>
         </p>
         <p>
           <a href="https://github.com/ykzts/chat-style" rel="noopener noreferrer" target="_blank">
