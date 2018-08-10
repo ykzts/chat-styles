@@ -24,6 +24,17 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/,
+        },
+      },
+    },
+  },
   output: {
     filename: env !== 'production' ? '[name].js?[hash]' : '[name].[hash].js',
     publicPath: '/',
