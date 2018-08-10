@@ -39,14 +39,14 @@ const App = ({ classes, title }) => (
       </Switch>
       <footer className={classes.footer}>
         <p>
-          inspired by
+          Inspired by
           &#8203;
           <a href="https://chatv2.septapus.com/" rel="noopener noreferrer" target="_blank">
             Chat v2.0 Style Generator
           </a>
         </p>
         <p>
-          created by
+          Created by
           &#8203;
           <a href="https://ykzts.com/" rel="noopener noreferrer" target="_blank">
             Yamagishi Kazutoshi
