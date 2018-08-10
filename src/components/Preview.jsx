@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
+import Helmet from 'react-helmet';
 import preview from '../files/preview.html';
 
 export default class Preview extends Component {
@@ -68,7 +69,7 @@ export default class Preview extends Component {
 
   handleLoadStyleSheet = () => {
     const { current: frame } = this.frameRef;
-    const { document: doc } = frame.contentWindow;
+    const { contentDocument: doc } = frame;
 
     this.setState({
       frameHeight: doc.documentElement.scrollHeight,
@@ -77,7 +78,7 @@ export default class Preview extends Component {
 
   createLinkElement(styleSheet) {
     const { current: frame } = this.frameRef;
-    const { document: doc } = frame.contentWindow;
+    const { contentDocument: doc } = frame;
 
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
@@ -89,7 +90,7 @@ export default class Preview extends Component {
   loadStyleSheet(styleSheet) {
     if (styleSheet && styleSheet.length > 0) {
       const { current: frame } = this.frameRef;
-      const { document: doc } = frame.contentWindow;
+      const { contentDocument: doc } = frame;
 
       if (doc.head) {
         const link = this.createLinkElement(styleSheet);
@@ -102,7 +103,7 @@ export default class Preview extends Component {
 
   removeLinkElements() {
     const { current: frame } = this.frameRef;
-    const { document: doc } = frame.contentWindow;
+    const { contentDocument: doc } = frame;
     const links = doc.querySelectorAll('link[rel="stylesheet"][href^="data:text/css"]');
 
     [].forEach.call(links, link => link.parentNode.removeChild(link));
@@ -114,6 +115,10 @@ export default class Preview extends Component {
 
     return (
       <Fragment>
+        <Helmet>
+          <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="preload" />
+          <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="preload" />
+        </Helmet>
         <Typography className={classes.title} variant="subheading">
           プレビュー
         </Typography>
