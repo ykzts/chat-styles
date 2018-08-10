@@ -1,23 +1,30 @@
+// @flow
+
 import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
-import React, { Fragment, PureComponent } from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
 
-export default class NoMatch extends PureComponent {
-  static propTypes = {
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    title: PropTypes.string,
-  };
+type Props = {
+  classes: Object,
+  title?: string,
+};
 
+export default class NoMatch extends React.Component<Props> {
   static defaultProps = {
     title: '404 Not Found',
   };
+
+  shouldComponentUpdate(nextProps: Props) {
+    const { title } = this.props;
+
+    return title !== nextProps.title;
+  }
 
   render() {
     const { classes, title } = this.props;
 
     return (
-      <Fragment>
+      <React.Fragment>
         <Helmet>
           <title>
             {title}
@@ -28,7 +35,7 @@ export default class NoMatch extends PureComponent {
             {title}
           </Typography>
         </main>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

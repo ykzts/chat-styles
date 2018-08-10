@@ -1,0 +1,8 @@
+[ignore]
+<PROJECT_ROOT>/dist/.*
+
+[options]
+module.file_ext=.html
+
+[version]
+^0.78.0

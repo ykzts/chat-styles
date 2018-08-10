@@ -1,24 +1,29 @@
+// @flow
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
 import preview from '../files/preview.html';
 
-export default class Preview extends Component {
-  frameRef = React.createRef();
+type Props = {
+  changePreviewInvert: (boolean) => void,
+  classes: Object,
+  fetchPreviewInvert: () => void,
+  invert: boolean,
+  styleSheet: string,
+};
 
-  static propTypes = {
-    changePreviewInvert: PropTypes.func.isRequired,
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    fetchPreviewInvert: PropTypes.func.isRequired,
-    invert: PropTypes.bool.isRequired,
-    styleSheet: PropTypes.string.isRequired,
-  };
+type State = {
+  frameHeight: number,
+};
+
+export default class Preview extends React.Component<Props, State> {
+  frameRef = React.createRef();
 
   state = {
     frameHeight: 0,
@@ -32,7 +37,7 @@ export default class Preview extends Component {
     frame.addEventListener('load', this.handleLoad);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
     const { invert, styleSheet } = this.props;
     const { frameHeight } = this.state;
 
@@ -41,7 +46,7 @@ export default class Preview extends Component {
       || frameHeight !== nextState.frameHeight;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { styleSheet } = this.props;
 
     if (prevProps.styleSheet !== styleSheet) {
@@ -55,7 +60,7 @@ export default class Preview extends Component {
     frame.removeEventListener('load', this.handleLoad);
   }
 
-  handleChangeInvert = (event, checked) => {
+  handleChangeInvert = (event: SyntheticEvent<*>, checked: boolean) => {
     const { changePreviewInvert } = this.props;
 
     changePreviewInvert(checked);
@@ -76,7 +81,7 @@ export default class Preview extends Component {
     });
   }
 
-  createLinkElement(styleSheet) {
+  createLinkElement(styleSheet: string): HTMLLinkElement<*> {
     const { current: frame } = this.frameRef;
     const { contentDocument: doc } = frame;
 
@@ -114,7 +119,7 @@ export default class Preview extends Component {
     const { frameHeight } = this.state;
 
     return (
-      <Fragment>
+      <React.Fragment>
         <Helmet>
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="preload" />
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="preload" />
@@ -140,7 +145,7 @@ export default class Preview extends Component {
             title={`${preview} on frame`}
           />
         </Paper>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

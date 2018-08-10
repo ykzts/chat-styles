@@ -5,6 +5,7 @@ module.exports = {
     ['@babel/proposal-pipeline-operator', { proposal: 'minimal' }],
   ],
   presets: [
+    '@babel/flow',
     ['@babel/react', { useBuiltIns: true }],
   ],
 };
