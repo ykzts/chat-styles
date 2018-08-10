@@ -78,7 +78,7 @@ export const saveChatStyles = () => (dispatch, getState) => {
     const value = chatStyles[field];
     const prevValue = state.chatStyles.getIn(['values', field]);
     if (field.endsWith('Color')) {
-      return prevValue.equals(Immutable.fromJS(value.rgb));
+      return !prevValue.equals(Immutable.fromJS(value.rgb));
     }
     return value !== prevValue;
   });
