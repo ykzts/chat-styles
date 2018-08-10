@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import localForage from 'localforage';
 import chatStylesSelector from '../selectors/chatStylesSelector';
 import { hex2rgb } from '../utils/colors';
@@ -70,9 +71,23 @@ export const saveChatStylesSuccess = chatStyles => ({
 });
 
 export const saveChatStyles = () => (dispatch, getState) => {
-  dispatch(saveChatStylesRequest());
+  const state = getState();
+  const fields = Object.keys(defaultChatStyles);
+  const chatStyles = chatStylesSelector(state, ...fields);
+  const changed = fields.some((field) => {
+    const value = chatStyles[field];
+    const prevValue = state.chatStyles.getIn(['values', field]);
+    if (field.endsWith('Color')) {
+      return prevValue.equals(Immutable.fromJS(value.rgb));
+    }
+    return value !== prevValue;
+  });
 
-  const chatStyles = chatStylesSelector(getState(), ...Object.keys(defaultChatStyles));
+  if (!changed) {
+    return;
+  }
+
+  dispatch(saveChatStylesRequest());
 
   localForage.setItem('chatStyles', chatStyles)
     .then(() => dispatch(saveChatStylesSuccess(chatStyles)))
