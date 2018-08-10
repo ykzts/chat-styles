@@ -37,7 +37,7 @@ module.exports = {
     },
   },
   output: {
-    filename: env !== 'production' ? '[name].js?[hash]' : '[name].[hash].js',
+    filename: env !== 'production' ? '[name].js?[contenthash]' : '[name].[contenthash].js',
     publicPath: '/',
   },
   plugins: [
