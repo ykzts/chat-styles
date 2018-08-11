@@ -20,7 +20,7 @@ module.exports = {
         test: /\.html$/,
         loader: 'file-loader',
         options: {
-          name: env !== 'production' ? '[name].[ext]' : '[name].[hash].[ext]',
+          name: env !== 'production' ? '[name].[ext]?[hash]' : '[name].[hash].[ext]',
         },
       },
     ],
@@ -37,7 +37,7 @@ module.exports = {
     },
   },
   output: {
-    filename: env !== 'production' ? '[name].js' : '[name].[chunkhash].js',
+    filename: env !== 'production' ? '[name].js?[hash]' : '[name].[chunkhash].js',
     publicPath: '/',
   },
   plugins: [
