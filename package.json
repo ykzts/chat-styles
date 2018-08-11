@@ -6,6 +6,7 @@
     "classnames": "^2.2.6",
     "immutable": "^3.8.2",
     "localforage": "^1.7.2",
+    "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-color": "^2.14.1",

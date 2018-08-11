@@ -5,7 +5,6 @@ const styles = ({ spacing }) => ({
   footer: {
     backgroundColor: '#333',
     color: '#fff',
-    marginTop: spacing.unit * 4,
     paddingBottom: spacing.unit * 4,
     paddingLeft: spacing.unit * 2,
     paddingRight: spacing.unit * 2,

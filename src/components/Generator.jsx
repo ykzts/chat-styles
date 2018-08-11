@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+import { highlight, languages } from 'prismjs';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Form from '../containers/Form';
@@ -28,10 +28,10 @@ export default class Generator extends Component {
       || hasChatStyles !== nextProps.hasChatStyles;
   }
 
-  handleFocus = () => {
-    const { current: textField } = this.textFieldRef;
+  handleClick = ({ currentTarget }) => {
+    const selection = window.getSelection();
 
-    textField.select();
+    selection.selectAllChildren(currentTarget);
   }
 
   render() {
@@ -49,18 +49,10 @@ export default class Generator extends Component {
             </Grid>
           </Grid>
         )}
-        <TextField
-          className={classes.result}
-          fullWidth
-          inputRef={this.textFieldRef}
-          multiline
-          onFocus={this.handleFocus}
-          InputProps={{
-            readOnly: true,
-          }}
-          rows={20}
-          value={styleSheet}
-        />
+        <pre className={classes.result} role="presentation" onClick={this.handleClick}>
+          {/* eslint-disable-next-line react/no-danger */}
+          <code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
+        </pre>
       </main>
     );
   }

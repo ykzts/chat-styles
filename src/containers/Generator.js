@@ -16,9 +16,42 @@ const styles = ({ breakpoints, spacing }) => ({
     top: 0,
   },
   result: {
-    backgroundColor: '#eee',
-    '& textarea': {
-      padding: spacing.unit,
+    backgroundColor: '#f5f2f0',
+    display: 'block',
+    lineHeight: '1.5',
+    margin: '2rem 0 0',
+    maxHeight: '500px',
+    overflowY: 'scroll',
+    padding: '1em',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'normal',
+    wordSpacing: 'normal',
+    wordWrap: 'normal',
+    '& .token.atrule': {
+      color: '#07a',
+    },
+    '& .token.comment': {
+      color: 'slategrey',
+    },
+    '& .token.function': {
+      color: '#dd4a68',
+    },
+    '& .token.important': {
+      color: '#e90',
+      fontWeight: '500',
+    },
+    '& .token.property': {
+      color: '#905',
+    },
+    '& .token.punctuation': {
+      color: '#999',
+    },
+    '& .token.selector, & .token.string': {
+      color: '#690',
+    },
+    '& .token.url': {
+      backgroundColor: 'hsla(0, 0%, 100%, .5)',
+      color: '#9a6e3a',
     },
   },
   root: {
