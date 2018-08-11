@@ -318,19 +318,18 @@ export default class Form extends Component {
               </FormLabel>
               <Field
                 component={this.renderSwitch}
-                disabled={!showAuthorName}
                 label="表示する"
                 name="showBadge"
               />
               <Field
                 component={this.renderSwitch}
-                disabled={!(showAuthorName && showBadge)}
+                disabled={!showBadge}
                 label="モデレーター"
                 name="showModeratorBadge"
               />
               <Field
                 component={this.renderSwitch}
-                disabled={!(showAuthorName && showBadge)}
+                disabled={!showBadge}
                 label="メンバー"
                 name="showMemberBadge"
               />
