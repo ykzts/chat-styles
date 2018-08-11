@@ -16,7 +16,7 @@ const Html = ({ files, title }) => (
       {Array.isArray(files.js) && files.js.map((path, i) => (
         <script
           crossOrigin="anonymous"
-          integrity={Array.isArray(files.jsIntegrity) && files.jsIntegrity[i]}
+          integrity={Array.isArray(files.jsIntegrity) ? files.jsIntegrity[i] : undefined}
           key={`script-${path}`}
           src={path}
         />
