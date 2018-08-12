@@ -21,12 +21,15 @@ export const changePreviewInvertSuccess = invert => ({
   type: PREVIEW_INVERT_CHANGE_SUCCESS,
 });
 
-export const changePreviewInvert = invert => (dispatch) => {
+export const changePreviewInvert = invert => async (dispatch) => {
   dispatch(changePreviewInvertRequest());
 
-  localForage.setItem('preview.invert', invert)
-    .then(() => dispatch(changePreviewInvertSuccess(invert)))
-    .catch(error => dispatch(changePreviewInvertFail(error)));
+  try {
+    await localForage.setItem('preview.invert', invert);
+    dispatch(changePreviewInvertSuccess(invert));
+  } catch (error) {
+    dispatch(changePreviewInvertFail(error));
+  }
 };
 
 export const fetchPreviewInvertFail = error => ({
@@ -43,16 +46,18 @@ export const fetchPreviewInvertSuccess = invert => ({
   type: PREVIEW_INVERT_FETCH_SUCCESS,
 });
 
-export const fetchPreviewInvert = () => (dispatch) => {
-  localForage.keys().then((keys) => {
-    if (!keys.includes('preview.invert')) {
-      return;
-    }
+export const fetchPreviewInvert = () => async (dispatch) => {
+  const keys = await localForage.keys();
+  if (!keys.includes('preview.invert')) {
+    return;
+  }
 
-    dispatch(fetchPreviewInvertRequest());
+  dispatch(fetchPreviewInvertRequest());
 
-    localForage.getItem('preview.invert')
-      .then(invert => dispatch(fetchPreviewInvertSuccess(invert)))
-      .catch(error => dispatch(fetchPreviewInvertFail(error)));
-  });
+  try {
+    const invert = await localForage.getItem('preview.invert');
+    dispatch(fetchPreviewInvertSuccess(invert));
+  } catch (error) {
+    dispatch(fetchPreviewInvertFail(error));
+  }
 };

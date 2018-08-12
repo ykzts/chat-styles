@@ -48,12 +48,15 @@ export const fetchChatStylesSuccess = chatStyles => ({
   type: CHAT_STYLES_FETCH_SUCCESS,
 });
 
-export const fetchChatStyles = () => (dispatch) => {
+export const fetchChatStyles = () => async (dispatch) => {
   dispatch(fetchChatStylesRequest());
 
-  localForage.getItem('chatStyles')
-    .then(chatStyles => dispatch(fetchChatStylesSuccess({ ...defaultChatStyles, ...chatStyles })))
-    .catch(error => dispatch(fetchChatStylesFail(error)));
+  try {
+    const chatStyles = await localForage.getItem('chatStyles');
+    dispatch(fetchChatStylesSuccess({ ...defaultChatStyles, ...chatStyles }));
+  } catch (error) {
+    dispatch(fetchChatStylesFail(error));
+  }
 };
 
 export const saveChatStylesFail = error => ({
@@ -70,7 +73,7 @@ export const saveChatStylesSuccess = chatStyles => ({
   type: CHAT_STYLES_SAVE_SUCCESS,
 });
 
-export const saveChatStyles = () => (dispatch, getState) => {
+export const saveChatStyles = () => async (dispatch, getState) => {
   const state = getState();
   const fields = Object.keys(defaultChatStyles);
   const chatStyles = chatStylesSelector(state, ...fields);
@@ -91,7 +94,10 @@ export const saveChatStyles = () => (dispatch, getState) => {
 
   dispatch(saveChatStylesRequest());
 
-  localForage.setItem('chatStyles', chatStyles)
-    .then(() => dispatch(saveChatStylesSuccess(chatStyles)))
-    .catch(error => dispatch(saveChatStylesFail(error)));
+  try {
+    await localForage.setItem('chatStyles', chatStyles);
+    dispatch(saveChatStylesSuccess(chatStyles));
+  } catch (error) {
+    dispatch(saveChatStylesFail(error));
+  }
 };
