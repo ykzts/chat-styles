@@ -2,8 +2,10 @@ import Grid from '@material-ui/core/Grid';
 import { highlight, languages } from 'prismjs';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import Form from '../containers/Form';
 import Preview from '../containers/Preview';
+import previewPath from '../files/preview.html';
 
 export default class Generator extends Component {
   textFieldRef = React.createRef();
@@ -39,6 +41,9 @@ export default class Generator extends Component {
 
     return (
       <main>
+        <Helmet>
+          <link as="document" href={previewPath} type="text/html" />
+        </Helmet>
         {hasChatStyles && (
           <Grid className={classes.root} container>
             <Grid className={classes.form} item sm={6} xs={12}>
