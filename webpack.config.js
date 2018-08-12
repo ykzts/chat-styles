@@ -3,6 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const convert = require('koa-connect');
 const path = require('path');
+const { EnvironmentPlugin } = require('webpack');
 const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
 
 const env = process.env.NODE_ENV || 'development';
@@ -43,7 +44,7 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin([
-      path.resolve(__dirname, 'src', 'files', '_headers'),
+      path.resolve(__dirname, 'public', '_headers'),
     ]),
     new SubresourceIntegrityPlugin({
       enabled: env === 'production',
