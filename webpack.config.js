@@ -37,6 +37,7 @@ module.exports = {
     },
   },
   output: {
+    crossOriginLoading: 'anonymous',
     filename: env !== 'production' ? '[name].js?[hash]' : '[name].[chunkhash].js',
     publicPath: '/',
   },
