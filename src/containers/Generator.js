@@ -21,12 +21,10 @@ const styles = ({ breakpoints, spacing }) => ({
     lineHeight: '1.5',
     margin: '2rem 0 0',
     maxHeight: '500px',
+    overflowWrap: 'break-word',
     overflowY: 'scroll',
     padding: '1em',
     whiteSpace: 'pre-wrap',
-    wordBreak: 'normal',
-    wordSpacing: 'normal',
-    wordWrap: 'normal',
     '& .token.atrule': {
       color: '#07a',
     },
