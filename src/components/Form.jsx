@@ -392,7 +392,7 @@ export default class Form extends Component {
               />
               <Field
                 component={this.renderSwitch}
-                label="スポンサー登録アナウンスの背景を表示する"
+                label="メンバー登録アナウンスの背景を表示する"
                 name="showNewMemberBackground"
               />
             </FormControl>
