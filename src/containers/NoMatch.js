@@ -9,4 +9,4 @@ const styles = ({ spacing }) => ({
   },
 });
 
-export default withStyles(styles)(NoMatch);
+export default NoMatch |> withStyles(styles);

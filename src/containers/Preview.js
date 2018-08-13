@@ -47,4 +47,6 @@ const mapDispatchToProps = dispatch => ({
   fetchPreviewInvert: () => dispatch(fetchPreviewInvert()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Preview));
+export default Preview
+  |> withStyles(styles)
+  |> connect(mapStateToProps, mapDispatchToProps);

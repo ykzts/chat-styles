@@ -66,4 +66,6 @@ const mapDispatchToProps = dispatch => ({
   fetchChatStyles: () => dispatch(fetchChatStyles()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Generator));
+export default Generator
+  |> withStyles(styles)
+  |> connect(mapStateToProps, mapDispatchToProps)

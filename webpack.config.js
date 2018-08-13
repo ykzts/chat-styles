@@ -3,7 +3,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const convert = require('koa-connect');
 const path = require('path');
-const { EnvironmentPlugin } = require('webpack');
 const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
 
 const env = process.env.NODE_ENV || 'development';

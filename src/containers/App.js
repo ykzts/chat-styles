@@ -23,4 +23,4 @@ const styles = ({ spacing }) => ({
   },
 });
 
-export default withStyles(styles)(App);
+export default App |> withStyles(styles);

@@ -30,4 +30,7 @@ const mapDispatchToProps = dispatch => ({
   saveChatStyles: () => dispatch(saveChatStyles()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'chatStylesForm' })(withStyles(styles)(Form)));
+export default Form
+  |> withStyles(styles)
+  |> reduxForm({ form: 'chatStylesForm' })
+  |> connect(mapStateToProps, mapDispatchToProps)

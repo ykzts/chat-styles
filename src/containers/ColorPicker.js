@@ -11,4 +11,4 @@ const styles = {
   },
 };
 
-export default withStyles(styles)(ColorPicker);
+export default ColorPicker |> withStyles(styles);
