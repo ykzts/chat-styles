@@ -16,7 +16,7 @@ const Html = ({ scripts, title }) => (
       {scripts.map(scriptProps => (
         <script
           crossOrigin="anonymous"
-          key={`script-${path}`}
+          key={`script-${scriptProps.src}`}
           {...scriptProps}
         />
       ))}
@@ -41,7 +41,7 @@ export default ({ htmlWebpackPlugin: { files } }) => {
     ...(hasIntegrity && files.jsIntegrity[i] ? {
       integrity: files.jsIntegrity[i],
     } : {}),
-  });
+  }));
   const html = (
     <Html scripts={scripts} title={title} />
   );
