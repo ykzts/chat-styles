@@ -33,4 +33,4 @@ const mapDispatchToProps = dispatch => ({
 export default Form
   |> withStyles(styles)
   |> reduxForm({ form: 'chatStylesForm' })
-  |> connect(mapStateToProps, mapDispatchToProps)
+  |> connect(mapStateToProps, mapDispatchToProps);

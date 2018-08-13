@@ -68,4 +68,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default Generator
   |> withStyles(styles)
-  |> connect(mapStateToProps, mapDispatchToProps)
+  |> connect(mapStateToProps, mapDispatchToProps);
