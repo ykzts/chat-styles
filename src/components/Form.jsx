@@ -1,3 +1,5 @@
+// @flow
+
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -5,23 +7,44 @@ import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Field } from 'redux-form';
+import type { FieldProps } from 'redux-form';
 import ColorPicker from '../containers/ColorPicker';
 import { hex2rgb } from '../utils/colors';
 
-export default class Form extends Component {
-  static propTypes = {
-    change: PropTypes.func.isRequired,
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    saveChatStyles: PropTypes.func.isRequired,
-    showAuthorName: PropTypes.bool,
-    showAvatar: PropTypes.bool,
-    showBadge: PropTypes.bool,
-    showOutline: PropTypes.bool,
-    showTimestamp: PropTypes.bool,
-  };
+type Props = {
+  change: (string, any) => void,
+  classes: Object,
+  saveChatStyles: () => void,
+  showAuthorName: boolean,
+  showAvatar: boolean,
+  showBadge: boolean,
+  showOutline: boolean,
+  showTimestamp: boolean,
+};
+
+type ExtendedFieldProps = {
+  disabled?: boolean,
+  label?: string,
+} & FieldProps;
+
+const renderSwitch = (fieldProps: ExtendedFieldProps): React.Element<*> => {
+  const { disabled, input, label } = fieldProps;
+
+  return (
+    <FormControlLabel
+      control={(
+        <Switch checked={!!input.value} color="primary" onChange={input.onChange} />
+      )}
+      disabled={disabled}
+      label={label}
+    />
+  );
+};
+
+export default class Form extends React.Component<Props> {
+  interval: ?IntervalID = null;
 
   static defaultProps = {
     showAuthorName: true,
@@ -39,7 +62,7 @@ export default class Form extends Component {
     }, 1000);
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: Props) {
     const {
       showAuthorName,
       showAvatar,
@@ -61,8 +84,9 @@ export default class Form extends Component {
     }
   }
 
-  renderColorPicker = ({ disabled, input }) => {
+  renderColorPicker = (fieldProps: ExtendedFieldProps): React.Element<*> => {
     const { change } = this.props;
+    const { disabled, input } = fieldProps;
 
     return (
       <ColorPicker
@@ -73,32 +97,21 @@ export default class Form extends Component {
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  renderSwitch({ disabled, input, label }) {
-    return (
-      <FormControlLabel
-        control={(
-          <Switch checked={!!input.value} color="primary" onChange={input.onChange} />
-        )}
-        disabled={disabled}
-        label={label}
-      />
-    );
-  }
-
-  renderTextField = ({
-    input,
-    label,
-    meta: { error, touched },
-    ...custom
-  }) => {
+  renderTextField = (fieldProps: ExtendedFieldProps): React.Element<*> => {
     const { classes } = this.props;
+    const {
+      input,
+      label,
+      meta,
+      ...custom
+    } = fieldProps;
+
     return (
       <TextField
         className={classes.textField}
-        helperText={error}
+        helperText={meta.error}
         label={label}
-        error={touched && !!error}
+        error={meta.touched && !!meta.error}
         {...input}
         {...custom}
       />
@@ -124,7 +137,7 @@ export default class Form extends Component {
                 名前
               </FormLabel>
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="表示する"
                 name="showAuthorName"
               />
@@ -239,7 +252,7 @@ export default class Form extends Component {
                 アウトライン
               </FormLabel>
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="表示する"
                 name="showOutline"
               />
@@ -284,7 +297,7 @@ export default class Form extends Component {
                 アイコン
               </FormLabel>
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="表示する"
                 name="showAvatar"
               />
@@ -317,18 +330,18 @@ export default class Form extends Component {
                 バッジ
               </FormLabel>
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="表示する"
                 name="showBadge"
               />
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 disabled={!showBadge}
                 label="モデレーター"
                 name="showModeratorBadge"
               />
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 disabled={!showBadge}
                 label="メンバー"
                 name="showMemberBadge"
@@ -341,7 +354,7 @@ export default class Form extends Component {
                 タイムスタンプ
               </FormLabel>
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="表示する"
                 name="showTimestamp"
               />
@@ -386,12 +399,12 @@ export default class Form extends Component {
                 その他
               </FormLabel>
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="スーパーチャットの背景を表示する"
                 name="showSuperChatBackground"
               />
               <Field
-                component={this.renderSwitch}
+                component={renderSwitch}
                 label="メンバー登録アナウンスの背景を表示する"
                 name="showNewMemberBackground"
               />

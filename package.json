@@ -7,7 +7,6 @@
     "immutable": "^3.8.2",
     "localforage": "^1.7.2",
     "prismjs": "^1.15.0",
-    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-color": "^2.14.1",
     "react-dom": "^16.4.2",
@@ -25,6 +24,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
     "@babel/plugin-proposal-pipeline-operator": "^7.0.0-rc.1",
+    "@babel/preset-flow": "^7.0.0-rc.1",
     "@babel/preset-react": "^7.0.0-rc.1",
     "babel-eslint": "^9.0.0-beta.3",
     "babel-loader": "^8.0.0-beta.4",
@@ -36,6 +36,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
     "file-loader": "^1.1.11",
+    "flow-bin": "^0.78.0",
     "html-webpack-plugin": "^3.2.0",
     "koa-connect": "^2.0.1",
     "webpack": "^4.16.5",
@@ -53,7 +54,7 @@
   "scripts": {
     "build": "webpack --devtool source-map",
     "dev": "webpack-serve",
-    "lint": "eslint --ext .js --ext .jsx .",
+    "lint": "eslint --ext .js --ext .jsx . && flow check",
     "test": "${npm_execpath} run lint"
   },
   "version": "1.0.0"

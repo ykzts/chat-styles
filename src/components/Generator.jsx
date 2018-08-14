@@ -1,21 +1,22 @@
+// @flow
+
 import Grid from '@material-ui/core/Grid';
 import { highlight, languages } from 'prismjs';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import * as React from 'react';
 import Helmet from 'react-helmet';
 import Form from '../containers/Form';
 import Preview from '../containers/Preview';
 import previewPath from '../files/preview.html';
 
-export default class Generator extends Component {
-  textFieldRef = React.createRef();
+type Props = {
+  classes: Object,
+  fetchChatStyles: () => void,
+  hasChatStyles: boolean,
+  styleSheet: string,
+};
 
-  static propTypes = {
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    fetchChatStyles: PropTypes.func.isRequired,
-    hasChatStyles: PropTypes.bool.isRequired,
-    styleSheet: PropTypes.string.isRequired,
-  };
+export default class Generator extends React.Component<Props> {
+  textFieldRef = React.createRef();
 
   componentDidMount() {
     const { fetchChatStyles } = this.props;
@@ -23,14 +24,15 @@ export default class Generator extends Component {
     fetchChatStyles();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps: Props) {
     const { hasChatStyles, styleSheet } = this.props;
 
     return styleSheet !== nextProps.styleSheet
       || hasChatStyles !== nextProps.hasChatStyles;
   }
 
-  handleClick = ({ currentTarget }) => {
+  handleClick = (event: SyntheticEvent<*>) => {
+    const { currentTarget } = event;
     const selection = window.getSelection();
 
     selection.selectAllChildren(currentTarget);

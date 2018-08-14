@@ -1,19 +1,24 @@
+// @flow
+
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-import PropTypes from 'prop-types';
-import React, { Component, Fragment } from 'react';
+import * as React from 'react';
 import { SketchPicker } from 'react-color';
-import colorShape from '../types/colorShape';
+import type { ColorResult } from 'react-color';
 import { css as bg } from '../utils/colors';
 
-export default class ColorPicker extends Component {
-  static propTypes = {
-    classes: PropTypes.objectOf(PropTypes.any).isRequired,
-    color: colorShape.isRequired,
-    disabled: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-  };
+type Props = {
+  classes: Object,
+  color: ColorResult,
+  disabled?: boolean,
+  onChange: (color: ColorResult) => void,
+};
 
+type State = {
+  anchorEl: ?HTMLElement,
+};
+
+export default class ColorPicker extends React.Component<Props, State> {
   static defaultProps = {
     disabled: false,
   };
@@ -22,13 +27,15 @@ export default class ColorPicker extends Component {
     anchorEl: null,
   };
 
-  handleChange = (color) => {
+  handleChange = (color: ColorResult) => {
     const { onChange } = this.props;
 
     onChange(color);
   }
 
-  handleClick = ({ currentTarget }) => {
+  handleClick = (event: SyntheticEvent<*>) => {
+    const { currentTarget } = event;
+
     this.setState({ anchorEl: currentTarget });
   }
 
@@ -36,7 +43,7 @@ export default class ColorPicker extends Component {
     this.setState({ anchorEl: null });
   }
 
-  shouldComponent(nextProps, nextState) {
+  shouldComponent(nextProps: Props, nextState: State) {
     const { color } = this.props;
     const { anchorEl } = this.state;
 
@@ -49,7 +56,7 @@ export default class ColorPicker extends Component {
     const { anchorEl } = this.state;
 
     return (
-      <Fragment>
+      <React.Fragment>
         <Button className={classes.button} disabled={disabled} onClick={this.handleClick} size="small" variant="contained">
           <div className={classes.colorPalette} style={{ backgroundColor: bg(color) }} />
         </Button>
@@ -68,7 +75,7 @@ export default class ColorPicker extends Component {
         >
           <SketchPicker color={color.rgb} onChange={this.handleChange} />
         </Popover>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }
