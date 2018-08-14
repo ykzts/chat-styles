@@ -1,3 +1,5 @@
+const env = process.env.BABEL_ENV || process.env.NODE_ENV || 'development';
+
 module.exports = {
   plugins: [
     '@babel/proposal-class-properties',
@@ -6,6 +8,12 @@ module.exports = {
   ],
   presets: [
     '@babel/flow',
-    ['@babel/react', { useBuiltIns: true }],
+    [
+      '@babel/react',
+      {
+        development: env !== 'production',
+        useBuiltIns: true,
+      },
+    ],
   ],
 };
