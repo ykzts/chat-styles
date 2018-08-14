@@ -56,7 +56,7 @@ export default class ColorPicker extends React.Component<Props, State> {
     const { anchorEl } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <Button className={classes.button} disabled={disabled} onClick={this.handleClick} size="small" variant="contained">
           <div className={classes.colorPalette} style={{ backgroundColor: bg(color) }} />
         </Button>
@@ -75,7 +75,7 @@ export default class ColorPicker extends React.Component<Props, State> {
         >
           <SketchPicker color={color.rgb} onChange={this.handleChange} />
         </Popover>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -24,7 +24,7 @@ export default class NoMatch extends React.Component<Props> {
     const { classes, title } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <Helmet>
           <title>
             {title}
@@ -35,7 +35,7 @@ export default class NoMatch extends React.Component<Props> {
             {title}
           </Typography>
         </main>
-      </React.Fragment>
+      </>
     );
   }
 }
