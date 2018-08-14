@@ -119,7 +119,7 @@ export default class Preview extends React.Component<Props, State> {
     const { frameHeight } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <Helmet>
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="preload" />
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="preload" />
@@ -145,7 +145,7 @@ export default class Preview extends React.Component<Props, State> {
             title={`${preview} on frame`}
           />
         </Paper>
-      </React.Fragment>
+      </>
     );
   }
 }
