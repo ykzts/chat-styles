@@ -1,7 +1,5 @@
-const history = require('connect-history-api-fallback');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
-const convert = require('koa-connect');
 const path = require('path');
 const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
 
@@ -42,13 +40,14 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new CopyPlugin([
-      path.resolve(__dirname, 'public', '_headers'),
-    ]),
-    new SubresourceIntegrityPlugin({
-      enabled: env === 'production',
-      hashFuncNames: ['sha512'],
-    }),
+    ...(env === 'production' ? [
+      new CopyPlugin([
+        path.resolve(__dirname, 'public', '_headers'),
+      ]),
+      new SubresourceIntegrityPlugin({
+        hashFuncNames: ['sha512'],
+      }),
+    ] : []),
     new HtmlPlugin({
       inject: false,
       template: path.resolve(__dirname, 'src', 'templates'),
@@ -58,6 +57,6 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   serve: {
-    add: app => app.use(convert(history())),
+    content: path.resolve(__dirname, 'public'),
   },
 };
