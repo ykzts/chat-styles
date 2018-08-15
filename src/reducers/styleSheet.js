@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 import { CHAT_STYLES_FETCH_SUCCESS, CHAT_STYLES_SAVE_SUCCESS } from '../actions/chatStyles';
-import generateStyleSheet from '../utils/generateStyleSheet';
+import { generateStyleSheet } from '../utils/styleSheets';
 
 const initialState = new Map({
   rawText: '',

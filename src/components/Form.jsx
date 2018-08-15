@@ -90,9 +90,9 @@ export default class Form extends React.Component<Props> {
 
     return (
       <ColorPicker
-        color={input.value || hex2rgb('#ffffff')}
+        color={input.value || { rgb: hex2rgb('#ffffff') }}
         disabled={disabled}
-        onChange={color => change(input.name, color)}
+        onChange={({ rgb }) => change(input.name, { rgb })}
       />
     );
   }
