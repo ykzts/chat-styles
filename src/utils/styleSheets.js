@@ -7,29 +7,23 @@ export const KNOWN_FONTS = [
   'https://fonts.googleapis.com/earlyaccess/notosansjapanese.css',
 ];
 
+type StyleColor = {|
+  rgb: RGBColor,
+|};
+
 type ChatStyles = {
-  authorNameColor: {|
-    rgb: RGBColor,
-  |},
+  authorNameColor: StyleColor,
   authorNameSize: number,
   avatarSize: number,
-  memberAuthorNameColor: {|
-    rgb: RGBColor,
-  |},
+  memberAuthorNameColor: StyleColor,
   messageColor: {|
     rgb: RGBColor,
   |},
   messageSize: number,
-  moderatorAuthorNameColor: {|
-    rgb: RGBColor,
-  |},
-  outlineColor: {|
-    rgb: RGBColor,
-  |},
+  moderatorAuthorNameColor: StyleColor,
+  outlineColor: StyleColor,
   outlineSize: number,
-  ownerAuthorNameColor: {|
-    rgb: RGBColor,
-  |},
+  ownerAuthorNameColor: StyleColor,
   showAuthorName: boolean,
   showAvatar: boolean,
   showBadge: boolean,
@@ -39,9 +33,7 @@ type ChatStyles = {
   showOutline: boolean,
   showSuperChatBackground: boolean,
   showTimestamp: boolean,
-  timestampColor: {|
-    rgb: RGBColor,
-  |},
+  timestampColor: StyleColor,
   timestampSize: number,
 };
 
