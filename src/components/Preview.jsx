@@ -22,6 +22,13 @@ type State = {
   frameHeight: number,
 };
 
+
+const removeLinkElements = (doc: Document): void => {
+  const links = doc.querySelectorAll('link[rel="stylesheet"][href^="data:text/css"]');
+
+  [].forEach.call(links, link => link.parentNode.removeChild(link));
+};
+
 export default class Preview extends React.Component<Props, State> {
   frameRef = React.createRef();
 
@@ -34,7 +41,10 @@ export default class Preview extends React.Component<Props, State> {
     const { current: frame } = this.frameRef;
 
     fetchPreviewInvert();
-    frame.addEventListener('load', this.handleLoad);
+
+    if (frame) {
+      frame.addEventListener('load', this.handleLoad);
+    }
   }
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
@@ -57,7 +67,9 @@ export default class Preview extends React.Component<Props, State> {
   componentWillUnmount() {
     const { current: frame } = this.frameRef;
 
-    frame.removeEventListener('load', this.handleLoad);
+    if (frame) {
+      frame.removeEventListener('load', this.handleLoad);
+    }
   }
 
   handleChangeInvert = (event: SyntheticEvent<*>, checked: boolean) => {
@@ -72,46 +84,37 @@ export default class Preview extends React.Component<Props, State> {
     this.loadStyleSheet(styleSheet);
   }
 
-  handleLoadStyleSheet = () => {
-    const { current: frame } = this.frameRef;
-    const { contentDocument: doc } = frame;
+  handleLoadStyleSheet = (event: ProgressEvent) => {
+    const target: HTMLLinkElement = (event.target: any);
+    const { ownerDocument: doc } = target;
 
     this.setState({
-      frameHeight: doc.documentElement.scrollHeight,
+      frameHeight: doc.documentElement ? doc.documentElement.scrollHeight : 0,
     });
   }
 
-  createLinkElement(styleSheet: string): HTMLLinkElement<*> {
-    const { current: frame } = this.frameRef;
-    const { contentDocument: doc } = frame;
-
+  createLinkElement(doc: Document, styleSheet: string): HTMLLinkElement {
     const link = doc.createElement('link');
+
     link.rel = 'stylesheet';
     link.href = `data:text/css;charset=UTF-8;base64,${btoa(styleSheet)}`;
     link.addEventListener('load', this.handleLoadStyleSheet);
     return link;
   }
 
-  loadStyleSheet(styleSheet) {
-    if (styleSheet && styleSheet.length > 0) {
-      const { current: frame } = this.frameRef;
+  loadStyleSheet(styleSheet: string) {
+    const { current: frame } = this.frameRef;
+
+    if (styleSheet && styleSheet.length > 0 && frame) {
       const { contentDocument: doc } = frame;
 
       if (doc.head) {
-        const link = this.createLinkElement(styleSheet);
+        const link = this.createLinkElement(doc, styleSheet);
 
-        this.removeLinkElements();
+        removeLinkElements(doc);
         doc.head.appendChild(link);
       }
     }
-  }
-
-  removeLinkElements() {
-    const { current: frame } = this.frameRef;
-    const { contentDocument: doc } = frame;
-    const links = doc.querySelectorAll('link[rel="stylesheet"][href^="data:text/css"]');
-
-    [].forEach.call(links, link => link.parentNode.removeChild(link));
   }
 
   render() {

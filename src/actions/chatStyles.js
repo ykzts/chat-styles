@@ -5,15 +5,27 @@ import { hex2rgb } from '../utils/colors';
 
 const defaultChatStyles = {
   authorNameSize: 18,
-  authorNameColor: hex2rgb('#ffffff'),
+  authorNameColor: {
+    rgb: hex2rgb('#ffffff'),
+  },
   avatarSize: 20,
-  memberAuthorNameColor: hex2rgb('#107516'),
-  messageColor: hex2rgb('#ffffff'),
+  memberAuthorNameColor: {
+    rgb: hex2rgb('#107516'),
+  },
+  messageColor: {
+    rgb: hex2rgb('#ffffff'),
+  },
   messageSize: 18,
-  moderatorAuthorNameColor: hex2rgb('#5e84f1'),
-  outlineColor: hex2rgb('#000000'),
+  moderatorAuthorNameColor: {
+    rgb: hex2rgb('#5e84f1'),
+  },
+  outlineColor: {
+    rgb: hex2rgb('#000000'),
+  },
   outlineSize: 2,
-  ownerAuthorNameColor: hex2rgb('#ffd600'),
+  ownerAuthorNameColor: {
+    rgb: hex2rgb('#ffd600'),
+  },
   showAuthorName: true,
   showAvatar: true,
   showBadge: true,
@@ -23,7 +35,9 @@ const defaultChatStyles = {
   showOutline: true,
   showSuperChatBackground: true,
   showTimestamp: false,
-  timestampColor: hex2rgb('#999999'),
+  timestampColor: {
+    rgb: hex2rgb('#999999'),
+  },
   timestampSize: 16,
 };
 

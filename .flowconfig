@@ -3,6 +3,8 @@
 
 [options]
 module.file_ext=.html
+module.file_ext=.js
+module.file_ext=.jsx
 
 [version]
 ^0.78.0

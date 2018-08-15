@@ -58,7 +58,7 @@ export default class ColorPicker extends React.Component<Props, State> {
     return (
       <>
         <Button className={classes.button} disabled={disabled} onClick={this.handleClick} size="small" variant="contained">
-          <div className={classes.colorPalette} style={{ backgroundColor: bg(color) }} />
+          <div className={classes.colorPalette} style={{ backgroundColor: bg(color.rgb) }} />
         </Button>
         <Popover
           anchorEl={anchorEl}
