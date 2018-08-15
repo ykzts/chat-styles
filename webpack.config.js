@@ -2,6 +2,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -51,6 +52,11 @@ module.exports = {
     new HtmlPlugin({
       inject: false,
       template: path.resolve(__dirname, 'src', 'templates'),
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      swDest: 'sw.js',
     }),
   ],
   resolve: {
