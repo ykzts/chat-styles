@@ -40,7 +40,8 @@
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-serve": "^2.0.2",
-    "webpack-subresource-integrity": "^1.1.0-rc.4"
+    "webpack-subresource-integrity": "^1.1.0-rc.4",
+    "workbox-webpack-plugin": "^3.4.1"
   },
   "homepage": "https://chat-styles.app/",
   "license": "MIT",
