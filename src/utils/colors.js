@@ -3,21 +3,17 @@
 import type { RGBColor } from 'react-color';
 
 export const css = (rgb: RGBColor): string => {
-  if (typeof rgb !== 'undefined') {
-    const {
-      a: alpha,
-      b: blue,
-      g: green,
-      r: red,
-    } = rgb;
-    const values = [red, green, blue, alpha]
-      .filter(value => typeof value === 'number');
+  const values: Array<number> = [rgb.r, rgb.g, rgb.b];
 
-    if (values.length >= 3) {
-      const funcName = values.length >= 4 ? 'rgba' : 'rgb';
+  if (values.some(value => typeof value === 'number')) {
+    let funcName = 'rgb';
 
-      return `${funcName}(${values.join(', ')})`;
+    if (typeof rgb.a === 'number' && rgb.a < 1) {
+      funcName = 'rgba';
+      values.push(rgb.a);
     }
+
+    return `${funcName}(${values.join(', ')})`;
   }
 
   return 'transparent';
