@@ -104,7 +104,7 @@ export const generateStyleSheet = (chatStyles: ChatStyles): string => {
     `  --yt-live-chat-tertiary-text-color: ${color(timestampColor.rgb)};`,
     ...(showOutline ? [
       '',
-      `  ${generateTextShadow(outlineSize, outlineColor.rgb)};`,
+      `  ${generateTextShadow(outlineSize, outlineColor.rgb)}`,
     ] : []),
     '}',
     '',
