@@ -11,7 +11,7 @@ type StyleColor = {|
   rgb: RGBColor,
 |};
 
-type ChatStyles = {
+export type ChatStyles = {
   authorNameColor: StyleColor,
   authorNameSize: number,
   avatarSize: number,
