@@ -57,8 +57,8 @@
   "scripts": {
     "build": "webpack --devtool source-map",
     "dev": "webpack-serve",
-    "lint": "eslint --ext .js --ext .jsx . && flow check",
-    "test": "${npm_execpath} run lint && jest"
+    "check": "eslint --ext .js --ext .jsx . && flow check",
+    "test": "${npm_execpath} run check && jest"
   },
   "version": "1.0.0"
 }
