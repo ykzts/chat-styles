@@ -17,9 +17,28 @@ module.exports = {
       },
       {
         test: /\.html$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: env !== 'production' ? '[name].[ext]?[hash]' : '[name].[hash].[ext]',
+            },
+          },
+          {
+            loader: 'extract-loader',
+          },
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
+      {
+        test: /\.png$/,
         loader: 'file-loader',
         options: {
           name: env !== 'production' ? '[name].[ext]?[hash]' : '[name].[hash].[ext]',
+          outputPath: './images/',
+          publicPath: '/images/',
         },
       },
     ],
