@@ -1,4 +1,7 @@
+// @flow
+
 import localForage from 'localforage';
+import type { Dispatch } from 'redux';
 
 export const PREVIEW_INVERT_CHANGE_FAIL = 'PREVIEW_INVERT_CHANGE_FAIL';
 export const PREVIEW_INVERT_CHANGE_REQUEST = 'PREVIEW_INVERT_CHANGE_REQUEST';
@@ -7,7 +10,7 @@ export const PREVIEW_INVERT_FETCH_FAIL = 'PREVIEW_INVERT_FETCH_FAIL';
 export const PREVIEW_INVERT_FETCH_REQUEST = 'PREVIEW_INVERT_FETCH_REQUEST';
 export const PREVIEW_INVERT_FETCH_SUCCESS = 'PREVIEW_INVERT_FETCH_SUCCESS';
 
-export const changePreviewInvertFail = error => ({
+export const changePreviewInvertFail = (error: Error) => ({
   error,
   type: PREVIEW_INVERT_CHANGE_FAIL,
 });
@@ -16,12 +19,12 @@ export const changePreviewInvertRequest = () => ({
   type: PREVIEW_INVERT_CHANGE_REQUEST,
 });
 
-export const changePreviewInvertSuccess = invert => ({
+export const changePreviewInvertSuccess = (invert: boolean) => ({
   invert,
   type: PREVIEW_INVERT_CHANGE_SUCCESS,
 });
 
-export const changePreviewInvert = invert => async (dispatch) => {
+export const changePreviewInvert = (invert: boolean) => async (dispatch: Dispatch) => {
   dispatch(changePreviewInvertRequest());
 
   try {
@@ -32,7 +35,7 @@ export const changePreviewInvert = invert => async (dispatch) => {
   }
 };
 
-export const fetchPreviewInvertFail = error => ({
+export const fetchPreviewInvertFail = (error: Error) => ({
   error,
   type: PREVIEW_INVERT_FETCH_FAIL,
 });
@@ -41,12 +44,12 @@ export const fetchPreviewInvertRequest = () => ({
   type: PREVIEW_INVERT_FETCH_REQUEST,
 });
 
-export const fetchPreviewInvertSuccess = invert => ({
+export const fetchPreviewInvertSuccess = (invert: boolean) => ({
   invert,
   type: PREVIEW_INVERT_FETCH_SUCCESS,
 });
 
-export const fetchPreviewInvert = () => async (dispatch) => {
+export const fetchPreviewInvert = () => async (dispatch: Dispatch) => {
   const keys = await localForage.keys();
   if (!keys.includes('preview.invert')) {
     return;
