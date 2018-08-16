@@ -55,6 +55,10 @@ module.exports = {
     }),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
+      exclude: [
+        /\.map$/,
+        /^_headers$/,
+      ],
       skipWaiting: true,
       swDest: 'sw.js',
     }),
