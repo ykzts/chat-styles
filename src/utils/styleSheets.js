@@ -16,9 +16,7 @@ type ChatStyles = {
   authorNameSize: number,
   avatarSize: number,
   memberAuthorNameColor: StyleColor,
-  messageColor: {|
-    rgb: RGBColor,
-  |},
+  messageColor: StyleColor,
   messageSize: number,
   moderatorAuthorNameColor: StyleColor,
   outlineColor: StyleColor,
