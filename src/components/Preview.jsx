@@ -2,17 +2,59 @@
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import preview from '../files/preview.html';
+
+const Root = styled(Grid)`
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+`;
+
+const Title = styled(Typography)`
+  font-size: 1.5rem;
+`;
+
+const Content = styled(Paper)`
+  background-image:
+    linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),
+    linear-gradient(45deg, #eee 25%, #fff 25%, #fff 75%, #eee 75%, #eee 100%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  margin: 16px;
+  minHeight: 500px;
+  padding: 8px;
+
+  &.invert {
+    background-image:
+      linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%, #333 100%),
+      linear-gradient(45deg, #333 25%, #444 25%, #444 75%, #333 75%, #333 100%);
+  }
+
+  @media (min-width: 960px) {
+    padding: 24px;
+  }
+
+  iframe {
+    border: 0;
+    height: 0;
+    width: 100%;
+
+    &.active {
+      outline: dotted 1px #666;
+    }
+  }
+`;
 
 type Props = {
   changePreviewInvert: (boolean) => void,
-  classes: Object,
   fetchPreviewInvert: () => void,
   invert: boolean,
   styleSheet: string,
@@ -118,18 +160,18 @@ export default class Preview extends React.Component<Props, State> {
   }
 
   render() {
-    const { classes, invert } = this.props;
+    const { invert } = this.props;
     const { frameHeight } = this.state;
 
     return (
-      <>
+      <Root item sm={6} xs={12}>
         <Helmet>
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="preload" />
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="preload" />
         </Helmet>
-        <Typography className={classes.title} variant="subheading">
+        <Title variant="subheading">
           プレビュー
-        </Typography>
+        </Title>
         <FormGroup>
           <FormControlLabel
             control={(
@@ -139,16 +181,16 @@ export default class Preview extends React.Component<Props, State> {
             labelPlacement="start"
           />
         </FormGroup>
-        <Paper className={classNames(classes.paper, { [classes.paperInvert]: invert })}>
+        <Content className={classNames({ invert })}>
           <iframe
-            className={classNames(classes.frame, { [classes.frameActive]: frameHeight > 0 })}
+            className={classNames({ active: frameHeight > 0 })}
             ref={this.frameRef}
             src={preview}
             style={{ height: `${frameHeight}px` }}
             title={`${preview} on frame`}
           />
-        </Paper>
-      </>
+        </Content>
+      </Root>
     );
   }
 }

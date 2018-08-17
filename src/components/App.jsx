@@ -10,9 +10,10 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 import { Route, Link, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 import Generator from '../containers/Generator';
-import NoMatch from '../containers/NoMatch';
 import configureStore from '../store/configureStore';
+import NoMatch from './NoMatch';
 
 const store = configureStore();
 
@@ -22,28 +23,47 @@ const theme = createMuiTheme({
   },
 });
 
+const Title = styled(Typography)`
+  text-decoration: none;
+`;
+
+const Footer = styled.footer`
+  background-color: #333;
+  color: #fff;
+  padding: 24px 16px 32px;
+
+  p {
+    margin: 0;
+    text-align: right;
+  }
+
+  a {
+    color: #aaa;
+    text-decoration: none;
+  }
+`;
+
 type Props = {
-  classes: Object,
   title: string,
 };
 
-export default ({ classes, title }: Props) => (
+export default ({ title }: Props) => (
   <Provider store={store}>
     <MuiThemeProvider sheetsManager={new Map()} theme={theme}>
       <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`} />
       <CssBaseline />
       <AppBar position="static">
         <Toolbar>
-          <Typography color="inherit" className={classes.title} component={Link} noWrap to="/" variant="title">
+          <Title color="inherit" component={Link} noWrap to="/" variant="title">
             {title}
-          </Typography>
+          </Title>
         </Toolbar>
       </AppBar>
       <Switch>
         <Route component={Generator} exact path="/" />
         <Route component={NoMatch} />
       </Switch>
-      <footer className={classes.footer}>
+      <Footer>
         <p>
           Inspired by
           &#8203;
@@ -63,7 +83,7 @@ export default ({ classes, title }: Props) => (
             Source code
           </a>
         </p>
-      </footer>
+      </Footer>
     </MuiThemeProvider>
   </Provider>
 );

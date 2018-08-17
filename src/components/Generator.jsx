@@ -4,12 +4,63 @@ import Grid from '@material-ui/core/Grid';
 import { highlight, languages } from 'prismjs';
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import Form from '../containers/Form';
 import Preview from '../containers/Preview';
 import previewPath from '../files/preview.html';
 
+const Root = styled(Grid)`
+  padding-top: 16px;
+`;
+
+const Result = styled.pre`
+  background-color: #f5f2f0;
+  display: block;
+  lineheight: 1.5;
+  margin: 2rem 0 0;
+  max-height: 500px;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  padding: 1em;
+  white-space: pre-wrap;
+
+  .token.atrule: {
+    color: #07a;
+  }
+
+  .token.comment {
+    color: slategrey;
+  }
+
+  .token.function {
+    color: #dd4a68;
+  }
+
+  .token.important {
+    color: #e90;
+    font-weight: 500;
+  }
+
+  .token.property {
+    color: #905;
+  }
+
+  .token.punctuation {
+    color: #999;
+  }
+
+  .token.selector,
+  .token.string {
+    color: #690;
+  }
+
+  .token.url {
+    background-color: hsla(0, 0%, 100%, .5);
+    color: #9a6e3a;
+  }
+`;
+
 type Props = {
-  classes: Object,
   fetchChatStyles: () => void,
   hasChatStyles: boolean,
   styleSheet: string,
@@ -39,7 +90,7 @@ export default class Generator extends React.Component<Props> {
   }
 
   render() {
-    const { classes, hasChatStyles, styleSheet } = this.props;
+    const { hasChatStyles, styleSheet } = this.props;
 
     return (
       <main>
@@ -47,19 +98,15 @@ export default class Generator extends React.Component<Props> {
           <link as="document" href={previewPath} type="text/html" />
         </Helmet>
         {hasChatStyles && (
-          <Grid className={classes.root} container>
-            <Grid className={classes.form} item sm={6} xs={12}>
-              <Form />
-            </Grid>
-            <Grid className={classes.preview} item sm={6} xs={12}>
-              <Preview />
-            </Grid>
-          </Grid>
+          <Root container>
+            <Form />
+            <Preview />
+          </Root>
         )}
-        <pre className={classes.result} role="presentation" onClick={this.handleClick}>
+        <Result role="presentation" onClick={this.handleClick}>
           {/* eslint-disable-next-line react/no-danger */}
           <code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
-        </pre>
+        </Result>
       </main>
     );
   }

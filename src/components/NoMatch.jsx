@@ -3,9 +3,13 @@
 import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
+
+const Headline = styled(Typography)`
+  margin: 24px 24px 8px 64px;
+`;
 
 type Props = {
-  classes: Object,
   title?: string,
 };
 
@@ -21,7 +25,7 @@ export default class NoMatch extends React.Component<Props> {
   }
 
   render() {
-    const { classes, title } = this.props;
+    const { title } = this.props;
 
     return (
       <>
@@ -31,9 +35,9 @@ export default class NoMatch extends React.Component<Props> {
           </title>
         </Helmet>
         <main>
-          <Typography className={classes.headline} variant="headline">
+          <Headline variant="headline">
             {title}
-          </Typography>
+          </Headline>
         </main>
       </>
     );

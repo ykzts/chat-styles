@@ -10,12 +10,26 @@ import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 import { Field } from 'redux-form';
 import type { FieldProps } from 'redux-form';
-import ColorPicker from '../containers/ColorPicker';
+import styled from 'styled-components';
 import { hex2rgb } from '../utils/colors';
+import ColorPicker from './ColorPicker';
+
+const Root = styled(Grid)`
+  padding-top: 24px;
+
+  @media (min-width: 960px) {
+    padding-left: 16px;
+  }
+`;
+
+const Box = styled(Grid)`
+  && {
+    margin-bottom: 32px;
+  }
+`;
 
 type Props = {
   change: (string, any) => void,
-  classes: Object,
   saveChatStyles: () => void,
   showAuthorName: boolean,
   showAvatar: boolean,
@@ -98,7 +112,6 @@ export default class Form extends React.Component<Props> {
   }
 
   renderTextField = (fieldProps: ExtendedFieldProps): React.Element<*> => {
-    const { classes } = this.props;
     const {
       input,
       label,
@@ -108,7 +121,7 @@ export default class Form extends React.Component<Props> {
 
     return (
       <TextField
-        className={classes.textField}
+        fullWidth
         helperText={meta.error}
         label={label}
         error={meta.touched && !!meta.error}
@@ -120,7 +133,6 @@ export default class Form extends React.Component<Props> {
 
   render() {
     const {
-      classes,
       showAuthorName,
       showAvatar,
       showBadge,
@@ -129,9 +141,9 @@ export default class Form extends React.Component<Props> {
     } = this.props;
 
     return (
-      <Grid container direction="column">
+      <Root container direction="column" item sm={6} xs={12}>
         <Grid container item>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 名前
@@ -204,8 +216,8 @@ export default class Form extends React.Component<Props> {
                 label="メンバー"
               />
             </FormControl>
-          </Grid>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          </Box>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 メッセージ
@@ -243,10 +255,10 @@ export default class Form extends React.Component<Props> {
                 </Grid>
               </Grid>
             </FormControl>
-          </Grid>
+          </Box>
         </Grid>
         <Grid container item justify="flex-start" spacing={0}>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 アウトライン
@@ -290,8 +302,8 @@ export default class Form extends React.Component<Props> {
                 </Grid>
               </Grid>
             </FormControl>
-          </Grid>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          </Box>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 アイコン
@@ -323,8 +335,8 @@ export default class Form extends React.Component<Props> {
                 type="number"
               />
             </FormControl>
-          </Grid>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          </Box>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 バッジ
@@ -347,8 +359,8 @@ export default class Form extends React.Component<Props> {
                 name="showMemberBadge"
               />
             </FormControl>
-          </Grid>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          </Box>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 タイムスタンプ
@@ -392,8 +404,8 @@ export default class Form extends React.Component<Props> {
                 </Grid>
               </Grid>
             </FormControl>
-          </Grid>
-          <Grid className={classes.box} item sm={4} xs={6}>
+          </Box>
+          <Box item sm={4} xs={6}>
             <FormControl component="fieldset">
               <FormLabel component="legend">
                 その他
@@ -409,9 +421,9 @@ export default class Form extends React.Component<Props> {
                 name="showNewMemberBackground"
               />
             </FormControl>
-          </Grid>
+          </Box>
         </Grid>
-      </Grid>
+      </Root>
     );
   }
 }
