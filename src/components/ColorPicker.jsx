@@ -8,7 +8,7 @@ import type { ColorResult } from 'react-color';
 import styled from 'styled-components';
 import { css as bg } from '../utils/colors';
 
-const ColorPalette = styled.div`
+const ColorPalette = styled(({ color, ...props }) => <div {...props} />)`
   background-color: ${({ color }) => bg(color.rgb)};
   border-radius: 4px;
   height: 24px;
