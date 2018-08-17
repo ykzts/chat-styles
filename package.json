@@ -53,7 +53,7 @@
   },
   "homepage": "https://chat-styles.app/",
   "license": "MIT",
-  "name": "@ykzts/chat-style",
+  "name": "@ykzts/chat-styles",
   "repository": {
     "type": "git",
     "url": "https://github.com/ykzts/chat-styles.git"
