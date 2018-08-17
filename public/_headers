@@ -1,4 +1,5 @@
 /*
+  Content-Security-Policy: font-src https://fonts.gstatic.com; frame-src 'self'; img-src 'self'; script-src 'self' https://storage.googleapis.com; style-src 'self' 'unsafe-inline' data: https://fonts.googleapis.com; worker-src 'self'
   Referrer-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
