@@ -5,10 +5,17 @@ import Popover from '@material-ui/core/Popover';
 import * as React from 'react';
 import { SketchPicker } from 'react-color';
 import type { ColorResult } from 'react-color';
+import styled from 'styled-components';
 import { css as bg } from '../utils/colors';
 
+const ColorPalette = styled.div`
+  background-color: ${({ color }) => bg(color.rgb)};
+  border-radius: 4px;
+  height: 24px;
+  width: 100%;
+`;
+
 type Props = {
-  classes: Object,
   color: ColorResult,
   disabled?: boolean,
   onChange: (color: ColorResult) => void,
@@ -52,13 +59,13 @@ export default class ColorPicker extends React.Component<Props, State> {
   }
 
   render() {
-    const { classes, color, disabled } = this.props;
+    const { color, disabled } = this.props;
     const { anchorEl } = this.state;
 
     return (
       <>
-        <Button className={classes.button} disabled={disabled} onClick={this.handleClick} size="small" variant="contained">
-          <div className={classes.colorPalette} style={{ backgroundColor: bg(color.rgb) }} />
+        <Button disabled={disabled} onClick={this.handleClick} size="small" variant="contained">
+          <ColorPalette color={color} />
         </Button>
         <Popover
           anchorEl={anchorEl}
