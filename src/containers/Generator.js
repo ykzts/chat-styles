@@ -4,12 +4,10 @@ import Generator from '../components/Generator';
 
 const mapStateToProps = state => ({
   hasChatStyles: !state.chatStyles.get('values').isEmpty(),
-  styleSheet: state.styleSheet.get('rawText'),
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchChatStyles: () => dispatch(fetchChatStyles()),
 });
 
-export default Generator
-  |> connect(mapStateToProps, mapDispatchToProps);
+export default Generator |> connect(mapStateToProps, mapDispatchToProps);
