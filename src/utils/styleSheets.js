@@ -84,7 +84,7 @@ export const generateStyleSheet = (chatStyles: ChatStyles): string => {
     '}',
     '',
     'yt-live-chat-ticker-renderer {',
-    '  display: none; !important;',
+    '  display: none !important;',
     '}',
     '',
     'yt-live-chat-item-list-renderer {',
