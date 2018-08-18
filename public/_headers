@@ -6,6 +6,9 @@
 /
   Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
 
+/index.html
+  Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
+
 /preview.*.html
   Cache-Control: immutable, max-age=31536000, public
 
