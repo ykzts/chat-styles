@@ -5,6 +5,7 @@ module.exports = {
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
     ['@babel/proposal-pipeline-operator', { proposal: 'minimal' }],
+    '@babel/syntax-dynamic-import',
     ...(env === 'test' ? [
       '@babel/transform-modules-commonjs',
     ] : []),

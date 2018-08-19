@@ -3,10 +3,10 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import Form from '../containers/Form';
 import Preview from '../containers/Preview';
 import Result from '../containers/Result';
 import previewPath from '../files/preview.html';
+import LazyLoader from './LazyLoader';
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -42,7 +42,9 @@ export default class Generator extends React.Component<Props> {
         </Helmet>
         {hasChatStyles && (
           <Container>
-            <Form />
+            <LazyLoader
+              fetchComponent={() => import(/* webpackChunkName: "form" */ '../containers/Form')}
+            />
             <Preview />
           </Container>
         )}

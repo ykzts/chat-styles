@@ -44,10 +44,15 @@ module.exports = {
     ],
   },
   optimization: {
+    runtimeChunk: {
+      name: 'vendor',
+    },
     splitChunks: {
       cacheGroups: {
-        vendor: {
-          chunks: 'initial',
+        default: false,
+        vendors: {
+          chunks: 'all',
+          minChunks: 2,
           name: 'vendor',
           test: /[\\/]node_modules[\\/]/,
         },
@@ -58,6 +63,10 @@ module.exports = {
     crossOriginLoading: 'anonymous',
     filename: env !== 'production' ? '[name].js?[hash]' : '[name].[chunkhash].js',
     publicPath: '/',
+  },
+  performance: {
+    maxAssetSize: 500 * 1024, // 500 KiB
+    maxEntrypointSize: 500 * 1024, // 500 KiB
   },
   plugins: [
     ...(env === 'production' ? [
