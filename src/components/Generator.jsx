@@ -8,10 +8,18 @@ import Preview from '../containers/Preview';
 import Result from '../containers/Result';
 import previewPath from '../files/preview.html';
 
+const Main = styled.main`
+  margin: 50px 50px 25px;
+`;
+
 const Container = styled.div`
   box-sizing: border-box;
   display: flex;
-  padding-top: 16px;
+  margin-bottom: 50px;
+`;
+
+const Separator = styled.hr`
+  border-top: 1px solid #333;
 `;
 
 type Props = {
@@ -36,18 +44,23 @@ export default class Generator extends React.Component<Props> {
     const { hasChatStyles } = this.props;
 
     return (
-      <main>
+      <>
         <Helmet>
           <link as="document" href={previewPath} type="text/html" />
         </Helmet>
-        {hasChatStyles && (
-          <Container>
-            <Form />
-            <Preview />
-          </Container>
-        )}
-        <Result />
-      </main>
+        <Main>
+          {hasChatStyles && (
+            <>
+              <Container>
+                <Form />
+                <Preview />
+              </Container>
+              <Separator />
+            </>
+          )}
+          <Result />
+        </Main>
+      </>
     );
   }
 }

@@ -1,30 +1,51 @@
 // @flow
 
-import AppBar from '@material-ui/core/AppBar';
-import amber from '@material-ui/core/colors/amber';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 import { Route, Link, Switch } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import Generator from '../containers/Generator';
 import configureStore from '../store/configureStore';
 import NoMatch from './NoMatch';
 
 const store = configureStore();
 
-const theme = createMuiTheme({
-  palette: {
-    primary: amber,
-  },
-});
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  html {
+    box-sizing: border-box;
+  }
 
-const Title = styled(Typography)`
-  text-decoration: none;
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+  }
+`;
+
+const Header = styled.header`
+  align-items: center;
+  background-color: #ffc107;
+  display: flex;
+  min-height: 50px;
+  padding: 0 50px;
+`;
+
+const Title = styled.h1`
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 const Footer = styled.footer`
@@ -49,16 +70,15 @@ type Props = {
 
 export default ({ title }: Props) => (
   <Provider store={store}>
-    <MuiThemeProvider sheetsManager={new Map()} theme={theme}>
+    <>
       <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`} />
-      <CssBaseline />
-      <AppBar position="static">
-        <Toolbar>
-          <Title color="inherit" component={Link} noWrap to="/" variant="title">
+      <Header>
+        <Title>
+          <Link to="/">
             {title}
-          </Title>
-        </Toolbar>
-      </AppBar>
+          </Link>
+        </Title>
+      </Header>
       <Switch>
         <Route component={Generator} exact path="/" />
         <Route component={NoMatch} />
@@ -79,11 +99,18 @@ export default ({ title }: Props) => (
           </a>
         </p>
         <p>
+          Desined by
+          &#8203;
+          <a href="https://mastodos.com/@7_nana" rel="noopener noreferrer" target="_blank">
+            @7_nana
+          </a>
+        </p>
+        <p>
           <a href="https://github.com/ykzts/chat-styles" rel="noopener noreferrer" target="_blank">
             Source code
           </a>
         </p>
       </Footer>
-    </MuiThemeProvider>
+    </>
   </Provider>
 );
