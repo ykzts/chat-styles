@@ -5,13 +5,9 @@ module.exports = {
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
     ['@babel/proposal-pipeline-operator', { proposal: 'minimal' }],
-    ...(env === 'test' ? [
-      '@babel/transform-modules-commonjs',
-    ] : []),
-    ...(env === 'production' ? [
-      '@babel/transform-react-inline-elements',
-    ] : []),
-  ],
+    env === 'test' && '@babel/transform-modules-commonjs',
+    env === 'production' && '@babel/transform-react-inline-elements',
+  ].filter(Boolean),
   presets: [
     '@babel/flow',
     [
