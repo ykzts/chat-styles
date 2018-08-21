@@ -51,6 +51,7 @@ const Title = styled.h1`
 const Footer = styled.footer`
   background-color: #333;
   color: #fff;
+  font-size: 0.9rem;
   padding: 24px 16px 32px;
 
   p {
