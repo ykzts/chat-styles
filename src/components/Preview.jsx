@@ -69,7 +69,6 @@ const Content = styled.div`
 
 type Props = {
   changePreviewInvert: (boolean) => void,
-  fetchPreviewInvert: () => void,
   invert: boolean,
   styleSheet: string,
 };
@@ -93,10 +92,7 @@ export default class Preview extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    const { fetchPreviewInvert } = this.props;
     const { current: frame } = this.frameRef;
-
-    fetchPreviewInvert();
 
     if (frame) {
       frame.addEventListener('load', this.handleLoad);

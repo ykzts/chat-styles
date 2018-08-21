@@ -24,24 +24,26 @@ const Separator = styled.hr`
 
 type Props = {
   fetchChatStyles: () => void,
-  hasChatStyles: boolean,
+  fetchPreviewInvert: () => void,
+  isLoading: boolean,
 };
 
 export default class Generator extends React.Component<Props> {
   componentDidMount() {
-    const { fetchChatStyles } = this.props;
+    const { fetchChatStyles, fetchPreviewInvert } = this.props;
 
     fetchChatStyles();
+    fetchPreviewInvert();
   }
 
   shouldComponentUpdate(nextProps: Props) {
-    const { hasChatStyles } = this.props;
+    const { isLoading } = this.props;
 
-    return hasChatStyles !== nextProps.hasChatStyles;
+    return isLoading !== nextProps.isLoading;
   }
 
   render() {
-    const { hasChatStyles } = this.props;
+    const { isLoading } = this.props;
 
     return (
       <>
@@ -49,7 +51,7 @@ export default class Generator extends React.Component<Props> {
           <link as="document" href={previewPath} type="text/html" />
         </Helmet>
         <Main>
-          {hasChatStyles && (
+          {isLoading && (
             <>
               <Container>
                 <Form />
