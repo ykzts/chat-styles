@@ -48,7 +48,6 @@ export default class Generator extends React.Component<Props> {
 
   render() {
     const { isLoading } = this.props;
-    console.log(isLoading);
 
     return (
       <>
