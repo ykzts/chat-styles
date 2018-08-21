@@ -16,6 +16,13 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader/useable',
+          'css-loader',
+        ],
+      },
+      {
         test: /\.html$/,
         use: [
           {
@@ -24,12 +31,8 @@ module.exports = {
               name: env !== 'production' ? '[name].[ext]?[hash]' : '[name].[hash].[ext]',
             },
           },
-          {
-            loader: 'extract-loader',
-          },
-          {
-            loader: 'html-loader',
-          },
+          'extract-loader',
+          'html-loader',
         ],
       },
       {

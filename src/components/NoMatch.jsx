@@ -1,12 +1,14 @@
 // @flow
 
-import Typography from '@material-ui/core/Typography';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-const Headline = styled(Typography)`
-  margin: 24px 24px 8px 64px;
+const Title = styled.h2`
+  color: #666;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 24px 24px 32px 64px;
 `;
 
 type Props = {
@@ -35,9 +37,9 @@ export default class NoMatch extends React.Component<Props> {
           </title>
         </Helmet>
         <main>
-          <Headline variant="headline">
+          <Title>
             {title}
-          </Headline>
+          </Title>
         </main>
       </>
     );

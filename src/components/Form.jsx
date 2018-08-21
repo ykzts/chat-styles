@@ -1,30 +1,50 @@
 // @flow
 
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import Grid from '@material-ui/core/Grid';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Switch from '@material-ui/core/Switch';
-import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 import { Field } from 'redux-form';
 import type { FieldProps } from 'redux-form';
 import styled from 'styled-components';
 import { hex2rgb } from '../utils/colors';
 import ColorPicker from './ColorPicker';
+import Icon from './Icon';
+import Switch from './Switch';
+import TextField from './TextField';
 
-const Root = styled(Grid)`
-  padding-top: 24px;
+const Container = styled.section`
+  padding: 0 30px;
+  width: 50%;
+`;
 
-  @media (min-width: 960px) {
-    padding-left: 16px;
+const Section = styled.section`
+  margin-bottom: 50px;
+`;
+
+const Content = styled.div`
+  align-items: center;
+  display: flex;
+  margin-top: 30px;
+`;
+
+const Item = styled.div`
+  margin-left: 30px;
+
+  &:not(:first-child) {
+    margin-left: 40px;
   }
 `;
 
-const Box = styled(Grid)`
-  && {
-    margin-bottom: 32px;
+const Title = styled.h2`
+  display: none;
+`;
+
+const Headline = styled.h3`
+  color: #666;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+
+  svg {
+    margin-right: 0.5rem;
   }
 `;
 
@@ -38,23 +58,10 @@ type Props = {
   showTimestamp: boolean,
 };
 
-type ExtendedFieldProps = {
+type ExtendedFieldProps = FieldProps & {
   disabled?: boolean,
   label?: string,
-} & FieldProps;
-
-const renderSwitch = (fieldProps: ExtendedFieldProps): React.Element<*> => {
-  const { disabled, input, label } = fieldProps;
-
-  return (
-    <FormControlLabel
-      control={(
-        <Switch checked={!!input.value} color="primary" onChange={input.onChange} />
-      )}
-      disabled={disabled}
-      label={label}
-    />
-  );
+  type?: string,
 };
 
 export default class Form extends React.Component<Props> {
@@ -98,35 +105,47 @@ export default class Form extends React.Component<Props> {
     }
   }
 
-  renderColorPicker = (fieldProps: ExtendedFieldProps): React.Element<*> => {
+  renderColorPicker = (fieldProps: ExtendedFieldProps): React.Element<typeof ColorPicker> => {
     const { change } = this.props;
-    const { disabled, input } = fieldProps;
+    const { disabled, input, label } = fieldProps;
 
     return (
       <ColorPicker
         color={input.value || { rgb: hex2rgb('#ffffff') }}
         disabled={disabled}
+        label={label}
         onChange={({ rgb }) => change(input.name, { rgb })}
       />
     );
   }
 
-  renderTextField = (fieldProps: ExtendedFieldProps): React.Element<*> => {
+  // eslint-disable-next-line class-methods-use-this
+  renderSwitch({ disabled, input, label }: ExtendedFieldProps): React.Element<typeof Switch> {
+    return (
+      <Switch
+        checked={!!input.value}
+        disabled={disabled}
+        label={label}
+        onChange={input.onChange}
+      />
+    );
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  renderTextField(fieldProps: ExtendedFieldProps): React.Element<typeof TextField> {
     const {
+      disabled,
       input,
       label,
-      meta,
-      ...custom
+      type,
     } = fieldProps;
 
     return (
       <TextField
-        fullWidth
-        helperText={meta.error}
+        disabled={disabled}
         label={label}
-        error={meta.touched && !!meta.error}
+        type={type}
         {...input}
-        {...custom}
       />
     );
   }
@@ -141,289 +160,237 @@ export default class Form extends React.Component<Props> {
     } = this.props;
 
     return (
-      <Root container direction="column" item sm={6} xs={12}>
-        <Grid container item>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                名前
-              </FormLabel>
+      <Container>
+        <Title>
+          フォーム
+        </Title>
+        <Section>
+          <Headline>
+            <Icon name="account_circle" />
+            アイコン
+          </Headline>
+          <Content>
+            <Item>
               <Field
-                component={renderSwitch}
-                label="表示する"
-                name="showAuthorName"
-              />
-              <Grid alignItems="flex-end" container justify="space-between" spacing={8}>
-                <Grid item xs={8}>
-                  <Field
-                    component={this.renderTextField}
-                    disabled={!showAuthorName}
-                    label="大きさ"
-                    margin="normal"
-                    name="authorNameSize"
-                    props={{
-                      InputProps: {
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            px
-                          </InputAdornment>
-                        ),
-                      },
-                      inputProps: {
-                        max: 50,
-                        min: 8,
-                      },
-                    }}
-                    type="number"
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showAuthorName}
-                    name="authorNameColor"
-                  />
-                </Grid>
-              </Grid>
-              <FormControlLabel
-                control={(
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showAuthorName}
-                    name="ownerAuthorNameColor"
-                  />
-                )}
-                label="オーナー"
-              />
-              <FormControlLabel
-                control={(
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showAuthorName}
-                    name="moderatorAuthorNameColor"
-                  />
-                )}
-                label="モデレーター"
-              />
-              <FormControlLabel
-                control={(
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showAuthorName}
-                    name="memberAuthorNameColor"
-                  />
-                )}
-                label="メンバー"
-              />
-            </FormControl>
-          </Box>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                メッセージ
-              </FormLabel>
-              <Grid alignItems="flex-end" container justify="space-between" spacing={8}>
-                <Grid item xs={8}>
-                  <Field
-                    component={this.renderTextField}
-                    disabled={!showAuthorName}
-                    label="大きさ"
-                    margin="normal"
-                    name="messageSize"
-                    props={{
-                      InputProps: {
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            px
-                          </InputAdornment>
-                        ),
-                      },
-                      inputProps: {
-                        max: 50,
-                        min: 8,
-                      },
-                    }}
-                    type="number"
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showAuthorName}
-                    name="messageColor"
-                  />
-                </Grid>
-              </Grid>
-            </FormControl>
-          </Box>
-        </Grid>
-        <Grid container item justify="flex-start" spacing={0}>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                アウトライン
-              </FormLabel>
-              <Field
-                component={renderSwitch}
-                label="表示する"
-                name="showOutline"
-              />
-              <Grid alignItems="flex-end" container justify="space-between" spacing={8}>
-                <Grid item xs={8}>
-                  <Field
-                    component={this.renderTextField}
-                    disabled={!showOutline}
-                    label="太さ"
-                    margin="normal"
-                    name="outlineSize"
-                    props={{
-                      InputProps: {
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            px
-                          </InputAdornment>
-                        ),
-                      },
-                      inputProps: {
-                        max: 5,
-                        min: 1,
-                      },
-                    }}
-                    type="number"
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showOutline}
-                    label="色"
-                    name="outlineColor"
-                  />
-                </Grid>
-              </Grid>
-            </FormControl>
-          </Box>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                アイコン
-              </FormLabel>
-              <Field
-                component={renderSwitch}
+                component={this.renderSwitch}
                 label="表示する"
                 name="showAvatar"
               />
+            </Item>
+            <Item>
               <Field
                 component={this.renderTextField}
                 disabled={!showAvatar}
                 label="大きさ"
-                margin="normal"
                 name="avatarSize"
-                props={{
-                  InputProps: {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        px
-                      </InputAdornment>
-                    ),
-                  },
-                  inputProps: {
-                    max: 256,
-                    min: 1,
-                  },
-                }}
                 type="number"
               />
-            </FormControl>
-          </Box>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                バッジ
-              </FormLabel>
+            </Item>
+          </Content>
+        </Section>
+        <Section>
+          <Headline>
+            <Icon name="watch_later" />
+            タイムスタンプ
+          </Headline>
+          <Content>
+            <Item>
               <Field
-                component={renderSwitch}
+                component={this.renderSwitch}
+                label="表示する"
+                name="showTimestamp"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderTextField}
+                disabled={!showTimestamp}
+                label="大きさ"
+                name="timestampSize"
+                type="number"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderColorPicker}
+                disabled={!showTimestamp}
+                label="色"
+                name="timestampColor"
+              />
+            </Item>
+          </Content>
+        </Section>
+        <Section>
+          <Headline>
+            <Icon name="person" />
+            名前
+          </Headline>
+          <Content>
+            <Item>
+              <Field
+                component={this.renderSwitch}
+                label="表示する"
+                name="showAuthorName"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderTextField}
+                disabled={!showAuthorName}
+                label="大きさ"
+                name="authorNameSize"
+                type="number"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderColorPicker}
+                disabled={!showAuthorName}
+                label="色"
+                name="authorNameColor"
+              />
+            </Item>
+          </Content>
+          <Content>
+            <Item>
+              <Field
+                component={this.renderColorPicker}
+                disabled={!showAuthorName}
+                label="オーナー"
+                name="ownerAuthorNameColor"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderColorPicker}
+                disabled={!showAuthorName}
+                label="モデレーター"
+                name="moderatorAuthorNameColor"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderColorPicker}
+                disabled={!showAuthorName}
+                label="メンバー"
+                name="memberAuthorNameColor"
+              />
+            </Item>
+          </Content>
+        </Section>
+        <Section>
+          <Headline>
+            <Icon name="star_border" />
+            バッジ
+          </Headline>
+          <Content>
+            <Item>
+              <Field
+                component={this.renderSwitch}
                 label="表示する"
                 name="showBadge"
               />
+            </Item>
+            <Item>
               <Field
-                component={renderSwitch}
+                component={this.renderSwitch}
                 disabled={!showBadge}
                 label="モデレーター"
                 name="showModeratorBadge"
               />
+            </Item>
+            <Item>
               <Field
-                component={renderSwitch}
+                component={this.renderSwitch}
                 disabled={!showBadge}
                 label="メンバー"
                 name="showMemberBadge"
               />
-            </FormControl>
-          </Box>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                タイムスタンプ
-              </FormLabel>
+            </Item>
+          </Content>
+        </Section>
+        <Section>
+          <Headline>
+            <Icon name="chat" />
+            メッセージ
+          </Headline>
+          <Content>
+            <Item>
               <Field
-                component={renderSwitch}
-                label="表示する"
-                name="showTimestamp"
+                component={this.renderTextField}
+                disabled={!showAuthorName}
+                label="大きさ"
+                name="messageSize"
+                type="number"
               />
-              <Grid alignItems="flex-end" container justify="space-between" spacing={8}>
-                <Grid item xs={8}>
-                  <Field
-                    component={this.renderTextField}
-                    disabled={!showTimestamp}
-                    label="大きさ"
-                    margin="normal"
-                    name="timestampSize"
-                    props={{
-                      InputProps: {
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            px
-                          </InputAdornment>
-                        ),
-                      },
-                      inputProps: {
-                        max: 50,
-                        min: 8,
-                      },
-                    }}
-                    type="number"
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <Field
-                    component={this.renderColorPicker}
-                    disabled={!showTimestamp}
-                    label="色"
-                    name="timestampColor"
-                  />
-                </Grid>
-              </Grid>
-            </FormControl>
-          </Box>
-          <Box item sm={4} xs={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                その他
-              </FormLabel>
+            </Item>
+            <Item>
               <Field
-                component={renderSwitch}
+                component={this.renderColorPicker}
+                disabled={!showAuthorName}
+                label="色"
+                name="messageColor"
+              />
+            </Item>
+          </Content>
+        </Section>
+        <Section>
+          <Headline>
+            <Icon name="adjust" />
+            アウトライン
+          </Headline>
+          <Content>
+            <Item>
+              <Field
+                component={this.renderSwitch}
+                label="表示する"
+                name="showOutline"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderTextField}
+                disabled={!showOutline}
+                label="太さ"
+                name="outlineSize"
+                type="number"
+              />
+            </Item>
+            <Item>
+              <Field
+                component={this.renderColorPicker}
+                disabled={!showOutline}
+                label="色"
+                name="outlineColor"
+              />
+            </Item>
+          </Content>
+        </Section>
+        <Section>
+          <Headline>
+            <Icon name="settings" />
+            その他
+          </Headline>
+          <Content>
+            <Item>
+              <Field
+                component={this.renderSwitch}
                 label="スーパーチャットの背景を表示する"
                 name="showSuperChatBackground"
               />
+            </Item>
+          </Content>
+          <Content>
+            <Item>
               <Field
-                component={renderSwitch}
+                component={this.renderSwitch}
                 label="メンバー登録アナウンスの背景を表示する"
                 name="showNewMemberBackground"
               />
-            </FormControl>
-          </Box>
-        </Grid>
-      </Root>
+            </Item>
+          </Content>
+        </Section>
+      </Container>
     );
   }
 }

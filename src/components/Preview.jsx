@@ -1,36 +1,50 @@
 // @flow
 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Switch from '@material-ui/core/Switch';
-import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import * as React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import preview from '../files/preview.html';
+import previewPath from '../files/preview.html';
+import Icon from './Icon';
+import Switch from './Switch';
 
-const Root = styled(Grid)`
+const Section = styled.section`
   align-self: flex-start;
+  padding: 0 30px;
   position: sticky;
   top: 0;
+  width: 50%;
 `;
 
-const Title = styled(Typography)`
-  font-size: 1.5rem;
+const Header = styled.header`
+  display: flex;
 `;
 
-const Content = styled(Paper)`
+const Title = styled.h2`
+  color: #666;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 50px 0 0;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+`;
+
+const Content = styled.div`
   background-image:
     linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),
     linear-gradient(45deg, #eee 25%, #fff 25%, #fff 75%, #eee 75%, #eee 100%);
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
-  margin: 16px;
+  border-radius: 5px;
+  box-shadow:
+    0 1px 5px 0 rgba(0, 0, 0, 0.2),
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  margin: 30px 0 0 0;
   minHeight: 500px;
-  padding: 8px;
+  padding: 4px;
 
   &.invert {
     background-image:
@@ -39,7 +53,7 @@ const Content = styled(Paper)`
   }
 
   @media (min-width: 960px) {
-    padding: 24px;
+    padding: 18px;
   }
 
   iframe {
@@ -114,10 +128,11 @@ export default class Preview extends React.Component<Props, State> {
     }
   }
 
-  handleChangeInvert = (event: SyntheticEvent<*>, checked: boolean) => {
+  handleChangeInvert = (event: SyntheticEvent<HTMLInputElement>) => {
     const { changePreviewInvert } = this.props;
+    const target: HTMLInputElement = (event.target: any);
 
-    changePreviewInvert(checked);
+    changePreviewInvert(target.checked);
   }
 
   handleLoad = () => {
@@ -164,33 +179,34 @@ export default class Preview extends React.Component<Props, State> {
     const { frameHeight } = this.state;
 
     return (
-      <Root item sm={6} xs={12}>
+      <>
         <Helmet>
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="preload" />
           <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="preload" />
         </Helmet>
-        <Title variant="subheading">
-          プレビュー
-        </Title>
-        <FormGroup>
-          <FormControlLabel
-            control={(
-              <Switch checked={invert} onChange={this.handleChangeInvert} color="primary" />
-            )}
-            label="背景を暗くする"
-            labelPlacement="start"
-          />
-        </FormGroup>
-        <Content className={classNames({ invert })}>
-          <iframe
-            className={classNames({ active: frameHeight > 0 })}
-            ref={this.frameRef}
-            src={preview}
-            style={{ height: `${frameHeight}px` }}
-            title={`${preview} on frame`}
-          />
-        </Content>
-      </Root>
+        <Section>
+          <Header>
+            <Title>
+              <Icon name="visibility" />
+              プレビュー
+            </Title>
+            <Switch
+              checked={invert}
+              label="背景を暗くする"
+              onChange={this.handleChangeInvert}
+            />
+          </Header>
+          <Content className={classNames({ invert })}>
+            <iframe
+              className={classNames({ active: frameHeight > 0 })}
+              ref={this.frameRef}
+              src={previewPath}
+              style={{ height: `${frameHeight}px` }}
+              title={`${previewPath} on frame`}
+            />
+          </Content>
+        </Section>
+      </>
     );
   }
 }
