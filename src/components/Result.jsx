@@ -9,6 +9,11 @@ const Section = styled.section`
   margin-top: 50px;
 `;
 
+const Header = styled.header`
+  align-items: center;
+  display: flex;
+`;
+
 const Title = styled.h2`
   color: #666;
   font-size: 1rem;
@@ -16,6 +21,26 @@ const Title = styled.h2`
 
   svg {
     margin-right: 0.5rem;
+  }
+`;
+
+const Button = styled.button`
+  background-color: #19ab27;
+  border: 0;
+  border-radius: 16px;
+  color: #fff;
+  display: block;
+  font-family: inherit;
+  font-size: 0.9rem;
+  margin: 0 0 0 50px;
+  padding: 4px 14px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  svg {
+    margin-right: 0.3rem;
   }
 `;
 
@@ -68,22 +93,41 @@ const Code = styled.code`
   }
 `;
 
+const TextArea = styled.textarea`
+  display: block;
+  left: -1000px;
+  position: absolute;
+  top: 0;
+`;
+
 type Props = {
   styleSheet: string,
 };
 
 export default class Result extends React.Component<Props> {
+  preRef = React.createRef();
+
+  textAreaRef = React.createRef();
+
   shouldComponentUpdate(nextProps: Props) {
     const { styleSheet } = this.props;
 
     return styleSheet !== nextProps.styleSheet;
   }
 
-  handleClick = (event: SyntheticEvent<*>) => {
-    const { currentTarget } = event;
-    const selection = window.getSelection();
+  handleCopy = () => {
+    const { current: preElement } = this.preRef;
+    const { current: textAreaElement } = this.textAreaRef;
 
-    selection.selectAllChildren(currentTarget);
+    if (textAreaElement) {
+      textAreaElement.select();
+      document.execCommand('copy');
+    }
+
+    if (preElement) {
+      const selection = window.getSelection();
+      selection.selectAllChildren(preElement);
+    }
   }
 
   render() {
@@ -91,14 +135,21 @@ export default class Result extends React.Component<Props> {
 
     return (
       <Section>
-        <Title>
-          <Icon name="code" />
-          CSS
-        </Title>
-        <Pre role="presentation" onClick={this.handleClick}>
+        <Header>
+          <Title>
+            <Icon name="code" />
+            CSS
+          </Title>
+          <Button onClick={this.handleCopy} type="button">
+            <Icon height={16} name="file_copy" width={16} />
+            コピーする
+          </Button>
+        </Header>
+        <Pre innerRef={this.preRef} role="presentation">
           {/* eslint-disable-next-line react/no-danger */}
           <Code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
         </Pre>
+        <TextArea aria-hidden="true" innerRef={this.textAreaRef} readOnly value={styleSheet} />
       </Section>
     );
   }
