@@ -56,7 +56,7 @@ export default class Switch extends React.Component<Props> {
             {label}
           </span>
         )}
-        <Toggle defaultChecked={checked} {...props} />
+        <Toggle checked={checked} {...props} />
       </Root>
     );
   }

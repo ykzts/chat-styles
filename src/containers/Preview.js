@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changePreviewInvert, fetchPreviewInvert } from '../actions/preview';
+import { changePreviewInvert } from '../actions/preview';
 import Preview from '../components/Preview';
 
 const mapStateToProps = state => ({
@@ -9,7 +9,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changePreviewInvert: invert => dispatch(changePreviewInvert(invert)),
-  fetchPreviewInvert: () => dispatch(fetchPreviewInvert()),
 });
 
 export default Preview
