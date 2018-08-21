@@ -4,8 +4,8 @@ import { fetchPreviewInvert } from '../actions/preview';
 import Generator from '../components/Generator';
 
 const mapStateToProps = state => ({
-  isLoading: !state.chatStyles.get('values').isEmpty()
-    && state.preview.get('invert'),
+  isLoading: state.preview.get('invert') === null
+    || state.chatStyles.get('values').isEmpty(),
 });
 
 const mapDispatchToProps = dispatch => ({

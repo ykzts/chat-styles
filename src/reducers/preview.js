@@ -5,7 +5,7 @@ import {
 } from '../actions/preview';
 
 const initialState = new Map({
-  invert: false,
+  invert: null,
 });
 
 export default (state = initialState, action) => {
