@@ -50,14 +50,15 @@ export const fetchPreviewInvertSuccess = (invert: boolean) => ({
 });
 
 export const fetchPreviewInvert = () => async (dispatch: Dispatch) => {
-  const keys = await localForage.keys();
-  if (!keys.includes('preview.invert')) {
-    return;
-  }
-
   dispatch(fetchPreviewInvertRequest());
 
   try {
+    const keys = await localForage.keys();
+    if (!keys.includes('preview.invert')) {
+      dispatch(fetchPreviewInvertSuccess(false));
+      return;
+    }
+
     const invert = await localForage.getItem('preview.invert');
     dispatch(fetchPreviewInvertSuccess(invert));
   } catch (error) {
