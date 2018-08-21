@@ -102,8 +102,8 @@ export default ({ title }: Props) => (
         <p>
           Desined by
           &#8203;
-          <a href="https://mastodos.com/@7_nana" rel="noopener noreferrer" target="_blank">
-            @7_nana
+          <a href="https://7-nana.bio/" rel="noopener noreferrer" target="_blank">
+            7_nana
           </a>
         </p>
         <p>
