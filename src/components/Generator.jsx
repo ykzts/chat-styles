@@ -22,6 +22,10 @@ const Separator = styled.hr`
   border-top: 1px solid #333;
 `;
 
+const Placeholder = styled.div`
+  height: 50vh;
+`;
+
 type Props = {
   fetchChatStyles: () => void,
   fetchPreviewInvert: () => void,
@@ -44,6 +48,7 @@ export default class Generator extends React.Component<Props> {
 
   render() {
     const { isLoading } = this.props;
+    console.log(isLoading);
 
     return (
       <>
@@ -51,16 +56,18 @@ export default class Generator extends React.Component<Props> {
           <link as="document" href={previewPath} type="text/html" />
         </Helmet>
         <Main>
-          {isLoading && (
+          {!isLoading ? (
             <>
               <Container>
                 <Form />
                 <Preview />
               </Container>
               <Separator />
+              <Result />
             </>
+          ) : (
+            <Placeholder role="presentation" />
           )}
-          <Result />
         </Main>
       </>
     );
