@@ -1,6 +1,6 @@
 # Chat Styles
 
-**WORK IN PROGRESS**
+Chat Styles is a generator of style sheet for the YouTube Live Chat.
 
 ## License
 
