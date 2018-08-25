@@ -63,6 +63,10 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    new HtmlPlugin({
+      inject: false,
+      template: path.resolve(__dirname, 'src', 'templates'),
+    }),
     ...(env === 'production' ? [
       new CopyPlugin([
         path.resolve(__dirname, 'public', '_headers'),
@@ -70,20 +74,16 @@ module.exports = {
       new SubresourceIntegrityPlugin({
         hashFuncNames: ['sha512'],
       }),
+      new WorkboxPlugin.GenerateSW({
+        clientsClaim: true,
+        exclude: [
+          /\.map$/,
+          /^_headers$/,
+        ],
+        skipWaiting: true,
+        swDest: 'sw.js',
+      }),
     ] : []),
-    new HtmlPlugin({
-      inject: false,
-      template: path.resolve(__dirname, 'src', 'templates'),
-    }),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      exclude: [
-        /\.map$/,
-        /^_headers$/,
-      ],
-      skipWaiting: true,
-      swDest: 'sw.js',
-    }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
