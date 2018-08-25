@@ -207,7 +207,6 @@ export default class Preview extends React.Component<Props, State> {
             <iframe
               className={classNames({ active: frameHeight > 0 })}
               ref={this.frameRef}
-              sandbox="allow-same-origin allow-scripts"
               src={previewPath}
               style={{ height: `${frameHeight}px` }}
               title={`${previewPath} on frame`}
