@@ -9,13 +9,21 @@ import Result from '../containers/Result';
 import previewPath from '../files/preview.html';
 
 const Main = styled.main`
-  margin: 50px 50px 25px;
+  margin: 50px 0 25px;
+
+  @media (min-width: 1280px) {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 `;
 
 const Container = styled.div`
-  box-sizing: border-box;
   display: flex;
-  margin-bottom: 50px;
+  flex-direction: column;
+
+  @media (min-width: 960px) {
+    flex-direction: row;
+  }
 `;
 
 const Separator = styled.hr`
@@ -56,13 +64,13 @@ export default class Generator extends React.Component<Props> {
         </Helmet>
         <Main>
           {!isLoading ? (
-            <>
-              <Container>
-                <Form />
-                <Preview />
-              </Container>
-              <Separator />
-              <Result />
+             <>
+               <Container>
+                 <Form />
+                 <Preview />
+               </Container>
+               <Separator />
+               <Result />
             </>
           ) : (
             <Placeholder role="presentation" />

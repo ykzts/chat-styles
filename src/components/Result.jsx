@@ -7,6 +7,12 @@ import Icon from './Icon';
 
 const Section = styled.section`
   margin-top: 50px;
+  padding: 0 30px;
+
+  @media (min-width: 960px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 `;
 
 const Header = styled.header`

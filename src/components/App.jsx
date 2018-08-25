@@ -33,7 +33,12 @@ const Header = styled.header`
   background-color: #ffc107;
   display: flex;
   min-height: 50px;
-  padding: 0 50px;
+  padding: 0 30px;
+
+  @media (min-width: 1280px) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 `;
 
 const Title = styled.h1`
