@@ -12,7 +12,10 @@ import TextField from './TextField';
 
 const Container = styled.section`
   padding: 0 30px;
-  width: 50%;
+
+  @media (min-width: 960px) {
+    width: 50%;
+  }
 `;
 
 const Section = styled.section`
@@ -20,16 +23,23 @@ const Section = styled.section`
 `;
 
 const Content = styled.div`
-  align-items: center;
   display: flex;
-  margin-top: 30px;
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    align-items: center;
+    flex-direction: row;
+  }
 `;
 
 const Item = styled.div`
   margin-left: 30px;
+  margin-top: 30px;
 
-  &:not(:first-child) {
-    margin-left: 40px;
+  @media (min-width: 600px) {
+    &:not(:first-child) {
+      margin-left: 40px;
+    }
   }
 `;
 

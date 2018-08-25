@@ -9,15 +9,25 @@ import Icon from './Icon';
 import Switch from './Switch';
 
 const Section = styled.section`
-  align-self: flex-start;
+  margin-bottom: 50px;
   padding: 0 30px;
   position: sticky;
   top: 0;
-  width: 50%;
+
+  @media (min-width: 960px) {
+    width: 50%;
+  }
 `;
 
 const Header = styled.header`
   display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+
+  @media (min-width: 960px) {
+    flex-direction: row;
+    margin-top: 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -52,12 +62,13 @@ const Content = styled.div`
       linear-gradient(45deg, #333 25%, #444 25%, #444 75%, #333 75%, #333 100%);
   }
 
-  @media (min-width: 960px) {
+  @media (min-width: 600px) {
     padding: 18px;
   }
 
   iframe {
     border: 0;
+    display: block;
     height: 0;
     width: 100%;
 
