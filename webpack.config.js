@@ -80,6 +80,7 @@ module.exports = {
           /\.map$/,
           /^_headers$/,
         ],
+        importWorkboxFrom: 'local',
         skipWaiting: true,
         swDest: 'sw.js',
       }),
