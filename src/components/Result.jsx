@@ -126,7 +126,10 @@ export default class Result extends React.Component<Props> {
     const { current: textAreaElement } = this.textAreaRef;
 
     if (textAreaElement) {
-      textAreaElement.select();
+      const { styleSheet } = this.props;
+
+      textAreaElement.selectionStart = 0;
+      textAreaElement.selectionEnd = styleSheet.length;
       document.execCommand('copy');
     }
 
