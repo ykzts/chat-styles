@@ -1,4 +1,5 @@
 import * as React from 'react';
+import logo from '../files/logo.png';
 
 type Script = {
   integrity?: string,
@@ -18,6 +19,8 @@ export default ({ scripts, title }: Props) => (
       <title>
         {title}
       </title>
+      <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+      <link href={logo} rel="icon" type="image/png" />
     </head>
     <body>
       <svg style={{ display: 'none' }}>

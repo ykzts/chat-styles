@@ -21,3 +21,6 @@
 
 /images/*.png
   Cache-Control: immutable, max-age=31536000, public
+
+/favicon.ico
+  Cache-Control: max-age=600, public, s-maxage=60

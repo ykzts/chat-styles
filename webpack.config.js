@@ -70,6 +70,7 @@ module.exports = {
     ...(env === 'production' ? [
       new CopyPlugin([
         path.resolve(__dirname, 'public', '_headers'),
+        path.resolve(__dirname, 'public', 'favicon.ico'),
       ]),
       new SubresourceIntegrityPlugin({
         hashFuncNames: ['sha512'],
