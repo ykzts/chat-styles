@@ -20,6 +20,7 @@ const Container = styled.div`
   flex-direction: column;
 
   @media (min-width: 960px) {
+    align-items: flex-start;
     flex-direction: row;
   }
 `;
