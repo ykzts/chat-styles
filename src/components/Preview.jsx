@@ -10,10 +10,10 @@ import Switch from './Switch';
 const Section = styled.section`
   margin-bottom: 50px;
   padding: 0 30px;
-  position: sticky;
-  top: 0;
 
   @media (min-width: 960px) {
+    position: sticky;
+    top: 0;
     width: 50%;
   }
 `;
