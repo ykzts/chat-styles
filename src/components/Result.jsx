@@ -99,21 +99,12 @@ const Code = styled.code`
   }
 `;
 
-const TextArea = styled.textarea`
-  display: block;
-  left: -1000px;
-  position: absolute;
-  top: 0;
-`;
-
 type Props = {
   styleSheet: string,
 };
 
 export default class Result extends React.Component<Props> {
   preRef = React.createRef();
-
-  textAreaRef = React.createRef();
 
   shouldComponentUpdate(nextProps: Props) {
     const { styleSheet } = this.props;
@@ -123,16 +114,12 @@ export default class Result extends React.Component<Props> {
 
   handleCopy = () => {
     const { current: preElement } = this.preRef;
-    const { current: textAreaElement } = this.textAreaRef;
-
-    if (textAreaElement) {
-      textAreaElement.select();
-      document.execCommand('copy');
-    }
 
     if (preElement) {
       const selection = window.getSelection();
+
       selection.selectAllChildren(preElement);
+      document.execCommand('copy');
     }
   }
 
@@ -155,7 +142,6 @@ export default class Result extends React.Component<Props> {
           {/* eslint-disable-next-line react/no-danger */}
           <Code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
         </Pre>
-        <TextArea aria-hidden="true" innerRef={this.textAreaRef} readOnly value={styleSheet} />
       </Section>
     );
   }
