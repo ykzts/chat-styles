@@ -2,7 +2,6 @@
 
 import classNames from 'classnames';
 import * as React from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import previewPath from '../files/preview.html';
 import Icon from './Icon';
@@ -186,34 +185,28 @@ export default class Preview extends React.Component<Props, State> {
     const { frameHeight } = this.state;
 
     return (
-      <>
-        <Helmet>
-          <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i" rel="preload" />
-          <link as="style" crossOrigin="anonymous" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="preload" />
-        </Helmet>
-        <Section>
-          <Header>
-            <Title>
-              <Icon name="visibility" />
-              プレビュー
-            </Title>
-            <Switch
-              checked={invert}
-              label="背景を暗くする"
-              onChange={this.handleChangeInvert}
-            />
-          </Header>
-          <Content className={classNames({ invert })}>
-            <iframe
-              className={classNames({ active: frameHeight > 0 })}
-              ref={this.frameRef}
-              src={previewPath}
-              style={{ height: `${frameHeight}px` }}
-              title={`${previewPath} on frame`}
-            />
-          </Content>
-        </Section>
-      </>
+      <Section>
+        <Header>
+          <Title>
+            <Icon name="visibility" />
+            プレビュー
+          </Title>
+          <Switch
+            checked={invert}
+            label="背景を暗くする"
+            onChange={this.handleChangeInvert}
+          />
+        </Header>
+        <Content className={classNames({ invert })}>
+          <iframe
+            className={classNames({ active: frameHeight > 0 })}
+            ref={this.frameRef}
+            src={previewPath}
+            style={{ height: `${frameHeight}px` }}
+            title={`${previewPath} on frame`}
+          />
+        </Content>
+      </Section>
     );
   }
 }
