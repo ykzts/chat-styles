@@ -81,6 +81,17 @@ module.exports = {
           /^_headers$/,
         ],
         importWorkboxFrom: 'local',
+        runtimeCaching: [
+          {
+            handler: 'staleWhileRevalidate',
+            options: {
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+            urlPattern: /^https:\/\/(?:fonts\.googleapis\.com|fonts\.gstatic\.com)\//i,
+          },
+        ],
         skipWaiting: true,
         swDest: 'sw.js',
       }),
