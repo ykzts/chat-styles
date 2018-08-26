@@ -21,8 +21,10 @@ export default ({ scripts, title }: Props) => (
       </title>
       <link href="/manifest.json" rel="manifest" type="application/manifest+json" />
       <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+      <link href="/favicon-192x192.png" rel="apple-touch-icon" type="image/png" />
       <link href={logo} rel="icon" type="image/png" />
       <meta content="#ffc107" name="theme-color" />
+      <meta content="yes" name="apple-mobile-web-app-capable" />
     </head>
     <body>
       <svg style={{ display: 'none' }}>
