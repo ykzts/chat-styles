@@ -1,12 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import Form from '../containers/Form';
 import Preview from '../containers/Preview';
 import Result from '../containers/Result';
-import previewPath from '../files/preview.html';
 
 const Main = styled.main`
   margin: 50px 0 25px;
@@ -58,25 +56,20 @@ export default class Generator extends React.Component<Props> {
     const { isLoading } = this.props;
 
     return (
-      <>
-        <Helmet>
-          <link as="document" href={previewPath} type="text/html" />
-        </Helmet>
-        <Main>
-          {!isLoading ? (
-             <>
-               <Container>
-                 <Form />
-                 <Preview />
-               </Container>
-               <Separator />
-               <Result />
-            </>
-          ) : (
-            <Placeholder role="presentation" />
-          )}
-        </Main>
-      </>
+      <Main>
+        {!isLoading ? (
+           <>
+             <Container>
+               <Form />
+               <Preview />
+             </Container>
+             <Separator />
+             <Result />
+          </>
+        ) : (
+          <Placeholder role="presentation" />
+        )}
+      </Main>
     );
   }
 }
