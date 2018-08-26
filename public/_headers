@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; default-src 'none'; font-src https://fonts.gstatic.com; frame-src 'self'; img-src 'self'; sandbox allow-same-origin allow-scripts; script-src 'self'; style-src 'unsafe-inline' https://fonts.googleapis.com; worker-src 'self'
+  Content-Security-Policy: connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; default-src 'none'; font-src https://fonts.gstatic.com; frame-src 'self'; img-src 'self'; manifest-src 'self'; sandbox allow-same-origin allow-scripts; script-src 'self'; style-src 'unsafe-inline' https://fonts.googleapis.com; worker-src 'self'
   Referrer-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
@@ -8,6 +8,10 @@
 
 /index.html
   Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
+
+/manifest.json
+  Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
+  Content-Type: application/manifest+json
 
 /preview.*.html
   Cache-Control: immutable, max-age=31536000, public
@@ -21,6 +25,9 @@
 
 /images/*.png
   Cache-Control: immutable, max-age=31536000, public
+
+/favicon-*.png
+  Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
 
 /favicon.ico
   Cache-Control: max-age=600, public, s-maxage=60

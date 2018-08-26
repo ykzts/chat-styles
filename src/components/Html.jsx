@@ -19,8 +19,10 @@ export default ({ scripts, title }: Props) => (
       <title>
         {title}
       </title>
+      <link href="/manifest.json" rel="manifest" type="application/manifest+json" />
       <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
       <link href={logo} rel="icon" type="image/png" />
+      <meta content="#ffc107" name="theme-color" />
     </head>
     <body>
       <svg style={{ display: 'none' }}>
