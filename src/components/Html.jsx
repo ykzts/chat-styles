@@ -1,6 +1,8 @@
 import * as React from 'react';
 import logo from '../files/logo.png';
 
+const description = 'Chat StylesはYouTube Liveのチャットの見た目を変更するCSSを生成するためのツールです。OBS StudioのブラウザソースのカスタムCSSとして使われることを前提としています。';
+
 type Script = {
   integrity?: string,
   src: string,
@@ -13,9 +15,11 @@ type Props = {
 
 export default ({ scripts, title }: Props) => (
   <html lang="ja">
-    <head>
+    <head prefix="og: http://ogp.me/ns#">
       <meta charSet="UTF-8" />
       <meta content="initial-scale=1,minimum-scale=1,width=device-width" name="viewport" />
+      <meta content="#ffc107" name="theme-color" />
+      <meta content="yes" name="apple-mobile-web-app-capable" />
       <title>
         {title}
       </title>
@@ -23,8 +27,16 @@ export default ({ scripts, title }: Props) => (
       <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
       <link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" />
       <link href={logo} rel="icon" type="image/png" />
-      <meta content="#ffc107" name="theme-color" />
-      <meta content="yes" name="apple-mobile-web-app-capable" />
+      <meta content={description} name="description" />
+      <meta content={logo} property="og:image" />
+      <meta content="192" property="og:image:height" />
+      <meta content="192" property="og:image:width" />
+      <meta content={title} property="og:title" />
+      <meta content="website" property="og:type" />
+      <meta content="summary" name="twitter:card" />
+      <meta content={description} name="twitter:description" />
+      <meta content={logo} name="twitter:image" />
+      <meta content={title} name="twitter:title" />
     </head>
     <body>
       <svg style={{ display: 'none' }}>
