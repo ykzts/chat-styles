@@ -80,6 +80,7 @@ module.exports = {
           168,
           192,
         ].map(size => path.resolve(__dirname, 'public', `favicon-${size}x${size}.png`)),
+        path.resolve(__dirname, 'public', 'apple-touch-icon.png'),
       ]),
       new SubresourceIntegrityPlugin({
         hashFuncNames: ['sha512'],
