@@ -105,7 +105,7 @@ export default ({ title }: Props) => (
           </a>
         </p>
         <p>
-          Desined by
+          Designed by
           &#8203;
           <a href="https://7-nana.bio/" rel="noopener noreferrer" target="_blank">
             7_nana
