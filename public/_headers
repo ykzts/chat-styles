@@ -27,7 +27,10 @@
   Cache-Control: immutable, max-age=31536000, public
 
 /favicon-*.png
-  Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
+  Cache-Control: max-age=600, public, s-maxage=60
 
 /favicon.ico
+  Cache-Control: max-age=600, public, s-maxage=60
+
+/apple-touch-icon.png
   Cache-Control: max-age=600, public, s-maxage=60
