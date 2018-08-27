@@ -28,14 +28,14 @@ export default ({ scripts, title }: Props) => (
       <link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png" />
       <link href={logo} rel="icon" type="image/png" />
       <meta content={description} name="description" />
-      <meta content={logo} property="og:image" />
+      <meta content={`${process.env.BASE_URL}${logo}`} property="og:image" />
       <meta content="192" property="og:image:height" />
       <meta content="192" property="og:image:width" />
       <meta content={title} property="og:title" />
       <meta content="website" property="og:type" />
       <meta content="summary" name="twitter:card" />
       <meta content={description} name="twitter:description" />
-      <meta content={logo} name="twitter:image" />
+      <meta content={`${process.env.BASE_URL}${logo}`} name="twitter:image" />
       <meta content={title} name="twitter:title" />
     </head>
     <body>

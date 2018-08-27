@@ -1,6 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { EnvironmentPlugin } = require('webpack');
 const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
@@ -63,6 +64,10 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    new EnvironmentPlugin({
+      BASE_URL: process.env.URL || 'https://example.com',
+      NODE_ENV: env,
+    }),
     new HtmlPlugin({
       inject: false,
       template: path.resolve(__dirname, 'src', 'templates'),
