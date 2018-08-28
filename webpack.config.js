@@ -95,6 +95,8 @@ module.exports = {
         exclude: [
           /\.map$/,
           /^_headers$/,
+          /^favicon-\d+x\d+\.png$/,
+          /^apple-touch-icon\.png$/,
         ],
         importWorkboxFrom: 'local',
         runtimeCaching: [
