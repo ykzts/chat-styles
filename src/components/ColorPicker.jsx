@@ -1,8 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { SketchPicker } from 'react-color';
-import type { ColorResult } from 'react-color';
+import {
+  type ColorResult,
+  SketchPicker,
+} from 'react-color';
 import styled from 'styled-components';
 import { css as bg } from '../utils/colors';
 

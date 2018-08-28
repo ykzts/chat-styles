@@ -1,8 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { Field } from 'redux-form';
-import type { FieldProps } from 'redux-form';
+import {
+  type FieldProps,
+  Field,
+} from 'redux-form';
 import styled from 'styled-components';
 import { hex2rgb } from '../utils/colors';
 import ColorPicker from './ColorPicker';
