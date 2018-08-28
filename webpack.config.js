@@ -5,6 +5,8 @@ const { EnvironmentPlugin } = require('webpack');
 const SubresourceIntegrityPlugin = require('webpack-subresource-integrity');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
+const FAVICON_SIZES = [48, 72, 96, 144, 168, 192];
+
 const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -77,14 +79,7 @@ module.exports = {
         path.resolve(__dirname, 'public', '_headers'),
         path.resolve(__dirname, 'public', 'manifest.json'),
         path.resolve(__dirname, 'public', 'favicon.ico'),
-        ...[
-          48,
-          72,
-          96,
-          144,
-          168,
-          192,
-        ].map(size => path.resolve(__dirname, 'public', `favicon-${size}x${size}.png`)),
+        ...FAVICON_SIZES.map(size => path.resolve(__dirname, 'public', `favicon-${size}x${size}.png`)),
         path.resolve(__dirname, 'public', 'apple-touch-icon.png'),
       ]),
       new SubresourceIntegrityPlugin({
