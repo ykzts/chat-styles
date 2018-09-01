@@ -1,3 +1,6 @@
+// @flow
+
+import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { saveChatStyles } from '../actions/chatStyles';
@@ -16,10 +19,8 @@ const mapStateToProps = state => ({
   ),
 });
 
-const mapDispatchToProps = dispatch => ({
-  saveChatStyles: () => dispatch(saveChatStyles()),
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  saveChatStyles: (): void => dispatch(saveChatStyles()),
 });
 
-export default Form
-  |> reduxForm({ form: 'chatStylesForm' })
-  |> connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'chatStylesForm' })(Form));
