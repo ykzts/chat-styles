@@ -1,3 +1,6 @@
+// @flow
+
+import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { fetchChatStyles } from '../actions/chatStyles';
 import { fetchPreviewInvert } from '../actions/preview';
@@ -8,9 +11,9 @@ const mapStateToProps = state => ({
     || state.chatStyles.get('values').isEmpty(),
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchChatStyles: () => dispatch(fetchChatStyles()),
-  fetchPreviewInvert: () => dispatch(fetchPreviewInvert()),
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  fetchChatStyles: (): void => dispatch(fetchChatStyles()),
+  fetchPreviewInvert: (): void => dispatch(fetchPreviewInvert()),
 });
 
-export default Generator |> connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(Generator);
