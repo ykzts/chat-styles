@@ -102,6 +102,15 @@ module.exports = {
                 statuses: [0, 200],
               },
             },
+            urlPattern: /^\/(?:favicon-\d+x\d+|apple-touch-icon)\.png$/,
+          },
+          {
+            handler: 'staleWhileRevalidate',
+            options: {
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
             urlPattern: /^https:\/\/(?:fonts\.googleapis\.com|fonts\.gstatic\.com)\//i,
           },
         ],
