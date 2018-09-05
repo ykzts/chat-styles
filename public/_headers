@@ -15,7 +15,7 @@
 
 /preview.*.html
   Cache-Control: immutable, max-age=31536000, public
-  Content-Security-Policy: default-src 'none'; font-src https://fonts.gstatic.com; img-src 'self' data:; style-src 'unsafe-inline' data: https://fonts.googleapis.com
+  Content-Security-Policy: default-src 'none'; font-src data: https://fonts.gstatic.com; img-src 'self' data:; style-src 'unsafe-inline' data: https://fonts.googleapis.com
 
 /*.js
   Cache-Control: immutable, max-age=31536000, public
