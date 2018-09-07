@@ -2,6 +2,7 @@
 
 import { highlight, languages } from 'prismjs';
 import * as React from 'react';
+import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import Icon from './Icon';
 
@@ -53,7 +54,7 @@ const Button = styled.button`
 const Pre = styled.pre`
   background-color: #f5f2f0;
   display: block;
-  lineheight: 1.5;
+  line-height: 1.5;
   margin: 30px 0 0;
   max-height: 500px;
   overflow-wrap: break-word;
@@ -63,6 +64,9 @@ const Pre = styled.pre`
 `;
 
 const Code = styled.code`
+  font-family: Inconsolata, monospace;
+  font-size: 0.8rem;
+
   .token.atrule: {
     color: #07a;
   }
@@ -144,23 +148,28 @@ export default class Result extends React.Component<Props> {
     const { styleSheet } = this.props;
 
     return (
-      <Section>
-        <Header>
-          <Title>
-            <Icon name="code" />
-            CSS
-          </Title>
-          <Button onClick={this.handleCopy} type="button">
-            <Icon height={16} name="file_copy" width={16} />
-            コピーする
-          </Button>
-        </Header>
-        <Pre innerRef={this.preRef} role="presentation">
-          {/* eslint-disable-next-line react/no-danger */}
-          <Code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
-        </Pre>
-        <HideTextArea aria-hidden="true" innerRef={this.textAreaRef} readOnly value={`${styleSheet}\n`} />
-      </Section>
+      <>
+        <Helmet>
+          <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
+        </Helmet>
+        <Section>
+          <Header>
+            <Title>
+              <Icon name="code" />
+              CSS
+            </Title>
+            <Button onClick={this.handleCopy} type="button">
+              <Icon height={16} name="file_copy" width={16} />
+              コピーする
+            </Button>
+          </Header>
+          <Pre innerRef={this.preRef} role="presentation">
+            {/* eslint-disable-next-line react/no-danger */}
+            <Code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
+          </Pre>
+          <HideTextArea aria-hidden="true" innerRef={this.textAreaRef} readOnly value={`${styleSheet}\n`} />
+        </Section>
+      </>
     );
   }
 }
