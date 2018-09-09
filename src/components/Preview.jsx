@@ -9,9 +9,11 @@ import Switch from './Switch';
 
 const Section = styled.section`
   margin-bottom: 50px;
-  padding: 0 30px;
+  padding: 0 15px;
 
   @media (min-width: 960px) {
+    padding-left: 30px;
+    padding-right: 30px;
     position: sticky;
     top: 0;
     width: 50%;

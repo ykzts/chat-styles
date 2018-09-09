@@ -8,7 +8,12 @@ import Icon from './Icon';
 
 const Section = styled.section`
   margin-top: 50px;
-  padding: 0 30px;
+  padding: 0 15px;
+
+  padding (min-width: 960px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 
   @media (min-width: 1280px) {
     padding-left: 0;
