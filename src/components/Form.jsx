@@ -13,9 +13,11 @@ import Switch from './Switch';
 import TextField from './TextField';
 
 const Container = styled.section`
-  padding: 0 30px;
+  padding: 0 15px;
 
   @media (min-width: 960px) {
+    padding-left: 30px;
+    padding-right: 30px;
     width: 50%;
   }
 `;

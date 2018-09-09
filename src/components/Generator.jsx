@@ -7,7 +7,11 @@ import Preview from '../containers/Preview';
 import Result from '../containers/Result';
 
 const Main = styled.main`
-  margin: 50px 0 25px;
+  margin: 25px 0;
+
+  @media (min-width: 960px) {
+    margin-top: 50px;
+  }
 
   @media (min-width: 1280px) {
     margin-left: 50px;
