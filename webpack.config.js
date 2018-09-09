@@ -15,15 +15,19 @@ module.exports = {
     rules: [
       {
         exclude: /\/node_modules\//,
-        test: /\.jsx?$/,
         loader: 'babel-loader',
+        test: /\.jsx?$/,
       },
       {
-        test: /\.css$/,
+        test: /(?<!\/preview)\.css$/,
         use: [
           'style-loader/useable',
           'css-loader',
         ],
+      },
+      {
+        loader: 'raw-loader',
+        test: /\/preview\.css$/,
       },
       {
         test: /\.html$/,
@@ -35,17 +39,25 @@ module.exports = {
             },
           },
           'extract-loader',
-          'html-loader',
+          {
+            loader: 'html-loader',
+            options: {
+              conservativeCollapse: false,
+              interpolate: true,
+              minifyCSS: false,
+              minimize: true,
+            },
+          },
         ],
       },
       {
-        test: /\.png$/,
         loader: 'file-loader',
         options: {
           name: env !== 'production' ? '[name].[ext]?[hash]' : '[name].[hash].[ext]',
           outputPath: './images/',
           publicPath: '/images/',
         },
+        test: /\.png$/,
       },
     ],
   },
@@ -72,6 +84,16 @@ module.exports = {
     }),
     new HtmlPlugin({
       inject: false,
+      minify: {
+        caseSensitive: true,
+        collapseBooleanAttributes: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        sortAttributes: true,
+        sortClassName: true,
+      },
       template: path.resolve(__dirname, 'src', 'templates'),
     }),
     ...(env === 'production' ? [
