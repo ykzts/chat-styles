@@ -14,6 +14,7 @@ const store = configureStore();
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   html {
+    font-family: "Noto Sans JP", sans-serif;
     box-sizing: border-box;
   }
 
@@ -82,7 +83,9 @@ type Props = {
 export default ({ title }: Props) => (
   <Provider store={store}>
     <>
-      <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`} />
+      <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`}>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700" rel="stylesheet" />
+      </Helmet>
       <Header>
         <Title>
           <Link to="/">
