@@ -1,10 +1,12 @@
 // @flow
 
 import type { RGBColor } from 'react-color';
+import mediumFont from '../files/m.woff2';
+import regularFont from '../files/r.woff2';
 import { css as color } from './colors';
 
 export const KNOWN_FONTS = [
-  'https://fonts.googleapis.com/earlyaccess/notosansjapanese.css',
+  'https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500',
 ];
 
 type StyleColor = {|
@@ -73,9 +75,25 @@ export const generateStyleSheet = (chatStyles: ChatStyles): string => {
   return [
     KNOWN_FONTS.map(font => `@import url("${font}");`).join('\n'),
     '',
+    '@font-face {',
+    '  font-family: \'Noto Sans JP\';',
+    '  font-style: normal;',
+    '  font-weight: 400;',
+    `  src: local('Noto Sans Japanese Regular'), local('NotoSansJapanese-Regular'), url(${regularFont}) format('woff2');`,
+    '  unicode-range: U+3058, U+307c, U+3094;',
+    '}',
+    '',
+    '@font-face {',
+    '  font-family: \'Noto Sans JP\';',
+    '  font-style: normal;',
+    '  font-weight: 500;',
+    `  src: local('Noto Sans Japanese Medium'), local('NotoSansJapanese-Medium'), url(${mediumFont}) format('woff2');`,
+    '  unicode-range: U+3058, U+307c, U+3094;',
+    '}',
+    '',
     'body {',
     '  background-color: transparent !important;',
-    '  font-family: "Noto Sans Japanese", sans-serif !important;',
+    '  font-family: "Noto Sans JP", sans-serif !important;',
     '  overflow-y: hidden !important;',
     '}',
     '',
