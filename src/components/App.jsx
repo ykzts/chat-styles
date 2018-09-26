@@ -4,15 +4,14 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { Provider } from 'react-redux';
 import { Route, Link, Switch } from 'react-router-dom';
-import styled, { injectGlobal } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import Generator from '../containers/Generator';
 import configureStore from '../store/configureStore';
 import NoMatch from './NoMatch';
 
 const store = configureStore();
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
+const GlobalStyles = createGlobalStyle`
   html {
     font-family: Roboto, "Noto Sans JP", sans-serif;
     box-sizing: border-box;
@@ -87,6 +86,7 @@ export default ({ title }: Props) => (
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700" rel="stylesheet" />
       </Helmet>
+      <GlobalStyles />
       <Header>
         <Title>
           <Link to="/">
