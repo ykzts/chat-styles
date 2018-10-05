@@ -168,11 +168,11 @@ export default class Result extends React.Component<Props> {
               コピーする
             </Button>
           </Header>
-          <Pre innerRef={this.preRef} role="presentation">
+          <Pre ref={this.preRef} role="presentation">
             {/* eslint-disable-next-line react/no-danger */}
             <Code dangerouslySetInnerHTML={{ __html: highlight(styleSheet, languages.css, 'css') }} />
           </Pre>
-          <HideTextArea aria-hidden="true" innerRef={this.textAreaRef} readOnly value={`${styleSheet}\n`} />
+          <HideTextArea aria-hidden="true" readOnly ref={this.textAreaRef} value={`${styleSheet}\n`} />
         </Section>
       </>
     );
