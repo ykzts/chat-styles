@@ -17,7 +17,7 @@
     "redux-devtools-extension": "^2.13.5",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.0.0"
+    "styled-components": "^4.0.2"
   },
   "description": "Chat Styles is a generator of style sheet for the YouTube Live Chat.",
   "devDependencies": {
