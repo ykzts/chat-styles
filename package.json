@@ -2,7 +2,7 @@
   "author": "Yamagishi Kazutoshi <ykzts@desire.sh>",
   "dependencies": {
     "classnames": "^2.2.6",
-    "immutable": "^4.0.0-rc.11",
+    "immutable": "^4.0.0-rc.12",
     "localforage": "^1.7.3",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
