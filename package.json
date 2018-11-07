@@ -6,7 +6,7 @@
     "localforage": "^1.7.3",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
-    "react": "^16.6.0",
+    "react": "^16.6.1",
     "react-color": "^2.14.1",
     "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
