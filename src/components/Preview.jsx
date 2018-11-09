@@ -97,7 +97,7 @@ const removeLinkElements = (doc: Document): void => {
 };
 
 export default class Preview extends React.Component<Props, State> {
-  frameRef = React.createRef();
+  frameRef = React.createRef<HTMLIFrameElement>();
 
   state = {
     frameHeight: 0,
@@ -170,15 +170,18 @@ export default class Preview extends React.Component<Props, State> {
   loadStyleSheet(styleSheet: string) {
     const { current: frame } = this.frameRef;
 
-    if (styleSheet && styleSheet.length > 0 && frame) {
-      const { contentDocument: doc } = frame;
+    if (!(styleSheet && styleSheet.length > 0 && frame)) {
+      return;
+    }
 
-      if (doc.head) {
-        const link = this.createLinkElement(doc, styleSheet);
+    const { contentDocument: doc } = frame;
 
-        removeLinkElements(doc);
-        doc.head.appendChild(link);
-      }
+    const link = this.createLinkElement(doc, styleSheet);
+
+    removeLinkElements(doc);
+
+    if (doc.head) {
+      doc.head.appendChild(link);
     }
   }
 
