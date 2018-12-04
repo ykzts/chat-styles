@@ -120,9 +120,9 @@ type Props = {
 };
 
 export default class Result extends React.Component<Props> {
-  preRef = React.createRef();
+  preRef = React.createRef<HTMLPreElement>();
 
-  textAreaRef = React.createRef();
+  textAreaRef = React.createRef<HTMLTextAreaElement>();
 
   shouldComponentUpdate(nextProps: Props) {
     const { styleSheet } = this.props;
