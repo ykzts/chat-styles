@@ -33,7 +33,7 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "^1.0.1",
+    "css-loader": "^2.0.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
