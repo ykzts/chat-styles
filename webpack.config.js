@@ -59,13 +59,6 @@ module.exports = {
         },
         test: /\.png$/,
       },
-      {
-        loader: 'url-loader',
-        options: {
-          limit: 4096,
-        },
-        test: /\.woff2/,
-      },
     ],
   },
   optimization: {
