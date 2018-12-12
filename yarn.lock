@@ -7862,10 +7862,10 @@ webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack-subresource-integrity@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/webpack-subresource-integrity/-/webpack-subresource-integrity-1.3.0.tgz#5cc0729a78593ad7e2088cd72d4a8d42ba3bfa9c"
-  integrity sha512-qR2AwKMOjqOSsk4cTuZlRjYXfvAo7/FreL44AG5R5Vn7qHAE78BOdbPPVk9fZonMIiSKYQsIO2aC61JVJC60AQ==
+webpack-subresource-integrity@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/webpack-subresource-integrity/-/webpack-subresource-integrity-1.3.1.tgz#f12a83758702f8571063885c649bbe920d582181"
+  integrity sha512-NDI2gZ2RD2C58AltjxSg2XsltFE1+n8g09aJH8elbCI8bBQ91shAOmPbgo9VcwdXg0StfePFgW9p6FgdPjD6nQ==
   dependencies:
     webpack-sources "^1.3.0"
 
