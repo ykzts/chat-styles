@@ -63,13 +63,13 @@ export default class Generator extends React.Component<Props> {
     return (
       <Main>
         {!isLoading ? (
-           <>
-             <Container>
-               <Form />
-               <Preview />
-             </Container>
-             <Separator />
-             <Result />
+          <>
+            <Container>
+              <Form />
+              <Preview />
+            </Container>
+            <Separator />
+            <Result />
           </>
         ) : (
           <Placeholder role="presentation" />

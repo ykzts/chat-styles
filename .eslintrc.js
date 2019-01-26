@@ -10,6 +10,7 @@ module.exports = {
   parser: 'babel-eslint',
   root: true,
   rules: {
+    'react/default-props-match-prop-types': 'off',
     'react/require-default-props': 'off',
   },
 };
