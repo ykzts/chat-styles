@@ -1,0 +1,9 @@
+.section:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+.grid {
+  --mdc-layout-grid-margin-desktop: 0;
+  --mdc-layout-grid-margin-tablet: 0;
+  --mdc-layout-grid-margin-phone: 0;
+}
