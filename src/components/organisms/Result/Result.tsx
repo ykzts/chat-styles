@@ -57,7 +57,7 @@ const Result: FunctionComponent = (): ReactElement => {
         <code
           className="language-css"
           dangerouslySetInnerHTML={{
-            __html: highlight(styleSheet, languages.css)
+            __html: highlight(styleSheet, languages.css, 'css')
           }}
           ref={codeRef}
         />
