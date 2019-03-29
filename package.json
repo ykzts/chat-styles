@@ -17,7 +17,7 @@
     "formik": "^1.5.1",
     "localforage": "^1.7.3",
     "prismjs": "^1.16.0",
-    "react": "^16.8.5",
+    "react": "^16.8.6",
     "react-color": "^2.17.0",
     "react-dom": "^16.8.5",
     "react-helmet": "^6.0.0-beta",
