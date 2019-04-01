@@ -30,11 +30,9 @@ const Result: FunctionComponent = (): ReactElement => {
   const handleCopyClick = useCallback(() => {
     copyText(styleSheet)
 
-    if (codeRef.current) {
-      const selection = window.getSelection()
+    const selection = window.getSelection()
 
-      selection.selectAllChildren(codeRef.current)
-    }
+    selection!.selectAllChildren(codeRef.current!)
   }, [chatStyles])
 
   const actions = (
