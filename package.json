@@ -14,7 +14,7 @@
     "@material/react-top-app-bar": "^0.11.0",
     "@material/react-typography": "^0.11.0",
     "classnames": "^2.2.6",
-    "formik": "^1.5.1",
+    "formik": "^1.5.2",
     "localforage": "^1.7.3",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
