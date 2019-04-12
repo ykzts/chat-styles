@@ -33,7 +33,7 @@
     "@types/react-color": "^3.0.0",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
-    "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-dom": "^4.3.2",
     "extract-loader": "^3.1.0",
     "html-loader": "^0.5.5",
     "node-sass": "^4.11.0",
