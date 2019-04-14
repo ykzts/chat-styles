@@ -37,7 +37,7 @@
     "extract-loader": "^3.1.0",
     "html-loader": "^0.5.5",
     "node-sass": "^4.11.0",
-    "prettier": "^1.16.4",
+    "prettier": "^1.17.0",
     "react-scripts": "^2.1.8",
     "typescript": "^3.4.3"
   },
