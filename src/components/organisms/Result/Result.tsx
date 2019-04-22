@@ -1,6 +1,6 @@
 import { Chip, ChipSet } from '@material/react-chips'
 import MaterialIcon from '@material/react-material-icon'
-import { Subtitle1 } from '@material/react-typography'
+import copy from 'copy-text-to-clipboard'
 import { highlight, languages } from 'prismjs'
 import React, {
   FunctionComponent,
@@ -11,7 +11,6 @@ import React, {
   useRef
 } from 'react'
 import ChatStylesContext from '../../../context/ChatStylesContext'
-import { copyText } from '../../../utils/clipboard'
 import { generateStyleSheet } from '../../../utils/styleSheet'
 import Headline from '../../atoms/Headline'
 import classes from './Result.module.scss'
@@ -28,7 +27,7 @@ const Result: FunctionComponent = (): ReactElement => {
     [chatStyles]
   )
   const handleCopyClick = useCallback(() => {
-    copyText(styleSheet)
+    copy(styleSheet)
 
     const selection = window.getSelection()
 
