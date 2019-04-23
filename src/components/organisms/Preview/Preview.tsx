@@ -21,7 +21,7 @@ export const Preview: FunctionComponent = (): ReactElement => {
 
   const handleInvertChange = useCallback(() => {
     toggleInvert()
-  }, [invert])
+  }, [toggleInvert])
 
   return (
     <section className={classes.root}>

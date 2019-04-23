@@ -30,17 +30,17 @@ const ColorPicker: FunctionComponent<Props> = ({
 
   const openPopover = useCallback(() => {
     setOpen(true)
-  }, [open])
+  }, [setOpen])
 
   const closePopover = useCallback(() => {
     setOpen(false)
-  }, [open])
+  }, [setOpen])
 
   const handleChange = useCallback(
     (color: ColorResult): void => {
       onChange(name)(rgb2hex(color.rgb))
     },
-    [value]
+    [name, onChange]
   )
 
   return (

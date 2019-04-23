@@ -13,8 +13,8 @@
   Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
   Content-Type: application/manifest+json
 
-/preview.*.html
-  Cache-Control: immutable, max-age=31536000, public
+/preview/*
+  Cache-Control: immutable, max-age=600, public, s-maxage=60
   Content-Security-Policy: default-src 'none'; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline' https://polyfill.io; style-src 'unsafe-inline' blob: https://fonts.googleapis.com
 
 /*.js

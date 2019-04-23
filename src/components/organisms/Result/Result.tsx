@@ -32,7 +32,7 @@ const Result: FunctionComponent = (): ReactElement => {
     const selection = window.getSelection()
 
     selection!.selectAllChildren(codeRef.current!)
-  }, [chatStyles])
+  }, [styleSheet])
 
   const actions = (
     <ChipSet>
