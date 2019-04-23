@@ -9,7 +9,6 @@ import React, {
 import { ChatStyles } from '../../../context/ChatStylesContext'
 import { generateStyleSheet } from '../../../utils/styleSheet'
 import classes from './PreviewFrame.module.scss'
-import { previewPath } from './paths'
 
 type Props = {
   chatStyles: ChatStyles
@@ -25,14 +24,14 @@ const PreviewFrame: FunctionComponent<Props> = ({
     (event: MessageEvent): void => {
       setFrameHeight(event.data.frameHeight)
     },
-    [frameHeight]
+    [setFrameHeight]
   )
 
   useEffect(() => {
     window.addEventListener('message', handleLoadStyleSheet)
 
     return () => window.removeEventListener('message', handleLoadStyleSheet)
-  }, [])
+  }, [handleLoadStyleSheet])
 
   useEffect(() => {
     const win = frameRef.current && frameRef.current.contentWindow
@@ -57,8 +56,9 @@ const PreviewFrame: FunctionComponent<Props> = ({
     <iframe
       className={classes.root}
       ref={frameRef}
-      src={previewPath}
+      src="/preview/preview.html"
       style={{ height: `${frameHeight}px` }}
+      title="chat preview"
     />
   )
 }

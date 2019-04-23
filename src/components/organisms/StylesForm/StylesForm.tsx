@@ -29,7 +29,7 @@ const StylesForm: FunctionComponent = (): ReactElement => {
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
 
   const handleSubmit = useCallback(values => setChatStyles(values), [
-    chatStyles
+    setChatStyles
   ])
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const StylesForm: FunctionComponent = (): ReactElement => {
     const interval = setInterval(() => form.submitForm(), 500)
 
     return () => clearInterval(interval)
-  }, [formRef.current])
+  }, [])
 
   return (
     <Formik initialValues={chatStyles} onSubmit={handleSubmit} ref={formRef}>
