@@ -19,7 +19,7 @@
     "localforage": "^1.7.3",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
-    "react-color": "^2.17.1",
+    "react-color": "^2.17.2",
     "react-dom": "^16.8.6",
     "react-helmet": "^6.0.0-beta",
     "react-router-dom": "^5.0.0"
