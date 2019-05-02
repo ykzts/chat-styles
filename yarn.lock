@@ -1240,10 +1240,10 @@
     classnames "^2.2.6"
     react "^16.4.2"
 
-"@material/react-layout-grid@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@material/react-layout-grid/-/react-layout-grid-0.11.0.tgz#8318e26df48ba3a597f7b1abd6df5f6d04942725"
-  integrity sha512-Zj6ene48TehVz83yBHFNqCLCG4wZzoTolOOQPNIGiI+7sYRHjCbzPqIepDWMc5KRnAPjTC/zQmXUjcI9zagmDQ==
+"@material/react-layout-grid@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@material/react-layout-grid/-/react-layout-grid-0.12.0.tgz#189c60a343a5914c50640ef71371ebf887191381"
+  integrity sha512-h4qce+aYK8JSqMS8iL4j5OmvEl2mMt4qyFXurYUZetuyASeqVNERIYiHOMKnIIxqp6mu7J10eAkJV8ov9TaBsw==
   dependencies:
     "@material/layout-grid" "^0.41.0"
     classnames "^2.2.6"
