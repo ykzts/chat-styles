@@ -1312,12 +1312,12 @@
     classnames "^2.2.6"
     react "^16.4.2"
 
-"@material/react-typography@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@material/react-typography/-/react-typography-0.11.0.tgz#f754179a060e1a66866cf883eff9cd82d2694880"
-  integrity sha512-aEArYx1/QEwDPO+H0NW53ntmdRVrJvFfn2CCZ8mv56t/iGbKHwWE4/AF7AdEq5eYzxpEGKMOPELasQn5b1FuvA==
+"@material/react-typography@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@material/react-typography/-/react-typography-0.12.0.tgz#bb1d0a2326c8c975d1d15806cb36ea2555ec45a2"
+  integrity sha512-XLOMf0dEOoooOx1dZBfUu6MKaHbWEIPSW/+mcXE0pM9StnHnJRZaRxiFB+R4FPGGZJvLjcI8aQEK82iP9smvEA==
   dependencies:
-    "@material/typography" "^0.41.0"
+    "@material/typography" "^1.0.0"
     classnames "^2.2.6"
     react "^16.4.2"
 
@@ -1457,6 +1457,13 @@
   version "0.44.1"
   resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.44.1.tgz#a94f01172f9122180bc2ce0aa55658183a35590d"
   integrity sha512-wMXHusg+Lp5Fdgoj3m0c+Lt6GCeGSh3EPRtQ1TQ2bwdBa0et2FqBaQRgXoq3tVmr0O/7unTfa0DoXlh4nVp1wA==
+  dependencies:
+    "@material/feature-targeting" "^0.44.1"
+
+"@material/typography@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@material/typography/-/typography-1.0.0.tgz#327ecfcac5ee3af8a3a102f3f125a761202f4189"
+  integrity sha512-Oeqbjci1cC7jTE8/n3dwnkqKe9ZeWiaE+rgMtRYtRFw1HvAw14SpGA5EEAS/Li2Hu2KZ50FYCe3HYqShfxtChA==
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
