@@ -1136,14 +1136,6 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/elevation@^0.41.0":
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/@material/elevation/-/elevation-0.41.0.tgz#db6b75ea43354fe35936cba2d78c55390faf4e9e"
-  integrity sha512-ZtZS8z5ie9c7Cx5PVudgSorGYa0C3lu3dA+Nn6qJdhGUokl01msh54NfNuwk+EZsk65bNRRqw1Td/63TCbKIzg==
-  dependencies:
-    "@material/animation" "^0.41.0"
-    "@material/theme" "^0.41.0"
-
 "@material/elevation@^0.43.0":
   version "0.43.0"
   resolved "https://registry.yarnpkg.com/@material/elevation/-/elevation-0.43.0.tgz#2fe9b0cac8ccfe26acb739ff57d5deb4d4fdcecc"
@@ -1308,13 +1300,13 @@
     react "^16.4.2"
     utility-types "^3.2.1"
 
-"@material/react-switch@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@material/react-switch/-/react-switch-0.11.0.tgz#78df645a64d864c0ace6b2d8da3f5aa4ddc2f948"
-  integrity sha512-VPqgDwW/kYcaStZCS9+Wx4i90DOX7PyBzOXon19OQJZ0IdTAa9gOXc4XOaQtxsXnSb0zEa3scD+sj3yHqtI0Lw==
+"@material/react-switch@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@material/react-switch/-/react-switch-0.12.0.tgz#c2f6969a7767b5b2d0935fd5867dd55fb62e3a4e"
+  integrity sha512-FwWzS1ibWtL8q1axH6rSUb2JXrXeDlbsMeWBQ0TVXKrGNr/6ZTVHCu1iHBzCFxrOmX7+uFYyG6EXJsh91NuwCQ==
   dependencies:
-    "@material/react-ripple" "^0.11.0"
-    "@material/switch" "^0.41.0"
+    "@material/react-ripple" "^0.12.0"
+    "@material/switch" "^1.0.0"
     classnames "^2.2.6"
     react "^16.3.2"
 
@@ -1399,13 +1391,6 @@
   resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.42.0.tgz#1836e78186c2d8b996f6fbf97adab203535335bc"
   integrity sha512-VrnrKJzhmspsN8WXHuxxBZ69yM5IwhCUqWr1t1eNfw3ZEvEj7i1g3P31HGowKThIN1dc1Wh4LE14rCISWCtv5w==
 
-"@material/selection-control@^0.41.0":
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/@material/selection-control/-/selection-control-0.41.0.tgz#2705d77291c2e6c9db01c4f185a4966d95fd9fa4"
-  integrity sha512-rRHGiZVPoP4nxAAoeqsgTsxz9GwInGs7HIlEhPfMFygmSZVUHHsuOJXSTpOKYi8GCoKHpB0RKZsAtxM0BYAelw==
-  dependencies:
-    "@material/ripple" "^0.41.0"
-
 "@material/shape@^0.41.0":
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/@material/shape/-/shape-0.41.0.tgz#2b1cb9a9e1240965ae25a107bbd6e29ca0257583"
@@ -1430,18 +1415,20 @@
   dependencies:
     "@material/feature-targeting" "^0.44.1"
 
-"@material/switch@^0.41.0":
-  version "0.41.0"
-  resolved "https://registry.yarnpkg.com/@material/switch/-/switch-0.41.0.tgz#b186512dddd081b2658d07055b7b8b69ba9353d1"
-  integrity sha512-8YTrn1oisUhp6DlB1XAPeFWVr5nD88jlq9FoTVQOtGaUxaEybQD0nrsYI7OwaVm4HvSnepd2zmMvbjXKbQX4XQ==
+"@material/switch@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@material/switch/-/switch-1.1.0.tgz#c64b19523c4a495de9df022940ce5a5d2c21cbb2"
+  integrity sha512-hwgPzMgZksmJB/hOHQqrT7SZ6TpYaBtkW6BDhCojluBzaMDfDZxeXbNAhAYCO+tJI9p+CndPF+InsocCQDAJXA==
   dependencies:
-    "@material/animation" "^0.41.0"
-    "@material/base" "^0.41.0"
-    "@material/elevation" "^0.41.0"
-    "@material/ripple" "^0.41.0"
-    "@material/rtl" "^0.40.1"
-    "@material/selection-control" "^0.41.0"
-    "@material/theme" "^0.41.0"
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.1.0"
+    "@material/elevation" "^1.1.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^1.1.0"
+    "@material/rtl" "^0.42.0"
+    "@material/theme" "^1.1.0"
+    tslib "^1.9.3"
 
 "@material/textfield@^0.41.0":
   version "0.41.0"
