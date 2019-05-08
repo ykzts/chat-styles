@@ -1234,10 +1234,10 @@
     classnames "^2.2.6"
     react "^16.4.2"
 
-"@material/react-floating-label@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@material/react-floating-label/-/react-floating-label-0.12.0.tgz#0abc3a5453509e8b02983950d6542204a74bc747"
-  integrity sha512-JzQ0OV12QjULUPAbpaGZNBxes+qRyVIu6B10bJFdamuWO9RwYDEBFQJ5yjvsVy2Zqr7I+xahW0YboXdz+1agnA==
+"@material/react-floating-label@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@material/react-floating-label/-/react-floating-label-0.12.1.tgz#15ee32100a04e2de45aee90ad1adf39581da57bf"
+  integrity sha512-AHTqG7aYxq2tXfbbM23940teKWGyuvKEtPZUSO1kckxQOc6+1zXcOA1Vbyjmr91ZNkE9SilQD0gBBh1twO/n4Q==
   dependencies:
     "@material/floating-label" "^1.0.0"
     classnames "^2.2.6"
@@ -1310,12 +1310,12 @@
     classnames "^2.2.6"
     react "^16.3.2"
 
-"@material/react-text-field@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@material/react-text-field/-/react-text-field-0.12.0.tgz#207ecabeff29d74bfaaaebf26dd425cff79520fe"
-  integrity sha512-nueunWNRnCL0vHfW4u/zgpB6zAy7KjVCO+dHvZrpJNANdj0aBa0YAgRSsF3Iw/DSPHvP5sy0bbX5cA2MkuPSFA==
+"@material/react-text-field@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@material/react-text-field/-/react-text-field-0.12.1.tgz#c1c534398889a88cc371be3f2ab6d813b68df9ef"
+  integrity sha512-pGwCqmnslEfEntavGFUDWomX7QayV+HSCA+QFN5YUbvg+RWPirHyJxhdqL6aLCqBRcBQgbUPN0Xd+g/jfTs6Zg==
   dependencies:
-    "@material/react-floating-label" "^0.12.0"
+    "@material/react-floating-label" "^0.12.1"
     "@material/react-line-ripple" "^0.12.0"
     "@material/react-notched-outline" "^0.12.0"
     "@material/textfield" "^1.1.1"
