@@ -1214,10 +1214,10 @@
     "@material/theme" "^1.1.0"
     tslib "^1.9.3"
 
-"@material/react-button@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@material/react-button/-/react-button-0.12.0.tgz#b88aa06c379e002336f686046f8cb068cca5cd54"
-  integrity sha512-IbzLKluoeT1Z0VyyKL5ibe+kInREdYh8Nsa81435StDH2Ec2PazzdOknaX0IuXgHVXumlaY2Z0RfHa259DIkAw==
+"@material/react-button@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@material/react-button/-/react-button-0.12.1.tgz#8db40f4a634c56599e89f0e2db21e302c76861c7"
+  integrity sha512-T5EorlTayH5+04Cib0ltZQlz9P7QdAalVMYNmXFbjSCeMZj/5yhV1cBzhZ5uZ+XjtGcEZrE839d+t+/GiXyBeg==
   dependencies:
     "@material/button" "^1.1.0"
     "@material/react-ripple" "^0.12.0"
