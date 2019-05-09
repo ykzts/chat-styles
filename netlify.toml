@@ -1,8 +1,0 @@
-[build]
-  base    = "./"
-  command = "NODE_ENV=production yarn build"
-  publish = "./build/"
-
-  [build.environment]
-    NODE_ENV     = "development"
-    NODE_VERSION = "10.15.3"
