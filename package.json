@@ -27,6 +27,7 @@
   },
   "description": "Chat Styles is a generator of style sheet for the YouTube Live Chat.",
   "devDependencies": {
+    "@inabagumi/prettier-config": "^1.0.0",
     "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.13",
     "@types/prismjs": "^1.16.0",
@@ -48,6 +49,7 @@
   "homepage": "https://chat-styles.app/",
   "license": "MIT",
   "name": "@ykzts/chat-styles",
+  "prettier": "@inabagumi/prettier-config",
   "private": true,
   "repository": {
     "type": "git",

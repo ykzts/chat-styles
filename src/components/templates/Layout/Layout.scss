@@ -1,6 +1,6 @@
-$mdc-typography-font-family: unquote("Noto Sans JP, Roboto, sans-serif");
+$mdc-typography-font-family: unquote('Noto Sans JP, Roboto, sans-serif');
 
-@import "@material/typography/mdc-typography";
+@import '@material/typography/mdc-typography';
 
 body {
   margin: 0;
