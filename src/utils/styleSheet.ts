@@ -3,7 +3,7 @@ import { ChatStyles, ChatOutlineStyle } from '../context/ChatStylesContext'
 export const generateStyleSheet = (chatStyles: ChatStyles): string =>
   `@charset "UTF-8";
 
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500&display=swap");
 
 body {
   background-color: transparent !important;

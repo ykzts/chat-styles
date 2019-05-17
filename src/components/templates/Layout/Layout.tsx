@@ -26,19 +26,19 @@ const Layout: FunctionComponent<Props> = ({
       titleTemplate={`%s - ${title}`}
     >
       <link
-        href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+        href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap"
         rel="stylesheet"
       />
       <link
-        href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&amp;display=swap"
         rel="stylesheet"
       />
       <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=swap"
         rel="stylesheet"
       />
       <link
-        href="https://fonts.googleapis.com/css?family=Inconsolata"
+        href="https://fonts.googleapis.com/css?family=Inconsolata&amp;display=swap"
         rel="stylesheet"
       />
     </Helmet>
