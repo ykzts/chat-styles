@@ -4601,10 +4601,10 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-formik@^1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-1.5.6.tgz#60a00894fe9c162f3631ded83ca7cb866c74d939"
-  integrity sha512-gP4eh/GS173RV/K1dmG0zL0T+DoMVaKH1i2+yKFmG6Tfdvd/HlsVcVY28bgvHA/IxdHPmcVVTr2KVRe1tSRj2w==
+formik@^1.5.7:
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-1.5.7.tgz#2fc5fc2f0c693cdc4e8c9dad3a10eb4c4e131ff5"
+  integrity sha512-kZo8lS4WzfC2uivnSkE9DOuX9x+jVjCtIZOlb1A4lHGeURyuLt6eDfwGJzNlcP0lXIwmpANKzegiB8j60B54TA==
   dependencies:
     create-react-context "^0.2.2"
     deepmerge "^2.1.1"
