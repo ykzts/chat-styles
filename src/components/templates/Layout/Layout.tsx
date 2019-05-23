@@ -43,7 +43,7 @@ const Layout: FunctionComponent<Props> = ({
       />
     </Helmet>
 
-    <TopAppBar>
+    <TopAppBar fixed>
       <TopAppBarRow>
         <TopAppBarSection align="start">
           <TopAppBarTitle>{title}</TopAppBarTitle>
