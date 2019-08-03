@@ -1,9 +1,12 @@
-import { Chip, ChipSet } from '@material/react-chips'
-import MaterialIcon from '@material/react-material-icon'
+import Chip from '@material-ui/core/Chip'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import CodeIcon from '@material-ui/icons/Code'
+import FileCopyIcon from '@material-ui/icons/FileCopy'
+import createStyles from '@material-ui/styles/createStyles'
 import copy from 'copy-text-to-clipboard'
 import { highlight, languages } from 'prismjs'
 import React, {
-  FunctionComponent,
+  FC,
   ReactElement,
   useCallback,
   useContext,
@@ -13,19 +16,30 @@ import React, {
 import ChatStylesContext from '../../../context/ChatStylesContext'
 import { generateStyleSheet } from '../../../utils/styleSheet'
 import Headline from '../../atoms/Headline'
-import classes from './Result.module.scss'
 
-import '@material/react-chips/index.scss'
-import '@material/react-material-icon/index.scss'
 import 'prismjs/themes/prism-okaidia.css'
 
-const Result: FunctionComponent = (): ReactElement => {
+const useStyles = makeStyles(theme =>
+  createStyles({
+    code: {
+      maxHeight: '512px'
+    },
+
+    root: {
+      marginTop: theme.spacing(5)
+    }
+  })
+)
+
+const Result: FC = (): ReactElement => {
   const codeRef = useRef<HTMLElement>(null)
   const { chatStyles } = useContext(ChatStylesContext)
   const styleSheet = useMemo(
     () => (chatStyles ? generateStyleSheet(chatStyles) : ''),
     [chatStyles]
   )
+  const classes = useStyles()
+
   const handleCopyClick = useCallback(() => {
     copy(styleSheet)
 
@@ -35,18 +49,18 @@ const Result: FunctionComponent = (): ReactElement => {
   }, [styleSheet])
 
   const actions = (
-    <ChipSet>
+    <>
       <Chip
+        icon={<FileCopyIcon />}
         label="コピーする"
-        leadingIcon={<MaterialIcon icon="file_copy" />}
         onClick={handleCopyClick}
       />
-    </ChipSet>
+    </>
   )
 
   return (
     <section className={classes.root}>
-      <Headline actions={actions} icon="code">
+      <Headline actions={actions} icon={<CodeIcon />}>
         カスタムCSS
       </Headline>
 

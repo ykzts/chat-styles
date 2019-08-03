@@ -1,28 +1,59 @@
-import MaterialIcon from '@material/react-material-icon'
-import { Headline5 } from '@material/react-typography'
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react'
-import classes from './Headline.module.scss'
+import Typography from '@material-ui/core/Typography'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import createStyles from '@material-ui/styles/createStyles'
+import React, { FC, ReactElement, ReactNode } from 'react'
 
-import '@material/react-material-icon/index.scss'
-import '@material/react-typography/index.scss'
+const useStyles = makeStyles(theme =>
+  createStyles({
+    actions: {
+      paddingLeft: theme.spacing(2)
+    },
+
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+
+      [theme.breakpoints.up('sm')]: {
+        alignItems: 'center',
+        flexDirection: 'row'
+      }
+    },
+
+    title: {
+      alignItems: 'center',
+      display: 'flex',
+      flexBasis: 0,
+      flexGrow: 1
+    },
+
+    titleIcon: {
+      display: 'flex',
+      alignItems: 'center',
+      marginRight: theme.spacing(0.5)
+    }
+  })
+)
 
 interface Props {
   actions?: ReactNode
-  icon?: string
+  icon?: string | ReactElement
 }
 
-const Headline: FunctionComponent<Props> = ({
-  actions,
-  children,
-  icon
-}): ReactElement => {
+const Headline: FC<Props> = ({ actions, children, icon }): ReactElement => {
+  const classes = useStyles()
+
   return (
     <header className={classes.root}>
-      <Headline5 className={classes.title} tag="h2">
-        {icon && <MaterialIcon className={classes.titleIcon} icon={icon} />}
+      <Typography
+        className={classes.title}
+        component="h2"
+        gutterBottom
+        variant="subtitle1"
+      >
+        {icon && <div className={classes.titleIcon}>{icon}</div>}
 
         {children}
-      </Headline5>
+      </Typography>
 
       {actions && <div className={classes.actions}>{actions}</div>}
     </header>
