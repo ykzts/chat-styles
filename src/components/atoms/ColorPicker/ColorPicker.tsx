@@ -1,7 +1,10 @@
-import Button from '@material/react-button'
+import Popover from '@material-ui/core/Popover'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import createStyles from '@material-ui/styles/createStyles'
 import classNames from 'classnames'
 import React, {
-  FunctionComponent,
+  FC,
+  MouseEvent,
   ReactElement,
   memo,
   useCallback,
@@ -9,32 +12,55 @@ import React, {
 } from 'react'
 import { ColorResult, SketchPicker } from 'react-color'
 import { hex2rgb, rgb2hex } from '../../../utils/color'
-import classes from './ColorPicker.module.scss'
 
-import '@material/react-button/index.scss'
+const useStyles = makeStyles(theme =>
+  createStyles({
+    button: {
+      borderRadius: '50%',
+      boxShadow: theme.shadows[1],
+      cursor: 'pointer',
+      height: '28px',
+      width: '28px'
+    },
 
-type Props = {
+    buttonDisabled: {
+      boxShadow: 'none',
+      pointerEvents: 'none'
+    },
+
+    root: {
+      display: 'inline-block',
+      padding: theme.spacing(1)
+    }
+  })
+)
+
+interface Props {
   disabled?: boolean
   name: string
   onChange: Function // TODO: fix me
   value: string
 }
 
-const ColorPicker: FunctionComponent<Props> = ({
+const ColorPicker: FC<Props> = ({
   disabled,
   name,
   onChange,
   value
 }): ReactElement => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null)
+  const classes = useStyles()
 
-  const openPopover = useCallback(() => {
-    setOpen(true)
-  }, [setOpen])
+  const handleClick = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      setAnchorEl(event.currentTarget)
+    },
+    [setAnchorEl]
+  )
 
-  const closePopover = useCallback(() => {
-    setOpen(false)
-  }, [setOpen])
+  const handleClose = useCallback(() => {
+    setAnchorEl(null)
+  }, [setAnchorEl])
 
   const handleChange = useCallback(
     (color: ColorResult): void => {
@@ -45,20 +71,30 @@ const ColorPicker: FunctionComponent<Props> = ({
 
   return (
     <div className={classes.root}>
-      <Button
-        className={classes.button}
-        disabled={disabled}
-        onClick={openPopover}
-        raised
-        style={{ backgroundColor: value }}
-        type="button"
-      />
       <div
-        className={classNames(classes.popover, { [classes.popoverOpen]: open })}
+        className={classNames(classes.button, {
+          [classes.buttonDisabled]: disabled
+        })}
+        onClick={handleClick}
+        style={{ backgroundColor: value }}
+        role="button"
+      />
+
+      <Popover
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          horizontal: 'left',
+          vertical: 'bottom'
+        }}
+        onClose={handleClose}
+        open={!!anchorEl}
+        transformOrigin={{
+          horizontal: 'left',
+          vertical: 'top'
+        }}
       >
-        <div className={classes.backdrop} onClick={closePopover} />
         <SketchPicker onChange={handleChange} color={hex2rgb(value)} />
-      </div>
+      </Popover>
     </div>
   )
 }

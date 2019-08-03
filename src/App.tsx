@@ -1,8 +1,8 @@
-import React, { FunctionComponent, ReactElement, Suspense, lazy } from 'react'
+import React, { FC, ReactElement, Suspense, lazy } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Layout from './components/templates/Layout'
 
-const App: FunctionComponent = (): ReactElement => (
+const App: FC = (): ReactElement => (
   <Layout title="Chat Styles">
     <Suspense fallback={null}>
       <Switch>
