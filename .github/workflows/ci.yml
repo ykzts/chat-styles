@@ -1,0 +1,28 @@
+name: Node CI
+
+on:
+  pull_request: {}
+  push:
+    branches:
+    - master
+
+jobs:
+  test:
+    name: Test on node v${{ matrix.node_version }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node_version: [8.x, 10.x, 12.x]
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js v${{ matrix.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        version: ${{ matrix.node_version }}
+    - name: yarn install, and test
+      run: |
+        yarn install --frozen-lockfile
+        yarn test
