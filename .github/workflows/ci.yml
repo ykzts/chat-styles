@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Test on node v10.x
+    name: Test
 
     runs-on: ubuntu-latest
 
