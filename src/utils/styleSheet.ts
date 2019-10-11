@@ -20,6 +20,7 @@ yt-live-chat-ticker-renderer {
 }
 
 yt-live-chat-item-list-renderer {
+  --yt-live-chat-author-chip-owner-text-color: ${chatStyles.ownerName.color};
   --yt-live-chat-deleted-message-color: rgba(153, 153, 153, 0.5);
   --yt-live-chat-item-timestamp-display: none;
   --yt-live-chat-item-timestamp-margin: 0 5px 0 0;
