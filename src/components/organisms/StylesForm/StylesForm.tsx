@@ -5,63 +5,39 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import Switch from '@material-ui/core/Switch'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import makeStyles from '@material-ui/core/styles/makeStyles'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ChatIcon from '@material-ui/icons/Chat'
 import PersonIcon from '@material-ui/icons/Person'
 import SettingsIcon from '@material-ui/icons/Settings'
-import createStyles from '@material-ui/styles/createStyles'
-import { Field, FieldProps, Form, Formik } from 'formik'
-import React, {
-  FC,
-  ReactElement,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef
-} from 'react'
+import { Field, FieldProps, Formik } from 'formik'
+import React, { FC, ReactElement, useCallback, useContext } from 'react'
 import ChatStylesContext, {
   ChatStyles
 } from '../../../context/ChatStylesContext'
+import AutoSave from '../../atoms/AutoSave'
 import ColorPicker from '../../atoms/ColorPicker'
 import Headline from '../../atoms/Headline'
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    section: {}
-  })
-)
-
 const StylesForm: FC = (): ReactElement => {
-  const formRef = useRef<Formik>(null)
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
-  const classes = useStyles()
 
-  const handleSubmit = useCallback(values => setChatStyles(values), [
-    setChatStyles
-  ])
-
-  useEffect(() => {
-    const form = formRef.current
-
-    if (!form) return
-
-    const interval = setInterval(() => form.submitForm(), 500)
-
-    return () => clearInterval(interval)
-  }, [])
+  const handleSubmit = useCallback(
+    (values: ChatStyles) => {
+      setChatStyles(values)
+    },
+    [setChatStyles]
+  )
 
   return (
-    <Formik initialValues={chatStyles} onSubmit={handleSubmit} ref={formRef}>
-      <Form>
-        <section className={classes.section}>
+    <Formik initialValues={chatStyles} onSubmit={handleSubmit}>
+      <form action="/">
+        <section>
           <Headline icon={<AccountCircleIcon />}>アイコン</Headline>
 
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="avatar.show"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="avatar.show">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -73,12 +49,11 @@ const StylesForm: FC = (): ReactElement => {
                     label="表示する"
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="avatar.size"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="avatar.size">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -93,12 +68,12 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
           </Grid>
         </section>
 
-        <section className={classes.section}>
+        <section>
           <Headline icon={<PersonIcon />}>名前</Headline>
 
           <Typography component="h3" gutterBottom variant="subtitle1">
@@ -107,9 +82,8 @@ const StylesForm: FC = (): ReactElement => {
 
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="ownerName.show"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="ownerName.show">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -121,12 +95,11 @@ const StylesForm: FC = (): ReactElement => {
                     label="表示する"
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="ownerName.fontSize"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="ownerName.fontSize">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -141,18 +114,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="ownerName.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="ownerName.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.ownerName.show}
+                    value={form.values.ownerName.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
               <Typography component="h4" gutterBottom variant="subtitle2">
@@ -160,9 +133,8 @@ const StylesForm: FC = (): ReactElement => {
               </Typography>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="ownerName.outline.width"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="ownerName.outline.width">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -177,18 +149,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="ownerName.outline.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="ownerName.outline.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.ownerName.show}
+                    value={form.values.ownerName.outline.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
           </Grid>
 
@@ -198,9 +170,8 @@ const StylesForm: FC = (): ReactElement => {
 
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="moderatorName.show"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="moderatorName.show">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -212,12 +183,11 @@ const StylesForm: FC = (): ReactElement => {
                     label="表示する"
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="moderatorName.fontSize"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="moderatorName.fontSize">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -232,18 +202,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="moderatorName.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="moderatorName.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.moderatorName.show}
+                    value={form.values.moderatorName.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
               <Typography component="h4" gutterBottom variant="subtitle2">
@@ -251,9 +221,8 @@ const StylesForm: FC = (): ReactElement => {
               </Typography>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="moderatorName.outline.width"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="moderatorName.outline.width">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -268,18 +237,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="moderatorName.outline.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="moderatorName.outline.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.moderatorName.show}
+                    value={form.values.moderatorName.outline.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
           </Grid>
 
@@ -289,9 +258,8 @@ const StylesForm: FC = (): ReactElement => {
 
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="memberName.show"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="memberName.show">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -303,12 +271,11 @@ const StylesForm: FC = (): ReactElement => {
                     label="表示する"
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="memberName.fontSize"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="memberName.fontSize">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -323,18 +290,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="memberName.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="memberName.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.memberName.show}
+                    value={form.values.memberName.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
               <Typography component="h4" gutterBottom variant="subtitle2">
@@ -343,9 +310,8 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               {' '}
-              <Field
-                name="memberName.outline.width"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="memberName.outline.width">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -360,18 +326,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="memberName.outline.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="memberName.outline.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.memberName.show}
+                    value={form.values.memberName.outline.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
           </Grid>
 
@@ -381,9 +347,8 @@ const StylesForm: FC = (): ReactElement => {
 
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="authorName.show"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="authorName.show">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -395,12 +360,11 @@ const StylesForm: FC = (): ReactElement => {
                     label="表示する"
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="authorName.fontSize"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="authorName.fontSize">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -415,18 +379,18 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="authorName.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="authorName.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.authorName.show}
+                    value={form.values.authorName.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
               <Typography component="h4" gutterBottom variant="subtitle2">
@@ -434,9 +398,8 @@ const StylesForm: FC = (): ReactElement => {
               </Typography>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="authorName.outline.width"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="authorName.outline.width">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -451,31 +414,30 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="authorName.outline.color"
-                render={({ field, form }: FieldProps<ChatStyles>) => (
+              <Field name="authorName.outline.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.authorName.show}
+                    value={form.values.authorName.outline.color}
                   />
                 )}
-              />
+              </Field>
             </Grid>
           </Grid>
         </section>
 
-        <section className={classes.section}>
+        <section>
           <Headline icon={<ChatIcon />}>メッセージ</Headline>
 
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}></Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="message.fontSize"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="message.fontSize">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -489,15 +451,14 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="message.color"
-                render={({ field }: FieldProps<ChatStyles>) => (
-                  <ColorPicker {...field} />
+              <Field name="message.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
+                  <ColorPicker {...field} value={form.values.message.color} />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
               <Typography component="h4" gutterBottom variant="subtitle2">
@@ -505,9 +466,8 @@ const StylesForm: FC = (): ReactElement => {
               </Typography>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="message.outline.width"
-                render={({ field }: FieldProps<ChatStyles>) => (
+              <Field name="message.outline.width">
+                {({ field }: FieldProps<ChatStyles>) => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -521,26 +481,27 @@ const StylesForm: FC = (): ReactElement => {
                     {...field}
                   />
                 )}
-              />
+              </Field>
             </Grid>
             <Grid item sm={4} xs={12}>
-              <Field
-                name="message.outline.color"
-                render={({ field }: FieldProps<ChatStyles>) => (
-                  <ColorPicker {...field} />
+              <Field name="message.outline.color">
+                {({ field, form }: FieldProps<ChatStyles>) => (
+                  <ColorPicker
+                    {...field}
+                    value={form.values.message.outline.color}
+                  />
                 )}
-              />
+              </Field>
             </Grid>
           </Grid>
         </section>
 
-        <section className={classes.section}>
+        <section>
           <Headline icon={<SettingsIcon />}>その他</Headline>
 
           <FormGroup>
-            <Field
-              name="engagementMessage.show"
-              render={({ field }: FieldProps<ChatStyles>) => (
+            <Field name="engagementMessage.show">
+              {({ field }: FieldProps<ChatStyles>) => (
                 <FormControlLabel
                   control={
                     <Switch
@@ -552,10 +513,9 @@ const StylesForm: FC = (): ReactElement => {
                   label="入室メッセージを表示する"
                 />
               )}
-            />
-            <Field
-              name="superChatBackground.show"
-              render={({ field }: FieldProps<ChatStyles>) => (
+            </Field>
+            <Field name="superChatBackground.show">
+              {({ field }: FieldProps<ChatStyles>) => (
                 <FormControlLabel
                   control={
                     <Switch
@@ -567,10 +527,9 @@ const StylesForm: FC = (): ReactElement => {
                   label="スーパーチャットの背景を表示する"
                 />
               )}
-            />
-            <Field
-              name="newMemberBackground.show"
-              render={({ field }: FieldProps<ChatStyles>) => (
+            </Field>
+            <Field name="newMemberBackground.show">
+              {({ field }: FieldProps<ChatStyles>) => (
                 <FormControlLabel
                   control={
                     <Switch
@@ -583,10 +542,12 @@ const StylesForm: FC = (): ReactElement => {
                   label="メンバー登録アナウンスの背景を表示する"
                 />
               )}
-            />
+            </Field>
           </FormGroup>
         </section>
-      </Form>
+
+        <AutoSave />
+      </form>
     </Formik>
   )
 }
