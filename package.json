@@ -29,7 +29,7 @@
     "@types/react-color": "^3.0.1",
     "@types/react-dom": "^16.9.3",
     "@types/react-helmet": "^5.0.13",
-    "@types/react-router-dom": "^5.1.0",
+    "@types/react-router-dom": "^5.1.1",
     "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
     "react-scripts": "^3.2.0",
