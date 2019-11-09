@@ -31,7 +31,7 @@
     "@types/react-helmet": "^5.0.14",
     "@types/react-router-dom": "^5.1.2",
     "node-sass": "^4.13.0",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.0",
     "react-scripts": "^3.2.0",
     "typescript": "^3.7.2"
   },
