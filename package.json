@@ -11,7 +11,7 @@
     "copy-text-to-clipboard": "^2.1.1",
     "formik": "^2.1.1",
     "localforage": "^1.7.3",
-    "prismjs": "^1.18.0",
+    "prismjs": "^1.19.0",
     "react": "^16.12.0",
     "react-color": "^2.18.0",
     "react-dom": "^16.12.0",
