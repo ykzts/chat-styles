@@ -33,7 +33,7 @@
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "react-scripts": "^3.3.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "engines": {
     "node": "^10.13.0"
