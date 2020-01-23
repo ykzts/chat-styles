@@ -22,7 +22,7 @@
   "devDependencies": {
     "@inabagumi/prettier-config": "^1.1.0",
     "@types/classnames": "^2.2.9",
-    "@types/jest": "^24.9.0",
+    "@types/jest": "^24.9.1",
     "@types/node": "^12.12.25",
     "@types/prismjs": "^1.16.0",
     "@types/react": "^16.9.19",
