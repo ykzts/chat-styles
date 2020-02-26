@@ -12,9 +12,9 @@
     "formik": "^2.1.4",
     "localforage": "^1.7.3",
     "prismjs": "^1.19.0",
-    "react": "^16.12.0",
+    "react": "^16.13.0",
     "react-color": "^2.18.0",
-    "react-dom": "^16.12.0",
+    "react-dom": "^16.13.0",
     "react-helmet": "^6.0.0-beta.2",
     "react-router-dom": "^5.1.2"
   },
