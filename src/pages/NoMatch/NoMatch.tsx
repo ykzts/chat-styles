@@ -4,7 +4,7 @@ import createStyles from '@material-ui/styles/createStyles'
 import React, { FC, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       padding: theme.spacing(2, 0)

@@ -11,7 +11,7 @@ import PreviewContext from '../../../context/PreviewContext'
 import PreviewFrame from '../../atoms/PreviewFrame'
 import Headline from '../../atoms/Headline'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     preview: {
       backgroundImage: [

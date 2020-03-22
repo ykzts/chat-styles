@@ -19,7 +19,7 @@ import Headline from '../../atoms/Headline'
 
 import 'prismjs/themes/prism-okaidia.css'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     code: {
       maxHeight: '512px'

@@ -3,7 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/styles/createStyles'
 import React, { FC, ReactElement } from 'react'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     list: {
       lineHeight: 1.5,

@@ -141,7 +141,7 @@ const ChatStylesProvider: FunctionComponent = ({
   const [chatStyles, setChatStyles] = useState<ChatStyles | null>(null)
 
   useEffect(() => {
-    localForage.getItem<ChatStyles>('chatStyles:v2').then(chatStyles => {
+    localForage.getItem<ChatStyles>('chatStyles:v2').then((chatStyles) => {
       setChatStyles(chatStyles || defaultChatStyles)
     })
   }, [])
@@ -152,10 +152,10 @@ const ChatStylesProvider: FunctionComponent = ({
     <ChatStylesContext.Provider
       value={{
         chatStyles,
-        setChatStyles: chatStyles => {
+        setChatStyles: (chatStyles) => {
           localForage
             .setItem<ChatStyles>('chatStyles:v2', chatStyles)
-            .then(newChatStyles => {
+            .then((newChatStyles) => {
               setChatStyles(newChatStyles)
             })
         }

@@ -13,7 +13,7 @@ import React, {
 import { ColorResult, SketchPicker } from 'react-color'
 import { hex2rgb, rgb2hex } from '../../../utils/color'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     button: {
       borderRadius: '50%',

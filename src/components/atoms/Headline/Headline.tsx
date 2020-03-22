@@ -3,7 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/styles/createStyles'
 import React, { FC, ReactElement, ReactNode } from 'react'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     actions: {
       paddingLeft: theme.spacing(2)

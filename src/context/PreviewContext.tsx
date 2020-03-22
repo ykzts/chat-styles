@@ -22,7 +22,7 @@ const PreviewProvider: FunctionComponent = ({ children }): ReactElement => {
   const [invert, setInvert] = useState<boolean>(false)
 
   useEffect(() => {
-    localForage.getItem<boolean>('preview.invert').then(invert => {
+    localForage.getItem<boolean>('preview.invert').then((invert) => {
       setInvert(invert)
     })
   })
@@ -34,7 +34,7 @@ const PreviewProvider: FunctionComponent = ({ children }): ReactElement => {
         toggleInvert: () => {
           localForage
             .setItem<boolean>('preview.invert', !invert)
-            .then(newInvert => setInvert(newInvert))
+            .then((newInvert) => setInvert(newInvert))
         }
       }}
     >
