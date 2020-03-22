@@ -9,7 +9,7 @@ import React, { FC, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../../molecules/Footer'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     container: {
       marginTop: theme.spacing(4)

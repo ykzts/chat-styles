@@ -7,9 +7,7 @@ describe('styleShets', () => {
       color: '#ffffffff',
       width: 2
     }
-    const values = generateTextShadow(outlineStyle)
-      .trim()
-      .split(/,\s*/)
+    const values = generateTextShadow(outlineStyle).trim().split(/,\s*/)
 
     expect(values).toEqual([
       '-2px -2px 0 #ffffffff',

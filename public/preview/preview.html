@@ -523,7 +523,12 @@
                 <svg
                   focusable="false"
                   preserveAspectRatio="xMidYMid meet"
-                  style="pointer-events: none; display: block; width: 100%; height: 100%;"
+                  style="
+                    pointer-events: none;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                  "
                   viewBox="0 0 24 24"
                 >
                   <g>
@@ -776,7 +781,24 @@
           <yt-live-chat-paid-message-renderer
             allow-animations
             show-only-header
-            style="--yt-live-chat-paid-message-author-name-color:rgba(0, 0, 0, 0.541176); --yt-live-chat-paid-message-color:rgba(0, 0, 0, 0.87451); --yt-live-chat-paid-message-header-color:rgba(0, 0, 0, 0.87451); --yt-live-chat-paid-message-primary-color: rgba(255, 202, 40, 1); --yt-live-chat-paid-message-timestamp-color:rgba(0, 0, 0, 0.501961); --yt-live-chat-paid-message-secondary-color:rgba(255, 179, 0, 1);"
+            style="
+              --yt-live-chat-paid-message-author-name-color: rgba(
+                0,
+                0,
+                0,
+                0.541176
+              );
+              --yt-live-chat-paid-message-color: rgba(0, 0, 0, 0.87451);
+              --yt-live-chat-paid-message-header-color: rgba(0, 0, 0, 0.87451);
+              --yt-live-chat-paid-message-primary-color: rgba(255, 202, 40, 1);
+              --yt-live-chat-paid-message-timestamp-color: rgba(
+                0,
+                0,
+                0,
+                0.501961
+              );
+              --yt-live-chat-paid-message-secondary-color: rgba(255, 179, 0, 1);
+            "
           >
             <div id="card">
               <div id="header">
@@ -865,7 +887,24 @@
           </yt-live-chat-text-message-renderer>
           <yt-live-chat-paid-message-renderer
             allow-animations
-            style="--yt-live-chat-paid-message-author-name-color: rgba(255, 255, 255, 0.701961); --yt-live-chat-paid-message-color: rgba(255 ,255, 255, 1); --yt-live-chat-paid-message-header-color: rgba(255, 255, 255, 1); --yt-live-chat-paid-message-primary-color: rgba(230, 33, 23, 1); --yt-live-chat-paid-message-secondary-color: rgba(208, 0, 0, 1); --yt-live-chat-paid-message-timestamp-color: rgba(255, 255, 255, 0.501961);"
+            style="
+              --yt-live-chat-paid-message-author-name-color: rgba(
+                255,
+                255,
+                255,
+                0.701961
+              );
+              --yt-live-chat-paid-message-color: rgba(255, 255, 255, 1);
+              --yt-live-chat-paid-message-header-color: rgba(255, 255, 255, 1);
+              --yt-live-chat-paid-message-primary-color: rgba(230, 33, 23, 1);
+              --yt-live-chat-paid-message-secondary-color: rgba(208, 0, 0, 1);
+              --yt-live-chat-paid-message-timestamp-color: rgba(
+                255,
+                255,
+                255,
+                0.501961
+              );
+            "
           >
             <div id="card">
               <div id="header">
@@ -1030,7 +1069,7 @@
       src="https://polyfill.io/v3/polyfill.min.js?features=NodeList.prototype.forEach-polyfill"
     ></script>
     <script>
-      window.addEventListener('message', event => {
+      window.addEventListener('message', (event) => {
         const { url } = event.data
 
         const link = document.createElement('link')
@@ -1043,7 +1082,7 @@
             .querySelectorAll(
               `link[rel="stylesheet"][href^="blob:"]:not([href="${url}"])`
             )
-            .forEach(e => e.parentNode.removeChild(e))
+            .forEach((e) => e.parentNode.removeChild(e))
 
           const message = {
             frameHeight: document.body.scrollHeight
