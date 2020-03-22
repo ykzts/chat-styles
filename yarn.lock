@@ -1270,10 +1270,10 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@inabagumi/prettier-config@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@inabagumi/prettier-config/-/prettier-config-1.1.0.tgz#aee2ae562788457b2bc561921f3338f494dab8ad"
-  integrity sha512-hKJneSahAPPnKRdHDItPBKlUFngEMmjhZuJ4a7Pt9b6aUFFUHUOR5qXAT2KXbJwFjwvTnkUlalFKyc2kiilgUA==
+"@inabagumi/prettier-config@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@inabagumi/prettier-config/-/prettier-config-1.1.1.tgz#723524a1e0bd50743dac1ff7591feeaa1108c11f"
+  integrity sha512-WsPmES16McLm+95zH6A+21848QvJLhGBZtznEuRA6UymTEtzGwT/X4bZuJxY65rz8OtRKM/kgr1g6cGzrk5OlA==
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
