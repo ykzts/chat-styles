@@ -8,8 +8,8 @@ import React, {
   useRef,
   useState
 } from 'react'
-import { ChatStyles } from '../../../context/ChatStylesContext'
-import { generateStyleSheet } from '../../../utils/styleSheet'
+import ChatStyles from 'types/ChatStyles'
+import { generateStyleSheet } from 'utils/styleSheet'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -43,7 +43,8 @@ const PreviewFrame: FunctionComponent<Props> = ({
   useEffect(() => {
     window.addEventListener('message', handleLoadStyleSheet)
 
-    return () => window.removeEventListener('message', handleLoadStyleSheet)
+    return (): void =>
+      window.removeEventListener('message', handleLoadStyleSheet)
   }, [handleLoadStyleSheet])
 
   useEffect(() => {

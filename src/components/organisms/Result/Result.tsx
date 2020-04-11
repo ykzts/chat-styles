@@ -5,19 +5,10 @@ import FileCopyIcon from '@material-ui/icons/FileCopy'
 import createStyles from '@material-ui/styles/createStyles'
 import copy from 'copy-text-to-clipboard'
 import { highlight, languages } from 'prismjs'
-import React, {
-  FC,
-  ReactElement,
-  useCallback,
-  useContext,
-  useMemo,
-  useRef
-} from 'react'
-import ChatStylesContext from '../../../context/ChatStylesContext'
-import { generateStyleSheet } from '../../../utils/styleSheet'
-import Headline from '../../atoms/Headline'
-
-import 'prismjs/themes/prism-okaidia.css'
+import React, { FC, useCallback, useContext, useMemo, useRef } from 'react'
+import Headline from 'components/atoms/Headline'
+import ChatStylesContext from 'context/ChatStylesContext'
+import { generateStyleSheet } from 'utils/styleSheet'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -31,7 +22,7 @@ const useStyles = makeStyles((theme) =>
   })
 )
 
-const Result: FC = (): ReactElement => {
+const Result: FC = () => {
   const codeRef = useRef<HTMLElement>(null)
   const { chatStyles } = useContext(ChatStylesContext)
   const styleSheet = useMemo(
@@ -41,11 +32,13 @@ const Result: FC = (): ReactElement => {
   const classes = useStyles()
 
   const handleCopyClick = useCallback(() => {
+    if (!codeRef.current) return
+
     copy(styleSheet)
 
     const selection = window.getSelection()
 
-    selection!.selectAllChildren(codeRef.current!)
+    selection?.selectAllChildren(codeRef.current)
   }, [styleSheet])
 
   const actions = (

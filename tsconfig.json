@@ -2,9 +2,11 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
+    "jsx": "preserve",
     "lib": ["dom", "es2018"],
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,8 +15,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2018",
-    "jsx": "preserve"
+    "target": "es2018"
   },
   "include": ["src"]
 }

@@ -1,54 +1,10 @@
 import localForage from 'localforage'
-import React, {
-  FunctionComponent,
-  ReactElement,
-  useEffect,
-  useState
-} from 'react'
+import React, { FC, createContext, useEffect, useState } from 'react'
+import ChatStyles from 'types/ChatStyles'
 
-export interface ChatOutlineStyle {
-  color: string
-  width: number
-}
-
-export interface ChatTextStyle {
-  color: string
-  fontSize: number
-  outline: ChatOutlineStyle
-  show?: boolean
-}
-
-export interface ChatImageStyle {
-  show: boolean
-  size: number
-}
-
-export interface ChatStyles {
-  authorName: ChatTextStyle
-  avatar: ChatImageStyle
-  engagementMessage: {
-    show: boolean
-  }
-  memberName: ChatTextStyle & {
-    badge: ChatImageStyle
-  }
-  message: ChatTextStyle
-  moderatorName: ChatTextStyle & {
-    badge: ChatImageStyle
-  }
-  newMemberBackground: {
-    show: boolean
-  }
-  ownerName: ChatTextStyle
-  superChatBackground: {
-    show: boolean
-  }
-  timestamp: ChatTextStyle
-}
-
-export interface ChatStylesState {
+export type ChatStylesState = {
   chatStyles: ChatStyles
-  setChatStyles: (chatStyles: ChatStyles) => void
+  setChatStyles?: (chatStyles: ChatStyles) => void
 }
 
 const defaultChatStyles: ChatStyles = {
@@ -128,16 +84,13 @@ const defaultChatStyles: ChatStyles = {
   }
 }
 
-const ChatStylesContext = React.createContext<ChatStylesState>({
-  chatStyles: defaultChatStyles,
-  setChatStyles: () => {}
+const ChatStylesContext = createContext<ChatStylesState>({
+  chatStyles: defaultChatStyles
 })
 
 export default ChatStylesContext
 
-const ChatStylesProvider: FunctionComponent = ({
-  children
-}): ReactElement | null => {
+const ChatStylesProvider: FC = ({ children }) => {
   const [chatStyles, setChatStyles] = useState<ChatStyles | null>(null)
 
   useEffect(() => {
@@ -152,7 +105,7 @@ const ChatStylesProvider: FunctionComponent = ({
     <ChatStylesContext.Provider
       value={{
         chatStyles,
-        setChatStyles: (chatStyles) => {
+        setChatStyles: (chatStyles): void => {
           localForage
             .setItem<ChatStyles>('chatStyles:v2', chatStyles)
             .then((newChatStyles) => {
