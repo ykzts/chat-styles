@@ -3,8 +3,6 @@ import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Layout from 'components/templates/Layout'
 
-import 'prismjs/themes/prism-okaidia.css'
-
 const description =
   'Chat StylesはYouTube Liveのチャットの見た目を変更するCSSを生成するためのツールです。OBS StudioのブラウザソースのカスタムCSSとして使われることを前提としています。'
 
