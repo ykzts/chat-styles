@@ -10,20 +10,19 @@ import ChatIcon from '@material-ui/icons/Chat'
 import PersonIcon from '@material-ui/icons/Person'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { Field, FieldProps, Formik } from 'formik'
-import React, { FC, ReactElement, useCallback, useContext } from 'react'
-import ChatStylesContext, {
-  ChatStyles
-} from '../../../context/ChatStylesContext'
-import AutoSave from '../../atoms/AutoSave'
-import ColorPicker from '../../atoms/ColorPicker'
-import Headline from '../../atoms/Headline'
+import React, { FC, useCallback, useContext } from 'react'
+import ChatStylesContext from 'context/ChatStylesContext'
+import AutoSave from 'components/atoms/AutoSave'
+import ColorPicker from 'components/atoms/ColorPicker'
+import Headline from 'components/atoms/Headline'
+import ChatStyles from 'types/ChatStyles'
 
-const StylesForm: FC = (): ReactElement => {
+const StylesForm: FC = () => {
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
 
   const handleSubmit = useCallback(
     (values: ChatStyles) => {
-      setChatStyles(values)
+      if (typeof setChatStyles === 'function') setChatStyles(values)
     },
     [setChatStyles]
   )
@@ -37,7 +36,7 @@ const StylesForm: FC = (): ReactElement => {
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
               <Field name="avatar.show">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -53,7 +52,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="avatar.size">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -83,7 +82,7 @@ const StylesForm: FC = (): ReactElement => {
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
               <Field name="ownerName.show">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -99,7 +98,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="ownerName.fontSize">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -118,7 +117,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="ownerName.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.ownerName.show}
@@ -134,7 +133,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="ownerName.outline.width">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -153,7 +152,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="ownerName.outline.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.ownerName.show}
@@ -171,7 +170,7 @@ const StylesForm: FC = (): ReactElement => {
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
               <Field name="moderatorName.show">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -187,7 +186,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="moderatorName.fontSize">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -206,7 +205,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="moderatorName.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.moderatorName.show}
@@ -222,7 +221,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="moderatorName.outline.width">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -241,7 +240,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="moderatorName.outline.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.moderatorName.show}
@@ -259,7 +258,7 @@ const StylesForm: FC = (): ReactElement => {
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
               <Field name="memberName.show">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -275,7 +274,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="memberName.fontSize">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -294,7 +293,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="memberName.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.memberName.show}
@@ -311,7 +310,7 @@ const StylesForm: FC = (): ReactElement => {
             <Grid item sm={4} xs={12}>
               {' '}
               <Field name="memberName.outline.width">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -330,7 +329,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="memberName.outline.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.memberName.show}
@@ -348,7 +347,7 @@ const StylesForm: FC = (): ReactElement => {
           <Grid alignItems="center" container>
             <Grid item sm={4} xs={12}>
               <Field name="authorName.show">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <FormControlLabel
                     control={
                       <Switch
@@ -364,7 +363,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="authorName.fontSize">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -383,7 +382,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="authorName.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.authorName.show}
@@ -399,7 +398,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="authorName.outline.width">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -418,7 +417,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="authorName.outline.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     disabled={!form.values.authorName.show}
@@ -437,7 +436,7 @@ const StylesForm: FC = (): ReactElement => {
             <Grid item sm={4} xs={12}></Grid>
             <Grid item sm={4} xs={12}>
               <Field name="message.fontSize">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -455,7 +454,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="message.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker {...field} value={form.values.message.color} />
                 )}
               </Field>
@@ -467,7 +466,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="message.outline.width">
-                {({ field }: FieldProps<ChatStyles>) => (
+                {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                   <TextField
                     InputProps={{
                       endAdornment: (
@@ -485,7 +484,7 @@ const StylesForm: FC = (): ReactElement => {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Field name="message.outline.color">
-                {({ field, form }: FieldProps<ChatStyles>) => (
+                {({ field, form }: FieldProps<ChatStyles>): JSX.Element => (
                   <ColorPicker
                     {...field}
                     value={form.values.message.outline.color}
@@ -501,7 +500,7 @@ const StylesForm: FC = (): ReactElement => {
 
           <FormGroup>
             <Field name="engagementMessage.show">
-              {({ field }: FieldProps<ChatStyles>) => (
+              {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                 <FormControlLabel
                   control={
                     <Switch
@@ -515,7 +514,7 @@ const StylesForm: FC = (): ReactElement => {
               )}
             </Field>
             <Field name="superChatBackground.show">
-              {({ field }: FieldProps<ChatStyles>) => (
+              {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                 <FormControlLabel
                   control={
                     <Switch
@@ -529,7 +528,7 @@ const StylesForm: FC = (): ReactElement => {
               )}
             </Field>
             <Field name="newMemberBackground.show">
-              {({ field }: FieldProps<ChatStyles>) => (
+              {({ field }: FieldProps<ChatStyles>): JSX.Element => (
                 <FormControlLabel
                   control={
                     <Switch

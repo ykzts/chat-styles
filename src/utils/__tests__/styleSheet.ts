@@ -1,4 +1,4 @@
-import { ChatOutlineStyle } from '../../context/ChatStylesContext'
+import { ChatOutlineStyle } from 'types/context/ChatStyles'
 import { generateTextShadow } from '../styleSheet'
 
 describe('styleShets', () => {

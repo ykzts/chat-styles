@@ -1,12 +1,12 @@
 import Grid from '@material-ui/core/Grid'
-import React, { FC, ReactElement } from 'react'
-import Preview from '../../components/organisms/Preview'
-import Result from '../../components/organisms/Result'
-import StylesForm from '../../components/organisms/StylesForm'
-import { ChatStylesProvider } from '../../context/ChatStylesContext'
-import { PreviewProvider } from '../../context/PreviewContext'
+import React, { FC } from 'react'
+import Preview from 'components/organisms/Preview'
+import Result from 'components/organisms/Result'
+import StylesForm from 'components/organisms/StylesForm'
+import { ChatStylesProvider } from 'context/ChatStylesContext'
+import { PreviewProvider } from 'context/PreviewContext'
 
-const Generator: FC = (): ReactElement => {
+const Generator: FC = () => {
   return (
     <ChatStylesProvider>
       <PreviewProvider>

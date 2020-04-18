@@ -3,10 +3,10 @@ name: Node CI
 on:
   pull_request:
     branches:
-    - master
+      - master
   push:
     branches:
-    - master
+      - master
 
 jobs:
   test:
@@ -15,16 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    - name: Use Node.js v10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
-    - name: Lint
-      run: yarn format-check
-    - name: Run tests
-      env:
-        CI: 'true'
-      run: yarn test
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - run: yarn format-check
+      - run: yarn lint

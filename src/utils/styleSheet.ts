@@ -1,4 +1,25 @@
-import { ChatStyles, ChatOutlineStyle } from '../context/ChatStylesContext'
+import ChatStyles, { ChatOutlineStyle } from 'types/ChatStyles'
+
+export const generateTextShadow = (outlineStyle: ChatOutlineStyle): string => {
+  if (outlineStyle.width < 1) return 'none'
+
+  const values = []
+  for (
+    let x = -outlineStyle.width;
+    x <= outlineStyle.width;
+    x += Math.ceil(outlineStyle.width / 4)
+  ) {
+    for (
+      let y = -outlineStyle.width;
+      y <= outlineStyle.width;
+      y += Math.ceil(outlineStyle.width / 4)
+    ) {
+      values.push(`${x}px ${y}px 0 ${outlineStyle.color}`)
+    }
+  }
+
+  return `\n    ${values.join(',\n    ')}`
+}
 
 export const generateStyleSheet = (chatStyles: ChatStyles): string =>
   `@charset "UTF-8";
@@ -351,24 +372,3 @@ yt-live-chat-restricted-participation-renderer {
   display: none !important;
 }
 `
-
-export const generateTextShadow = (outlineStyle: ChatOutlineStyle): string => {
-  if (outlineStyle.width < 1) return 'none'
-
-  const values = []
-  for (
-    let x = -outlineStyle.width;
-    x <= outlineStyle.width;
-    x += Math.ceil(outlineStyle.width / 4)
-  ) {
-    for (
-      let y = -outlineStyle.width;
-      y <= outlineStyle.width;
-      y += Math.ceil(outlineStyle.width / 4)
-    ) {
-      values.push(`${x}px ${y}px 0 ${outlineStyle.color}`)
-    }
-  }
-
-  return `\n    ${values.join(',\n    ')}`
-}

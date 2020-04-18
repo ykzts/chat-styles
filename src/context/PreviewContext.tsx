@@ -1,24 +1,18 @@
 import localForage from 'localforage'
-import React, {
-  FunctionComponent,
-  ReactElement,
-  useEffect,
-  useState
-} from 'react'
+import React, { FC, createContext, useEffect, useState } from 'react'
 
-export interface PreviewState {
-  toggleInvert: () => void
+export type PreviewState = {
+  toggleInvert?: () => void
   invert: boolean
 }
 
-const PreviewContext = React.createContext<PreviewState>({
-  toggleInvert: () => {},
+const PreviewContext = createContext<PreviewState>({
   invert: false
 })
 
 export default PreviewContext
 
-const PreviewProvider: FunctionComponent = ({ children }): ReactElement => {
+const PreviewProvider: FC = ({ children }) => {
   const [invert, setInvert] = useState<boolean>(false)
 
   useEffect(() => {
@@ -31,7 +25,7 @@ const PreviewProvider: FunctionComponent = ({ children }): ReactElement => {
     <PreviewContext.Provider
       value={{
         invert,
-        toggleInvert: () => {
+        toggleInvert: (): void => {
           localForage
             .setItem<boolean>('preview.invert', !invert)
             .then((newInvert) => setInvert(newInvert))

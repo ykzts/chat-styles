@@ -5,11 +5,11 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/styles/createStyles'
 import classNames from 'classnames'
-import React, { FC, ReactElement, useCallback, useContext } from 'react'
-import ChatStylesContext from '../../../context/ChatStylesContext'
-import PreviewContext from '../../../context/PreviewContext'
-import PreviewFrame from '../../atoms/PreviewFrame'
-import Headline from '../../atoms/Headline'
+import React, { FC, useCallback, useContext } from 'react'
+import PreviewFrame from 'components/atoms/PreviewFrame'
+import Headline from 'components/atoms/Headline'
+import ChatStylesContext from 'context/ChatStylesContext'
+import PreviewContext from 'context/PreviewContext'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -43,13 +43,13 @@ const useStyles = makeStyles((theme) =>
   })
 )
 
-export const Preview: FC = (): ReactElement => {
+export const Preview: FC = () => {
   const { chatStyles } = useContext(ChatStylesContext)
   const { invert, toggleInvert } = useContext(PreviewContext)
   const classes = useStyles()
 
   const handleInvertChange = useCallback(() => {
-    toggleInvert()
+    if (typeof toggleInvert === 'function') toggleInvert()
   }, [toggleInvert])
 
   return (

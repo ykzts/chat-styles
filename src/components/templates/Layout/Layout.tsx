@@ -5,9 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/styles/createStyles'
-import React, { FC, ReactElement } from 'react'
+import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
-import Footer from '../../molecules/Footer'
+import Footer from 'components/molecules/Footer'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -21,7 +21,7 @@ type Props = {
   title: string
 }
 
-const Layout: FC<Props> = ({ children, title }): ReactElement => {
+const Layout: FC<Props> = ({ children, title }) => {
   const classes = useStyles()
 
   return (
