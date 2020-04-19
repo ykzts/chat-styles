@@ -19,7 +19,7 @@ const nextConfig = {
             value: 'same-origin, strict-origin-when-cross-origin'
           }
         ],
-        source: '/((?!_next).*)'
+        source: '/((?!_next/|preview/).*)'
       },
       {
         headers: [
@@ -27,6 +27,10 @@ const nextConfig = {
             key: 'content-security-policy',
             value:
               "default-src 'none'; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline' https://polyfill.io; style-src 'unsafe-inline' blob: https://fonts.googleapis.com"
+          },
+          {
+            key: 'referrer-policy',
+            value: 'no-referrer'
           }
         ],
         source: '/preview/(.*)'
