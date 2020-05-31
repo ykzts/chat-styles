@@ -12,14 +12,14 @@ const nextConfig = {
           {
             key: 'content-security-policy',
             value:
-              "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://polyfill.io; default-src 'none'; font-src https://fonts.gstatic.com; frame-src 'self'; img-src 'self' data:; manifest-src 'self'; sandbox allow-popups allow-same-origin allow-scripts; script-src 'self' 'unsafe-inline' https://storage.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; worker-src 'self'"
+              "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://polyfill.io; default-src 'none'; font-src https://fonts.gstatic.com; frame-src 'self'; img-src 'self' data:; manifest-src 'self'; sandbox allow-popups allow-same-origin allow-scripts; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://storage.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; worker-src 'self'"
           },
           {
             key: 'referrer-policy',
             value: 'same-origin, strict-origin-when-cross-origin'
           }
         ],
-        source: '/((?!_next/|preview/).*)'
+        source: '/((?!_next/).*)'
       },
       {
         headers: [

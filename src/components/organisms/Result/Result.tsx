@@ -3,8 +3,10 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import CodeIcon from '@material-ui/icons/Code'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 import createStyles from '@material-ui/styles/createStyles'
+import classNames from 'classnames'
 import copy from 'copy-text-to-clipboard'
-import { highlight, languages } from 'prismjs'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import prismTheme from 'prism-react-renderer/themes/nightOwl'
 import React, { FC, useCallback, useContext, useMemo, useRef } from 'react'
 import Headline from 'components/atoms/Headline'
 import ChatStylesContext from 'context/ChatStylesContext'
@@ -13,7 +15,15 @@ import { generateStyleSheet } from 'utils/styleSheet'
 const useStyles = makeStyles((theme) =>
   createStyles({
     code: {
-      maxHeight: '512px'
+      fontSize: '1rem',
+      fontFamily: 'Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace',
+      overflow: 'auto',
+      maxHeight: '512px',
+      padding: theme.spacing(1.5),
+
+      '& code': {
+        fontFamily: 'inherit'
+      }
     },
 
     root: {
@@ -57,15 +67,41 @@ const Result: FC = () => {
         カスタムCSS
       </Headline>
 
-      <pre className={`${classes.code} language-css`}>
-        <code
-          className="language-css"
-          dangerouslySetInnerHTML={{
-            __html: highlight(styleSheet, languages.css, 'css')
-          }}
-          ref={codeRef}
-        />
-      </pre>
+      <Highlight
+        {...defaultProps}
+        code={styleSheet}
+        language="css"
+        theme={prismTheme}
+      >
+        {({
+          className,
+          getLineProps,
+          getTokenProps,
+          style,
+          tokens
+        }): JSX.Element => (
+          <pre className={classNames(classes.code, className)} style={style}>
+            <code ref={codeRef}>
+              {tokens.map((line, i) => (
+                <>
+                  <span
+                    key={`line-${i}`}
+                    {...getLineProps({ line, key: `line-${i}` })}
+                  >
+                    {line.map((token, key) => (
+                      <span
+                        key={`token-${key}`}
+                        {...getTokenProps({ token, key: `token-${key}` })}
+                      />
+                    ))}
+                  </span>
+                  {'\n'}
+                </>
+              ))}
+            </code>
+          </pre>
+        )}
+      </Highlight>
     </section>
   )
 }
