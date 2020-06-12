@@ -55,7 +55,9 @@ const Layout: FC<Props> = ({ children, title }) => {
         </Toolbar>
       </AppBar>
 
-      <Container className={classes.container}>{children}</Container>
+      {children && (
+        <Container className={classes.container}>{children}</Container>
+      )}
 
       <Footer />
     </>
