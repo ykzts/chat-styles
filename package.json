@@ -11,7 +11,7 @@
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.2.0",
     "formik": "^2.1.5",
-    "localforage": "^1.7.4",
+    "localforage": "^1.8.0",
     "next": "^9.4.4",
     "next-offline": "^5.0.2",
     "prism-react-renderer": "^1.1.1",
