@@ -16,9 +16,12 @@ const PreviewProvider: FC = ({ children }) => {
   const [invert, setInvert] = useState<boolean>(false)
 
   useEffect(() => {
-    localForage.getItem<boolean>('preview.invert').then((invert) => {
-      setInvert(invert)
-    })
+    localForage
+      .getItem<boolean>('preview.invert')
+      .then((value) => !!value)
+      .then((invert) => {
+        setInvert(invert)
+      })
   })
 
   return (
