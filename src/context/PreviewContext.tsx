@@ -22,6 +22,9 @@ const PreviewProvider: FC = ({ children }) => {
       .then((invert) => {
         setInvert(invert)
       })
+      .catch((error) => {
+        console.error(error)
+      })
   })
 
   return (
@@ -32,6 +35,9 @@ const PreviewProvider: FC = ({ children }) => {
           localForage
             .setItem<boolean>('preview.invert', !invert)
             .then((newInvert) => setInvert(newInvert))
+            .catch((error) => {
+              console.error(error)
+            })
         }
       }}
     >

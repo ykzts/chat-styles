@@ -94,9 +94,14 @@ const ChatStylesProvider: FC = ({ children }) => {
   const [chatStyles, setChatStyles] = useState<ChatStyles | null>(null)
 
   useEffect(() => {
-    localForage.getItem<ChatStyles>('chatStyles:v2').then((chatStyles) => {
-      setChatStyles(chatStyles || defaultChatStyles)
-    })
+    localForage
+      .getItem<ChatStyles>('chatStyles:v2')
+      .then((chatStyles) => {
+        setChatStyles(chatStyles || defaultChatStyles)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }, [])
 
   if (!chatStyles) return null
@@ -110,6 +115,9 @@ const ChatStylesProvider: FC = ({ children }) => {
             .setItem<ChatStyles>('chatStyles:v2', chatStyles)
             .then((newChatStyles) => {
               setChatStyles(newChatStyles)
+            })
+            .catch((error) => {
+              console.error(error)
             })
         }
       }}

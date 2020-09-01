@@ -17,5 +17,5 @@
     "strict": true,
     "target": "es2018"
   },
-  "include": ["src"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
