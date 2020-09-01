@@ -6,7 +6,7 @@ const AutoSave: FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      submitForm()
+      void submitForm()
     }, 500)
 
     return (): void => clearInterval(interval)
