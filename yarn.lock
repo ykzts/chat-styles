@@ -1369,11 +1369,6 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.0.tgz#eb0239062226a9c8b604d58d4a4204e26c22eb16"
   integrity sha512-59+6BnOxPoMY64Qy2crDGHtvQgHwIL1SIkWeNiEud1V6ASs59SM9oDGN+Bo/EswII1nn+wQRpMvax0IIN2j+VQ==
 
-"@next/plugin-material-ui@^9.4.4":
-  version "9.4.4"
-  resolved "https://registry.yarnpkg.com/@next/plugin-material-ui/-/plugin-material-ui-9.4.4.tgz#0930946224c4a9ff09d2d9046f6f040be453c1af"
-  integrity sha512-zVi3l6QncnUeRvEls4Jix3kF3yFbtr8g3kyuR9MkzRgaQ3AF4GPGS/+gxAK4rcGmXM88ohagFZFCdzKiMb3pXg==
-
 "@next/polyfill-module@10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@next/polyfill-module/-/polyfill-module-10.0.0.tgz#17f59cb7325a03f23b66b979fccc56d133411b0a"
