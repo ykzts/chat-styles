@@ -14,7 +14,7 @@
     "next": "^10.0.4",
     "next-offline": "^5.0.3",
     "prism-react-renderer": "^1.1.1",
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.1",
