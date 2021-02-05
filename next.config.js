@@ -1,8 +1,7 @@
-const withOffline = require('next-offline')
+const withPWA = require('next-pwa')
 
 const nextConfig = {
   experimental: {
-    modern: true,
     plugins: true
   },
   headers: () => [
@@ -57,6 +56,11 @@ const nextConfig = {
       source: '/manifest.json'
     }
   ],
+  pwa: {
+    dest: '.next/static',
+    disable: process.env.NODE_ENV === 'development',
+    sw: '/service-worker.js'
+  },
   rewrites: () => [
     {
       destination: '/_next/static/service-worker.js',
@@ -65,13 +69,16 @@ const nextConfig = {
     {
       destination: '/_next/static/service-worker.js.map',
       source: '/service-worker.js.map'
+    },
+    {
+      destination: '/_next/static/workbox-:hash.js',
+      source: '/workbox-:hash.js'
+    },
+    {
+      destination: '/_next/static/workbox-:hash.js.map',
+      source: '/workbox-:hash.js.map'
     }
-  ],
-  workboxOpts: {
-    clientsClaim: true,
-    skipWaiting: true,
-    swDest: 'static/service-worker.js'
-  }
+  ]
 }
 
-module.exports = withOffline(nextConfig)
+module.exports = withPWA(nextConfig)
