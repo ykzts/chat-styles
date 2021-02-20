@@ -12,7 +12,7 @@
     "formik": "^2.2.6",
     "localforage": "^1.9.0",
     "next": "^10.0.7",
-    "prism-react-renderer": "^1.1.1",
+    "prism-react-renderer": "^1.2.0",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-color": "^2.19.3",
