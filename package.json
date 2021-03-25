@@ -24,7 +24,7 @@
     "@inabagumi/eslint-config-react": "^9.0.0",
     "@inabagumi/prettier-config": "^1.1.2",
     "@types/classnames": "^2.2.11",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^26.0.22",
     "@types/node": "^12.20.6",
     "@types/react": "^17.0.3",
     "@types/react-color": "^3.0.4",
