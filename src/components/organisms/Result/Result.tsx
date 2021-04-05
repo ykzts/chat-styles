@@ -4,7 +4,6 @@ import CodeIcon from '@material-ui/icons/Code'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 import createStyles from '@material-ui/styles/createStyles'
 import classNames from 'classnames'
-import copy from 'copy-text-to-clipboard'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import prismTheme from 'prism-react-renderer/themes/nightOwl'
 import React, { FC, useCallback, useContext, useMemo, useRef } from 'react'
@@ -44,7 +43,9 @@ const Result: FC = () => {
   const handleCopyClick = useCallback(() => {
     if (!codeRef.current) return
 
-    copy(styleSheet)
+    void import('copy-text-to-clipboard').then(({ default: copy }) => {
+      copy(styleSheet)
+    })
 
     const selection = window.getSelection()
 
