@@ -1,29 +1,23 @@
 import localForage from 'localforage'
-import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useState } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 
 type Set<T> = Dispatch<SetStateAction<T>>
 
 function useStorage<T = unknown>(
+  key: string
+): [T | undefined, Set<T | undefined>, () => void]
+function useStorage<T = unknown>(
   key: string,
   initialValue: T
-): [T, Set<T>, () => void] {
-  const [value, setValue] = useState<T>(initialValue)
+): [T, Set<T | undefined>, () => void]
+function useStorage<T = unknown>(
+  key: string,
+  initialValue?: T
+): [T | undefined, Set<T | undefined>, () => void] {
+  const [value, setValue] = useState(initialValue)
 
-  useEffect(() => {
-    localForage
-      .getItem<T>(key)
-      .then((newValue) => {
-        if (newValue !== null) {
-          setValue(newValue)
-        }
-      })
-      .catch(() => {
-        // do nothing
-      })
-  }, [key])
-
-  const set = useCallback<Set<T>>(
+  const set = useCallback<Set<T | undefined>>(
     (newValue) => {
       const val =
         typeof newValue === 'function'
@@ -46,6 +40,19 @@ function useStorage<T = unknown>(
     localForage.removeItem(key).catch(() => {
       // do nothing
     })
+  }, [key])
+
+  useEffect(() => {
+    localForage
+      .getItem<T>(key)
+      .then((newValue) => {
+        if (newValue !== null) {
+          setValue(newValue)
+        }
+      })
+      .catch(() => {
+        // do nothing
+      })
   }, [key])
 
   return [value, set, remove]

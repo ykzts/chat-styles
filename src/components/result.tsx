@@ -1,12 +1,12 @@
-import Chip from '@material-ui/core/Chip'
 import classNames from 'classnames'
 import Highlight, { defaultProps } from 'prism-react-renderer'
+/* eslint-disable-next-line import/no-extraneous-dependencies */
 import prismTheme from 'prism-react-renderer/themes/nightOwl'
-import type { VFC } from 'react'
 import { useCallback, useRef } from 'react'
 import { MdCode, MdContentCopy } from 'react-icons/md'
-import Headline from 'components/headline'
-import useStyleSheet from 'hooks/use-style-sheet'
+import { useStyleSheet } from '../hooks'
+import Headline from './headline'
+import type { VFC } from 'react'
 
 const Result: VFC = () => {
   const codeRef = useRef<HTMLElement>(null)
@@ -28,11 +28,14 @@ const Result: VFC = () => {
     <section className="mt-10">
       <Headline
         actions={
-          <Chip
-            icon={<MdContentCopy />}
-            label="コピーする"
+          <button
+            className="bg-gray-200 flex focus:shadow-inner focus:outline-none items-center px-3 py-1 rounded-full"
             onClick={handleCopyClick}
-          />
+            type="button"
+          >
+            <MdContentCopy className="mr-2" />
+            コピーする
+          </button>
         }
         icon={<MdCode />}
         label="カスタムCSS"
@@ -60,12 +63,12 @@ const Result: VFC = () => {
               {tokens.map((line, i) => (
                 <span
                   key={`line-${i}`}
-                  {...getLineProps({ line, key: `line-${i}` })}
+                  {...getLineProps({ key: `line-${i}`, line })}
                 >
                   {line.map((token, key) => (
                     <span
                       key={`token-${key}`}
-                      {...getTokenProps({ token, key: `token-${key}` })}
+                      {...getTokenProps({ key: `token-${key}`, token })}
                     />
                   ))}
                   {'\n'}

@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css'
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
+import Head from 'next/head'
+import type { AppProps } from 'next/app'
 import type { VFC } from 'react'
 
 const description =

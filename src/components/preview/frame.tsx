@@ -1,6 +1,6 @@
-import type { VFC } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import useStyleSheet from 'hooks/use-style-sheet'
+import { useStyleSheet } from '../../hooks'
+import type { VFC } from 'react'
 
 type Message = {
   frameHeight: number

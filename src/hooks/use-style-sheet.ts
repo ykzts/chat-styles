@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import type { ChatOutlineStyle, ChatStyles } from './use-chat-styles'
 import useChatStyles from './use-chat-styles'
+import type { ChatOutlineStyle, ChatStyles } from './use-chat-styles'
 
 export const generateTextShadow = (outlineStyle: ChatOutlineStyle): string => {
   if (outlineStyle.width < 1) return 'none'

@@ -1,31 +1,26 @@
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Switch from '@material-ui/core/Switch'
 import classNames from 'classnames'
-import type { VFC } from 'react'
-import { MdVisibility } from 'react-icons/md'
-import Headline from 'components/headline'
-import useInvert from 'hooks/use-invert'
+import { MdBrightness2, MdVisibility, MdWbSunny } from 'react-icons/md'
+import { useInvert } from '../../hooks'
+import Headline from '../headline'
 import PreviewFrame from './frame'
 import styles from './index.module.css'
+import type { VFC } from 'react'
 
-export const Preview: VFC = () => {
+const Preview: VFC = () => {
   const [invert, handleInvertChange] = useInvert()
 
   return (
     <section>
       <Headline
         actions={
-          <FormControlLabel
-            control={
-              <Switch
-                checked={invert}
-                color="primary"
-                onChange={handleInvertChange}
-              />
-            }
-            label="背景を暗くする"
-            labelPlacement="start"
-          />
+          <button
+            aria-label={invert ? '背景を明るくする' : '背景を暗くする'}
+            className="flex focus:outline-none hover:bg-blue-100 h-8 items-center justify-center rounded-full transition-colors w-8"
+            onClick={handleInvertChange}
+            type="button"
+          >
+            {invert ? <MdWbSunny /> : <MdBrightness2 />}
+          </button>
         }
         icon={<MdVisibility />}
         label="プレビュー"

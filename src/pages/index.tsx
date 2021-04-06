@@ -1,8 +1,8 @@
+import Layout from '../components/layout'
+import Preview from '../components/preview'
+import Result from '../components/result'
+import StylesForm from '../components/styles-form'
 import type { NextPage } from 'next'
-import Layout from 'components/layout'
-import Preview from 'components/preview'
-import Result from 'components/result'
-import StylesForm from 'components/styles-form'
 
 const Generator: NextPage = () => {
   return (

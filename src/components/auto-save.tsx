@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik'
-import type { VFC } from 'react'
 import { useEffect } from 'react'
+import type { VFC } from 'react'
 
 const AutoSave: VFC = () => {
   const { submitForm } = useFormikContext()

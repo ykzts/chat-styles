@@ -6,7 +6,7 @@ function useInvert(): [boolean, () => void] {
 
   const toggle = useCallback(() => {
     setInvert((prevState) => !prevState)
-  }, [])
+  }, [setInvert])
 
   return [invert, toggle]
 }

@@ -1,5 +1,5 @@
-import type { Dispatch, SetStateAction } from 'react'
 import useStorage from './use-storage'
+import type { Dispatch, SetStateAction } from 'react'
 
 export type ChatOutlineStyle = {
   color: string
@@ -118,7 +118,10 @@ const defaultChatStyles: ChatStyles = {
   }
 }
 
-function useChatStyles(): [ChatStyles, Dispatch<SetStateAction<ChatStyles>>] {
+function useChatStyles(): [
+  ChatStyles,
+  Dispatch<SetStateAction<ChatStyles | undefined>>
+] {
   const [chatStyles, setChatStyles] = useStorage(
     'chatStyles:v3',
     defaultChatStyles
