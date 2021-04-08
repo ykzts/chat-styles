@@ -3510,10 +3510,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-pwa@^5.2.2:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-5.2.2.tgz#e50929d57034fb3dfcbf2fd3a47f6d942c17abe3"
-  integrity sha512-z5HItlF6vQ8RcXjfgcoJgF9eLtV4Z3D9lar9/8a3jRHQASlTXCS+qsqqtowvAY8821iQ8S1y6hyee7uVDFPB3A==
+next-pwa@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-5.2.3.tgz#ec3b61eb4689859252357e33a1495abaeee09fe9"
+  integrity sha512-CVht4cT3KxOe9Yc/kyJleJY5653646D4j3rxpsqVHoH71cDEDu0pOfHr9FPp9IBpTHFSS3ZTXO7+uyxtbABycg==
   dependencies:
     babel-loader "^8.2.2"
     clean-webpack-plugin "^3.0.0"
