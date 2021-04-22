@@ -1,0 +1,18 @@
+[
+  {
+    "destination": "/_next/static/service-worker.js",
+    "source": "/service-worker.js"
+  },
+  {
+    "destination": "/_next/static/service-worker.js.map",
+    "source": "/service-worker.js.map"
+  },
+  {
+    "destination": "/_next/static/workbox-:hash.js",
+    "source": "/workbox-:hash.js"
+  },
+  {
+    "destination": "/_next/static/workbox-:hash.js.map",
+    "source": "/workbox-:hash.js.map"
+  }
+]
