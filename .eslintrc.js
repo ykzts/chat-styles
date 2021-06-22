@@ -1,17 +1,16 @@
 /**
- * @type {import('eslint/lib/shared/types').ConfigData}
+ * @type {import('eslint').Linter.Config}
  */
 module.exports = {
   env: {
     browser: true,
-    commonjs: true,
     es2020: true,
     node: true
   },
   extends: [
     'eslint:recommended',
-    // 'plugin:import/recommended',
-    'plugin:react-hooks/recommended',
+    'next',
+    'next/core-web-vitals',
     'plugin:prettier/recommended'
   ],
   overrides: [
@@ -21,44 +20,25 @@ module.exports = {
         es2020: false
       },
       extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking'
-        // 'plugin:import/typescript'
       ],
-      files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
+      files: ['**/*.ts?(x)'],
       parserOptions: {
-        project: 'tsconfig.json',
-        warnOnUnsupportedTypeScriptVersion: false
+        project: './tsconfig.json'
       }
     },
     {
-      extends: [
-        'plugin:react/recommended',
-        'plugin:react/jsx-runtime',
-        'plugin:import/react'
-      ],
-      files: ['*.jsx', '*.tsx'],
-      rules: {
-        // 'react/jsx-sort-props': 'error'
+      env: {
+        commonjs: true
       },
-      settings: {
-        react: {
-          version: 'detect'
-        }
-      }
-    },
-    {
-      files: ['*.tsx'],
-      rules: {
-        'react/prop-types': 'off'
+      files: ['next.config.js', 'prettier.config.js'],
+      parserOptions: {
+        sourceType: 'script'
       }
     }
   ],
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module'
-  },
   root: true,
   rules: {
     // 'import/order': [
