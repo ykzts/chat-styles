@@ -3,9 +3,6 @@ const headers = require('./headers.json')
 const rewrites = require('./rewrites.json')
 
 const nextConfig = {
-  future: {
-    webpack5: true
-  },
   async headers() {
     return headers
   },
