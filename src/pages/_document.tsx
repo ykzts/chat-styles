@@ -13,7 +13,10 @@ export default class MyDocument extends Document {
       ...ctx,
       renderPage: () =>
         ctx.renderPage({
-          enhanceApp: (App) => (props) => sheets.collect(<App {...props} />)
+          enhanceApp: (App) =>
+            function EnhancedApp(props) {
+              return sheets.collect(<App {...props} />)
+            }
         })
     })
 
