@@ -32,7 +32,6 @@ module.exports = {
   ],
   root: true,
   rules: {
-    '@typescript-eslint/no-unsafe-argument': 'off',
     '@next/next/no-page-custom-font': 'off'
     // 'import/order': [
     //  'error',
