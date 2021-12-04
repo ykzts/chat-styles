@@ -1,23 +1,14 @@
-/**
- * @type {import('eslint').Linter.Config}
- */
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
-  env: {
-    browser: true,
-    es2020: true,
-    node: true
-  },
   extends: [
     'eslint:recommended',
-    'next',
     'next/core-web-vitals',
     'plugin:prettier/recommended'
   ],
   overrides: [
     {
       env: {
-        commonjs: false,
-        es2020: false
+        commonjs: false
       },
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
@@ -41,6 +32,7 @@ module.exports = {
   ],
   root: true,
   rules: {
+    '@next/next/no-page-custom-font': 'off'
     // 'import/order': [
     //  'error',
     //  {
