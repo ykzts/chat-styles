@@ -22,12 +22,7 @@ export default class MyDocument extends Document {
 
     return {
       ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {sheets.getStyleElement()}
-        </>
-      )
+      styles: [initialProps.styles, sheets.getStyleElement()]
     }
   }
 

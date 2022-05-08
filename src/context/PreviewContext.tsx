@@ -1,5 +1,11 @@
 import localForage from 'localforage'
-import React, { FC, createContext, useEffect, useState } from 'react'
+import {
+  type FC,
+  type ReactNode,
+  createContext,
+  useEffect,
+  useState
+} from 'react'
 
 export type PreviewState = {
   toggleInvert?: () => void
@@ -12,7 +18,11 @@ const PreviewContext = createContext<PreviewState>({
 
 export default PreviewContext
 
-const PreviewProvider: FC = ({ children }) => {
+type Props = {
+  children: ReactNode
+}
+
+const PreviewProvider: FC<Props> = ({ children }) => {
   const [invert, setInvert] = useState<boolean>(false)
 
   useEffect(() => {

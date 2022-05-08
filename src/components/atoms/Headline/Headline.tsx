@@ -1,7 +1,7 @@
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/styles/createStyles'
-import React, { FC, ReactElement, ReactNode } from 'react'
+import { type FC, type ReactElement, type ReactNode } from 'react'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -36,10 +36,11 @@ const useStyles = makeStyles((theme) =>
 
 interface Props {
   actions?: ReactNode
+  children: ReactNode
   icon?: string | ReactElement
 }
 
-const Headline: FC<Props> = ({ actions, children, icon }): ReactElement => {
+const Headline: FC<Props> = ({ actions, children, icon }) => {
   const classes = useStyles()
 
   return (
