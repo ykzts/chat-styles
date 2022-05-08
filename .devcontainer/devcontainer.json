@@ -1,0 +1,14 @@
+{
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "silvenon.mdx"
+  ],
+  "forwardPorts": [3000],
+  "image": "mcr.microsoft.com/vscode/devcontainers/typescript-node:0-16-buster",
+  "name": "Node.js & TypeScript",
+  "postCreateCommand": "yarn install",
+  "remoteUser": "node",
+  "settings": {}
+}
