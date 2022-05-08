@@ -1,5 +1,11 @@
 import localForage from 'localforage'
-import React, { FC, createContext, useEffect, useState } from 'react'
+import {
+  type FC,
+  type ReactNode,
+  createContext,
+  useEffect,
+  useState
+} from 'react'
 import ChatStyles from 'types/ChatStyles'
 
 export type ChatStylesState = {
@@ -90,7 +96,11 @@ const ChatStylesContext = createContext<ChatStylesState>({
 
 export default ChatStylesContext
 
-const ChatStylesProvider: FC = ({ children }) => {
+type Props = {
+  children: ReactNode
+}
+
+const ChatStylesProvider: FC<Props> = ({ children }) => {
   const [chatStyles, setChatStyles] = useState<ChatStyles | null>(null)
 
   useEffect(() => {

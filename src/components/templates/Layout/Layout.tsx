@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import createStyles from '@material-ui/styles/createStyles'
-import React, { FC } from 'react'
+import { type FC, type ReactNode } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from 'components/molecules/Footer'
 
@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) =>
 )
 
 type Props = {
+  children: ReactNode
   title: string
 }
 
