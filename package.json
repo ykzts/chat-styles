@@ -19,7 +19,7 @@
   "description": "Chat Styles is a generator of style sheet for the YouTube Live Chat.",
   "devDependencies": {
     "@types/eslint": "^8.4.2",
-    "@types/node": "^14.18.20",
+    "@types/node": "^14.18.21",
     "@types/react": "^18.0.12",
     "@types/react-color": "^3.0.6",
     "@types/react-helmet": "^6.1.5",
