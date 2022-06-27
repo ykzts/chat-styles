@@ -28,7 +28,7 @@
     "eslint": "^8.18.0",
     "eslint-config-next": "^12.1.6",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.1.0",
     "next-pwa": "^5.5.4",
     "prettier": "~2.7.1",
     "typescript": "~4.7.4"
