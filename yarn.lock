@@ -1009,7 +1009,7 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@material-ui/core@^4.12.3":
+"@material-ui/core@^4.12.4":
   version "4.12.4"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.12.4.tgz#4ac17488e8fcaf55eb6a7f5efb2a131e10138a73"
   integrity sha512-tr7xekNlM9LjA6pagJmL8QCgZXaubWUwkJnoYcMKd4gw/t4XiyvnTkjdGrUVicyB2BsdaAv1tvow45bPM4sSwQ==
@@ -1034,7 +1034,7 @@
   dependencies:
     "@babel/runtime" "^7.4.4"
 
-"@material-ui/styles@^4.11.4", "@material-ui/styles@^4.11.5":
+"@material-ui/styles@^4.11.5":
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.11.5.tgz#19f84457df3aafd956ac863dbe156b1d88e2bbfb"
   integrity sha512-o/41ot5JJiUsIETME9wVLAJrmIWL3j0R0Bj2kCOLbSfqEkKf0fmaPt+5vtblUh5eXr2S+J/8J3DaCb10+CzPGA==
