@@ -1303,10 +1303,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.1.tgz#178d58ee7e4834152b0e8b4d30cbfab578b9bb30"
   integrity sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==
 
-"@types/node@^18.17.10":
-  version "18.17.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.10.tgz#aca0368a73f72c5aba6ddb77fd7d935690e5c26b"
-  integrity sha512-nKcFsGPnYG5LlxqJYJrHzVM58nQhRng/9JFSa7qZ40Svld5AZZosA1iUg1chDfQisFKgdLrNMASsNK89CwX0yw==
+"@types/node@^18.17.11":
+  version "18.17.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.17.11.tgz#c04054659d88bfeba94095f41ef99a8ddf4e1813"
+  integrity sha512-r3hjHPBu+3LzbGBa8DHnr/KAeTEEOrahkcL+cZc4MaBMTM+mk8LtXR+zw+nqfjuDZZzYTYgTcpHuP+BEQk069g==
 
 "@types/prop-types@*":
   version "15.7.5"
