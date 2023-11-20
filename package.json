@@ -31,7 +31,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "next-pwa": "^5.6.0",
     "prettier": "~2.8.8",
-    "typescript": "~5.2.2"
+    "typescript": "~5.3.2"
   },
   "homepage": "https://chat-styles.app/",
   "license": "MIT",
