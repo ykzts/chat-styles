@@ -1894,9 +1894,9 @@ callsites@^3.0.0:
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
 caniuse-lite@^1.0.30001579, caniuse-lite@^1.0.30001629:
-  version "1.0.30001634"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001634.tgz#aa563c8e7aeaf552f7ead60371bc8d803425deaa"
-  integrity sha512-fbBYXQ9q3+yp1q1gBk86tOFs4pyn/yxFm5ZNP18OXJDfA3txImOY9PhfxVggZ4vRHDqoU8NrKU81eN0OtzOgRA==
+  version "1.0.30001635"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001635.tgz#6a1e6510ba9c9042b77a5dfbfed46e80657b9021"
+  integrity sha512-34NOwyGFZxFoIOFNoLPP08eHzaCN+3wJFKx4Vph0XpidU1tRxB0p3Q2etIbOj0W8TYeuXkYsMCcyjV1+phBzxQ==
 
 chalk@^2.4.2:
   version "2.4.2"
