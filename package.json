@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/eslint": "^9.6.1",
     "@types/node": "^20.17.10",
-    "@types/react": "^18.3.17",
+    "@types/react": "^18.3.18",
     "@types/react-color": "^3.0.13",
     "@types/react-helmet": "^6.1.11",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
