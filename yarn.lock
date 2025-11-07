@@ -2546,10 +2546,10 @@ for-each@^0.3.3:
   dependencies:
     is-callable "^1.1.3"
 
-formik@^2.4.6:
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-2.4.6.tgz#4da75ca80f1a827ab35b08fd98d5a76e928c9686"
-  integrity sha512-A+2EI7U7aG296q2TLGvNapDNTZp1khVt5Vk0Q/fyfSROss0V/V6+txt2aJnwEos44IxTCW/LYAi/zgWzlevj+g==
+formik@^2.4.8:
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.4.8.tgz#3c8ec7b4f2fbfdd3d91782cb12f2baea4cd67866"
+  integrity sha512-f0IUmVAPfSCYcPuN+zckpFDLDdupBo8KUsM8GW8342LM+oUJqvqwhAB/60dMyq6BhwV+FaEOfMy+F0CFJCnF/A==
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.1"
     deepmerge "^2.1.1"
