@@ -26,7 +26,7 @@ export default class MyDocument extends Document {
     }
   }
 
-  render(): JSX.Element {
+  render(): React.JSX.Element {
     const helmet = Helmet.renderStatic()
 
     return (
