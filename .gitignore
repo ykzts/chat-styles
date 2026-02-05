@@ -2,3 +2,4 @@
 /.now/
 /node_modules/
 /yarn-error.log
+next-env.d.ts
