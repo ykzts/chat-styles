@@ -1,19 +1,13 @@
 import type { AppProps } from 'next/app'
-import React, { useEffect } from 'react'
 import type { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Layout from 'components/templates/Layout'
+import 'styles/globals.css'
 
 const description =
   'Chat StylesはYouTube Liveのチャットの見た目を変更するCSSを生成するためのツールです。OBS StudioのブラウザソースのカスタムCSSとして使われることを前提としています。'
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  useEffect(() => {
-    const jssStyles = document.getElementById('jss-server-side')
-
-    jssStyles?.parentNode?.removeChild(jssStyles)
-  }, [])
-
   return (
     <>
       <Helmet

@@ -1,85 +1,60 @@
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Paper from '@material-ui/core/Paper'
-import Switch from '@material-ui/core/Switch'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import createStyles from '@material-ui/styles/createStyles'
-import classNames from 'classnames'
 import React, { FC, useCallback, useContext } from 'react'
 import PreviewFrame from 'components/atoms/PreviewFrame'
 import Headline from 'components/atoms/Headline'
 import ChatStylesContext from 'context/ChatStylesContext'
 import PreviewContext from 'context/PreviewContext'
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    preview: {
-      backgroundImage: [
-        'linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%)',
-        'linear-gradient(45deg, #eee 25%, #fff 25%, #fff 75%, #eee 75%, #eee 100%)'
-      ].join(', '),
-      backgroundPosition: '0 0, 15px 15px',
-      backgroundRepeat: 'repeat',
-      backgroundSize: '30px 30px',
-      minHeight: '500px',
-      padding: theme.spacing(1),
-
-      [theme.breakpoints.up('sm')]: {
-        padding: theme.spacing(2)
-      }
-    },
-
-    previewInvert: {
-      backgroundImage: [
-        'linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%, #333 100%)',
-        'linear-gradient(45deg, #333 25%, #444 25%, #444 75%, #333 75%, #333 100%)'
-      ].join(', ')
-    },
-
-    root: {
-      position: 'sticky',
-      top: 0
-    }
-  })
+// Material Icons as inline SVG
+const VisibilityIcon = () => (
+  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+  </svg>
 )
 
 export const Preview: FC = () => {
   const { chatStyles } = useContext(ChatStylesContext)
   const { invert, toggleInvert } = useContext(PreviewContext)
-  const classes = useStyles()
 
   const handleInvertChange = useCallback(() => {
     if (typeof toggleInvert === 'function') toggleInvert()
   }, [toggleInvert])
 
   return (
-    <section className={classes.root}>
+    <section className="sticky top-0">
       <Headline
         actions={
-          <FormControlLabel
-            control={
-              <Switch
-                checked={invert}
-                color="primary"
-                onChange={handleInvertChange}
-              />
-            }
-            label="背景を暗くする"
-            labelPlacement="start"
-          />
+          <label className="flex items-center cursor-pointer">
+            <span className="mr-2 text-sm">背景を暗くする</span>
+            <input
+              type="checkbox"
+              checked={invert}
+              onChange={handleInvertChange}
+              className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+            />
+          </label>
         }
         icon={<VisibilityIcon />}
       >
         プレビュー
       </Headline>
 
-      <Paper
-        className={classNames(classes.preview, {
-          [classes.previewInvert]: invert
-        })}
+      <div
+        className={`min-h-[500px] p-2 sm:p-4 ${
+          invert
+            ? 'bg-[repeating-conic-gradient(#333_0%_25%,transparent_0%_50%)] bg-[length:30px_30px] bg-[0_0,15px_15px]'
+            : 'bg-[repeating-conic-gradient(#eee_0%_25%,transparent_0%_50%)] bg-[length:30px_30px] bg-[0_0,15px_15px]'
+        } shadow-sm rounded`}
+        style={{
+          backgroundImage: invert
+            ? 'linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%, #333 100%), linear-gradient(45deg, #333 25%, #444 25%, #444 75%, #333 75%, #333 100%)'
+            : 'linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%), linear-gradient(45deg, #eee 25%, #fff 25%, #fff 75%, #eee 75%, #eee 100%)',
+          backgroundPosition: '0 0, 15px 15px',
+          backgroundRepeat: 'repeat',
+          backgroundSize: '30px 30px'
+        }}
       >
         <PreviewFrame chatStyles={chatStyles} />
-      </Paper>
+      </div>
     </section>
   )
 }

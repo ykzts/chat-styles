@@ -1,21 +1,6 @@
-import AppBar from '@material-ui/core/AppBar'
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import createStyles from '@material-ui/styles/createStyles'
 import { type FC, type ReactNode } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from 'components/molecules/Footer'
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    container: {
-      marginTop: theme.spacing(4)
-    }
-  })
-)
 
 type Props = {
   children: ReactNode
@@ -23,8 +8,6 @@ type Props = {
 }
 
 const Layout: FC<Props> = ({ children, title }) => {
-  const classes = useStyles()
-
   return (
     <>
       <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`}>
@@ -46,21 +29,19 @@ const Layout: FC<Props> = ({ children, title }) => {
         />
       </Helmet>
 
-      <CssBaseline />
+      <div className="min-h-screen bg-gray-50">
+        <header className="bg-blue-600 text-white">
+          <div className="px-4 py-4">
+            <h1 className="text-xl font-semibold truncate">{title}</h1>
+          </div>
+        </header>
 
-      <AppBar position="static">
-        <Toolbar>
-          <Typography noWrap variant="h6">
-            {title}
-          </Typography>
-        </Toolbar>
-      </AppBar>
+        {children && (
+          <div className="container mx-auto px-4 mt-8">{children}</div>
+        )}
 
-      {children && (
-        <Container className={classes.container}>{children}</Container>
-      )}
-
-      <Footer />
+        <Footer />
+      </div>
     </>
   )
 }

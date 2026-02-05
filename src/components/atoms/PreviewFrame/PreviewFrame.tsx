@@ -1,5 +1,3 @@
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import createStyles from '@material-ui/styles/createStyles'
 import React, {
   FunctionComponent,
   ReactElement,
@@ -11,17 +9,6 @@ import React, {
 import ChatStyles from 'types/ChatStyles'
 import { generateStyleSheet } from 'utils/styleSheet'
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      border: 0,
-      display: 'block',
-      height: 0,
-      width: '100%'
-    }
-  })
-)
-
 type Props = {
   chatStyles: ChatStyles
 }
@@ -31,7 +18,6 @@ const PreviewFrame: FunctionComponent<Props> = ({
 }): ReactElement => {
   const frameRef = useRef<HTMLIFrameElement>(null)
   const [frameHeight, setFrameHeight] = useState<number>(0)
-  const classes = useStyles()
 
   const handleLoadStyleSheet = useCallback(
     (event: MessageEvent): void => {
@@ -68,7 +54,7 @@ const PreviewFrame: FunctionComponent<Props> = ({
 
   return (
     <iframe
-      className={classes.root}
+      className="border-0 block w-full h-0"
       ref={frameRef}
       src="/preview/preview.html"
       style={{ height: `${frameHeight}px` }}
