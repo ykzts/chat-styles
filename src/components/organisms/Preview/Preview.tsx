@@ -39,11 +39,9 @@ export const Preview: FC = () => {
       </Headline>
 
       <div
-        className={`min-h-[500px] p-2 sm:p-4 ${
-          invert
-            ? 'bg-[repeating-conic-gradient(#333_0%_25%,transparent_0%_50%)] bg-[length:30px_30px] bg-[0_0,15px_15px]'
-            : 'bg-[repeating-conic-gradient(#eee_0%_25%,transparent_0%_50%)] bg-[length:30px_30px] bg-[0_0,15px_15px]'
-        } shadow-sm rounded`}
+        className={`min-h-[500px] p-2 sm:p-4 shadow-sm rounded ${
+          invert ? 'bg-gray-800' : 'bg-white'
+        }`}
         style={{
           backgroundImage: invert
             ? 'linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%, #333 100%), linear-gradient(45deg, #333 25%, #444 25%, #444 75%, #333 75%, #333 100%)'

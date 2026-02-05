@@ -570,7 +570,7 @@ const StylesForm: FC = () => {
           <Headline icon={<ChatIcon />}>メッセージ</Headline>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
-            <div></div>
+            <div className="col-span-1"></div>
             <div>
               <Field name="message.fontSize">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
