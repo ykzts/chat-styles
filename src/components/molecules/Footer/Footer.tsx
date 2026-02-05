@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react'
+import Link from 'next/link'
 
 const Footer: FC = (): ReactElement => {
   return (
@@ -48,9 +49,9 @@ const Footer: FC = (): ReactElement => {
           </a>
         </li>
         <li className="m-0 p-0 text-right">
-          <a href="/privacy" className="text-blue-600 hover:underline">
+          <Link href="/privacy" className="text-blue-600 hover:underline">
             プライバシーポリシー
-          </a>
+          </Link>
         </li>
       </ul>
     </footer>
