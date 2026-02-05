@@ -7,16 +7,11 @@ export default function SerwistRegister() {
     if (
       'serviceWorker' in navigator &&
       typeof window !== 'undefined' &&
-      window.location.hostname !== 'localhost'
+      !window.location.hostname.match(/^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/)
     ) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then((registration) => {
-          console.log('Service Worker registered:', registration)
-        })
-        .catch((error) => {
-          console.error('Service Worker registration failed:', error)
-        })
+      navigator.serviceWorker.register('/sw.js').catch(() => {
+        // Silently fail if service worker registration fails
+      })
     }
   }, [])
 
