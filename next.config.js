@@ -18,3 +18,4 @@ module.exports = withSerwist({
   swDest: 'public/sw.js',
   disable: process.env.NODE_ENV === 'development'
 })(nextConfig)
+
