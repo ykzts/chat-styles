@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Layout from 'components/templates/Layout'
+import 'styles/fonts.css'
 import 'styles/globals.css'
 
 const description =
@@ -45,24 +46,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css?display=swap&amp;family=Roboto:400,700"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?display=swap&amp;family=Noto+Sans+JP:400,700"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/icon?display=swap&amp;family=Material+Icons"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?display=swap&amp;family=Inconsolata"
-          rel="stylesheet"
-        />
-      </head>
       <body>
         <Layout title="Chat Styles">{children}</Layout>
       </body>
