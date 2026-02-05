@@ -17,7 +17,6 @@ import ColorPicker from 'components/atoms/ColorPicker'
 import Headline from 'components/atoms/Headline'
 import ChatStyles from 'types/ChatStyles'
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 const StylesForm: FC = () => {
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
 
@@ -551,6 +550,5 @@ const StylesForm: FC = () => {
     </Formik>
   )
 }
-/* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 
 export default StylesForm

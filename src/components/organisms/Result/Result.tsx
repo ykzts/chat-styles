@@ -4,8 +4,7 @@ import CodeIcon from '@material-ui/icons/Code'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 import createStyles from '@material-ui/styles/createStyles'
 import classNames from 'classnames'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import prismTheme from 'prism-react-renderer/themes/nightOwl'
+import { Highlight, themes } from 'prism-react-renderer'
 import React, { FC, useCallback, useContext, useMemo, useRef } from 'react'
 import Headline from 'components/atoms/Headline'
 import ChatStylesContext from 'context/ChatStylesContext'
@@ -68,12 +67,7 @@ const Result: FC = () => {
         カスタムCSS
       </Headline>
 
-      <Highlight
-        {...defaultProps}
-        code={styleSheet}
-        language="css"
-        theme={prismTheme}
-      >
+      <Highlight code={styleSheet} language="css" theme={themes.nightOwl}>
         {({
           className,
           getLineProps,
