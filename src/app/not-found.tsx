@@ -1,13 +1,13 @@
-import React, { FC, ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
+import React from 'react'
+import type { Metadata } from 'next'
 
-const NoMatch: FC = (): ReactElement => {
+export const metadata: Metadata = {
+  title: '404 Not Found'
+}
+
+export default function NotFound() {
   return (
     <div className="py-4">
-      <Helmet>
-        <title>404 Not Found</title>
-      </Helmet>
-
       <h1 className="text-3xl font-normal mb-4">404 Not Found</h1>
 
       <p className="text-base">
@@ -16,5 +16,3 @@ const NoMatch: FC = (): ReactElement => {
     </div>
   )
 }
-
-export default NoMatch
