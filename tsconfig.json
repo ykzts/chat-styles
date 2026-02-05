@@ -34,6 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "node_modules/@serwist/next/dist/sw-entry.d.ts"
   ]
 }
