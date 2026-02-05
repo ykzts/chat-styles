@@ -49,6 +49,11 @@ const Footer: FC = (): ReactElement => {
           </a>
         </li>
         <li className="m-0 p-0 text-right">
+          <Link href="/usage" className="text-blue-600 hover:underline">
+            使い方
+          </Link>
+        </li>
+        <li className="m-0 p-0 text-right">
           <Link href="/privacy" className="text-blue-600 hover:underline">
             プライバシーポリシー
           </Link>
