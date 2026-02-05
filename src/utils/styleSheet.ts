@@ -24,7 +24,21 @@ export const generateTextShadow = (outlineStyle: ChatOutlineStyle): string => {
 export const generateStyleSheet = (chatStyles: ChatStyles): string =>
   `@charset "UTF-8";
 
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500&display=swap");
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Noto Sans JP"), local("NotoSansJP-Regular");
+}
+
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("Noto Sans JP"), local("NotoSansJP-Medium");
+}
 
 body {
   background-color: transparent !important;
