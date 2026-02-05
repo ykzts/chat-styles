@@ -21,6 +21,7 @@ type ChatStyles = {
   engagementMessage: {
     show: boolean
   }
+  fontFamily?: string
   memberName: ChatTextStyle & {
     badge: ChatImageStyle
   }

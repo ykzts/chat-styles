@@ -42,7 +42,7 @@ export const generateStyleSheet = (chatStyles: ChatStyles): string =>
 
 body {
   background-color: transparent !important;
-  font-family: "Noto Sans JP", sans-serif !important;
+  font-family: ${chatStyles.fontFamily ? `"${chatStyles.fontFamily}", ` : ''}"Noto Sans JP", sans-serif !important;
   overflow-y: hidden !important;
 }
 

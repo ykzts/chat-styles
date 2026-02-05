@@ -30,6 +30,7 @@ const defaultChatStyles: ChatStyles = {
   engagementMessage: {
     show: false
   },
+  fontFamily: 'Noto Sans JP',
   memberName: {
     badge: {
       show: true,

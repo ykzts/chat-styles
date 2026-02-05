@@ -5,11 +5,13 @@ import {
   MessageSquare,
   User,
   Settings,
-  Sticker
+  Sticker,
+  Type
 } from 'lucide-react'
 import ChatStylesContext from 'context/ChatStylesContext'
 import AutoSave from 'components/atoms/AutoSave'
 import ColorPicker from 'components/atoms/ColorPicker'
+import FontPicker from 'components/atoms/FontPicker'
 import Headline from 'components/atoms/Headline'
 import ChatStyles from 'types/ChatStyles'
 
@@ -92,6 +94,22 @@ const StylesForm: FC = () => {
               }}
             </form.Field>
           </div>
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <Headline icon={<Type className="w-6 h-6" />}>フォント</Headline>
+
+        <div className="grid grid-cols-1 gap-4">
+          <form.Field name="fontFamily">
+            {(field) => (
+              <FontPicker
+                value={field.state.value}
+                onChange={field.handleChange}
+                label="フォントファミリー"
+              />
+            )}
+          </form.Field>
         </div>
       </section>
 
