@@ -1,20 +1,30 @@
 import { useForm } from '@tanstack/react-form'
-import React, { FC, useCallback, useContext } from 'react'
+import React, { FC, useCallback, useContext, useState, useEffect } from 'react'
 import {
   UserCircle2,
   MessageSquare,
   User,
   Settings,
-  Sticker
+  Sticker,
+  Type
 } from 'lucide-react'
 import ChatStylesContext from 'context/ChatStylesContext'
 import AutoSave from 'components/atoms/AutoSave'
 import ColorPicker from 'components/atoms/ColorPicker'
+import FontPicker from 'components/atoms/FontPicker'
 import Headline from 'components/atoms/Headline'
 import ChatStyles from 'types/ChatStyles'
 
 const StylesForm: FC = () => {
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
+  const [isFontAccessSupported, setIsFontAccessSupported] = useState(false)
+
+  useEffect(() => {
+    // Check if Local Font Access API is supported
+    if ('queryLocalFonts' in window) {
+      setIsFontAccessSupported(true)
+    }
+  }, [])
 
   const handleSubmit = useCallback(
     (values: ChatStyles) => {
@@ -94,6 +104,24 @@ const StylesForm: FC = () => {
           </div>
         </div>
       </section>
+
+      {isFontAccessSupported && (
+        <section className="mb-8">
+          <Headline icon={<Type className="w-6 h-6" />}>フォント</Headline>
+
+          <div className="grid grid-cols-1 gap-4">
+            <form.Field name="fontFamily">
+              {(field) => (
+                <FontPicker
+                  value={field.state.value}
+                  onChange={field.handleChange}
+                  label="フォントファミリー"
+                />
+              )}
+            </form.Field>
+          </div>
+        </section>
+      )}
 
       <section className="mb-8">
         <Headline icon={<User className="w-6 h-6" />}>名前</Headline>

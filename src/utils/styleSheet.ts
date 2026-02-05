@@ -1,5 +1,10 @@
 import ChatStyles, { ChatOutlineStyle } from 'types/ChatStyles'
 
+const sanitizeFontFamily = (fontFamily: string): string => {
+  // Remove or escape characters that could break CSS
+  return fontFamily.replace(/["'\\]/g, '')
+}
+
 export const generateTextShadow = (outlineStyle: ChatOutlineStyle): string => {
   if (outlineStyle.width < 1) return 'none'
 
@@ -21,14 +26,18 @@ export const generateTextShadow = (outlineStyle: ChatOutlineStyle): string => {
   return `\n    ${values.join(',\n    ')}`
 }
 
-export const generateStyleSheet = (chatStyles: ChatStyles): string =>
-  `@charset "UTF-8";
+export const generateStyleSheet = (chatStyles: ChatStyles): string => {
+  const fontFamily = chatStyles.fontFamily
+    ? sanitizeFontFamily(chatStyles.fontFamily)
+    : 'Noto Sans JP'
+
+  return `@charset "UTF-8";
 
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500&display=swap");
 
 body {
   background-color: transparent !important;
-  font-family: "Noto Sans JP", sans-serif !important;
+  font-family: "${fontFamily}", "Noto Sans JP", sans-serif !important;
   overflow-y: hidden !important;
 }
 
@@ -413,3 +422,4 @@ yt-live-chat-restricted-participation-renderer {
   display: none !important;
 }
 `
+}
