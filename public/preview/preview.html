@@ -462,6 +462,82 @@
         font-style: italic;
       }
 
+      yt-live-chat-paid-sticker-renderer {
+        display: block;
+        padding: 4px 24px;
+        position: relative;
+        font-size: 15px;
+      }
+
+      yt-live-chat-paid-sticker-renderer #card {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+      }
+
+      yt-live-chat-paid-sticker-renderer #author-photo {
+        flex: none;
+        width: 40px;
+        height: 40px;
+        display: block;
+        overflow: hidden;
+        margin-right: 16px;
+        border-radius: 50%;
+      }
+
+      yt-live-chat-paid-sticker-renderer #author-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      yt-live-chat-paid-sticker-renderer #content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      yt-live-chat-paid-sticker-renderer #upper-content {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 4px;
+      }
+
+      yt-live-chat-paid-sticker-renderer #author-name {
+        font-size: 14px;
+        font-weight: 500;
+        margin-right: 8px;
+      }
+
+      yt-live-chat-paid-sticker-renderer #purchase-amount-column {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      yt-live-chat-paid-sticker-renderer #purchase-amount {
+        display: inline-block;
+      }
+
+      yt-live-chat-paid-sticker-renderer #lower-content {
+        display: flex;
+      }
+
+      yt-live-chat-paid-sticker-renderer #sticker-container {
+        display: flex;
+      }
+
+      yt-live-chat-paid-sticker-renderer #sticker {
+        display: block;
+        width: 112px;
+        height: 112px;
+      }
+
+      yt-live-chat-paid-sticker-renderer #sticker img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
       yt-live-chat-viewer-engagement-message-renderer {
         display: block;
         font-size: 12px;
@@ -932,6 +1008,40 @@
               </div>
             </div>
           </yt-live-chat-paid-message-renderer>
+          <yt-live-chat-paid-sticker-renderer>
+            <div id="card">
+              <yt-img-shadow class="no-transition" id="author-photo" loaded>
+                <img
+                  alt=""
+                  height="40"
+                  id="img"
+                  src="./default-icon.png"
+                  width="40"
+                />
+              </yt-img-shadow>
+              <div id="content">
+                <div id="upper-content">
+                  <div id="author-name">夏目 漱石</div>
+                  <div id="purchase-amount-column">
+                    <div id="purchase-amount">￥ 500</div>
+                  </div>
+                </div>
+                <div id="lower-content">
+                  <div id="sticker-container">
+                    <yt-img-shadow id="sticker" loaded>
+                      <img
+                        alt=""
+                        height="112"
+                        id="img"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23FFD700'/%3E%3Ccircle cx='35' cy='40' r='5' fill='%23000'/%3E%3Ccircle cx='65' cy='40' r='5' fill='%23000'/%3E%3Cpath d='M 30 60 Q 50 75 70 60' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E"
+                        width="112"
+                      />
+                    </yt-img-shadow>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </yt-live-chat-paid-sticker-renderer>
           <yt-live-chat-text-message-renderer author-type="member">
             <yt-img-shadow class="no-transition" id="author-photo" loaded>
               <img
