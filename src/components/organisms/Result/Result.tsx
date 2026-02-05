@@ -74,7 +74,7 @@ const Result: FC = () => {
           getTokenProps,
           style,
           tokens
-        }): JSX.Element => (
+        }): React.JSX.Element => (
           <pre className={classNames(classes.code, className)} style={style}>
             <code ref={codeRef}>
               {tokens.map((line, i) => (
