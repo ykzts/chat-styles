@@ -1,5 +1,5 @@
 import { useForm } from '@tanstack/react-form'
-import React, { FC, useCallback, useContext } from 'react'
+import React, { FC, useCallback, useContext, useState, useEffect } from 'react'
 import {
   UserCircle2,
   MessageSquare,
@@ -17,6 +17,14 @@ import ChatStyles from 'types/ChatStyles'
 
 const StylesForm: FC = () => {
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
+  const [isFontAccessSupported, setIsFontAccessSupported] = useState(false)
+
+  useEffect(() => {
+    // Check if Local Font Access API is supported
+    if ('queryLocalFonts' in window) {
+      setIsFontAccessSupported(true)
+    }
+  }, [])
 
   const handleSubmit = useCallback(
     (values: ChatStyles) => {
@@ -97,21 +105,23 @@ const StylesForm: FC = () => {
         </div>
       </section>
 
-      <section className="mb-8">
-        <Headline icon={<Type className="w-6 h-6" />}>フォント</Headline>
+      {isFontAccessSupported && (
+        <section className="mb-8">
+          <Headline icon={<Type className="w-6 h-6" />}>フォント</Headline>
 
-        <div className="grid grid-cols-1 gap-4">
-          <form.Field name="fontFamily">
-            {(field) => (
-              <FontPicker
-                value={field.state.value}
-                onChange={field.handleChange}
-                label="フォントファミリー"
-              />
-            )}
-          </form.Field>
-        </div>
-      </section>
+          <div className="grid grid-cols-1 gap-4">
+            <form.Field name="fontFamily">
+              {(field) => (
+                <FontPicker
+                  value={field.state.value}
+                  onChange={field.handleChange}
+                  label="フォントファミリー"
+                />
+              )}
+            </form.Field>
+          </div>
+        </section>
+      )}
 
       <section className="mb-8">
         <Headline icon={<User className="w-6 h-6" />}>名前</Headline>

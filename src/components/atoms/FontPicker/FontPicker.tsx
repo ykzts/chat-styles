@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 
 type FontData = {
   family: string
@@ -21,20 +21,10 @@ const FontPicker: FC<Props> = ({
   label = 'フォント'
 }) => {
   const [localFonts, setLocalFonts] = useState<FontData[]>([])
-  const [isSupported, setIsSupported] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    // Check if Local Font Access API is supported
-    if ('queryLocalFonts' in window) {
-      setIsSupported(true)
-    }
-  }, [])
-
   const loadLocalFonts = useCallback(async () => {
-    if (!isSupported) return
-
     setIsLoading(true)
     setError(null)
 
@@ -63,30 +53,11 @@ const FontPicker: FC<Props> = ({
     } finally {
       setIsLoading(false)
     }
-  }, [isSupported])
+  }, [])
 
   const handleLoadFonts = useCallback(() => {
     void loadLocalFonts()
   }, [loadLocalFonts])
-
-  if (!isSupported) {
-    return (
-      <div>
-        <label className="block text-sm text-gray-600 mb-1">{label}</label>
-        <input
-          type="text"
-          value={value || ''}
-          onChange={(e) => onChange(e.target.value)}
-          disabled={disabled}
-          className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-          placeholder="例: Noto Sans JP"
-        />
-        <p className="text-xs text-gray-500 mt-1">
-          お使いのブラウザはローカルフォント選択機能に対応していません
-        </p>
-      </div>
-    )
-  }
 
   return (
     <div>
