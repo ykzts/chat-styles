@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Layout from 'components/templates/Layout'
+import SerwistRegister from 'components/atoms/SerwistRegister'
 import 'styles/globals.css'
 
 const description =
@@ -64,6 +65,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <SerwistRegister />
         <Layout title="Chat Styles">{children}</Layout>
       </body>
     </html>
