@@ -2,6 +2,7 @@ import React, {
   FunctionComponent,
   ReactElement,
   useEffect,
+  useEffectEvent,
   useRef,
   useState
 } from 'react'
@@ -18,17 +19,13 @@ const PreviewFrame: FunctionComponent<Props> = ({
   const frameRef = useRef<HTMLIFrameElement>(null)
   const [frameHeight, setFrameHeight] = useState<number>(0)
 
-  const handleLoadStyleSheetRef = useRef<
-    ((event: MessageEvent) => void) | undefined
-  >(undefined)
-
-  handleLoadStyleSheetRef.current = (event: MessageEvent): void => {
+  const handleLoadStyleSheet = useEffectEvent((event: MessageEvent): void => {
     setFrameHeight(event.data.frameHeight)
-  }
+  })
 
   useEffect(() => {
     const handler = (event: MessageEvent): void => {
-      handleLoadStyleSheetRef.current?.(event)
+      handleLoadStyleSheet(event)
     }
 
     window.addEventListener('message', handler)
