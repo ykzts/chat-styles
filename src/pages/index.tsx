@@ -1,4 +1,3 @@
-import Grid from '@material-ui/core/Grid'
 import React, { FC } from 'react'
 import Preview from 'components/organisms/Preview'
 import Result from 'components/organisms/Result'
@@ -10,18 +9,17 @@ const Generator: FC = () => {
   return (
     <ChatStylesProvider>
       <PreviewProvider>
-        <Grid container>
-          <Grid item sm={6} xs={12}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="col-span-1">
             <StylesForm />
-          </Grid>
-          <Grid item sm={6} xs={12}>
+          </div>
+          <div className="col-span-1">
             <Preview />
-          </Grid>
-
-          <Grid item xs={12}>
+          </div>
+          <div className="col-span-1 sm:col-span-2">
             <Result />
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </PreviewProvider>
     </ChatStylesProvider>
   )

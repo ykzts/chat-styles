@@ -1,34 +1,9 @@
-import Chip from '@material-ui/core/Chip'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import CodeIcon from '@material-ui/icons/Code'
-import FileCopyIcon from '@material-ui/icons/FileCopy'
-import createStyles from '@material-ui/styles/createStyles'
-import classNames from 'classnames'
 import { Highlight, themes } from 'prism-react-renderer'
 import React, { FC, useCallback, useContext, useMemo, useRef } from 'react'
+import { Code2, Copy } from 'lucide-react'
 import Headline from 'components/atoms/Headline'
 import ChatStylesContext from 'context/ChatStylesContext'
 import { generateStyleSheet } from 'utils/styleSheet'
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    code: {
-      fontSize: '1rem',
-      fontFamily: 'Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace',
-      overflow: 'auto',
-      maxHeight: '512px',
-      padding: theme.spacing(1.5),
-
-      '& code': {
-        fontFamily: 'inherit'
-      }
-    },
-
-    root: {
-      marginTop: theme.spacing(5)
-    }
-  })
-)
 
 const Result: FC = () => {
   const codeRef = useRef<HTMLElement>(null)
@@ -37,7 +12,6 @@ const Result: FC = () => {
     () => (chatStyles ? generateStyleSheet(chatStyles) : ''),
     [chatStyles]
   )
-  const classes = useStyles()
 
   const handleCopyClick = useCallback(() => {
     if (!codeRef.current) return
@@ -52,18 +26,18 @@ const Result: FC = () => {
   }, [styleSheet])
 
   const actions = (
-    <>
-      <Chip
-        icon={<FileCopyIcon />}
-        label="コピーする"
-        onClick={handleCopyClick}
-      />
-    </>
+    <button
+      onClick={handleCopyClick}
+      className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full text-sm font-medium cursor-pointer transition-colors"
+    >
+      <Copy className="w-5 h-5" />
+      コピーする
+    </button>
   )
 
   return (
-    <section className={classes.root}>
-      <Headline actions={actions} icon={<CodeIcon />}>
+    <section className="mt-10">
+      <Headline actions={actions} icon={<Code2 className="w-6 h-6" />}>
         カスタムCSS
       </Headline>
 
@@ -75,8 +49,11 @@ const Result: FC = () => {
           style,
           tokens
         }): React.JSX.Element => (
-          <pre className={classNames(classes.code, className)} style={style}>
-            <code ref={codeRef}>
+          <pre
+            className={`text-base font-mono overflow-auto max-h-[512px] p-3 ${className}`}
+            style={style}
+          >
+            <code ref={codeRef} className="font-inherit">
               {tokens.map((line, i) => (
                 <>
                   <span

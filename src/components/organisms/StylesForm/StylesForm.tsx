@@ -1,16 +1,6 @@
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormGroup from '@material-ui/core/FormGroup'
-import Grid from '@material-ui/core/Grid'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Switch from '@material-ui/core/Switch'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import ChatIcon from '@material-ui/icons/Chat'
-import PersonIcon from '@material-ui/icons/Person'
-import SettingsIcon from '@material-ui/icons/Settings'
 import { Field, FieldProps, Formik } from 'formik'
 import React, { FC, useCallback, useContext } from 'react'
+import { UserCircle2, MessageSquare, User, Settings } from 'lucide-react'
 import ChatStylesContext from 'context/ChatStylesContext'
 import AutoSave from 'components/atoms/AutoSave'
 import ColorPicker from 'components/atoms/ColorPicker'
@@ -30,98 +20,118 @@ const StylesForm: FC = () => {
   return (
     <Formik initialValues={chatStyles} onSubmit={handleSubmit}>
       <form action="/">
-        <section>
-          <Headline icon={<AccountCircleIcon />}>アイコン</Headline>
+        <section className="mb-8">
+          <Headline icon={<UserCircle2 className="w-6 h-6" />}>
+            アイコン
+          </Headline>
 
-          <Grid alignItems="center" container>
-            <Grid item sm={4} xs={12}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div>
               <Field name="avatar.show">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={!!field.value}
-                        id={field.name}
-                        onChange={field.onChange}
-                      />
-                    }
-                    label="表示する"
-                  />
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!field.value}
+                      id={field.name}
+                      onChange={field.onChange}
+                      className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                    />
+                    <span className="ml-2">表示する</span>
+                  </label>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="avatar.size">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.avatar.show}
-                    label="大きさ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name={field.name}
+                        id={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                        disabled={!form.values.avatar.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <Headline icon={<PersonIcon />}>名前</Headline>
+        <section className="mb-8">
+          <Headline icon={<User className="w-6 h-6" />}>名前</Headline>
 
-          <Typography component="h3" gutterBottom variant="subtitle1">
-            オーナー
-          </Typography>
+          <h3 className="text-base font-normal mb-4">オーナー</h3>
 
-          <Grid alignItems="center" container>
-            <Grid item sm={4} xs={12}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div>
               <Field name="ownerName.show">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={!!field.value}
-                        id={field.name}
-                        onChange={field.onChange}
-                      />
-                    }
-                    label="表示する"
-                  />
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!field.value}
+                      id={field.name}
+                      onChange={field.onChange}
+                      className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                    />
+                    <span className="ml-2">表示する</span>
+                  </label>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="ownerName.fontSize">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.ownerName.show}
-                    label="大きさ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name={field.name}
+                        id={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                        disabled={!form.values.ownerName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="ownerName.color">
                 {({
                   field,
@@ -134,35 +144,43 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <Typography component="h4" gutterBottom variant="subtitle2">
-                アウトライン
-              </Typography>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
+              <h4 className="text-base font-medium">アウトライン</h4>
+            </div>
+            <div>
               <Field name="ownerName.outline.width">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.ownerName.show}
-                    label="太さ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      太さ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.ownerName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="ownerName.outline.color">
                 {({
                   field,
@@ -175,53 +193,61 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
 
-          <Typography component="h3" gutterBottom variant="subtitle1">
-            モデレーター
-          </Typography>
+          <h3 className="text-base font-normal mb-4 mt-6">モデレーター</h3>
 
-          <Grid alignItems="center" container>
-            <Grid item sm={4} xs={12}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div>
               <Field name="moderatorName.show">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={!!field.value}
-                        id={field.name}
-                        onChange={field.onChange}
-                      />
-                    }
-                    label="表示する"
-                  />
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!field.value}
+                      id={field.name}
+                      onChange={field.onChange}
+                      className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                    />
+                    <span className="ml-2">表示する</span>
+                  </label>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="moderatorName.fontSize">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.moderatorName.show}
-                    label="大きさ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.moderatorName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="moderatorName.color">
                 {({
                   field,
@@ -234,35 +260,43 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <Typography component="h4" gutterBottom variant="subtitle2">
-                アウトライン
-              </Typography>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
+              <h4 className="text-base font-medium">アウトライン</h4>
+            </div>
+            <div>
               <Field name="moderatorName.outline.width">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.moderatorName.show}
-                    label="太さ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      太さ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.moderatorName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="moderatorName.outline.color">
                 {({
                   field,
@@ -275,53 +309,61 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
 
-          <Typography component="h3" gutterBottom variant="subtitle1">
-            メンバー
-          </Typography>
+          <h3 className="text-base font-normal mb-4 mt-6">メンバー</h3>
 
-          <Grid alignItems="center" container>
-            <Grid item sm={4} xs={12}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div>
               <Field name="memberName.show">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={!!field.value}
-                        id={field.name}
-                        onChange={field.onChange}
-                      />
-                    }
-                    label="表示する"
-                  />
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!field.value}
+                      id={field.name}
+                      onChange={field.onChange}
+                      className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                    />
+                    <span className="ml-2">表示する</span>
+                  </label>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="memberName.fontSize">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.memberName.show}
-                    label="大きさ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.memberName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="memberName.color">
                 {({
                   field,
@@ -334,36 +376,43 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <Typography component="h4" gutterBottom variant="subtitle2">
-                アウトライン
-              </Typography>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              {' '}
+            </div>
+            <div>
+              <h4 className="text-base font-medium">アウトライン</h4>
+            </div>
+            <div>
               <Field name="memberName.outline.width">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.memberName.show}
-                    label="太さ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      太さ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.memberName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="memberName.outline.color">
                 {({
                   field,
@@ -376,53 +425,61 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
 
-          <Typography component="h3" gutterBottom variant="subtitle1">
-            一般ユーザー
-          </Typography>
+          <h3 className="text-base font-normal mb-4 mt-6">一般ユーザー</h3>
 
-          <Grid alignItems="center" container>
-            <Grid item sm={4} xs={12}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div>
               <Field name="authorName.show">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={!!field.value}
-                        id={field.name}
-                        onChange={field.onChange}
-                      />
-                    }
-                    label="表示する"
-                  />
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!field.value}
+                      id={field.name}
+                      onChange={field.onChange}
+                      className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                    />
+                    <span className="ml-2">表示する</span>
+                  </label>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="authorName.fontSize">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.authorName.show}
-                    label="大きさ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.authorName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="authorName.color">
                 {({
                   field,
@@ -435,35 +492,43 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <Typography component="h4" gutterBottom variant="subtitle2">
-                アウトライン
-              </Typography>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
+              <h4 className="text-base font-medium">アウトライン</h4>
+            </div>
+            <div>
               <Field name="authorName.outline.width">
                 {({
                   field,
                   form
                 }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    disabled={!form.values.authorName.show}
-                    label="太さ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      太さ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!form.values.authorName.show}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="authorName.outline.color">
                 {({
                   field,
@@ -476,34 +541,46 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <Headline icon={<ChatIcon />}>メッセージ</Headline>
+        <section className="mb-8">
+          <Headline icon={<MessageSquare className="w-6 h-6" />}>
+            メッセージ
+          </Headline>
 
-          <Grid alignItems="center" container>
-            <Grid item sm={4} xs={12}></Grid>
-            <Grid item sm={4} xs={12}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div className="col-span-1"></div>
+            <div>
               <Field name="message.fontSize">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    label="大きさ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="message.color">
                 {({
                   field,
@@ -512,31 +589,39 @@ const StylesForm: FC = () => {
                   <ColorPicker {...field} value={form.values.message.color} />
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
-              <Typography component="h4" gutterBottom variant="subtitle2">
-                アウトライン
-              </Typography>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
+              <h4 className="text-base font-medium">アウトライン</h4>
+            </div>
+            <div>
               <Field name="message.outline.width">
                 {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                  <TextField
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">px</InputAdornment>
-                      )
-                    }}
-                    label="太さ"
-                    margin="normal"
-                    type="number"
-                    variant="outlined"
-                    {...field}
-                  />
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      太さ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        name={field.name}
+                        value={field.value as unknown as number | string}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
                 )}
               </Field>
-            </Grid>
-            <Grid item sm={4} xs={12}>
+            </div>
+            <div>
               <Field name="message.outline.color">
                 {({
                   field,
@@ -548,58 +633,59 @@ const StylesForm: FC = () => {
                   />
                 )}
               </Field>
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <Headline icon={<SettingsIcon />}>その他</Headline>
+        <section className="mb-8">
+          <Headline icon={<Settings className="w-6 h-6" />}>その他</Headline>
 
-          <FormGroup>
+          <div className="flex flex-col gap-2">
             <Field name="engagementMessage.show">
               {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={!!field.value}
-                      id={field.name}
-                      onChange={field.onChange}
-                    />
-                  }
-                  label="入室メッセージを表示する"
-                />
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={!!field.value}
+                    id={field.name}
+                    onChange={field.onChange}
+                    className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                  />
+                  <span className="ml-2">入室メッセージを表示する</span>
+                </label>
               )}
             </Field>
             <Field name="superChatBackground.show">
               {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={!!field.value}
-                      id={field.name}
-                      onChange={field.onChange}
-                    />
-                  }
-                  label="スーパーチャットの背景を表示する"
-                />
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={!!field.value}
+                    id={field.name}
+                    onChange={field.onChange}
+                    className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                  />
+                  <span className="ml-2">スーパーチャットの背景を表示する</span>
+                </label>
               )}
             </Field>
             <Field name="newMemberBackground.show">
               {({ field }: FieldProps<ChatStyles>): React.JSX.Element => (
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={!!field.value}
-                      id={field.name}
-                      onChange={field.onChange}
-                    />
-                  }
-                  htmlFor={field.name}
-                  label="メンバー登録アナウンスの背景を表示する"
-                />
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={!!field.value}
+                    id={field.name}
+                    onChange={field.onChange}
+                    className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                  />
+                  <span className="ml-2">
+                    メンバー登録アナウンスの背景を表示する
+                  </span>
+                </label>
               )}
             </Field>
-          </FormGroup>
+          </div>
         </section>
 
         <AutoSave />
