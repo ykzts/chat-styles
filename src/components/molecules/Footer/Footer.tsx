@@ -47,6 +47,11 @@ const Footer: FC = (): ReactElement => {
             Source code
           </a>
         </li>
+        <li className="m-0 p-0 text-right">
+          <a href="/privacy" className="text-blue-600 hover:underline">
+            プライバシーポリシー
+          </a>
+        </li>
       </ul>
     </footer>
   )
