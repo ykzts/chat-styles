@@ -1,6 +1,12 @@
 import { useForm } from '@tanstack/react-form'
 import React, { FC, useCallback, useContext } from 'react'
-import { UserCircle2, MessageSquare, User, Settings, Sticker } from 'lucide-react'
+import {
+  UserCircle2,
+  MessageSquare,
+  User,
+  Settings,
+  Sticker
+} from 'lucide-react'
 import ChatStylesContext from 'context/ChatStylesContext'
 import AutoSave from 'components/atoms/AutoSave'
 import ColorPicker from 'components/atoms/ColorPicker'
