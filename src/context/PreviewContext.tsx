@@ -35,7 +35,7 @@ const PreviewProvider: FC<Props> = ({ children }) => {
       .catch((error) => {
         console.error(error)
       })
-  })
+  }, [])
 
   return (
     <PreviewContext.Provider
