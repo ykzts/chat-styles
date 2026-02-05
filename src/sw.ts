@@ -1,7 +1,9 @@
 import { Serwist } from 'serwist'
 import { defaultCache } from '@serwist/next/worker'
 
-declare const self: ServiceWorkerGlobalScope
+declare const self: ServiceWorkerGlobalScope & {
+  __SW_MANIFEST: Array<string | { url: string; revision: string | null }>
+}
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
