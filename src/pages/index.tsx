@@ -9,7 +9,7 @@ const Generator: FC = () => {
   return (
     <ChatStylesProvider>
       <PreviewProvider>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="col-span-1">
             <StylesForm />
           </div>

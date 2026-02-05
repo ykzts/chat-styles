@@ -20,7 +20,7 @@ const StylesForm: FC = () => {
   return (
     <Formik initialValues={chatStyles} onSubmit={handleSubmit}>
       <form action="/">
-        <section>
+        <section className="mb-8">
           <Headline icon={<UserCircle2 className="w-6 h-6" />}>
             アイコン
           </Headline>
@@ -77,10 +77,10 @@ const StylesForm: FC = () => {
           </div>
         </section>
 
-        <section>
+        <section className="mb-8">
           <Headline icon={<User className="w-6 h-6" />}>名前</Headline>
 
-          <h3 className="text-lg font-medium mb-4">オーナー</h3>
+          <h3 className="text-base font-normal mb-4">オーナー</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
             <div>
@@ -196,7 +196,7 @@ const StylesForm: FC = () => {
             </div>
           </div>
 
-          <h3 className="text-lg font-medium mb-4 mt-6">モデレーター</h3>
+          <h3 className="text-base font-normal mb-4 mt-6">モデレーター</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
             <div>
@@ -312,7 +312,7 @@ const StylesForm: FC = () => {
             </div>
           </div>
 
-          <h3 className="text-lg font-medium mb-4 mt-6">メンバー</h3>
+          <h3 className="text-base font-normal mb-4 mt-6">メンバー</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
             <div>
@@ -428,7 +428,7 @@ const StylesForm: FC = () => {
             </div>
           </div>
 
-          <h3 className="text-lg font-medium mb-4 mt-6">一般ユーザー</h3>
+          <h3 className="text-base font-normal mb-4 mt-6">一般ユーザー</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
             <div>
@@ -545,7 +545,7 @@ const StylesForm: FC = () => {
           </div>
         </section>
 
-        <section>
+        <section className="mb-8">
           <Headline icon={<MessageSquare className="w-6 h-6" />}>
             メッセージ
           </Headline>
@@ -637,7 +637,7 @@ const StylesForm: FC = () => {
           </div>
         </section>
 
-        <section>
+        <section className="mb-8">
           <Headline icon={<Settings className="w-6 h-6" />}>その他</Headline>
 
           <div className="flex flex-col gap-2">

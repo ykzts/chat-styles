@@ -8,9 +8,9 @@ interface Props {
 
 const Headline: FC<Props> = ({ actions, children, icon }) => {
   return (
-    <header className="flex flex-col sm:flex-row sm:items-center">
+    <header className="flex flex-col sm:flex-row sm:items-center mb-4">
       <h2 className="flex items-center flex-grow flex-shrink-0 text-base font-normal mb-2 sm:mb-0">
-        {icon && <div className="flex items-center mr-1">{icon}</div>}
+        {icon && <div className="flex items-center mr-2">{icon}</div>}
         {children}
       </h2>
 
