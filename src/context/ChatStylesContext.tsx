@@ -76,6 +76,15 @@ const defaultChatStyles: ChatStyles = {
     },
     show: true
   },
+  sticker: {
+    color: '#ffffffff',
+    fontSize: 18,
+    outline: {
+      color: '#000000ff',
+      width: 2
+    },
+    show: true
+  },
   superChatBackground: {
     show: true
   },
