@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react'
+import Link from 'next/link'
 
 const Footer: FC = (): ReactElement => {
   return (
@@ -46,6 +47,11 @@ const Footer: FC = (): ReactElement => {
           >
             Source code
           </a>
+        </li>
+        <li className="m-0 p-0 text-right">
+          <Link href="/privacy" className="text-blue-600 hover:underline">
+            プライバシーポリシー
+          </Link>
         </li>
       </ul>
     </footer>
