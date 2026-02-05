@@ -1,6 +1,6 @@
 import { useForm } from '@tanstack/react-form'
 import React, { FC, useCallback, useContext } from 'react'
-import { UserCircle2, MessageSquare, User, Settings } from 'lucide-react'
+import { UserCircle2, MessageSquare, User, Settings, Sticker } from 'lucide-react'
 import ChatStylesContext from 'context/ChatStylesContext'
 import AutoSave from 'components/atoms/AutoSave'
 import ColorPicker from 'components/atoms/ColorPicker'
@@ -665,6 +665,128 @@ const StylesForm: FC = () => {
                   value={field.state.value}
                 />
               )}
+            </form.Field>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <Headline icon={<Sticker className="w-6 h-6" />}>ステッカー</Headline>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+          <div>
+            <form.Field name="sticker.show">
+              {(field) => (
+                <label className="flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={!!field.state.value}
+                    id={field.name}
+                    onChange={(e) => field.handleChange(e.target.checked)}
+                    className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
+                  />
+                  <span className="ml-2">テキストを表示する</span>
+                </label>
+              )}
+            </form.Field>
+          </div>
+          <div>
+            <form.Field name="sticker.fontSize">
+              {(field) => {
+                const stickerShow = form.getFieldValue('sticker.show')
+                return (
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      大きさ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!stickerShow}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        value={field.state.value}
+                        onChange={(e) =>
+                          field.handleChange(Number(e.target.value))
+                        }
+                        onBlur={field.handleBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
+                )
+              }}
+            </form.Field>
+          </div>
+          <div>
+            <form.Field name="sticker.color">
+              {(field) => {
+                const stickerShow = form.getFieldValue('sticker.show')
+                return (
+                  <ColorPicker
+                    onChange={field.handleChange}
+                    onBlur={field.handleBlur}
+                    disabled={!stickerShow}
+                    value={field.state.value}
+                  />
+                )
+              }}
+            </form.Field>
+          </div>
+          <div>
+            <h4 className="text-base font-medium">アウトライン</h4>
+          </div>
+          <div>
+            <form.Field name="sticker.outline.width">
+              {(field) => {
+                const stickerShow = form.getFieldValue('sticker.show')
+                return (
+                  <div>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-sm text-gray-600 mb-1"
+                    >
+                      太さ
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        id={field.name}
+                        disabled={!stickerShow}
+                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                        value={field.state.value}
+                        onChange={(e) =>
+                          field.handleChange(Number(e.target.value))
+                        }
+                        onBlur={field.handleBlur}
+                      />
+                      <span className="absolute right-3 top-2 text-gray-500">
+                        px
+                      </span>
+                    </div>
+                  </div>
+                )
+              }}
+            </form.Field>
+          </div>
+          <div>
+            <form.Field name="sticker.outline.color">
+              {(field) => {
+                const stickerShow = form.getFieldValue('sticker.show')
+                return (
+                  <ColorPicker
+                    onChange={field.handleChange}
+                    onBlur={field.handleBlur}
+                    disabled={!stickerShow}
+                    value={field.state.value}
+                  />
+                )
+              }}
             </form.Field>
           </div>
         </div>

@@ -32,6 +32,7 @@ type ChatStyles = {
     show: boolean
   }
   ownerName: ChatTextStyle
+  sticker: ChatTextStyle
   superChatBackground: {
     show: boolean
   }
