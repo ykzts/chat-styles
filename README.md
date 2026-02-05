@@ -29,8 +29,9 @@ Once you're satisfied with your customization, click the "コピーする" (Copy
 To use your custom CSS in OBS Studio:
 
 1. In OBS Studio, add a new **Browser** source or edit an existing one
-2. Set the URL to your YouTube Live Chat URL:
-   - Example: `https://www.youtube.com/live_chat?v=YOUR_VIDEO_ID&embed_domain=YOUR_DOMAIN`
+2. Set the URL to your YouTube Live Chat URL (pop out the chat from your live stream page):
+   - Example: `https://www.youtube.com/live_chat?v=YOUR_VIDEO_ID`
+   - Or use the full popout URL from YouTube's chat pop-out feature
 3. Paste your copied CSS into the **Custom CSS** field
 4. Adjust the width and height as needed (recommended: 400x600 or similar)
 5. Click OK to apply
