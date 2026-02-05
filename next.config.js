@@ -1,14 +1,14 @@
-const nextPWA = require('next-pwa')
+const withSerwistInit = require('@serwist/next').default
 const headers = require('./headers.json')
 const rewrites = require('./rewrites.json')
 
-const withPWA = nextPWA({
-  dest: '.next/static',
-  disable: process.env.NODE_ENV === 'development',
-  sw: 'service-worker.js'
+const withSerwist = withSerwistInit({
+  swSrc: 'src/app/sw.ts',
+  swDest: 'public/sw.js',
+  disable: process.env.NODE_ENV === 'development'
 })
 
-/** @type {import('next').NextConfig */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
     return headers
@@ -19,4 +19,4 @@ const nextConfig = {
   }
 }
 
-module.exports = withPWA(nextConfig)
+module.exports = withSerwist(nextConfig)

@@ -9,7 +9,8 @@
     "jsx": "react-jsx",
     "lib": [
       "dom",
-      "es2018"
+      "es2018",
+      "webworker"
     ],
     "module": "esnext",
     "moduleResolution": "node",
@@ -20,6 +21,9 @@
     "strict": true,
     "target": "es2018",
     "incremental": true,
+    "types": [
+      "@serwist/next/typings"
+    ],
     "plugins": [
       {
         "name": "next"
