@@ -1,4 +1,3 @@
-import { FormikHandlers } from 'formik'
 import React, { FC, MouseEvent, memo, useCallback, useState } from 'react'
 import { ColorChangeHandler, ColorResult, SketchPicker } from 'react-color'
 import { hex2rgb, rgb2hex } from 'utils/color'
@@ -6,11 +5,12 @@ import { hex2rgb, rgb2hex } from 'utils/color'
 type Props = {
   disabled?: boolean
   name: string
-  onChange: FormikHandlers['handleChange']
+  onChange: (value: string) => void
+  onBlur?: () => void
   value: string
 }
 
-const ColorPicker: FC<Props> = ({ disabled, name, onChange, value }) => {
+const ColorPicker: FC<Props> = ({ disabled, onChange, value }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
   const handleClick = useCallback(
@@ -26,9 +26,9 @@ const ColorPicker: FC<Props> = ({ disabled, name, onChange, value }) => {
 
   const handleChange: ColorChangeHandler = useCallback(
     (color: ColorResult): void => {
-      onChange(name)(rgb2hex(color.rgb))
+      onChange(rgb2hex(color.rgb))
     },
-    [name, onChange]
+    [onChange]
   )
 
   return (
