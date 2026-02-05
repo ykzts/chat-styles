@@ -1,7 +1,6 @@
 import React, {
   FunctionComponent,
   ReactElement,
-  useCallback,
   useEffect,
   useRef,
   useState
@@ -19,19 +18,23 @@ const PreviewFrame: FunctionComponent<Props> = ({
   const frameRef = useRef<HTMLIFrameElement>(null)
   const [frameHeight, setFrameHeight] = useState<number>(0)
 
-  const handleLoadStyleSheet = useCallback(
-    (event: MessageEvent): void => {
-      setFrameHeight(event.data.frameHeight)
-    },
-    [setFrameHeight]
-  )
+  const handleLoadStyleSheetRef = useRef<
+    ((event: MessageEvent) => void) | undefined
+  >(undefined)
+
+  handleLoadStyleSheetRef.current = (event: MessageEvent): void => {
+    setFrameHeight(event.data.frameHeight)
+  }
 
   useEffect(() => {
-    window.addEventListener('message', handleLoadStyleSheet)
+    const handler = (event: MessageEvent): void => {
+      handleLoadStyleSheetRef.current?.(event)
+    }
 
-    return (): void =>
-      window.removeEventListener('message', handleLoadStyleSheet)
-  }, [handleLoadStyleSheet])
+    window.addEventListener('message', handler)
+
+    return (): void => window.removeEventListener('message', handler)
+  }, [])
 
   useEffect(() => {
     const win = frameRef.current && frameRef.current.contentWindow
