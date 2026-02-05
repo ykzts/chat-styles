@@ -1,11 +1,13 @@
-import React, { FC } from 'react'
+'use client'
+
+import React from 'react'
 import Preview from 'components/organisms/Preview'
 import Result from 'components/organisms/Result'
 import StylesForm from 'components/organisms/StylesForm'
 import { ChatStylesProvider } from 'context/ChatStylesContext'
 import { PreviewProvider } from 'context/PreviewContext'
 
-const Generator: FC = () => {
+export default function Home() {
   return (
     <ChatStylesProvider>
       <PreviewProvider>
@@ -24,5 +26,3 @@ const Generator: FC = () => {
     </ChatStylesProvider>
   )
 }
-
-export default Generator
