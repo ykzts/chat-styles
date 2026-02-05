@@ -35,7 +35,6 @@ const PreviewFrame: FunctionComponent<Props> = ({
 
   const handleLoadStyleSheet = useCallback(
     (event: MessageEvent): void => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
       setFrameHeight(event.data.frameHeight)
     },
     [setFrameHeight]
