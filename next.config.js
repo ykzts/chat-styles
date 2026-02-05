@@ -13,9 +13,9 @@ const nextConfig = {
   }
 }
 
+// Configure Serwist for PWA support
 module.exports = withSerwist({
   swSrc: 'src/sw.ts',
   swDest: 'public/sw.js',
   disable: process.env.NODE_ENV === 'development'
 })(nextConfig)
-
