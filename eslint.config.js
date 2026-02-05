@@ -51,6 +51,12 @@ module.exports = [
     }
   },
   {
-    ignores: ['.next/**', 'node_modules/**', 'public/**', '.git/**']
+    ignores: [
+      '.next/**',
+      'node_modules/**',
+      'public/**',
+      '.git/**',
+      'src/sw.ts'
+    ]
   }
 ]

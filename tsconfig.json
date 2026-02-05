@@ -27,14 +27,14 @@
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/sw.ts"
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "node_modules/@serwist/next/dist/sw-entry.d.ts"
+    ".next/dev/types/**/*.ts"
   ]
 }
