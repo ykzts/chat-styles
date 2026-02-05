@@ -68,7 +68,6 @@ const StylesForm: FC = () => {
                     <div className="relative">
                       <input
                         type="number"
-                        name={field.name}
                         id={field.name}
                         value={field.state.value}
                         onChange={(e) =>
@@ -127,7 +126,6 @@ const StylesForm: FC = () => {
                     <div className="relative">
                       <input
                         type="number"
-                        name={field.name}
                         id={field.name}
                         value={field.state.value}
                         onChange={(e) =>
@@ -152,7 +150,6 @@ const StylesForm: FC = () => {
                 const ownerNameShow = form.getFieldValue('ownerName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!ownerNameShow}
@@ -183,7 +180,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!ownerNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -205,7 +201,6 @@ const StylesForm: FC = () => {
                 const ownerNameShow = form.getFieldValue('ownerName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!ownerNameShow}
@@ -255,7 +250,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!moderatorNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -278,7 +272,6 @@ const StylesForm: FC = () => {
                   form.getFieldValue('moderatorName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!moderatorNameShow}
@@ -310,7 +303,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!moderatorNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -333,7 +325,6 @@ const StylesForm: FC = () => {
                   form.getFieldValue('moderatorName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!moderatorNameShow}
@@ -382,7 +373,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!memberNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -404,7 +394,6 @@ const StylesForm: FC = () => {
                 const memberNameShow = form.getFieldValue('memberName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!memberNameShow}
@@ -435,7 +424,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!memberNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -457,7 +445,6 @@ const StylesForm: FC = () => {
                 const memberNameShow = form.getFieldValue('memberName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!memberNameShow}
@@ -506,7 +493,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!authorNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -528,7 +514,6 @@ const StylesForm: FC = () => {
                 const authorNameShow = form.getFieldValue('authorName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!authorNameShow}
@@ -559,7 +544,6 @@ const StylesForm: FC = () => {
                         id={field.name}
                         disabled={!authorNameShow}
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                        name={field.name}
                         value={field.state.value}
                         onChange={(e) =>
                           field.handleChange(Number(e.target.value))
@@ -581,7 +565,6 @@ const StylesForm: FC = () => {
                 const authorNameShow = form.getFieldValue('authorName.show')
                 return (
                   <ColorPicker
-                    name={field.name}
                     onChange={field.handleChange}
                     onBlur={field.handleBlur}
                     disabled={!authorNameShow}
@@ -616,7 +599,6 @@ const StylesForm: FC = () => {
                       type="number"
                       id={field.name}
                       className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      name={field.name}
                       value={field.state.value}
                       onChange={(e) =>
                         field.handleChange(Number(e.target.value))
@@ -635,7 +617,6 @@ const StylesForm: FC = () => {
             <form.Field name="message.color">
               {(field) => (
                 <ColorPicker
-                  name={field.name}
                   onChange={field.handleChange}
                   onBlur={field.handleBlur}
                   value={field.state.value}
@@ -661,7 +642,6 @@ const StylesForm: FC = () => {
                       type="number"
                       id={field.name}
                       className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
-                      name={field.name}
                       value={field.state.value}
                       onChange={(e) =>
                         field.handleChange(Number(e.target.value))
@@ -680,7 +660,6 @@ const StylesForm: FC = () => {
             <form.Field name="message.outline.color">
               {(field) => (
                 <ColorPicker
-                  name={field.name}
                   onChange={field.handleChange}
                   onBlur={field.handleBlur}
                   value={field.state.value}

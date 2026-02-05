@@ -4,7 +4,6 @@ import { hex2rgb, rgb2hex } from 'utils/color'
 
 type Props = {
   disabled?: boolean
-  name: string
   onChange: (value: string) => void
   onBlur?: () => void
   value: string

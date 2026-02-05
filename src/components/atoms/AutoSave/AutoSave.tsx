@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 
 type AutoSaveProps = {
   form: {
@@ -7,13 +7,19 @@ type AutoSaveProps = {
 }
 
 const AutoSave: FC<AutoSaveProps> = ({ form }) => {
+  const handleSubmitRef = useRef(form.handleSubmit)
+
+  useEffect(() => {
+    handleSubmitRef.current = form.handleSubmit
+  }, [form.handleSubmit])
+
   useEffect(() => {
     const interval = setInterval(() => {
-      void form.handleSubmit()
+      void handleSubmitRef.current()
     }, 500)
 
     return (): void => clearInterval(interval)
-  }, [form])
+  }, [])
 
   return <></>
 }
