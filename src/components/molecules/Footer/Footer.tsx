@@ -1,12 +1,15 @@
 import React, { FC, ReactElement } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 const Footer: FC = (): ReactElement => {
+  const t = useTranslations('footer')
+  
   return (
     <footer className="bg-gray-100 text-gray-700 text-sm mt-12 px-4 py-6">
       <ul className="list-none m-0 p-0 space-y-2">
         <li className="m-0 p-0 text-right">
-          {'Inspired by '}
+          {t('inspiredBy') + ' '}
           <a
             href="https://chatv2.septapus.com/"
             rel="noopener noreferrer"
@@ -17,7 +20,7 @@ const Footer: FC = (): ReactElement => {
           </a>
         </li>
         <li className="m-0 p-0 text-right">
-          {'Created by '}
+          {t('createdBy') + ' '}
           <a
             href="https://ykzts.com/"
             rel="noopener noreferrer"
@@ -28,7 +31,7 @@ const Footer: FC = (): ReactElement => {
           </a>
         </li>
         <li className="m-0 p-0 text-right">
-          {'Designed by '}
+          {t('designedBy') + ' '}
           <a
             href="https://7-nana.bio/"
             rel="noopener noreferrer"
@@ -45,12 +48,12 @@ const Footer: FC = (): ReactElement => {
             target="_blank"
             className="text-blue-600 hover:underline"
           >
-            Source code
+            {t('sourceCode')}
           </a>
         </li>
         <li className="m-0 p-0 text-right">
           <Link href="/privacy" className="text-blue-600 hover:underline">
-            プライバシーポリシー
+            {t('privacyPolicy')}
           </Link>
         </li>
       </ul>
