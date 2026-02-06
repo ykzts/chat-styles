@@ -381,7 +381,7 @@ const StylesForm: FC = () => {
         </div>
 
         <h3 className="text-base font-normal mb-4 mt-6">
-          t('subsections.member')
+          {t('subsections.member')}
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
@@ -503,7 +503,7 @@ const StylesForm: FC = () => {
         </div>
 
         <h3 className="text-base font-normal mb-4 mt-6">
-          t('subsections.regular')
+          {t('subsections.regular')}
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
@@ -720,7 +720,7 @@ const StylesForm: FC = () => {
 
       <section className="mb-8">
         <Headline icon={<Sticker className="w-6 h-6" />}>
-          t('sections.sticker')
+          {t('sections.sticker')}
         </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
@@ -844,7 +844,7 @@ const StylesForm: FC = () => {
 
       <section className="mb-8">
         <Headline icon={<Settings className="w-6 h-6" />}>
-          t('sections.other')
+          {t('sections.other')}
         </Headline>
 
         <div className="flex flex-col gap-2">

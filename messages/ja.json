@@ -61,6 +61,10 @@
     "superChatBackground": "スーパーチャットの背景を表示する",
     "membershipBackground": "メンバー登録アナウンスの背景を表示する"
   },
+  "preview": {
+    "title": "プレビュー",
+    "darkBackground": "背景を暗くする"
+  },
   "usage": {
     "title": "使い方"
   }

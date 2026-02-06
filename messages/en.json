@@ -61,6 +61,10 @@
     "superChatBackground": "Show Super Chat background",
     "membershipBackground": "Show membership background"
   },
+  "preview": {
+    "title": "Preview",
+    "darkBackground": "Dark background"
+  },
   "usage": {
     "title": "How to Use"
   }
