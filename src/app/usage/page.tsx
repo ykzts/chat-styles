@@ -28,7 +28,9 @@ export default function Usage() {
               <h3 className="text-lg font-medium mb-2">
                 1. スタイルをカスタマイズする
               </h3>
-              <p>左側のフォームで、チャットの見た目を自由にカスタマイズできます：</p>
+              <p>
+                左側のフォームで、チャットの見た目を自由にカスタマイズできます：
+              </p>
               <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
                 <li>
                   <strong>テキストスタイル：</strong>
@@ -57,9 +59,7 @@ export default function Usage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-medium mb-2">
-                2. CSSをコピーする
-              </h3>
+              <h3 className="text-lg font-medium mb-2">2. CSSをコピーする</h3>
               <p>
                 カスタマイズが完了したら、画面下部に表示されるCSSコードの「コピーする」ボタンをクリックして、生成されたスタイルシートをクリップボードにコピーします。
               </p>
@@ -72,7 +72,8 @@ export default function Usage() {
               <p>コピーしたCSSをOBS Studioで使用する手順：</p>
               <ol className="list-decimal list-inside mt-2 space-y-2 ml-4">
                 <li>
-                  OBS Studioで新しい「ブラウザ」ソースを追加するか、既存のものを編集します
+                  OBS
+                  Studioで新しい「ブラウザ」ソースを追加するか、既存のものを編集します
                 </li>
                 <li>
                   URLに、YouTube Live
@@ -86,13 +87,8 @@ export default function Usage() {
                     </li>
                   </ul>
                 </li>
-                <li>
-                  「カスタムCSS」欄に、コピーしたCSSを貼り付けます
-                </li>
-                <li>
-                  幅と高さを必要に応じて調整します（推奨：400×600
-                  など）
-                </li>
+                <li>「カスタムCSS」欄に、コピーしたCSSを貼り付けます</li>
+                <li>幅と高さを必要に応じて調整します（推奨：400×600 など）</li>
                 <li>OKをクリックして適用します</li>
               </ol>
               <p className="mt-2">
@@ -118,8 +114,7 @@ export default function Usage() {
               後で再利用したい場合は、生成されたCSSをテキストファイルに保存しておきましょう
             </li>
             <li>
-              Chat
-              Stylesのプレビューは参考になりますが、最終的にはOBS
+              Chat Stylesのプレビューは参考になりますが、最終的にはOBS
               Studioで実際に確認することをお勧めします
             </li>
             <li>
@@ -158,8 +153,7 @@ export default function Usage() {
                 Q. プレビューと実際の表示が少し違う
               </h3>
               <p>
-                A.
-                プレビューはサンプルデータを使用しているため、実際のYouTube
+                A. プレビューはサンプルデータを使用しているため、実際のYouTube
                 Live
                 Chatと完全には一致しない場合があります。最終的な見た目は、OBS
                 Studioで実際のチャットを表示して確認してください。
