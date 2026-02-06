@@ -202,7 +202,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">t('common.outline')</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="ownerName.outline.width">
@@ -255,7 +255,7 @@ const StylesForm: FC = () => {
         </div>
 
         <h3 className="text-base font-normal mb-4 mt-6">
-          t('subsections.moderator')
+          {t('subsections.moderator')}
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
@@ -270,7 +270,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">t('common.show')</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -326,7 +326,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">t('common.outline')</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="moderatorName.outline.width">
@@ -396,7 +396,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">t('common.show')</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -450,7 +450,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">t('common.outline')</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="memberName.outline.width">
@@ -518,7 +518,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">t('common.show')</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -572,7 +572,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">t('common.outline')</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="authorName.outline.width">
@@ -673,7 +673,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">t('common.outline')</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="message.outline.width">
@@ -735,7 +735,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">t('labels.showText')</span>
+                  <span className="ml-2">{t('labels.showText')}</span>
                 </label>
               )}
             </form.Field>
@@ -789,7 +789,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">t('common.outline')</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="sticker.outline.width">
@@ -858,7 +858,7 @@ const StylesForm: FC = () => {
                   onChange={(e) => field.handleChange(e.target.checked)}
                   className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                 />
-                <span className="ml-2">t('labels.showEngagement')</span>
+                <span className="ml-2">{t('labels.showEngagement')}</span>
               </label>
             )}
           </form.Field>
@@ -872,7 +872,7 @@ const StylesForm: FC = () => {
                   onChange={(e) => field.handleChange(e.target.checked)}
                   className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                 />
-                <span className="ml-2">t('labels.showSuperChatBg')</span>
+                <span className="ml-2">{t('labels.showSuperChatBg')}</span>
               </label>
             )}
           </form.Field>

@@ -4,7 +4,8 @@
     "hide": "表示しない",
     "size": "大きさ",
     "color": "色",
-    "outline": "アウトライン"
+    "outline": "アウトライン",
+    "thickness": "太さ"
   },
   "fontPicker": {
     "label": "フォント",
@@ -22,7 +23,15 @@
     "owner": "オーナー",
     "moderator": "モデレーター",
     "member": "メンバー",
-    "normal": "一般"
+    "normal": "一般",
+    "fontFamily": "フォントファミリー",
+    "showText": "テキストを表示",
+    "showEngagement": "入室メッセージを表示",
+    "showSuperChatBg": "スーパーチャット背景を表示",
+    "showMemberBg": "メンバー背景を表示",
+    "unit": {
+      "px": "px"
+    }
   },
   "metadata": {
     "description": "OBS Studio向けのYouTube Liveチャットスタイルを生成します。",
@@ -44,6 +53,10 @@
     "other": "その他"
   },
   "subsections": {
+    "owner": "オーナー",
+    "moderator": "モデレーター",
+    "member": "メンバー",
+    "regular": "一般",
     "engagement": "入室メッセージを表示する",
     "superChatBackground": "スーパーチャットの背景を表示する",
     "membershipBackground": "メンバー登録アナウンスの背景を表示する"

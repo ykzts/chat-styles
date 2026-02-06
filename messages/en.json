@@ -4,7 +4,8 @@
     "hide": "Hide",
     "size": "Size",
     "color": "Color",
-    "outline": "Outline"
+    "outline": "Outline",
+    "thickness": "Thickness"
   },
   "fontPicker": {
     "label": "Font",
@@ -22,7 +23,15 @@
     "owner": "Owner",
     "moderator": "Moderator",
     "member": "Member",
-    "normal": "Normal"
+    "normal": "Normal",
+    "fontFamily": "Font Family",
+    "showText": "Show Text",
+    "showEngagement": "Show Engagement",
+    "showSuperChatBg": "Show Super Chat Background",
+    "showMemberBg": "Show Member Background",
+    "unit": {
+      "px": "px"
+    }
   },
   "metadata": {
     "description": "Generate YouTube Live Chat style for OBS Studio.",
@@ -44,6 +53,10 @@
     "other": "Other"
   },
   "subsections": {
+    "owner": "Owner",
+    "moderator": "Moderator",
+    "member": "Member",
+    "regular": "Regular",
     "engagement": "Show engagement message",
     "superChatBackground": "Show Super Chat background",
     "membershipBackground": "Show membership background"
