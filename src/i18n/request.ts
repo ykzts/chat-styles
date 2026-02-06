@@ -10,17 +10,21 @@ const messages = {
   en: enMessages
 }
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  // This typically corresponds to the `[locale]` segment
-  let locale = await requestLocale
+export default getRequestConfig(async ({ locale, requestLocale }) => {
+  // When using `setRequestLocale`, an explicit `locale` will be provided
+  // Otherwise, use the value from the `[locale]` segment
+  let resolvedLocale = locale || (await requestLocale)
 
-  // Ensure that the incoming locale is valid
-  if (!locale || !routing.locales.includes(locale as 'ja' | 'en')) {
-    locale = routing.defaultLocale
+  // Validate that the locale is valid
+  if (
+    !resolvedLocale ||
+    !routing.locales.includes(resolvedLocale as 'ja' | 'en')
+  ) {
+    resolvedLocale = routing.defaultLocale
   }
 
   return {
-    locale,
-    messages: messages[locale as 'ja' | 'en']
+    locale: resolvedLocale,
+    messages: messages[resolvedLocale as 'ja' | 'en']
   }
 })

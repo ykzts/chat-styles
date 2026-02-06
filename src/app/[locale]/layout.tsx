@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { getTranslations, getMessages } from 'next-intl/server'
+import { NextIntlClientProvider } from 'next-intl'
 import { routing } from 'i18n/routing'
 import Layout from 'components/templates/Layout'
 
@@ -54,9 +55,7 @@ export const viewport: Viewport = {
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params
-
-  // Enable static rendering
-  setRequestLocale(locale)
+  const messages = await getMessages()
 
   return (
     <html lang={locale}>
@@ -79,7 +78,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body>
-        <Layout title="Chat Styles">{children}</Layout>
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          <Layout title="Chat Styles">{children}</Layout>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
