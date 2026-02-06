@@ -28,7 +28,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "content/*": ["../content/*"]
+    }
   },
   "exclude": [
     "node_modules"
