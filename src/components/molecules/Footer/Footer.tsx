@@ -1,11 +1,9 @@
-'use client'
-
-import React, { FC, ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
-const Footer: FC = (): ReactElement => {
-  const t = useTranslations('footer')
+export default async function Footer(): Promise<ReactElement> {
+  const t = await getTranslations('footer')
 
   return (
     <footer className="bg-gray-100 text-gray-700 text-sm mt-12 px-4 py-6">
@@ -62,5 +60,3 @@ const Footer: FC = (): ReactElement => {
     </footer>
   )
 }
-
-export default Footer

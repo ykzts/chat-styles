@@ -11,7 +11,8 @@
     "react": "^19.2.4",
     "react-color": "^2.19.3",
     "react-dom": "^19.2.4",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-markdown": "^10.1.0"
   },
   "description": "Chat Styles is a generator of style sheet for the YouTube Live Chat.",
   "devDependencies": {

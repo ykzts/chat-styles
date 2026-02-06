@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { getTranslations, getMessages } from 'next-intl/server'
-import { NextIntlClientProvider } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { routing } from 'i18n/routing'
 import Layout from 'components/templates/Layout'
+import IntlProvider from 'providers/IntlProvider'
+import { use } from 'react'
 
 type Props = {
   children: React.ReactNode
@@ -53,9 +54,8 @@ export const viewport: Viewport = {
   themeColor: '#2563eb'
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
-  const { locale } = await params
-  const messages = await getMessages()
+export default function LocaleLayout({ children, params }: Props) {
+  const { locale } = use(params)
 
   return (
     <html lang={locale}>
@@ -78,9 +78,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body>
-        <NextIntlClientProvider messages={messages} locale={locale}>
+        <IntlProvider locale={locale}>
           <Layout title="Chat Styles">{children}</Layout>
-        </NextIntlClientProvider>
+        </IntlProvider>
       </body>
     </html>
   )
