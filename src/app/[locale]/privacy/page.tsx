@@ -1,91 +1,110 @@
 import React from 'react'
 import type { Metadata } from 'next'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 
-export const metadata: Metadata = {
-  title: 'プライバシーポリシー'
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default function Privacy() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'privacy' })
+
+  return {
+    title: t('title')
+  }
+}
+
+export default async function Privacy({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  return <PrivacyContent />
+}
+
+function PrivacyContent() {
+  const t = useTranslations('privacy')
+
   return (
     <div className="py-4 max-w-4xl">
-      <h1 className="text-3xl font-normal mb-6">プライバシーポリシー</h1>
+      <h1 className="text-3xl font-normal mb-6">{t('title')}</h1>
 
       <div className="space-y-6 text-base">
         <section>
-          <h2 className="text-xl font-semibold mb-3">はじめに</h2>
-          <p>
-            Chat Styles（以下、「当サービス」）は、YouTube
-            Liveのチャットスタイルを生成するWebアプリケーションです。当サービスは、ユーザーのプライバシーを尊重し、個人情報の保護に努めます。
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">収集する情報</h2>
-          <p>当サービスは、以下の情報を収集します：</p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>
-              <strong>ローカルストレージに保存される設定情報：</strong>
-              ユーザーが設定したチャットスタイルの設定は、ブラウザのIndexedDB（localForage）にローカルで保存されます。この情報は、ユーザーのデバイス上にのみ保存され、当サービスのサーバーには送信されません。
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">情報の利用目的</h2>
-          <p>
-            ローカルに保存された設定情報は、ユーザーが再度当サービスを訪問した際に、以前の設定を復元するためにのみ使用されます。
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">第三者への情報提供</h2>
-          <p>
-            当サービスは、ユーザーの個人情報を第三者に提供することはありません。すべての設定データは、ユーザーのブラウザ内にのみ保存されます。
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">アクセス解析ツール</h2>
-          <p>
-            当サービスは、Google
-            Analyticsなどのアクセス解析ツールを使用していません。
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">Cookie（クッキー）</h2>
-          <p>
-            当サービスは、Cookieを使用していません。設定の保存には、ブラウザのIndexedDBを使用しています。
-          </p>
+          <h2 className="text-xl font-semibold mb-3">{t('intro.heading')}</h2>
+          <p>{t('intro.content')}</p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold mb-3">
-            プライバシーポリシーの変更
+            {t('collection.heading')}
           </h2>
-          <p>
-            当サービスは、必要に応じて本プライバシーポリシーを変更することがあります。変更後のプライバシーポリシーは、本ページに掲載した時点で効力を生じるものとします。
-          </p>
+          <p>{t('collection.paragraph1')}</p>
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            <li>{t('collection.list.item1')}</li>
+            <li>{t('collection.list.item2')}</li>
+            <li>{t('collection.list.item3')}</li>
+            <li>{t('collection.list.item4')}</li>
+            <li>{t('collection.list.item5')}</li>
+            <li>{t('collection.list.item6')}</li>
+          </ul>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold mb-3">お問い合わせ</h2>
-          <p>
-            本プライバシーポリシーに関するお問い合わせは、
-            <a
-              href="https://github.com/ykzts/chat-styles/issues"
-              className="text-blue-600 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHubのIssue
-            </a>
-            よりお願いいたします。
-          </p>
+          <h2 className="text-xl font-semibold mb-3">{t('purpose.heading')}</h2>
+          <p>{t('purpose.paragraph1')}</p>
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            <li>{t('purpose.list.item1')}</li>
+            <li>{t('purpose.list.item2')}</li>
+            <li>{t('purpose.list.item3')}</li>
+          </ul>
         </section>
 
-        <section className="pt-4 border-t border-gray-300">
-          <p className="text-sm text-gray-600">制定日：2026年2月5日</p>
+        <section>
+          <h2 className="text-xl font-semibold mb-3">
+            {t('thirdParty.heading')}
+          </h2>
+          <p>{t('thirdParty.paragraph1')}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3">
+            {t('analytics.heading')}
+          </h2>
+          <p>{t('analytics.paragraph1')}</p>
+          <p className="mt-2">{t('analytics.paragraph2')}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3">{t('cookies.heading')}</h2>
+          <p>{t('cookies.paragraph1')}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3">{t('changes.heading')}</h2>
+          <p>{t('changes.paragraph1')}</p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-3">{t('contact.heading')}</h2>
+          <p>{t('contact.paragraph1')}</p>
+          <ul className="list-disc list-inside mt-2">
+            <li>
+              <a
+                href="https://github.com/ykzts/chat-styles/issues"
+                className="text-blue-600 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('contact.github')}
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section className="mt-8 pt-8 border-t border-gray-300">
+          <p className="text-sm text-gray-600">{t('effectiveDate')}</p>
         </section>
       </div>
     </div>
