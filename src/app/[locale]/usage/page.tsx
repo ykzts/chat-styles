@@ -1,7 +1,8 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { useTranslations } from 'next-intl'
+
+export const dynamic = 'force-dynamic'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -20,11 +21,7 @@ export default async function Usage({ params }: Props) {
   const { locale } = await params
   setRequestLocale(locale)
 
-  return <UsageContent />
-}
-
-function UsageContent() {
-  const t = useTranslations('usage')
+  const t = await getTranslations({ locale, namespace: 'usage' })
 
   return (
     <div className="py-4 max-w-4xl">

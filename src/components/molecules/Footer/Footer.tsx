@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 const Footer: FC = (): ReactElement => {
   const t = useTranslations('footer')
-  
+
   return (
     <footer className="bg-gray-100 text-gray-700 text-sm mt-12 px-4 py-6">
       <ul className="list-none m-0 p-0 space-y-2">

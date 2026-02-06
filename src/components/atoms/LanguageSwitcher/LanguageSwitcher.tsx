@@ -11,12 +11,13 @@ const LanguageSwitcher: FC = () => {
   const handleLocaleChange = (newLocale: string) => {
     // Remove the current locale from the pathname if it exists
     const pathnameWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
-    
+
     // Navigate to the new locale
-    const newPath = newLocale === routing.defaultLocale 
-      ? pathnameWithoutLocale 
-      : `/${newLocale}${pathnameWithoutLocale}`
-    
+    const newPath =
+      newLocale === routing.defaultLocale
+        ? pathnameWithoutLocale
+        : `/${newLocale}${pathnameWithoutLocale}`
+
     router.push(newPath)
   }
 

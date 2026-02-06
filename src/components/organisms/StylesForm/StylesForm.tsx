@@ -52,7 +52,9 @@ const StylesForm: FC = () => {
       }}
     >
       <section className="mb-8">
-        <Headline icon={<UserCircle2 className="w-6 h-6" />}>{t('sections.avatar')}</Headline>
+        <Headline icon={<UserCircle2 className="w-6 h-6" />}>
+          {t('sections.avatar')}
+        </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -109,7 +111,9 @@ const StylesForm: FC = () => {
 
       {isFontAccessSupported && (
         <section className="mb-8">
-          <Headline icon={<Type className="w-6 h-6" />}>{t('sections.font')}</Headline>
+          <Headline icon={<Type className="w-6 h-6" />}>
+            {t('sections.font')}
+          </Headline>
 
           <div className="grid grid-cols-1 gap-4">
             <form.Field name="fontFamily">
@@ -126,7 +130,9 @@ const StylesForm: FC = () => {
       )}
 
       <section className="mb-8">
-        <Headline icon={<User className="w-6 h-6" />}>{t('sections.name')}</Headline>
+        <Headline icon={<User className="w-6 h-6" />}>
+          {t('sections.name')}
+        </Headline>
 
         <h3 className="text-base font-normal mb-4">{t('subsections.owner')}</h3>
 
@@ -156,9 +162,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.size')
-                    }</label>
+                    >
+                      {t('common.size')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -207,9 +213,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.thickness')
-                    }</label>
+                    >
+                      {t('common.thickness')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -248,7 +254,9 @@ const StylesForm: FC = () => {
           </div>
         </div>
 
-        <h3 className="text-base font-normal mb-4 mt-6">t('subsections.moderator')</h3>
+        <h3 className="text-base font-normal mb-4 mt-6">
+          t('subsections.moderator')
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -277,9 +285,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.size')
-                    }</label>
+                    >
+                      {t('common.size')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -330,9 +338,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.thickness')
-                    }</label>
+                    >
+                      {t('common.thickness')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -372,7 +380,9 @@ const StylesForm: FC = () => {
           </div>
         </div>
 
-        <h3 className="text-base font-normal mb-4 mt-6">t('subsections.member')</h3>
+        <h3 className="text-base font-normal mb-4 mt-6">
+          t('subsections.member')
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -400,9 +410,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.size')
-                    }</label>
+                    >
+                      {t('common.size')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -451,9 +461,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.thickness')
-                    }</label>
+                    >
+                      {t('common.thickness')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -492,7 +502,9 @@ const StylesForm: FC = () => {
           </div>
         </div>
 
-        <h3 className="text-base font-normal mb-4 mt-6">t('subsections.regular')</h3>
+        <h3 className="text-base font-normal mb-4 mt-6">
+          t('subsections.regular')
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -520,9 +532,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.size')
-                    }</label>
+                    >
+                      {t('common.size')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -571,9 +583,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.thickness')
-                    }</label>
+                    >
+                      {t('common.thickness')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -614,9 +626,9 @@ const StylesForm: FC = () => {
       </section>
 
       <section className="mb-8">
-        <Headline icon={<MessageSquare className="w-6 h-6" />}>{
-          t('sections.message')
-        }</Headline>
+        <Headline icon={<MessageSquare className="w-6 h-6" />}>
+          {t('sections.message')}
+        </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div className="col-span-1"></div>
@@ -627,9 +639,9 @@ const StylesForm: FC = () => {
                   <label
                     htmlFor={field.name}
                     className="block text-sm text-gray-600 mb-1"
-                  >{
-                      t('common.size')
-                    }</label>
+                  >
+                    {t('common.size')}
+                  </label>
                   <div className="relative">
                     <input
                       type="number"
@@ -670,9 +682,9 @@ const StylesForm: FC = () => {
                   <label
                     htmlFor={field.name}
                     className="block text-sm text-gray-600 mb-1"
-                  >{
-                      t('common.thickness')
-                    }</label>
+                  >
+                    {t('common.thickness')}
+                  </label>
                   <div className="relative">
                     <input
                       type="number"
@@ -707,7 +719,9 @@ const StylesForm: FC = () => {
       </section>
 
       <section className="mb-8">
-        <Headline icon={<Sticker className="w-6 h-6" />}>t('sections.sticker')</Headline>
+        <Headline icon={<Sticker className="w-6 h-6" />}>
+          t('sections.sticker')
+        </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -735,9 +749,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.size')
-                    }</label>
+                    >
+                      {t('common.size')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -786,9 +800,9 @@ const StylesForm: FC = () => {
                     <label
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
-                    >{
-                      t('common.thickness')
-                    }</label>
+                    >
+                      {t('common.thickness')}
+                    </label>
                     <div className="relative">
                       <input
                         type="number"
@@ -829,7 +843,9 @@ const StylesForm: FC = () => {
       </section>
 
       <section className="mb-8">
-        <Headline icon={<Settings className="w-6 h-6" />}>t('sections.other')</Headline>
+        <Headline icon={<Settings className="w-6 h-6" />}>
+          t('sections.other')
+        </Headline>
 
         <div className="flex flex-col gap-2">
           <form.Field name="engagementMessage.show">
@@ -870,9 +886,7 @@ const StylesForm: FC = () => {
                   onChange={(e) => field.handleChange(e.target.checked)}
                   className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                 />
-                <span className="ml-2">{
-                  t('labels.showMemberBg')
-                }</span>
+                <span className="ml-2">{t('labels.showMemberBg')}</span>
               </label>
             )}
           </form.Field>
