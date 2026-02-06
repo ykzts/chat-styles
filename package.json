@@ -23,6 +23,7 @@
     "@eslint/js": "^9.39.2",
     "@serwist/next": "^9.5.4",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/eslint": "^9.6.1",
     "@types/node": "^24.10.11",
     "@types/react": "^19.2.13",
