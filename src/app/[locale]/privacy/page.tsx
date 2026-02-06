@@ -2,8 +2,6 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
-export const dynamic = 'force-dynamic'
-
 type Props = {
   params: Promise<{ locale: string }>
 }
