@@ -3,7 +3,6 @@ import { getTranslations } from 'next-intl/server'
 import { routing } from 'i18n/routing'
 import Layout from 'components/templates/Layout'
 import IntlProvider from 'providers/IntlProvider'
-import { use } from 'react'
 
 type Props = {
   children: React.ReactNode
@@ -54,8 +53,8 @@ export const viewport: Viewport = {
   themeColor: '#2563eb'
 }
 
-export default function LocaleLayout({ children, params }: Props) {
-  const { locale } = use(params)
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params
 
   return (
     <html lang={locale}>

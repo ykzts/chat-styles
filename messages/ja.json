@@ -1,14 +1,39 @@
 {
   "common": {
-    "appTitle": "Chat Styles",
     "show": "表示する",
+    "hide": "表示しない",
     "size": "大きさ",
-    "thickness": "太さ",
+    "color": "色",
     "outline": "アウトライン"
   },
+  "fontPicker": {
+    "label": "フォント",
+    "unavailable": "このブラウザではフォント選択が利用できません",
+    "placeholder": "フォントを選択..."
+  },
+  "footer": {
+    "inspiredBy": "インスパイア元",
+    "createdBy": "作成者",
+    "designedBy": "デザイン",
+    "sourceCode": "ソースコード",
+    "privacyPolicy": "プライバシーポリシー"
+  },
+  "labels": {
+    "owner": "オーナー",
+    "moderator": "モデレーター",
+    "member": "メンバー",
+    "normal": "一般"
+  },
   "metadata": {
-    "description": "Chat StylesはYouTube Liveのチャットの見た目を変更するCSSを生成するためのツールです。OBS StudioのブラウザソースのカスタムCSSとして使われることを前提としています。",
+    "description": "OBS Studio向けのYouTube Liveチャットスタイルを生成します。",
     "titleTemplate": "%s - Chat Styles"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー"
+  },
+  "result": {
+    "heading": "カスタムCSS",
+    "copyButton": "コピーする"
   },
   "sections": {
     "avatar": "アイコン",
@@ -19,190 +44,11 @@
     "other": "その他"
   },
   "subsections": {
-    "owner": "オーナー",
-    "moderator": "モデレーター",
-    "member": "メンバー",
-    "regular": "一般ユーザー"
-  },
-  "labels": {
-    "fontFamily": "フォントファミリー",
-    "showText": "テキストを表示する",
-    "showEngagement": "入室メッセージを表示する",
-    "showSuperChatBg": "スーパーチャットの背景を表示する",
-    "showMemberBg": "メンバー登録アナウンスの背景を表示する",
-    "unit": {
-      "px": "px"
-    }
-  },
-  "result": {
-    "heading": "カスタムCSS",
-    "copyButton": "コピーする"
-  },
-  "fontPicker": {
-    "label": "フォント",
-    "error": "フォントの取得に失敗しました",
-    "placeholder": "例: Noto Sans JP",
-    "loading": "読み込み中...",
-    "localFonts": "ローカルフォントから選択",
-    "selectFont": "フォントを選択...",
-    "reload": "再読み込み"
-  },
-  "footer": {
-    "inspiredBy": "Inspired by",
-    "createdBy": "Created by",
-    "designedBy": "Designed by",
-    "sourceCode": "Source code",
-    "privacyPolicy": "プライバシーポリシー"
-  },
-  "privacy": {
-    "title": "プライバシーポリシー",
-    "intro": {
-      "heading": "はじめに",
-      "content": "Chat Styles（以下、「当サービス」）は、YouTube Liveのチャットスタイルを生成するWebアプリケーションです。本プライバシーポリシーは、当サービスが利用者の情報をどのように収集、使用、保護するかについて説明します。"
-    },
-    "collection": {
-      "heading": "収集する情報",
-      "paragraph1": "当サービスでは、以下の情報を収集する場合があります：",
-      "list": {
-        "item1": "ブラウザの種類やバージョン",
-        "item2": "オペレーティングシステム",
-        "item3": "アクセス日時",
-        "item4": "IPアドレス（匿名化された形式）",
-        "item5": "参照元URL",
-        "item6": "利用者が入力したスタイル設定（ブラウザのローカルストレージに保存）"
-      }
-    },
-    "purpose": {
-      "heading": "情報の利用目的",
-      "paragraph1": "収集した情報は、以下の目的で利用されます：",
-      "list": {
-        "item1": "サービスの提供と改善",
-        "item2": "利用状況の分析",
-        "item3": "技術的な問題の診断と修正"
-      }
-    },
-    "thirdParty": {
-      "heading": "第三者への情報提供",
-      "paragraph1": "当サービスは、法令に基づく場合を除き、利用者の同意なく第三者に個人情報を提供することはありません。"
-    },
-    "analytics": {
-      "heading": "アクセス解析ツール",
-      "paragraph1": "当サービスでは、Google Analyticsを使用してアクセス解析を行っています。Google Analyticsは、Cookieを使用して利用者の情報を収集します。この情報は匿名で収集され、個人を特定するものではありません。",
-      "paragraph2": "Google Analyticsの利用規約およびプライバシーポリシーについては、Googleのウェブサイトをご確認ください。"
-    },
-    "cookies": {
-      "heading": "Cookie（クッキー）",
-      "paragraph1": "当サービスは、利用者の利便性向上のためにCookieを使用しています。Cookieを無効にすることも可能ですが、その場合、一部の機能が正常に動作しない可能性があります。"
-    },
-    "changes": {
-      "heading": "プライバシーポリシーの変更",
-      "paragraph1": "当サービスは、必要に応じて本プライバシーポリシーを変更することがあります。変更後のプライバシーポリシーは、当サービス上に掲載された時点で効力を生じるものとします。"
-    },
-    "contact": {
-      "heading": "お問い合わせ",
-      "paragraph1": "本プライバシーポリシーに関するお問い合わせは、以下の方法でお願いします：",
-      "github": "GitHubのIssue"
-    },
-    "effectiveDate": "制定日：2026年2月5日"
+    "engagement": "入室メッセージを表示する",
+    "superChatBackground": "スーパーチャットの背景を表示する",
+    "membershipBackground": "メンバー登録アナウンスの背景を表示する"
   },
   "usage": {
-    "title": "使い方",
-    "what": {
-      "heading": "Chat Stylesとは",
-      "paragraph1": "Chat Stylesは、YouTube Liveのチャットの見た目を変更するCSSを生成するツールです。OBS Studioのブラウザソースでカスタムスタイルを適用することで、配信画面上のチャット表示をカスタマイズできます。"
-    },
-    "basic": {
-      "heading": "基本的な使い方",
-      "step1": {
-        "title": "1. スタイルをカスタマイズする",
-        "paragraph1": "左側のフォームで、チャットの見た目をカスタマイズできます。以下の項目を調整できます：",
-        "avatar": {
-          "title": "アイコン",
-          "content": "ユーザーアイコンの表示・非表示と大きさを設定します。"
-        },
-        "font": {
-          "title": "フォント",
-          "content": "チャット全体で使用するフォントを選択します。システムにインストールされているフォントから選択できます。"
-        },
-        "name": {
-          "title": "名前",
-          "content": "オーナー、モデレーター、メンバー、一般ユーザーそれぞれの名前の表示設定を行います。表示・非表示、大きさ、色、アウトラインを個別に設定できます。"
-        },
-        "message": {
-          "title": "メッセージ",
-          "content": "チャットメッセージのテキストサイズと色、アウトラインを設定します。"
-        },
-        "sticker": {
-          "title": "ステッカー",
-          "content": "スーパーチャットなどに含まれるステッカーの大きさと、テキストの表示・非表示を設定します。"
-        },
-        "other": {
-          "title": "その他",
-          "content": "入室メッセージ、スーパーチャットの背景、メンバー登録アナウンスの背景の表示設定を行います。"
-        }
-      },
-      "step2": {
-        "title": "2. CSSをコピーする",
-        "paragraph1": "右下の「カスタムCSS」セクションに生成されたCSSが表示されます。「コピーする」ボタンをクリックしてCSSをクリップボードにコピーします。"
-      },
-      "step3": {
-        "title": "3. OBS Studioで使用する",
-        "intro": "コピーしたCSSをOBS Studioで使用します：",
-        "substep1": {
-          "title": "ブラウザソースの追加",
-          "list": {
-            "item1": "OBS Studioで「ソース」の「+」ボタンをクリック",
-            "item2": "「ブラウザ」を選択",
-            "item3": "任意の名前を入力して「OK」をクリック"
-          }
-        },
-        "substep2": {
-          "title": "URLの設定",
-          "content": "「URL」フィールドに、YouTube LiveのチャットページのポップアウトURLを入力します。URLは以下の形式です："
-        },
-        "substep3": {
-          "title": "カスタムCSSの適用",
-          "content": "「カスタムCSS」フィールドに、先ほどコピーしたCSSを貼り付けます。"
-        },
-        "substep4": {
-          "title": "その他の設定",
-          "list": {
-            "item1": "「幅」と「高さ」を配信画面に合わせて調整",
-            "item2": "「シャットダウン時にブラウザを更新」をチェック",
-            "item3": "「OK」をクリックして設定を保存"
-          }
-        }
-      }
-    },
-    "tips": {
-      "heading": "より良い結果を得るためのヒント",
-      "list": {
-        "item1": "フォントは、配信で使用するPCにインストールされている必要があります。",
-        "item2": "アウトラインの太さを調整することで、テキストの視認性を向上させることができます。",
-        "item3": "背景色と文字色のコントラストに注意して、読みやすさを確保してください。",
-        "item4": "設定は自動的にブラウザに保存されるため、次回訪問時にも同じ設定を使用できます。",
-        "item5": "プレビュー画面で実際の見た目を確認しながら調整できます。"
-      }
-    },
-    "faq": {
-      "heading": "よくある質問",
-      "q1": {
-        "question": "Q: 設定はどこに保存されますか？",
-        "answer": "A: 設定はブラウザのローカルストレージに保存されます。サーバーには送信されません。"
-      },
-      "q2": {
-        "question": "Q: 別のデバイスで同じ設定を使用できますか？",
-        "answer": "A: ローカルストレージに保存されるため、デバイス間での同期はされません。設定を移行したい場合は、生成されたCSSをコピーして保存しておくことをお勧めします。"
-      },
-      "q3": {
-        "question": "Q: プレビューと実際のYouTube Liveチャットの見た目が異なる場合があります。",
-        "answer": "A: プレビューは参考程度にご覧ください。YouTubeのチャットUIが更新されると、実際の表示が変わる可能性があります。実際の配信環境で確認することをお勧めします。"
-      }
-    },
-    "contact": {
-      "paragraph1": "ご質問やフィードバックがある場合は、",
-      "github": "GitHubのリポジトリ",
-      "paragraph2": "からIssueを作成してください。"
-    }
+    "title": "使い方"
   }
 }
