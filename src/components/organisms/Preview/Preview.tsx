@@ -1,11 +1,15 @@
+'use client'
+
 import React, { FC, useCallback, useContext } from 'react'
 import { Eye } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import PreviewFrame from 'components/atoms/PreviewFrame'
 import Headline from 'components/atoms/Headline'
 import ChatStylesContext from 'context/ChatStylesContext'
 import PreviewContext from 'context/PreviewContext'
 
 export const Preview: FC = () => {
+  const t = useTranslations()
   const { chatStyles } = useContext(ChatStylesContext)
   const { invert, toggleInvert } = useContext(PreviewContext)
 
@@ -18,7 +22,7 @@ export const Preview: FC = () => {
       <Headline
         actions={
           <label className="flex items-center cursor-pointer">
-            <span className="mr-2 text-sm">背景を暗くする</span>
+            <span className="mr-2 text-sm">{t('preview.darkBackground')}</span>
             <input
               type="checkbox"
               checked={invert}
@@ -29,7 +33,7 @@ export const Preview: FC = () => {
         }
         icon={<Eye className="w-6 h-6" />}
       >
-        プレビュー
+        {t('preview.title')}
       </Headline>
 
       <div

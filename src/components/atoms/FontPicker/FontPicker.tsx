@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 type FontData = {
   family: string
@@ -18,8 +19,9 @@ const FontPicker: FC<Props> = ({
   value,
   onChange,
   disabled = false,
-  label = 'フォント'
+  label
 }) => {
+  const t = useTranslations('fontPicker')
   const [localFonts, setLocalFonts] = useState<FontData[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -49,19 +51,21 @@ const FontPicker: FC<Props> = ({
       )
     } catch (err) {
       console.error('Failed to query local fonts:', err)
-      setError('フォントの取得に失敗しました')
+      setError(t('error'))
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }, [t])
 
   const handleLoadFonts = useCallback(() => {
     void loadLocalFonts()
   }, [loadLocalFonts])
 
+  const displayLabel = label || t('label')
+
   return (
     <div>
-      <label className="block text-sm text-gray-600 mb-1">{label}</label>
+      <label className="block text-sm text-gray-600 mb-1">{displayLabel}</label>
 
       {localFonts.length === 0 ? (
         <div>
@@ -71,7 +75,7 @@ const FontPicker: FC<Props> = ({
             onChange={(e) => onChange(e.target.value)}
             disabled={disabled || isLoading}
             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed mb-2"
-            placeholder="例: Noto Sans JP"
+            placeholder={t('placeholder')}
           />
           <button
             type="button"
@@ -79,7 +83,7 @@ const FontPicker: FC<Props> = ({
             disabled={disabled || isLoading}
             className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
           >
-            {isLoading ? '読み込み中...' : 'ローカルフォントから選択'}
+            {isLoading ? t('loading') : t('localFonts')}
           </button>
           {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
         </div>
@@ -91,7 +95,7 @@ const FontPicker: FC<Props> = ({
             disabled={disabled}
             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
           >
-            <option value="">フォントを選択...</option>
+            <option value="">{t('selectFont')}</option>
             {localFonts.map((font) => (
               <option key={font.postscriptName} value={font.family}>
                 {font.family}
@@ -104,7 +108,7 @@ const FontPicker: FC<Props> = ({
             disabled={disabled || isLoading}
             className="w-full px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors mt-2"
           >
-            再読み込み
+            {t('reload')}
           </button>
         </div>
       )}

@@ -1,6 +1,7 @@
 import { type FC, type ReactNode } from 'react'
-import Link from 'next/link'
+import { Link } from 'i18n/routing'
 import Footer from 'components/molecules/Footer'
+import ClientNav from './ClientNav'
 
 type Props = {
   children: ReactNode
@@ -18,14 +19,7 @@ const Layout: FC<Props> = ({ children, title }) => {
                 {title}
               </Link>
             </h1>
-            <nav>
-              <Link
-                href="/usage"
-                className="text-white hover:bg-blue-700 px-3 py-2 rounded transition-colors text-sm font-medium"
-              >
-                使い方
-              </Link>
-            </nav>
+            <ClientNav />
           </div>
         </div>
       </header>

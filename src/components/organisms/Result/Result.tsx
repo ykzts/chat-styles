@@ -1,11 +1,13 @@
 import { Highlight, themes } from 'prism-react-renderer'
 import React, { FC, useCallback, useContext, useMemo, useRef } from 'react'
 import { Code2, Copy } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Headline from 'components/atoms/Headline'
 import ChatStylesContext from 'context/ChatStylesContext'
 import { generateStyleSheet } from 'utils/styleSheet'
 
 const Result: FC = () => {
+  const t = useTranslations('result')
   const codeRef = useRef<HTMLElement>(null)
   const { chatStyles } = useContext(ChatStylesContext)
   const styleSheet = useMemo(
@@ -31,14 +33,14 @@ const Result: FC = () => {
       className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full text-sm font-medium cursor-pointer transition-colors"
     >
       <Copy className="w-5 h-5" />
-      コピーする
+      {t('copyButton')}
     </button>
   )
 
   return (
     <section className="mt-10">
       <Headline actions={actions} icon={<Code2 className="w-6 h-6" />}>
-        カスタムCSS
+        {t('heading')}
       </Headline>
 
       <Highlight code={styleSheet} language="css" theme={themes.nightOwl}>

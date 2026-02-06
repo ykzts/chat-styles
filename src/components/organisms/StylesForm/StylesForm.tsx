@@ -8,6 +8,7 @@ import {
   Sticker,
   Type
 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import ChatStylesContext from 'context/ChatStylesContext'
 import AutoSave from 'components/atoms/AutoSave'
 import ColorPicker from 'components/atoms/ColorPicker'
@@ -16,6 +17,7 @@ import Headline from 'components/atoms/Headline'
 import ChatStyles from 'types/ChatStyles'
 
 const StylesForm: FC = () => {
+  const t = useTranslations()
   const { chatStyles, setChatStyles } = useContext(ChatStylesContext)
   const [isFontAccessSupported, setIsFontAccessSupported] = useState(false)
 
@@ -50,7 +52,9 @@ const StylesForm: FC = () => {
       }}
     >
       <section className="mb-8">
-        <Headline icon={<UserCircle2 className="w-6 h-6" />}>アイコン</Headline>
+        <Headline icon={<UserCircle2 className="w-6 h-6" />}>
+          {t('sections.avatar')}
+        </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -64,7 +68,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">表示する</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -79,7 +83,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      大きさ
+                      {t('common.size')}
                     </label>
                     <div className="relative">
                       <input
@@ -94,7 +98,7 @@ const StylesForm: FC = () => {
                         className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                       />
                       <span className="absolute right-3 top-2 text-gray-500">
-                        px
+                        {t('labels.unit.px')}
                       </span>
                     </div>
                   </div>
@@ -107,7 +111,9 @@ const StylesForm: FC = () => {
 
       {isFontAccessSupported && (
         <section className="mb-8">
-          <Headline icon={<Type className="w-6 h-6" />}>フォント</Headline>
+          <Headline icon={<Type className="w-6 h-6" />}>
+            {t('sections.font')}
+          </Headline>
 
           <div className="grid grid-cols-1 gap-4">
             <form.Field name="fontFamily">
@@ -115,7 +121,7 @@ const StylesForm: FC = () => {
                 <FontPicker
                   value={field.state.value}
                   onChange={field.handleChange}
-                  label="フォントファミリー"
+                  label={t('labels.fontFamily')}
                 />
               )}
             </form.Field>
@@ -124,9 +130,11 @@ const StylesForm: FC = () => {
       )}
 
       <section className="mb-8">
-        <Headline icon={<User className="w-6 h-6" />}>名前</Headline>
+        <Headline icon={<User className="w-6 h-6" />}>
+          {t('sections.name')}
+        </Headline>
 
-        <h3 className="text-base font-normal mb-4">オーナー</h3>
+        <h3 className="text-base font-normal mb-4">{t('subsections.owner')}</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -140,7 +148,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">表示する</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -155,7 +163,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      大きさ
+                      {t('common.size')}
                     </label>
                     <div className="relative">
                       <input
@@ -194,7 +202,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">アウトライン</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="ownerName.outline.width">
@@ -206,7 +214,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      太さ
+                      {t('common.thickness')}
                     </label>
                     <div className="relative">
                       <input
@@ -246,7 +254,9 @@ const StylesForm: FC = () => {
           </div>
         </div>
 
-        <h3 className="text-base font-normal mb-4 mt-6">モデレーター</h3>
+        <h3 className="text-base font-normal mb-4 mt-6">
+          {t('subsections.moderator')}
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -260,7 +270,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">表示する</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -276,7 +286,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      大きさ
+                      {t('common.size')}
                     </label>
                     <div className="relative">
                       <input
@@ -316,7 +326,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">アウトライン</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="moderatorName.outline.width">
@@ -329,7 +339,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      太さ
+                      {t('common.thickness')}
                     </label>
                     <div className="relative">
                       <input
@@ -370,7 +380,9 @@ const StylesForm: FC = () => {
           </div>
         </div>
 
-        <h3 className="text-base font-normal mb-4 mt-6">メンバー</h3>
+        <h3 className="text-base font-normal mb-4 mt-6">
+          {t('subsections.member')}
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -384,7 +396,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">表示する</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -399,7 +411,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      大きさ
+                      {t('common.size')}
                     </label>
                     <div className="relative">
                       <input
@@ -438,7 +450,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">アウトライン</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="memberName.outline.width">
@@ -450,7 +462,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      太さ
+                      {t('common.thickness')}
                     </label>
                     <div className="relative">
                       <input
@@ -490,7 +502,9 @@ const StylesForm: FC = () => {
           </div>
         </div>
 
-        <h3 className="text-base font-normal mb-4 mt-6">一般ユーザー</h3>
+        <h3 className="text-base font-normal mb-4 mt-6">
+          {t('subsections.regular')}
+        </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -504,7 +518,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">表示する</span>
+                  <span className="ml-2">{t('common.show')}</span>
                 </label>
               )}
             </form.Field>
@@ -519,7 +533,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      大きさ
+                      {t('common.size')}
                     </label>
                     <div className="relative">
                       <input
@@ -558,7 +572,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">アウトライン</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="authorName.outline.width">
@@ -570,7 +584,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      太さ
+                      {t('common.thickness')}
                     </label>
                     <div className="relative">
                       <input
@@ -613,7 +627,7 @@ const StylesForm: FC = () => {
 
       <section className="mb-8">
         <Headline icon={<MessageSquare className="w-6 h-6" />}>
-          メッセージ
+          {t('sections.message')}
         </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
@@ -626,7 +640,7 @@ const StylesForm: FC = () => {
                     htmlFor={field.name}
                     className="block text-sm text-gray-600 mb-1"
                   >
-                    大きさ
+                    {t('common.size')}
                   </label>
                   <div className="relative">
                     <input
@@ -659,7 +673,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">アウトライン</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="message.outline.width">
@@ -669,7 +683,7 @@ const StylesForm: FC = () => {
                     htmlFor={field.name}
                     className="block text-sm text-gray-600 mb-1"
                   >
-                    太さ
+                    {t('common.thickness')}
                   </label>
                   <div className="relative">
                     <input
@@ -705,7 +719,9 @@ const StylesForm: FC = () => {
       </section>
 
       <section className="mb-8">
-        <Headline icon={<Sticker className="w-6 h-6" />}>ステッカー</Headline>
+        <Headline icon={<Sticker className="w-6 h-6" />}>
+          {t('sections.sticker')}
+        </Headline>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           <div>
@@ -719,7 +735,7 @@ const StylesForm: FC = () => {
                     onChange={(e) => field.handleChange(e.target.checked)}
                     className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                   />
-                  <span className="ml-2">テキストを表示する</span>
+                  <span className="ml-2">{t('labels.showText')}</span>
                 </label>
               )}
             </form.Field>
@@ -734,7 +750,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      大きさ
+                      {t('common.size')}
                     </label>
                     <div className="relative">
                       <input
@@ -773,7 +789,7 @@ const StylesForm: FC = () => {
             </form.Field>
           </div>
           <div>
-            <h4 className="text-base font-medium">アウトライン</h4>
+            <h4 className="text-base font-medium">{t('common.outline')}</h4>
           </div>
           <div>
             <form.Field name="sticker.outline.width">
@@ -785,7 +801,7 @@ const StylesForm: FC = () => {
                       htmlFor={field.name}
                       className="block text-sm text-gray-600 mb-1"
                     >
-                      太さ
+                      {t('common.thickness')}
                     </label>
                     <div className="relative">
                       <input
@@ -827,7 +843,9 @@ const StylesForm: FC = () => {
       </section>
 
       <section className="mb-8">
-        <Headline icon={<Settings className="w-6 h-6" />}>その他</Headline>
+        <Headline icon={<Settings className="w-6 h-6" />}>
+          {t('sections.other')}
+        </Headline>
 
         <div className="flex flex-col gap-2">
           <form.Field name="engagementMessage.show">
@@ -840,7 +858,7 @@ const StylesForm: FC = () => {
                   onChange={(e) => field.handleChange(e.target.checked)}
                   className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                 />
-                <span className="ml-2">入室メッセージを表示する</span>
+                <span className="ml-2">{t('labels.showEngagement')}</span>
               </label>
             )}
           </form.Field>
@@ -854,7 +872,7 @@ const StylesForm: FC = () => {
                   onChange={(e) => field.handleChange(e.target.checked)}
                   className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                 />
-                <span className="ml-2">スーパーチャットの背景を表示する</span>
+                <span className="ml-2">{t('labels.showSuperChatBg')}</span>
               </label>
             )}
           </form.Field>
@@ -868,9 +886,7 @@ const StylesForm: FC = () => {
                   onChange={(e) => field.handleChange(e.target.checked)}
                   className="w-10 h-6 bg-gray-300 rounded-full appearance-none cursor-pointer relative before:absolute before:w-5 before:h-5 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition-transform checked:bg-blue-600 checked:before:translate-x-4"
                 />
-                <span className="ml-2">
-                  メンバー登録アナウンスの背景を表示する
-                </span>
+                <span className="ml-2">{t('labels.showMemberBg')}</span>
               </label>
             )}
           </form.Field>

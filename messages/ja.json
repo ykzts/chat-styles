@@ -1,0 +1,71 @@
+{
+  "common": {
+    "show": "表示する",
+    "hide": "表示しない",
+    "size": "大きさ",
+    "color": "色",
+    "outline": "アウトライン",
+    "thickness": "太さ"
+  },
+  "fontPicker": {
+    "label": "フォント",
+    "unavailable": "このブラウザではフォント選択が利用できません",
+    "placeholder": "フォントを選択..."
+  },
+  "footer": {
+    "inspiredBy": "インスパイア元",
+    "createdBy": "作成者",
+    "designedBy": "デザイン",
+    "sourceCode": "ソースコード",
+    "privacyPolicy": "プライバシーポリシー"
+  },
+  "labels": {
+    "owner": "オーナー",
+    "moderator": "モデレーター",
+    "member": "メンバー",
+    "normal": "一般",
+    "fontFamily": "フォントファミリー",
+    "showText": "テキストを表示",
+    "showEngagement": "入室メッセージを表示",
+    "showSuperChatBg": "スーパーチャット背景を表示",
+    "showMemberBg": "メンバー背景を表示",
+    "unit": {
+      "px": "px"
+    }
+  },
+  "metadata": {
+    "description": "OBS Studio向けのYouTube Liveチャットスタイルを生成します。",
+    "titleTemplate": "%s - Chat Styles"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー"
+  },
+  "result": {
+    "heading": "カスタムCSS",
+    "copyButton": "コピーする"
+  },
+  "sections": {
+    "avatar": "アイコン",
+    "font": "フォント",
+    "name": "名前",
+    "message": "メッセージ",
+    "sticker": "ステッカー",
+    "other": "その他"
+  },
+  "subsections": {
+    "owner": "オーナー",
+    "moderator": "モデレーター",
+    "member": "メンバー",
+    "regular": "一般",
+    "engagement": "入室メッセージを表示する",
+    "superChatBackground": "スーパーチャットの背景を表示する",
+    "membershipBackground": "メンバー登録アナウンスの背景を表示する"
+  },
+  "preview": {
+    "title": "プレビュー",
+    "darkBackground": "背景を暗くする"
+  },
+  "usage": {
+    "title": "使い方"
+  }
+}
