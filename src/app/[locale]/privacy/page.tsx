@@ -2,8 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from 'i18n/routing'
-import PrivacyContentJa from 'content/ja/privacy'
-import PrivacyContentEn from 'content/en/privacy'
+import PrivacyJa from 'content/ja/privacy.mdx'
+import PrivacyEn from 'content/en/privacy.mdx'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -25,9 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Privacy({ params }: Props) {
   const { locale } = await params
 
-  if (locale === 'ja') {
-    return <PrivacyContentJa />
-  }
+  const PrivacyContent = locale === 'ja' ? PrivacyJa : PrivacyEn
 
-  return <PrivacyContentEn />
+  return (
+    <div className="py-4 max-w-4xl">
+      <article className="prose prose-slate max-w-none">
+        <PrivacyContent />
+      </article>
+    </div>
+  )
 }
