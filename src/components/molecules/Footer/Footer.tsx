@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import Link from 'next/link'
+import { Link } from 'i18n/routing'
 import { getTranslations } from 'next-intl/server'
 
 export default async function Footer(): Promise<ReactElement> {

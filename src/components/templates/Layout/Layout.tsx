@@ -1,5 +1,5 @@
 import { type FC, type ReactNode } from 'react'
-import Link from 'next/link'
+import { Link } from 'i18n/routing'
 import Footer from 'components/molecules/Footer'
 import ClientNav from './ClientNav'
 

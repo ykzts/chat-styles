@@ -1,24 +1,17 @@
-import React, { FC } from 'react'
+import React, { FC, useTransition } from 'react'
 import { useLocale } from 'next-intl'
-import { routing } from 'i18n/routing'
-import { usePathname, useRouter } from 'next/navigation'
+import { routing, usePathname, useRouter } from 'i18n/routing'
 
 const LanguageSwitcher: FC = () => {
   const locale = useLocale()
   const pathname = usePathname()
   const router = useRouter()
+  const [isPending, startTransition] = useTransition()
 
   const handleLocaleChange = (newLocale: string) => {
-    // Remove the current locale from the pathname if it exists
-    const pathnameWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
-
-    // Navigate to the new locale
-    const newPath =
-      newLocale === routing.defaultLocale
-        ? pathnameWithoutLocale
-        : `/${newLocale}${pathnameWithoutLocale}`
-
-    router.push(newPath)
+    startTransition(() => {
+      router.replace(pathname, { locale: newLocale })
+    })
   }
 
   return (
@@ -27,11 +20,12 @@ const LanguageSwitcher: FC = () => {
         <button
           key={loc}
           onClick={() => handleLocaleChange(loc)}
+          disabled={isPending}
           className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
             locale === loc
               ? 'bg-white text-blue-600'
               : 'text-white hover:bg-blue-700'
-          }`}
+          } ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           {loc.toUpperCase()}
         </button>
