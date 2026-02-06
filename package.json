@@ -1,7 +1,11 @@
 {
   "author": "Yamagishi Kazutoshi <ykzts@desire.sh>",
   "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.1.6",
     "@tanstack/react-form": "^1.28.0",
+    "@types/mdx": "^2.0.13",
     "copy-text-to-clipboard": "^3.2.2",
     "localforage": "^1.10.0",
     "next": "^16.1.6",
@@ -11,8 +15,7 @@
     "react": "^19.2.4",
     "react-color": "^2.19.3",
     "react-dom": "^19.2.4",
-    "react-helmet": "^6.1.0",
-    "react-markdown": "^10.1.0"
+    "react-helmet": "^6.1.0"
   },
   "description": "Chat Styles is a generator of style sheet for the YouTube Live Chat.",
   "devDependencies": {

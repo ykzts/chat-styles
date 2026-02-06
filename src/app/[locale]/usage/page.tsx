@@ -2,9 +2,6 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from 'i18n/routing'
-import { readFile } from 'fs/promises'
-import { join } from 'path'
-import Markdown from 'react-markdown'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -23,20 +20,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-async function getMarkdownContent(locale: string): Promise<string> {
-  // eslint-disable-next-line no-undef
-  const filePath = join(process.cwd(), 'content', locale, 'usage.md')
-  return await readFile(filePath, 'utf-8')
-}
-
 export default async function Usage({ params }: Props) {
   const { locale } = await params
-  const content = await getMarkdownContent(locale)
+
+  let UsageContent
+  if (locale === 'ja') {
+    UsageContent = (await import('../../../../content/ja/usage.mdx')).default
+  } else {
+    UsageContent = (await import('../../../../content/en/usage.mdx')).default
+  }
 
   return (
     <div className="py-4 max-w-4xl">
       <article className="prose prose-slate max-w-none">
-        <Markdown>{content}</Markdown>
+        <UsageContent />
       </article>
     </div>
   )
