@@ -2,6 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from 'i18n/routing'
+import UsageJa from '../../../../content/ja/usage.mdx'
+import UsageEn from '../../../../content/en/usage.mdx'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -23,12 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Usage({ params }: Props) {
   const { locale } = await params
 
-  let UsageContent
-  if (locale === 'ja') {
-    UsageContent = (await import('../../../../content/ja/usage.mdx')).default
-  } else {
-    UsageContent = (await import('../../../../content/en/usage.mdx')).default
-  }
+  const UsageContent = locale === 'ja' ? UsageJa : UsageEn
 
   return (
     <div className="py-4 max-w-4xl">
