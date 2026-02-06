@@ -1,6 +1,9 @@
 const withSerwistInit = require('@serwist/next').default
+const createNextIntlPlugin = require('next-intl/plugin')
 const headers = require('./headers.json')
 const rewrites = require('./rewrites.json')
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const withSerwist = withSerwistInit({
   swSrc: 'src/app/sw.ts',
@@ -19,4 +22,4 @@ const nextConfig = {
   }
 }
 
-module.exports = withSerwist(nextConfig)
+module.exports = withSerwist(withNextIntl(nextConfig))

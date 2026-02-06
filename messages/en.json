@@ -1,0 +1,208 @@
+{
+  "common": {
+    "appTitle": "Chat Styles",
+    "show": "Show",
+    "size": "Size",
+    "thickness": "Thickness",
+    "outline": "Outline"
+  },
+  "metadata": {
+    "description": "Chat Styles is a tool for generating CSS to change the appearance of YouTube Live chat. It's designed to be used as custom CSS for OBS Studio's browser source.",
+    "titleTemplate": "%s - Chat Styles"
+  },
+  "sections": {
+    "avatar": "Avatar",
+    "font": "Font",
+    "name": "Name",
+    "message": "Message",
+    "sticker": "Sticker",
+    "other": "Other"
+  },
+  "subsections": {
+    "owner": "Owner",
+    "moderator": "Moderator",
+    "member": "Member",
+    "regular": "Regular User"
+  },
+  "labels": {
+    "fontFamily": "Font Family",
+    "showText": "Show Text",
+    "showEngagement": "Show Engagement Message",
+    "showSuperChatBg": "Show Super Chat Background",
+    "showMemberBg": "Show New Member Background",
+    "unit": {
+      "px": "px"
+    }
+  },
+  "result": {
+    "heading": "Custom CSS",
+    "copyButton": "Copy"
+  },
+  "fontPicker": {
+    "label": "Font",
+    "error": "Failed to load fonts",
+    "placeholder": "e.g., Noto Sans JP",
+    "loading": "Loading...",
+    "localFonts": "Select from Local Fonts",
+    "selectFont": "Select a font...",
+    "reload": "Reload"
+  },
+  "footer": {
+    "inspiredBy": "Inspired by",
+    "createdBy": "Created by",
+    "designedBy": "Designed by",
+    "sourceCode": "Source code",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": {
+      "heading": "Introduction",
+      "content": "Chat Styles (\"the Service\") is a web application that generates styles for YouTube Live chat. This Privacy Policy explains how the Service collects, uses, and protects user information."
+    },
+    "collection": {
+      "heading": "Information We Collect",
+      "paragraph1": "The Service may collect the following information:",
+      "list": {
+        "item1": "Browser type and version",
+        "item2": "Operating system",
+        "item3": "Access date and time",
+        "item4": "IP address (in anonymized form)",
+        "item5": "Referrer URL",
+        "item6": "User-entered style settings (stored in browser's local storage)"
+      }
+    },
+    "purpose": {
+      "heading": "Purpose of Information Use",
+      "paragraph1": "The collected information is used for the following purposes:",
+      "list": {
+        "item1": "Providing and improving the Service",
+        "item2": "Analyzing usage patterns",
+        "item3": "Diagnosing and fixing technical issues"
+      }
+    },
+    "thirdParty": {
+      "heading": "Third-Party Information Sharing",
+      "paragraph1": "The Service does not share personal information with third parties without user consent, except as required by law."
+    },
+    "analytics": {
+      "heading": "Access Analysis Tools",
+      "paragraph1": "The Service uses Google Analytics for access analysis. Google Analytics collects user information using cookies. This information is collected anonymously and does not identify individuals.",
+      "paragraph2": "Please refer to Google's website for Google Analytics terms of service and privacy policy."
+    },
+    "cookies": {
+      "heading": "Cookies",
+      "paragraph1": "The Service uses cookies to improve user experience. You can disable cookies, but some features may not work properly."
+    },
+    "changes": {
+      "heading": "Privacy Policy Changes",
+      "paragraph1": "The Service may update this Privacy Policy as necessary. Changes become effective when posted on the Service."
+    },
+    "contact": {
+      "heading": "Contact",
+      "paragraph1": "For questions about this Privacy Policy, please contact us through:",
+      "github": "GitHub Issues"
+    },
+    "effectiveDate": "Effective Date: February 5, 2026"
+  },
+  "usage": {
+    "title": "How to Use",
+    "what": {
+      "heading": "What is Chat Styles",
+      "paragraph1": "Chat Styles is a tool for generating CSS to change the appearance of YouTube Live chat. You can customize the chat display on your stream screen by applying custom styles in OBS Studio's browser source."
+    },
+    "basic": {
+      "heading": "Basic Usage",
+      "step1": {
+        "title": "1. Customize Styles",
+        "paragraph1": "You can customize the appearance of your chat using the form on the left. You can adjust the following items:",
+        "avatar": {
+          "title": "Avatar",
+          "content": "Set the visibility and size of user avatars."
+        },
+        "font": {
+          "title": "Font",
+          "content": "Select the font to be used throughout the chat. You can choose from fonts installed on your system."
+        },
+        "name": {
+          "title": "Name",
+          "content": "Configure name display settings for owners, moderators, members, and regular users. You can individually set visibility, size, color, and outline."
+        },
+        "message": {
+          "title": "Message",
+          "content": "Set the text size, color, and outline for chat messages."
+        },
+        "sticker": {
+          "title": "Sticker",
+          "content": "Set the size of stickers included in Super Chats and the visibility of text."
+        },
+        "other": {
+          "title": "Other",
+          "content": "Configure display settings for engagement messages, Super Chat backgrounds, and new member announcement backgrounds."
+        }
+      },
+      "step2": {
+        "title": "2. Copy CSS",
+        "paragraph1": "The generated CSS is displayed in the \"Custom CSS\" section at the bottom right. Click the \"Copy\" button to copy the CSS to your clipboard."
+      },
+      "step3": {
+        "title": "3. Use in OBS Studio",
+        "intro": "Use the copied CSS in OBS Studio:",
+        "substep1": {
+          "title": "Add Browser Source",
+          "list": {
+            "item1": "Click the \"+\" button in \"Sources\" in OBS Studio",
+            "item2": "Select \"Browser\"",
+            "item3": "Enter any name and click \"OK\""
+          }
+        },
+        "substep2": {
+          "title": "Set URL",
+          "content": "In the \"URL\" field, enter the pop-out URL of your YouTube Live chat page. The URL format is:"
+        },
+        "substep3": {
+          "title": "Apply Custom CSS",
+          "content": "Paste the CSS you copied earlier into the \"Custom CSS\" field."
+        },
+        "substep4": {
+          "title": "Other Settings",
+          "list": {
+            "item1": "Adjust \"Width\" and \"Height\" to match your stream screen",
+            "item2": "Check \"Refresh browser when scene becomes active\"",
+            "item3": "Click \"OK\" to save settings"
+          }
+        }
+      }
+    },
+    "tips": {
+      "heading": "Tips for Better Results",
+      "list": {
+        "item1": "Fonts must be installed on the PC used for streaming.",
+        "item2": "Adjusting outline thickness can improve text visibility.",
+        "item3": "Pay attention to the contrast between background and text colors to ensure readability.",
+        "item4": "Settings are automatically saved in your browser, so you can use the same settings on your next visit.",
+        "item5": "You can preview the actual appearance while adjusting."
+      }
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "q1": {
+        "question": "Q: Where are the settings saved?",
+        "answer": "A: Settings are saved in your browser's local storage. They are not sent to any server."
+      },
+      "q2": {
+        "question": "Q: Can I use the same settings on different devices?",
+        "answer": "A: Since settings are saved in local storage, they are not synced between devices. If you want to transfer settings, we recommend copying and saving the generated CSS."
+      },
+      "q3": {
+        "question": "Q: The preview may look different from the actual YouTube Live chat.",
+        "answer": "A: The preview is for reference only. When YouTube's chat UI is updated, the actual display may change. We recommend testing in your actual streaming environment."
+      }
+    },
+    "contact": {
+      "paragraph1": "If you have questions or feedback, please create an issue on",
+      "github": "GitHub repository",
+      "paragraph2": "."
+    }
+  }
+}
