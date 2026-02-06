@@ -2,8 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { routing } from 'i18n/routing'
-import UsageJa from 'content/ja/usage.mdx'
-import UsageEn from 'content/en/usage.mdx'
+import UsageJa from 'content/ja/usage.md'
+import UsageEn from 'content/en/usage.md'
 
 type Props = {
   params: Promise<{ locale: string }>
