@@ -13,6 +13,7 @@
     "placeholder": "Select a font..."
   },
   "footer": {
+    "sourceCode": "Source code",
     "privacyPolicy": "Privacy Policy"
   },
   "labels": {

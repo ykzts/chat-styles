@@ -41,14 +41,14 @@ export default async function Footer(): Promise<ReactElement> {
             7_nana
           </a>
         </li>
-        <li className="m-0 p-0 text-right">
+        <li className="m-0 p-0 text-right mt-4">
           <a
             href="https://github.com/ykzts/chat-styles"
             rel="noopener noreferrer"
             target="_blank"
             className="text-blue-600 hover:underline"
           >
-            Source code
+            {t('sourceCode')}
           </a>
         </li>
         <li className="m-0 p-0 text-right">
