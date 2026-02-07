@@ -9,7 +9,7 @@ export default async function Footer(): Promise<ReactElement> {
     <footer className="bg-gray-100 text-gray-700 text-sm mt-12 px-4 py-6">
       <ul className="list-none m-0 p-0 space-y-2">
         <li className="m-0 p-0 text-right">
-          {t('inspiredBy') + ' '}
+          Inspired by{' '}
           <a
             href="https://chatv2.septapus.com/"
             rel="noopener noreferrer"
@@ -20,7 +20,7 @@ export default async function Footer(): Promise<ReactElement> {
           </a>
         </li>
         <li className="m-0 p-0 text-right">
-          {t('createdBy') + ' '}
+          Created by{' '}
           <a
             href="https://ykzts.com/"
             rel="noopener noreferrer"
@@ -31,7 +31,7 @@ export default async function Footer(): Promise<ReactElement> {
           </a>
         </li>
         <li className="m-0 p-0 text-right">
-          {t('designedBy') + ' '}
+          Designed by{' '}
           <a
             href="https://7-nana.bio/"
             rel="noopener noreferrer"
@@ -48,7 +48,7 @@ export default async function Footer(): Promise<ReactElement> {
             target="_blank"
             className="text-blue-600 hover:underline"
           >
-            {t('sourceCode')}
+            Source code
           </a>
         </li>
         <li className="m-0 p-0 text-right">

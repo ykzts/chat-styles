@@ -13,10 +13,6 @@
     "placeholder": "Select a font..."
   },
   "footer": {
-    "inspiredBy": "Inspired by",
-    "createdBy": "Created by",
-    "designedBy": "Designed by",
-    "sourceCode": "Source code",
     "privacyPolicy": "Privacy Policy"
   },
   "labels": {
