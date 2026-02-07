@@ -13,9 +13,6 @@
     "placeholder": "フォントを選択..."
   },
   "footer": {
-    "inspiredBy": "インスパイア元",
-    "createdBy": "作成者",
-    "designedBy": "デザイン",
     "sourceCode": "ソースコード",
     "privacyPolicy": "プライバシーポリシー"
   },
