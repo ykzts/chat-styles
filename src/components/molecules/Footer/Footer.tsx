@@ -43,7 +43,7 @@ export default async function Footer(): Promise<ReactElement> {
             </a>
           </li>
         </ul>
-        <ul className="list-none m-0 p-0 space-y-2">
+        <ul className="list-none m-0 p-0 flex flex-row gap-4">
           <li className="m-0 p-0">
             <a
               href="https://github.com/ykzts/chat-styles"
