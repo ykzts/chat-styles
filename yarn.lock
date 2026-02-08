@@ -4299,7 +4299,7 @@ semver@^7.7.1, semver@^7.7.3:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.4.tgz#28464e36060e991fa7a11d0279d2d3f3b57a7e8a"
   integrity sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==
 
-serwist@9.5.5, serwist@^9.5.4:
+serwist@9.5.5, serwist@^9.5.5:
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/serwist/-/serwist-9.5.5.tgz#991e140137d24ecbf9103dafcf3d6b02d03e6b62"
   integrity sha512-qfyQpAR56KSYujr+47PqyDdxhK3GM3RVJxNjQm20KjB6vl5TbtEhtAxjl+aAQvzFQFcRlR12I2hCxuXyDTLHmQ==
