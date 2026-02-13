@@ -13,14 +13,18 @@ export const deepMerge = <T extends Record<string, unknown>>(
   const result = { ...target }
 
   for (const key in source) {
+    if (!Object.prototype.hasOwnProperty.call(source, key)) {
+      continue
+    }
+
     const sourceValue = source[key]
     const targetValue = result[key]
 
     if (
-      sourceValue &&
+      sourceValue !== null &&
       typeof sourceValue === 'object' &&
       !Array.isArray(sourceValue) &&
-      targetValue &&
+      targetValue !== null &&
       typeof targetValue === 'object' &&
       !Array.isArray(targetValue)
     ) {
