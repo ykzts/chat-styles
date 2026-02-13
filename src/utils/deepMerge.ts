@@ -1,41 +1,51 @@
 /**
  * Deep merge utility to merge partial data with default values
  * This ensures backward compatibility when new properties are added to the schema
+ *
+ * @param defaults - The complete default configuration object
+ * @param overrides - Partial user data that may be missing new properties
+ * @returns A new object with user preferences preserved and missing properties filled with defaults
+ *
+ * @example
+ * const defaults = { a: 1, b: { c: 2, d: 3 } }
+ * const userPrefs = { b: { c: 5 } }
+ * const result = deepMerge(defaults, userPrefs)
+ * // Result: { a: 1, b: { c: 5, d: 3 } }
  */
 export const deepMerge = <T extends Record<string, unknown>>(
-  target: T,
-  source: Partial<T> | null | undefined
+  defaults: T,
+  overrides: Partial<T> | null | undefined
 ): T => {
-  if (!source) {
-    return target
+  if (!overrides) {
+    return defaults
   }
 
-  const result = { ...target }
+  const result = { ...defaults }
 
-  for (const key in source) {
-    if (!Object.prototype.hasOwnProperty.call(source, key)) {
+  for (const key in overrides) {
+    if (!Object.prototype.hasOwnProperty.call(overrides, key)) {
       continue
     }
 
-    const sourceValue = source[key]
-    const targetValue = result[key]
+    const overrideValue = overrides[key]
+    const defaultValue = result[key]
 
     if (
-      sourceValue !== null &&
-      typeof sourceValue === 'object' &&
-      !Array.isArray(sourceValue) &&
-      targetValue !== null &&
-      typeof targetValue === 'object' &&
-      !Array.isArray(targetValue)
+      overrideValue !== null &&
+      typeof overrideValue === 'object' &&
+      !Array.isArray(overrideValue) &&
+      defaultValue !== null &&
+      typeof defaultValue === 'object' &&
+      !Array.isArray(defaultValue)
     ) {
       // Recursively merge nested objects
       result[key] = deepMerge(
-        targetValue as Record<string, unknown>,
-        sourceValue as Record<string, unknown>
+        defaultValue as Record<string, unknown>,
+        overrideValue as Record<string, unknown>
       ) as T[Extract<keyof T, string>]
-    } else if (sourceValue !== undefined) {
-      // Use source value if it exists
-      result[key] = sourceValue as T[Extract<keyof T, string>]
+    } else if (overrideValue !== undefined) {
+      // Use override value if it exists
+      result[key] = overrideValue as T[Extract<keyof T, string>]
     }
   }
 
