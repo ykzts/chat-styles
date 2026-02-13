@@ -7,6 +7,7 @@ import {
   useState
 } from 'react'
 import ChatStyles from 'types/ChatStyles'
+import { deepMerge } from 'utils/deepMerge'
 
 export type ChatStylesState = {
   chatStyles: ChatStyles
@@ -117,7 +118,9 @@ const ChatStylesProvider: FC<Props> = ({ children }) => {
     localForage
       .getItem<ChatStyles>('chatStyles:v2')
       .then((chatStyles) => {
-        setChatStyles(chatStyles || defaultChatStyles)
+        // Deep merge stored data with defaults to handle missing properties
+        // This prevents crashes when new properties are added in newer versions
+        setChatStyles(deepMerge(defaultChatStyles, chatStyles))
       })
       .catch((error) => {
         console.error(error)
