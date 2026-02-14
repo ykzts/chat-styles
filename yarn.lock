@@ -4390,7 +4390,7 @@ semver@^7.7.1, semver@^7.7.3:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.4.tgz#28464e36060e991fa7a11d0279d2d3f3b57a7e8a"
   integrity sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==
 
-serwist@9.5.6, serwist@^9.5.5:
+serwist@9.5.6, serwist@^9.5.6:
   version "9.5.6"
   resolved "https://registry.yarnpkg.com/serwist/-/serwist-9.5.6.tgz#be915c59e6c8921e2ca5df0ed2d75cba76c07c7b"
   integrity sha512-WoseghF1DUevNGnEqsmyXzVyk1KT18S3CJoFZmzav4vEqGWit+I7ErFav+ocrYq2IUoDhJpbTg15a68UdZy0Vw==
