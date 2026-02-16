@@ -270,20 +270,13 @@
     "@formatjs/ecma402-abstract" "3.1.1"
     tslib "^2.8.1"
 
-"@formatjs/intl-localematcher@0.8.1":
+"@formatjs/intl-localematcher@0.8.1", "@formatjs/intl-localematcher@^0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.8.1.tgz#554fe5f8c746ba52d430674de9a242fae64f67ff"
   integrity sha512-xwEuwQFdtSq1UKtQnyTZWC+eHdv7Uygoa+H2k/9uzBVQjDyp9r20LNDNKedWXll7FssT3GRHvqsdJGYSUWqYFA==
   dependencies:
     "@formatjs/fast-memoize" "3.1.0"
     tslib "^2.8.1"
-
-"@formatjs/intl-localematcher@^0.5.4":
-  version "0.5.10"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.5.10.tgz#1e0bd3fc1332c1fe4540cfa28f07e9227b659a58"
-  integrity sha512-af3qATX+m4Rnd9+wHcjJ4w2ijq+rAVP3CCinJQvFv1kgSu1W6jypUmvleJxcewdxmutM8dmIRZFxO/IQBZmP2Q==
-  dependencies:
-    tslib "2"
 
 "@humanfs/core@^0.19.1":
   version "0.19.1"
@@ -2694,10 +2687,10 @@ hermes-parser@^0.25.1:
   dependencies:
     hermes-estree "0.25.1"
 
-icu-minify@^4.8.2:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/icu-minify/-/icu-minify-4.8.2.tgz#e984f3f9499b34a47f2c09369f6b64480b148ad6"
-  integrity sha512-LHBQV+skKkjZSPd590pZ7ZAHftUgda3eFjeuNwA8/15L8T8loCNBktKQyTlkodAU86KovFXeg/9WntlAo5wA5A==
+icu-minify@^4.8.3:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/icu-minify/-/icu-minify-4.8.3.tgz#167aef48e0ef32b5b569a51587ece400cab3d884"
+  integrity sha512-65Av7FLosNk7bPbmQx5z5XG2Y3T2GFppcjiXh4z1idHeVgQxlDpAmkGoYI0eFzAvrOnjpWTL5FmPDhsdfRMPEA==
   dependencies:
     "@formatjs/icu-messageformat-parser" "^3.4.0"
 
@@ -3744,24 +3737,24 @@ negotiator@^1.0.0:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-1.0.0.tgz#b6c91bb47172d69f93cfd7c357bbb529019b5f6a"
   integrity sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==
 
-next-intl-swc-plugin-extractor@^4.8.2:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.8.2.tgz#4303d78191f67cc3a667e10f7fb12cf9b32a993d"
-  integrity sha512-sHDs36L1VZmFHj3tPHsD+KZJtnsRudHlNvT0ieIe3iFVn5OpGLTxW3d/Zc/2LXSj5GpGuR6wQeikbhFjU9tMQQ==
+next-intl-swc-plugin-extractor@^4.8.3:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.8.3.tgz#1e8f5b51884afc42fad251cb5bf94523c69ed3c7"
+  integrity sha512-YcaT+R9z69XkGhpDarVFWUprrCMbxgIQYPUaXoE6LGVnLjGdo8hu3gL6bramDVjNKViYY8a/pXPy7Bna0mXORg==
 
-next-intl@^4.8.2:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.8.2.tgz#b73c165af53d8b0d646be10d05cb1976e38025ad"
-  integrity sha512-GuuwyvyEI49/oehQbBXEoY8KSIYCzmfMLhmIwhMXTb+yeBmly1PnJcpgph3KczQ+HTJMXwXCmkizgtT8jBMf3A==
+next-intl@^4.8.3:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.8.3.tgz#c23bed78167e91cd19fa40ff4a76da8725aa6046"
+  integrity sha512-PvdBDWg+Leh7BR7GJUQbCDVVaBRn37GwDBWc9sv0rVQOJDQ5JU1rVzx9EEGuOGYo0DHAl70++9LQ7HxTawdL7w==
   dependencies:
-    "@formatjs/intl-localematcher" "^0.5.4"
+    "@formatjs/intl-localematcher" "^0.8.1"
     "@parcel/watcher" "^2.4.1"
     "@swc/core" "^1.15.2"
-    icu-minify "^4.8.2"
+    icu-minify "^4.8.3"
     negotiator "^1.0.0"
-    next-intl-swc-plugin-extractor "^4.8.2"
+    next-intl-swc-plugin-extractor "^4.8.3"
     po-parser "^2.1.1"
-    use-intl "^4.8.2"
+    use-intl "^4.8.3"
 
 next@^16.1.6:
   version "16.1.6"
@@ -4702,7 +4695,7 @@ tsconfig-paths@^3.15.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@2, tslib@^2.4.0, tslib@^2.8.0, tslib@^2.8.1:
+tslib@^2.4.0, tslib@^2.8.0, tslib@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
@@ -4889,14 +4882,14 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-intl@^4.8.2:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-4.8.2.tgz#0e3be4d7ebd5e8854f86e8137438a47664746609"
-  integrity sha512-3VNXZgDnPFqhIYosQ9W1Hc6K5q+ZelMfawNbexdwL/dY7BTHbceLUBX5Eeex9lgogxTp0pf1SjHuhYNAjr9H3g==
+use-intl@^4.8.3:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-4.8.3.tgz#1ea13d17cc31ebc816826538c8056380b75c6302"
+  integrity sha512-nLxlC/RH+le6g3amA508Itnn/00mE+J22ui21QhOWo5V9hCEC43+WtnRAITbJW0ztVZphev5X9gvOf2/Dk9PLA==
   dependencies:
     "@formatjs/fast-memoize" "^3.1.0"
     "@schummar/icu-type-parser" "1.21.5"
-    icu-minify "^4.8.2"
+    icu-minify "^4.8.3"
     intl-messageformat "^11.1.0"
 
 use-sync-external-store@^1.6.0:
