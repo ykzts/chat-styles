@@ -1026,10 +1026,10 @@
   resolved "https://registry.yarnpkg.com/@tanstack/devtools-event-client/-/devtools-event-client-0.4.3.tgz#bfa2e68f5e06a8bb8934c7bd96912adf2d96571d"
   integrity sha512-OZI6QyULw0FI0wjgmeYzCIfbgPsOEzwJtCpa69XrfLMtNXLGnz3d/dIabk7frg0TmHo+Ah49w5I4KC7Tufwsvw==
 
-"@tanstack/form-core@1.28.5":
-  version "1.28.5"
-  resolved "https://registry.yarnpkg.com/@tanstack/form-core/-/form-core-1.28.5.tgz#270db99ded8242215c8dee75ea2f6a33a5b1a221"
-  integrity sha512-8lYnduHHfP6uaXF9+2OLnh3Fo27tH4TdtekWLG2b/Bp26ynbrWG6L4qhBgEb7VcvTpJw/RjvJF/JyFhZkG3pfQ==
+"@tanstack/form-core@1.28.6":
+  version "1.28.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/form-core/-/form-core-1.28.6.tgz#fd3e8d04c391922852e3174aaa2f003ed4f79cc1"
+  integrity sha512-4zroxL6VDj5O+w7l3dYZnUeL/h30KtNSV7UWzKAL7cl+8clMFdISPDlDlluS37As7oqvPVKo8B83VlIBvgmRog==
   dependencies:
     "@tanstack/devtools-event-client" "^0.4.1"
     "@tanstack/pacer-lite" "^0.1.1"
@@ -1040,12 +1040,12 @@
   resolved "https://registry.yarnpkg.com/@tanstack/pacer-lite/-/pacer-lite-0.1.1.tgz#431d3b0ac871280e8326fdbf156bb171d9bb0aa3"
   integrity sha512-y/xtNPNt/YeyoVxE/JCx+T7yjEzpezmbb+toK8DDD1P4m7Kzs5YR956+7OKexG3f8aXgC3rLZl7b1V+yNUSy5w==
 
-"@tanstack/react-form@^1.28.5":
-  version "1.28.5"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-form/-/react-form-1.28.5.tgz#ba43a25259cac0433b779fef02b476180bb4680f"
-  integrity sha512-CL8IeWkeXnEEDsHt5wBuIOZvSYrKiLRtsC9ca0LzfJJ22SYCma9cBmh1UX1EBX0o3gH2U21PmUf+y5f9OJNoEQ==
+"@tanstack/react-form@^1.28.6":
+  version "1.28.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-form/-/react-form-1.28.6.tgz#f3c1282d72d338adc39d58c845597f5a826e2a4e"
+  integrity sha512-dRxwKeNW3uuJvf0sXsIQ2compFMnIJNk9B436Lx0fqkqK+CBvA1tNmEdX+faoCpuQ5Wua3c8ahVibJ65cpkijA==
   dependencies:
-    "@tanstack/form-core" "1.28.5"
+    "@tanstack/form-core" "1.28.6"
     "@tanstack/react-store" "^0.9.1"
 
 "@tanstack/react-store@^0.9.1":
