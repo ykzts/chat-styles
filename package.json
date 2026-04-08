@@ -12,9 +12,9 @@
     "next-intl": "^4.9.0",
     "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.30.0",
-    "react": "^19.2.4",
+    "react": "^19.2.5",
     "react-color": "^2.19.3",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.2.5",
     "react-helmet": "^6.1.0"
   },
   "description": "Chat Styles is a generator of style sheet for the YouTube Live Chat.",
