@@ -22,7 +22,7 @@
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
     "@serwist/next": "^9.5.7",
-    "@tailwindcss/postcss": "^4.2.2",
+    "@tailwindcss/postcss": "^4.2.4",
     "@tailwindcss/typography": "^0.5.19",
     "@types/eslint": "^9.6.1",
     "@types/node": "^24.12.2",
@@ -41,7 +41,7 @@
     "postcss": "^8.5.9",
     "prettier": "~3.8.2",
     "serwist": "^9.5.7",
-    "tailwindcss": "^4.2.2",
+    "tailwindcss": "^4.2.4",
     "typescript": "~5.9.3"
   },
   "homepage": "https://chat-styles.app/",
