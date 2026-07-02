@@ -3743,7 +3743,7 @@ next-intl@^4.9.1:
     po-parser "^2.1.1"
     use-intl "^4.9.1"
 
-next@^16.2.3:
+next@^16.2.10:
   version "16.2.10"
   resolved "https://registry.yarnpkg.com/next/-/next-16.2.10.tgz#54daa8d11b1b7146b37dc4094448e07eb0dff88b"
   integrity sha512-2som5AVXb3kE6Yjine3/mNbBayYF58eguBWIVVUdr1y/L426xyVEgYxgBG+1QC34P2x5E+tcDup6XkuOAX3dCA==
