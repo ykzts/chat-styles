@@ -3686,7 +3686,7 @@ next-intl-swc-plugin-extractor@^4.13.1:
   resolved "https://registry.yarnpkg.com/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.13.1.tgz#660fd9d04bb82bc8ab1492c421c7bd4e276e1299"
   integrity sha512-RhlH2DR1ViEXzcX7G3tDXAvzNrBL2Ph54Hq/q/9oP9eXQV/okh3UQpA/lx2k9U5Ck83CZOSgH0eFTNi5U+zyXw==
 
-next-intl@^4.9.1:
+next-intl@^4.13.1:
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.13.1.tgz#3a1d0bb74e008c16cb8ca3d1de625cff392e237a"
   integrity sha512-aS8KTA+nNhSNJJBlIhxgvU135WzoObwzFwav4wTDti/Gmhxqe0fs/Q343igo8Z7HGqPB/xgmoagwySZAlHmIfA==
