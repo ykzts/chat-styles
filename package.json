@@ -21,7 +21,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^10.0.1",
-    "@serwist/next": "^9.5.12",
+    "@serwist/next": "^9.5.13",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "@types/eslint": "^9.6.1",
@@ -40,7 +40,7 @@
     "lucide-react": "^1.51.0",
     "postcss": "^8.5.28",
     "prettier": "~3.9.9",
-    "serwist": "^9.5.12",
+    "serwist": "^9.5.13",
     "tailwindcss": "^4.3.3",
     "typescript": "~5.9.3"
   },
