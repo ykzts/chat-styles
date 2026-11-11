@@ -39,7 +39,7 @@
     "globals": "^17.14.0",
     "lucide-react": "^1.72.0",
     "postcss": "^8.5.32",
-    "prettier": "~3.9.10",
+    "prettier": "~3.10.0",
     "serwist": "^9.5.13",
     "tailwindcss": "^4.3.5",
     "typescript": "~5.9.3"
