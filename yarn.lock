@@ -796,57 +796,57 @@
   resolved "https://registry.yarnpkg.com/@schummar/icu-type-parser/-/icu-type-parser-1.21.5.tgz#75989085bbbf80ee325874a0137437bde77e9baf"
   integrity sha512-bXHSaW5jRTmke9Vd0h5P7BtWZG9Znqb8gSDxZnxaGSJnGwPLDPfS+3g0BKzeWqzgZPsIVZkM7m2tbo18cm5HBw==
 
-"@serwist/build@9.5.13":
-  version "9.5.13"
-  resolved "https://registry.yarnpkg.com/@serwist/build/-/build-9.5.13.tgz#5e88bdfdcbaf0ad75fa3d2f59ff505eb12000bb4"
-  integrity sha512-3seu43B26paWNKixMJTJWXBJx8c07e+WZvPOUH5V/AByYfAoL4TKh9vMri8zukyj52shDyChs2Qjji5NObprMQ==
+"@serwist/build@9.5.14":
+  version "9.5.14"
+  resolved "https://registry.yarnpkg.com/@serwist/build/-/build-9.5.14.tgz#d83533b969068f6a8448b294841233986d8a41c5"
+  integrity sha512-jUk+LUdKGO4lRKfCf/VhJvhUO14HquPd9ygU6QAMURdJFOyQ1IjfYswjq4fHA1PRU5LfU6eCgSNQLVdCgS0wug==
   dependencies:
-    "@serwist/utils" "9.5.13"
+    "@serwist/utils" "9.5.14"
     common-tags "1.8.2"
     glob "13.0.6"
     pretty-bytes "6.1.1"
     source-map "0.8.0"
     type-fest "5.10.0"
-    zod "4.6.5"
+    zod "~4.6.7"
 
-"@serwist/next@^9.5.13":
-  version "9.5.13"
-  resolved "https://registry.yarnpkg.com/@serwist/next/-/next-9.5.13.tgz#f8ec3c7f04773caeb4dc1a257340d3667ba82e12"
-  integrity sha512-NyRUmZIhfN+8p/rWLWRlULt+0YGN6G90R2WKbYj8cq0/4VDhDaOrFXyI458Ym98ApQHrNwkUhgPzZMxQoxxWWA==
+"@serwist/next@^9.5.14":
+  version "9.5.14"
+  resolved "https://registry.yarnpkg.com/@serwist/next/-/next-9.5.14.tgz#81616eb15b31af1151c10180ceb4addd1e4b76a7"
+  integrity sha512-woBsLQMhPIzJ7gwWDbxwtKevl/MJD1/8BABQw3uuE680Xa1steQcINY8wxGGa/DsQLtnd3OyY0HwX+V2RleUdw==
   dependencies:
-    "@serwist/build" "9.5.13"
-    "@serwist/utils" "9.5.13"
-    "@serwist/webpack-plugin" "9.5.13"
-    "@serwist/window" "9.5.13"
+    "@serwist/build" "9.5.14"
+    "@serwist/utils" "9.5.14"
+    "@serwist/webpack-plugin" "9.5.14"
+    "@serwist/window" "9.5.14"
     browserslist "^4.29.3"
     glob "13.0.6"
     kolorist "1.8.0"
     semver "7.8.5"
-    serwist "9.5.13"
-    zod "4.6.5"
+    serwist "9.5.14"
+    zod "~4.6.7"
 
-"@serwist/utils@9.5.13":
-  version "9.5.13"
-  resolved "https://registry.yarnpkg.com/@serwist/utils/-/utils-9.5.13.tgz#1c9681fda7fe181a38381f59f9156c65878e0e86"
-  integrity sha512-jJJSvl0pSc6udJ7pN2u0oduOfQqSY6oJNjbIc82YcVnkpzj1O+qFHYdrR6tu9bspa30Nc8ZVV+VncOcyguvk5w==
+"@serwist/utils@9.5.14":
+  version "9.5.14"
+  resolved "https://registry.yarnpkg.com/@serwist/utils/-/utils-9.5.14.tgz#b7314113497ebe055d606d2f688a3db5f1aeb9ee"
+  integrity sha512-Ssr34/t6y4ri2O9cdXs3obx56dnWzAgmsFTgjA675IXgx6NvBTssaSweXarNoW/qJW2Eywf1HP5yPubYTPMPVw==
 
-"@serwist/webpack-plugin@9.5.13":
-  version "9.5.13"
-  resolved "https://registry.yarnpkg.com/@serwist/webpack-plugin/-/webpack-plugin-9.5.13.tgz#bdc70bb66a475bbc14584c274758cd016832e0f5"
-  integrity sha512-pXfrV0kVUjoXGOu7D+1xEz06tsDgBNiqV5YXvvBpVLQrIsXOnUTs5H4VLZ2p7OjfuPt8Ho5QFrS6xt08hTPxRA==
+"@serwist/webpack-plugin@9.5.14":
+  version "9.5.14"
+  resolved "https://registry.yarnpkg.com/@serwist/webpack-plugin/-/webpack-plugin-9.5.14.tgz#0f3c28102716d612237beb67d3045071bd08d495"
+  integrity sha512-L1paXdBGoElQjSD1hGqf0avn8g7FdaeWUJJn0bbXqO97QhB67Z58OwnPhr7HVGe/GyeK8wE7RPg05kTpAkdptw==
   dependencies:
-    "@serwist/build" "9.5.13"
-    "@serwist/utils" "9.5.13"
+    "@serwist/build" "9.5.14"
+    "@serwist/utils" "9.5.14"
     pretty-bytes "6.1.1"
-    zod "4.6.5"
+    zod "~4.6.7"
 
-"@serwist/window@9.5.13":
-  version "9.5.13"
-  resolved "https://registry.yarnpkg.com/@serwist/window/-/window-9.5.13.tgz#a7a1914d87b8a488f7a874ad40772afcd06489c0"
-  integrity sha512-1xOBy3Cpe1qZ33GwQSeQk8fyklYc7wZsYzpmHq37RowRMaHvrKQkUFTUoZPyQG5YWwmvDbFVgOGba7UbXNhHfQ==
+"@serwist/window@9.5.14":
+  version "9.5.14"
+  resolved "https://registry.yarnpkg.com/@serwist/window/-/window-9.5.14.tgz#253e44dc53f52336bfab67d5d6d8540f24e1d42d"
+  integrity sha512-FOlDrbCqfcZ28P1H3Hy9OTo6GCNU9tkhbqOXEdgcGzlzkSuntOcPmiyZlqV+4bFdwzWUpVsT3OxHHnhDQ+hanQ==
   dependencies:
     "@types/trusted-types" "2.0.7"
-    serwist "9.5.13"
+    serwist "9.5.14"
 
 "@swc/core-darwin-arm64@1.16.22":
   version "1.16.22"
@@ -4339,12 +4339,12 @@ semver@^7.7.1, semver@^7.7.3, semver@^7.8.5:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.8.6.tgz#67c0cda133a3ceb6f70b803e67625bf969000424"
   integrity sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==
 
-serwist@9.5.13, serwist@^9.5.13:
-  version "9.5.13"
-  resolved "https://registry.yarnpkg.com/serwist/-/serwist-9.5.13.tgz#eafb48675618b27113f6a9e85b045e1f3e59d629"
-  integrity sha512-ZpskCei2d5Zcljeb6QvYP94pV5xY3GCdbOk0hOzMSEPFOqJDwJvMpQq7i1r/psuR1WQCsKX6p7UpLle6sTPYjw==
+serwist@9.5.14, serwist@^9.5.14:
+  version "9.5.14"
+  resolved "https://registry.yarnpkg.com/serwist/-/serwist-9.5.14.tgz#1c850e89d7d727ed2f681e0e22065dc38fb3e0ab"
+  integrity sha512-DsKXY8b3hAFxHrnSDugzm29fKGHF9tnAKqvUdbGU3Ui8QHE9izeh+j1na95m3ANk/yIIAvmbpxA8XS0cs3H8Lw==
   dependencies:
-    "@serwist/utils" "9.5.13"
+    "@serwist/utils" "9.5.14"
     idb "8.0.3"
 
 set-function-length@^1.2.2:
@@ -4997,12 +4997,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/zod-validation-error/-/zod-validation-error-4.0.2.tgz#bc605eba49ce0fcd598c127fee1c236be3f22918"
   integrity sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ==
 
-zod@4.6.5:
-  version "4.6.5"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-4.6.5.tgz#e3af3edbdc260239c52f73caad05dbbffe6e82cd"
-  integrity sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==
-
-"zod@^3.25.0 || ^4.0.0":
+"zod@^3.25.0 || ^4.0.0", zod@~4.6.7:
   version "4.6.7"
   resolved "https://registry.yarnpkg.com/zod/-/zod-4.6.7.tgz#e806cf64a7f4e37635ce9f2f52c04c3766f75e5b"
   integrity sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==
