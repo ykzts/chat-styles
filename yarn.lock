@@ -169,25 +169,43 @@
   resolved "https://registry.yarnpkg.com/@dual-bundle/import-meta-resolve/-/import-meta-resolve-4.2.1.tgz#cd0b25b3808cd9e684cd6cd549bbf8e1dcf05ee7"
   integrity sha512-id+7YRUgoUX6CgV0DtuhirQWodeeA7Lf4i2x71JS/vtA5pRb/hIGWlw+G6MeXvsM+MXrz0VAydTGElX1rAfgPg==
 
-"@eloqnt/config@^0.1.1", "@eloqnt/config@^0.1.2":
+"@eloqnt/config@^0.1.2", "@eloqnt/config@~0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@eloqnt/config/-/config-0.1.2.tgz#0523b403856dd1e66588e6741a403b1d0a3e7788"
   integrity sha512-0pdjiCFur3M1fxuoPIoLS/ElTNerOdmkjToiLi399ITOLE/HRvHxJ5OjuOPQqPIZcbYXr2+WAWu3dnXMjt/WZg==
 
-"@eloqnt/format-json@^0.1.0":
+"@eloqnt/extractor@~0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@eloqnt/extractor/-/extractor-0.1.0.tgz#11ff08896e9db4c02637379914392fb6a0938ebe"
+  integrity sha512-ZesGo0H7jCqGLvCE2e0vyUNhRPBnIRc3xuCtCMsrSXTc+DTtjhXfyF+BtCmDk2WVEgExL0e8Y3bJQygjmr3qdw==
+  dependencies:
+    "@eloqnt/messages" "~0.1.0"
+    "@swc/core" "~1.16.0"
+    next-intl-swc-plugin-extractor "4.15.1"
+
+"@eloqnt/format-json@~0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@eloqnt/format-json/-/format-json-0.1.1.tgz#84eb86ebbd1eba41680f6431e660cab2fa367611"
   integrity sha512-Pp8DZPMSWBZy8CydZ293LhXnopdiIVdKO0z//fWFA+Cq1CK9vk2DdoigEFxjWl4CqYfXrRQYPdaKEKTC/9e1CQ==
   dependencies:
     "@eloqnt/config" "^0.1.2"
 
-"@eloqnt/format-po@^0.1.1":
+"@eloqnt/format-po@~0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@eloqnt/format-po/-/format-po-0.1.2.tgz#2af472e2e863cf0024144735b59f93e83e523b9d"
   integrity sha512-bohkA1SmJ9rJQG+tNsY8gWrdSo+pJazdjI+dTW+Wt2eg+UuwejXuYOkZDVcWRBCt6MH1dhHo0UuDau0jUmu/+Q==
   dependencies:
     "@eloqnt/config" "^0.1.2"
     po-parser "^2.2.0"
+
+"@eloqnt/messages@~0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@eloqnt/messages/-/messages-0.1.0.tgz#5cae533dc583449b6ae91fb90d0d1ef6ca63a319"
+  integrity sha512-/YIr/bPaRCJmPGR5OrqVoado0j5ijcD7q95jZlkIzd0ipmEM4s+805c9PafoLUKCrudMEI4gqIUsZ24hZ0d2pQ==
+  dependencies:
+    "@eloqnt/config" "~0.1.2"
+    "@eloqnt/format-json" "~0.1.1"
+    "@eloqnt/format-po" "~0.1.2"
 
 "@emnapi/core@^1.11.3":
   version "1.11.3"
@@ -758,7 +776,7 @@
   resolved "https://registry.yarnpkg.com/@parcel/watcher-win32-x64/-/watcher-win32-x64-2.6.0.tgz#9bee199a2a4accd557b451ac2c1c793f305ae012"
   integrity sha512-cA+/pXV2YkfxlIcXOQ5fSWqAzzPyD78/x5qbK/I0vUkrlYHA8TIz+MXjAbGouguKVSI4bOmkTSJ1/poVSsgt+A==
 
-"@parcel/watcher@^2.4.1":
+"@parcel/watcher@^2.6.0":
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@parcel/watcher/-/watcher-2.6.0.tgz#99661f6220070b76a766aba6b7e313a087a1be4f"
   integrity sha512-7FNeNl8NCE7aINx7WXiKQrPYZWC/hvrTsmk6zmxbI7LTXE7hVek/n8AfVgpe2y82zl3w0HvCHN0bVKMBoJcC0w==
@@ -2819,7 +2837,7 @@ hookified@^2.1.1:
   resolved "https://registry.yarnpkg.com/hookified/-/hookified-2.2.0.tgz#1d024ac1668973dd5bcc4a96ab9ccdb7639ef8d4"
   integrity sha512-p/LgFzRN5FeoD3DLS6bkUapeye6E4SI6yJs6KetENd18S+FBthqYq2amJUWpt5z0EQwwHemidjY5OqJGEKm5uA==
 
-icu-minify@^4.15.1:
+icu-minify@^4.15.1, icu-minify@^4.15.2:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/icu-minify/-/icu-minify-4.15.2.tgz#54d48d9041faa2b7206bba7dab4a4233a3e3c6f5"
   integrity sha512-IsgBR7/1RBkYWUqP2wS+vE9BBBfH4HjNjDbSPF3uK2Jjlzlsd7R+loUhjEEUySU6tjGmUIuft7w3qp7PI0KkXA==
@@ -3867,18 +3885,20 @@ next-intl-swc-plugin-extractor@4.15.1:
   resolved "https://registry.yarnpkg.com/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.15.1.tgz#27d0bf64b687296675cf344431b4e838c41d26b1"
   integrity sha512-n+CrfyQ3obIpZoaHtlHvtTLg6EuFcmSC3c71Yv0Kh4/5zenBJ8WeYP/xAnsiwQjZcaK9zie0SHwWeIG+5OJaBw==
 
-next-intl@^4.15.1:
-  version "4.15.1"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.15.1.tgz#c4eae18cdbf4e55cbc79983ddd12e192ede49f6e"
-  integrity sha512-b0KOLdd2pv+uWTma2Lv8OlSLCAqa2zasCx6ZXo2n/0/rAGWkzgRdQ0nD7sl0xtuDFRPNu8sNm+cWgJic16Sbmg==
+next-intl@^4.15.3:
+  version "4.15.3"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.15.3.tgz#5dc3516bea64a51f711ce612bb7ae9dbca4480a4"
+  integrity sha512-kvD3eTPydChHX0VN98NuCfyMs4Vq2/Fw/mJimX19jP3Z8uo0XxRvY/kecewMCvNWDRePNt4zz1kPus4d6Tv1KA==
   dependencies:
-    "@eloqnt/config" "^0.1.1"
-    "@eloqnt/format-json" "^0.1.0"
-    "@eloqnt/format-po" "^0.1.1"
+    "@eloqnt/config" "~0.1.2"
+    "@eloqnt/extractor" "~0.1.0"
+    "@eloqnt/format-json" "~0.1.1"
+    "@eloqnt/format-po" "~0.1.2"
+    "@eloqnt/messages" "~0.1.0"
     "@formatjs/intl-localematcher" "^0.8.1"
-    "@parcel/watcher" "^2.4.1"
+    "@parcel/watcher" "^2.6.0"
     "@swc/core" "~1.16.0"
-    icu-minify "^4.15.1"
+    icu-minify "^4.15.2"
     negotiator "^1.0.0"
     next-intl-swc-plugin-extractor "4.15.1"
     use-intl "^4.15.1"
