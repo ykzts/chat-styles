@@ -2837,10 +2837,10 @@ hookified@^2.1.1:
   resolved "https://registry.yarnpkg.com/hookified/-/hookified-2.2.0.tgz#1d024ac1668973dd5bcc4a96ab9ccdb7639ef8d4"
   integrity sha512-p/LgFzRN5FeoD3DLS6bkUapeye6E4SI6yJs6KetENd18S+FBthqYq2amJUWpt5z0EQwwHemidjY5OqJGEKm5uA==
 
-icu-minify@^4.15.1, icu-minify@^4.15.2:
-  version "4.15.2"
-  resolved "https://registry.yarnpkg.com/icu-minify/-/icu-minify-4.15.2.tgz#54d48d9041faa2b7206bba7dab4a4233a3e3c6f5"
-  integrity sha512-IsgBR7/1RBkYWUqP2wS+vE9BBBfH4HjNjDbSPF3uK2Jjlzlsd7R+loUhjEEUySU6tjGmUIuft7w3qp7PI0KkXA==
+icu-minify@^4.15.1, icu-minify@^4.15.3:
+  version "4.15.3"
+  resolved "https://registry.yarnpkg.com/icu-minify/-/icu-minify-4.15.3.tgz#65159878bcd4f114b3d04525fa63fcfe152473b7"
+  integrity sha512-sDQdvX7BG43XOCO+TyR7lGQYyvhltSWpQBXcKwipu7bRF/afr22S5pzjtcwPsSxFQl34tQzy1jEp8DcqPc4Qhg==
   dependencies:
     "@formatjs/icu-messageformat-parser" "^3.4.0"
 
@@ -3885,10 +3885,10 @@ next-intl-swc-plugin-extractor@4.15.1:
   resolved "https://registry.yarnpkg.com/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.15.1.tgz#27d0bf64b687296675cf344431b4e838c41d26b1"
   integrity sha512-n+CrfyQ3obIpZoaHtlHvtTLg6EuFcmSC3c71Yv0Kh4/5zenBJ8WeYP/xAnsiwQjZcaK9zie0SHwWeIG+5OJaBw==
 
-next-intl@^4.15.3:
-  version "4.15.3"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.15.3.tgz#5dc3516bea64a51f711ce612bb7ae9dbca4480a4"
-  integrity sha512-kvD3eTPydChHX0VN98NuCfyMs4Vq2/Fw/mJimX19jP3Z8uo0XxRvY/kecewMCvNWDRePNt4zz1kPus4d6Tv1KA==
+next-intl@^4.16.0:
+  version "4.16.0"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.16.0.tgz#1062b01d68e48d87d5a7a85988c03fd9867df94c"
+  integrity sha512-dVhvKZhvXEmvkT81evsmAZqqX29TG8H2e6V4jxItDUWwDaMb9oH2Fy5daL7hnwMBHajzDKb1Om+5KHiOBO0Aww==
   dependencies:
     "@eloqnt/config" "~0.1.2"
     "@eloqnt/extractor" "~0.1.0"
@@ -3898,7 +3898,7 @@ next-intl@^4.15.3:
     "@formatjs/intl-localematcher" "^0.8.1"
     "@parcel/watcher" "^2.6.0"
     "@swc/core" "~1.16.0"
-    icu-minify "^4.15.2"
+    icu-minify "^4.15.3"
     negotiator "^1.0.0"
     next-intl-swc-plugin-extractor "4.15.1"
     use-intl "^4.15.1"
