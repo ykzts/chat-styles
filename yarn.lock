@@ -3885,10 +3885,10 @@ next-intl-swc-plugin-extractor@4.15.1:
   resolved "https://registry.yarnpkg.com/next-intl-swc-plugin-extractor/-/next-intl-swc-plugin-extractor-4.15.1.tgz#27d0bf64b687296675cf344431b4e838c41d26b1"
   integrity sha512-n+CrfyQ3obIpZoaHtlHvtTLg6EuFcmSC3c71Yv0Kh4/5zenBJ8WeYP/xAnsiwQjZcaK9zie0SHwWeIG+5OJaBw==
 
-next-intl@^4.16.1:
-  version "4.16.1"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.16.1.tgz#7439eb4fe12cf8dc629d2647a9f77d4c233bcce6"
-  integrity sha512-InssaLOP9buvpXkCwaAVPFpYfCMXhzqitWUZTTZYSG3nePPZhImJ19QuBiGwzZUEjaholuEXZmk1EVl4On5rRQ==
+next-intl@^4.16.2:
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-4.16.2.tgz#a8be3c0777e50dc3d7590723078485e1352b3b82"
+  integrity sha512-UEvQdkU9TV/hIbJy9DPnZ66g7nhyQhRtO3om99KuB66e0X1i3ijEwLo2w1eR4bLmQLL29Coa28ZSJbpN+NlHZA==
   dependencies:
     "@eloqnt/config" "~0.1.2"
     "@eloqnt/extractor" "~0.1.0"
