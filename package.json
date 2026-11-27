@@ -37,7 +37,7 @@
     "eslint-config-prettier": "^10.1.9",
     "eslint-plugin-prettier": "^5.5.7",
     "globals": "^17.14.0",
-    "lucide-react": "^1.81.0",
+    "lucide-react": "^1.82.0",
     "postcss": "^8.5.34",
     "prettier": "~3.10.1",
     "serwist": "^9.6.0",
